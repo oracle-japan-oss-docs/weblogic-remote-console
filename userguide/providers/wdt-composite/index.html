@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="ja" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.82.0" />
+    <meta content="WDTコンポジット・モデルの管理方法" name="description">
+
+
+    <link rel="icon" href="../../../images/logo.png" type="image/png">
+
+    <title>WDT複合モデル :: WebLogic Remote Console</title>
+
+    
+    <link href="../../../css/nucleus.css?1666389334" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1666389334" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1666389334" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1666389334" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1666389334" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1666389334" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1666389334" rel="stylesheet">
+    <link href="../../../css/theme.css?1666389334" rel="stylesheet">
+    <link href="../../../css/tabs.css?1666389334" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1666389334" rel="stylesheet">
+    
+    
+
+    <script src="../../../js/jquery-3.6.0.min.js?1666389334"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  <meta HTTP-EQUIV="Content-Type" Content="text/html; charset=utf-8"></head>
+  <style type="text/css"> <!-- .merged:hover {text-decoration: underline;} --> </style>
+<body class="" data-url="/weblogic-remote-console/userguide/providers/wdt-composite/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <span class="merged" id="index.34ECQT"  title="原文::  WebLogic Remote Console "><a href="https://oracle.github.io/weblogic-remote-console" id="logo"> <img height="60" src="../../../images/logo.png"><br /> WebLogic Remote Console </a></span>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../../js/lunr.min.js?1666389334"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1666389334"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/oracle.github.io\/weblogic-remote-console";
+    
+</script>
+<script type="text/javascript" src="../../../js/search.js?1666389334"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+      
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/setup/" title="開始">
+      <span class="merged" id="index.176NWa" title="原文 :  Get started "><a href="../../../setup/index.html">開始</a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/setup/console/" title="WebLogic Remote Consoleの確認">
+        <span class="merged" id="index.2bxEX" title="原文 :  Explore the WebLogic Remote Console "><a href="../../../setup/console/index.html">WebLogic Remote Consoleの確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/setup/admin-console-diff/" title="管理コンソールとの相違点">
+        <span class="merged" id="index.1HlGYi" title="原文 :  Differences with the Administration Console "><a href="../../../setup/admin-console-diff/index.html">管理コンソールとの相違点</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        parent
+        
+        
+        " data-nav-id="/weblogic-remote-console/userguide/" title="ユーザー・ガイド">
+      <span class="merged" id="index.3J0qDo"  title="原文::  User guide "><a href="../../index.html"> ユーザー・ガイド </a></span>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/projects/" title="プロジェクト">
+        <span class="merged" id="index.vtRIq"  title="原文::  Projects "><a href="../../projects/index.html"> プロジェクト </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        parent
+        
+        
+        " data-nav-id="/weblogic-remote-console/userguide/providers/" title="プロバイダ・タイプ">
+      <span class="merged" id="index.2myPuK" title="原文 :  Provider types "><a href="../index.html">プロバイダ・タイプ</a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/administration-server/" title="管理サーバー">
+        <span class="merged" id="index.1rVvEY"  title="原文::  Administration Servers "><a href="../administration-server/index.html"> 管理サーバー </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/property-list/" title="プロパティ・リスト">
+        <span class="merged" id="index.406fAy" title="原文 :  Property lists "><a href="../property-list/index.html">プロパティ・リスト</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/wdt-model/" title="WDTモデル・ファイル">
+        <span class="merged" id="index.1bSoS6" title="原文 :  WDT model files "><a href="../wdt-model/index.html">WDTモデル・ファイル</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item active" data-nav-id="/weblogic-remote-console/userguide/providers/wdt-composite/" title="WDTコンポジット・モデル">
+        <span class="merged" id="index.Fvah7" title="原文 :  WDT composite models "><a href="index.html">WDTコンポジット・モデル</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/dashboards/" title="ダッシュボードの生成">
+        <span class="merged" id="index.3BXPPf" title="原文 :  Generate dashboards "><a href="../../dashboards/index.html">ダッシュボードの生成</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/advanced-settings/" title="接続設定のカスタマイズ">
+        <span class="merged" id="index.1E7FP4" title="原文 :  Customize connection settings "><a href="../../advanced-settings/index.html">接続設定のカスタマイズ</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/upgrade/" title="WebLogic Remote Consoleのアップグレード">
+        <span class="merged" id="index.4OogfP" title="原文 :  Upgrade the WebLogic Remote Console "><a href="../../upgrade/index.html">WebLogic Remote Consoleのアップグレード</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/logging/" title="ログ・ファイルの確認">
+        <span class="merged" id="index.3bjDHU" title="原文 :  Check log files "><a href="../../logging/index.html">ログ・ファイルの確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/role-access/" title="アクセスの相違の理解">
+        <span class="merged" id="index.2iA4GO" title="原文 :  Understand access discrepancies "><a href="../../role-access/index.html">アクセスの相違の理解</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/develop/" title="開発">
+      <span class="merged" id="index.2YkDAU"  title="原文::  Development "><a href="../../../develop/index.html"> 開発 </a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/build-source/" title="ソースからのビルド">
+        <span class="merged" id="index.4MPgcT" title="原文 :  Build from source "><a href="../../../develop/build-source/index.html">ソースからのビルド</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/contribute/" title="WebLogic Remote Consoleへの貢献">
+        <span class="merged" id="index.1EfOjJ" title="原文 :  Contribute to WebLogic Remote Console "><a href="../../../develop/contribute/index.html">WebLogic Remote Consoleへの貢献</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/alternative-logging/" title="代替ロギング構成ファイルの使用">
+        <span class="merged" id="index.1RrbPj" title="原文 :  Use an alternative logging configuration file "><a href="../../../develop/alternative-logging/index.html">代替ロギング構成ファイルの使用</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/docs-contribute/" title="ドキュメントへの貢献">
+        <span class="merged" id="index.1qP6lW" title="原文 :  Contribute to the documentation "><a href="../../../develop/docs-contribute/index.html">ドキュメントへの貢献</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/reference/" title="リファレンス">
+      <span class="merged" id="index.26wCfp"  title="原文::  Reference "><a href="../../../reference/index.html"> リファレンス </a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/faqs/" title=" よくある質問">
+        <span class="merged" id="index.1RPrS4"  title="原文::  Frequently asked questions "><a href="../../../reference/faqs/index.html"> よくある質問 </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/known_issues/" title="既知の問題">
+        <span class="merged" id="index.DpMyb" title="原文 :  Known issues "><a href="../../../reference/known_issues/index.html">既知の問題</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/troubleshoot/" title="問題のトラブルシューティング">
+        <span class="merged" id="index.pIQJO"  title="原文::  Troubleshoot issues "><a href="../../../reference/troubleshoot/index.html"> 問題のトラブルシューティング </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/security-warnings/" title="セキュリティの問題の確認">
+        <span class="merged" id="index.462FxC" title="原文 :  Review security issues "><a href="../../../reference/security-warnings/index.html">セキュリティの問題の確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+      
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p><span class="merged" id="index.4behA5" title="原文 : Created with from Oracle"><a href="https://www.oracle.com">Oracle</a>から<i class="fas fa-heart"></i>で作成</span></p>
+<p><span class="merged" id="index.1OQYZy"  title="原文:: &nbsp">&nbsp</span></p>
+<p><span class="merged" id="index.4Opz7M" title="原文 :  GitHub repo"><a href="https://github.com/oracle/weblogic-remote-console"><i class="fab fa-github"></i>GitHubリポジトリ</a></span></p>
+<p><span class="merged" id="index.Fba3k" title="原文 :  Public Slack #remote-console"><a href="https://weblogic-slack-inviter.herokuapp.com/"><i class="fab fa-slack"></i>パブリックSlack #remote-console</a></span></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span class="merged" id="index.v0VUG" title="原文 :  WebLogic Remote Console &gt; User guide &gt; Provider types &gt; WDT composite models "><span id="sidebar-toggle-span"><a data-sidebar-toggle="" href="index.html#" id="sidebar-toggle"><i class="fas fa-bars"></i></a></span> <span id="toc-menu"><i class="fas fa-list-alt"></i></span> <span class="links"><a href='../../../index.html'>WebLogic Remote Console</a> > <a href='../../index.html'>ユーザー・ガイド</a> > <a href='../index.html'>プロバイダ・タイプ</a> > WDTコンポジット・モデル</span></span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><span class="merged" id="index.1E8Frt" title="原文 : Create a WDT composite model"><a href="index.html#create-a-wdt-composite-model">WDTコンポジット・モデルの作成</a></span></li>
+    <li><span class="merged" id="index.2hpIoC" title="原文 : Edit a WDT composite model"><a href="index.html#edit-a-wdt-composite-model">WDTコンポジット・モデルの編集</a></span></li>
+    <li><span class="merged" id="index.3S7wdS" title="原文 : View the details of a WDT composite model"><a href="index.html#view-the-details-of-a-wdt-composite-model">WDTコンポジット・モデルの詳細の表示</a></span></li>
+    <li><span class="merged" id="index.2jOCYI" title="原文 : Delete a WDT composite model"><a href="index.html#delete-a-wdt-composite-model">WDTコンポジット・モデルの削除</a></span></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <div style="width:100%"> <div title="免責事項: ここに記載されているドキュメントは、お客様の利便性のために翻訳ソフトウエアにより機械的に翻訳(機械翻訳)したものです。オリジナルの英語版もあわせてご確認ください。" style="width:150px;padding-left:5px;padding-right:5px;border:#ff0000 solid 1px;border-color: gray;font-size: small;color:gray;margin: 0 auto 0 auto;text-align:center"><a href="https://docs.oracle.com/cd/E85181_01/mt_disclaimer.html">機械翻訳について</a></div> </div>
+<h1>
+              
+              <span class="merged" id="index.P7KGN" title="原文 : WDT composite models">WDTコンポジット・モデル</span>
+            </h1>
+          
+
+        
+
+
+<p><span class="merged" id="index.482eQz" title="原文 : WDT composite models are read-only representations of multiple, merged WDT model files.">WDTコンポジット・モデルは、複数のマージされた<a href="../wdt-model/index.html">「WDTモデル・ファイル」</a>の読取り専用表現です。</span></p>
+<h2 id="create-a-wdt-composite-model"><span class="merged" id="index.3X7VaY" title="原文 : Create a WDT composite model">WDTコンポジット・モデルの作成</span></h2>
+<ol>
+<li>
+<p><span class="merged" id="index.36j9CB" title="原文 : Create or upload two or more WDT model files to the WebLogic Remote Console.">2つ以上のWDTモデル・ファイルをWebLogic Remote Consoleに作成またはアップロードします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.XAj0W.spl1" title="原文 : Expand the Kiosk and beside the project name, click ⋮.">キオスクを展開し、プロジェクト名の横にある「⋮」をクリックします。</span> <span class="merged" id="index.XAj0W.spl2" title="原文 : Select Add WDT Composite Model File Provider."><strong>「WDTコンポジット・モデル・ファイル・プロバイダの追加」</strong>を選択します。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.3y6VrI.spl1" title="原文 : Enter a name for the WDT Composite Model.">WDTコンポジット・モデルの名前を入力します。</span> <span class="merged" id="index.3y6VrI.spl2" title="原文 : This is the name that will appear in the Project list of providers so you can identify which provider you&rsquo;re working on.">これは、作業中のプロバイダを識別できるように、プロバイダのプロジェクト・リストに表示される名前です。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.rUw2a.spl1" title="原文 : Click inside the WDT Models field to see a list of available WDT Models."><strong>「WDTモデル」</strong>フィールド内をクリックして、使用可能なWDTモデルのリストを表示します。</span> <span class="merged" id="index.rUw2a.spl2" title="原文 : Select the WDT models that you want to appear in the WDT Composite Model in the order that you want them to appear.">WDTコンポジット・モデルに表示する順番でWDTモデルを選択します。</span> <span class="merged" id="index.rUw2a.spl3" title="原文 : Only WDT model files in the current project will appear.">現在のプロジェクトのWDTモデル・ファイルのみが表示されます。</span> </p>
+<p><span class="merged" id="index.1rDPJj.spl1" title="原文 : Pay attention to the order that the WDT model files are added - each subsequent WDT model file overrides the properties of the previous file.">WDTモデル・ファイルが追加される順序に注意してください - 後続のWDTモデル・ファイルは、前のファイルのプロパティをオーバーライドします。</span> <span class="merged" id="index.1rDPJj.spl2" title="原文 : That is, if there are any conflicting properties, the properties of the last WDT model file added to the composite takes precedence.">つまり、競合するプロパティがある場合は、コンポジットに追加された最後のWDTモデル・ファイルのプロパティが優先されます。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.1erP9I" title="原文 : Click OK to create the WDT composite model."><strong>OK</strong>をクリックして、WDTコンポジット・モデルを作成します。</span></p>
+</li>
+</ol>
+<h2 id="edit-a-wdt-composite-model"><span class="merged" id="index.LrTbh" title="原文 : Edit a WDT composite model">WDTコンポジット・モデルの編集</span></h2>
+<p><span class="merged" id="index.23jEFx" title="原文 : You can add or remove WDT model files from a WDT composite model as necessary.">必要に応じて、WDTコンポジット・モデルに対してWDTモデル・ファイルを追加または削除できます。</span></p>
+<ol>
+<li><span class="merged" id="index.1nUtu0" title="原文 : Expand the Kiosk and beside the WDT composite model file provider that you want to edit, click the icon.">キオスクを展開し、編集するWDTコンポジット・モデル・ファイル・プロバイダの横にある<img alt="「設定」アイコン" src="../../../images/icons/data-providers-manage-icon-brn_24x24.png">アイコンをクリックします。</span></li>
+<li><span class="merged" id="index.2z3usN" title="原文 : Edit the WDT composite model provider name if you want.">必要に応じて、WDTコンポジット・モデル・プロバイダ名を編集します。</span></li>
+<li><span class="merged" id="index.43u2wK" title="原文 : Add or remove WDT model files.">WDTモデル・ファイルを追加または削除します。</span></li>
+<li><span class="merged" id="index.2Jw71z"  title="原文: Click OK to save your changes."><strong>「OK」</strong>をクリックして変更を保存します。</span></li>
+</ol>
+<h2 id="view-the-details-of-a-wdt-composite-model"><span class="merged" id="index.3yFsZd" title="原文 : View the details of a WDT composite model">WDTコンポジット・モデルの詳細の表示</span></h2>
+<p><span class="merged" id="index.2u9Jc8" title="原文 : It&rsquo;s easy to check which WDT model files are contained within a WDT composite model.">WDTコンポジット・モデルに含まれているWDTモデル・ファイルを簡単に確認できます。</span></p>
+<ol>
+<li><span class="merged" id="index.Z7fRF" title="原文 : Expand the Kiosk and beside the WDT composite model file provider, click the icon.">キオスクを展開し、WDTコンポジット・モデル・ファイル・プロバイダの横にある<img alt="「設定」アイコン" src="../../../images/icons/data-providers-info-icon-brn_24x24.png">アイコンをクリックします。</span></li>
+</ol>
+<p><span class="merged" id="index.1AgyqF.spl1" title="原文 : A list of the WDT models within that WDT composite model appears.">そのWDTコンポジット・モデル内のWDTモデルのリストが表示されます。</span> <span class="merged" id="index.1AgyqF.spl2" title="原文 : The provider ID is also shown.">プロバイダIDも表示されます。</span> </p>
+<h2 id="delete-a-wdt-composite-model"><span class="merged" id="index.277uA" title="原文 : Delete a WDT composite model">WDTコンポジット・モデルの削除</span></h2>
+<p><span class="merged" id="index.3gDR1k" title="原文 : This will not delete the individual WDT models contained within the WDT composite model.">WDTコンポジット・モデルに含まれる個々のWDTモデルは削除されません。</span></p>
+<ol>
+<li><span class="merged" id="index.4Jz88V" title="原文 : Expand the Kiosk and beside the WDT composite model file provider that you want to delete, click the icon.">削除するWDTコンポジット・モデル・ファイル・プロバイダの横にあるキオスクを展開し、<img alt="「設定」アイコン" src="../../../images/icons/data-providers-delete-icon-brn_24x24.png">アイコンをクリックします。</span></li>
+</ol>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../wdt-model/index.html" > <i class="fa fa-chevron-left"></i></a> <a class="nav nav-next" href="../../dashboards/index.html" style="margin-right: 0px;" ><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../../js/clipboard.min.js?1666389334"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1666389334"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1666389334"></script>
+    <script src="../../../js/jquery.sticky.js?1666389334"></script>
+    <script src="../../../js/featherlight.min.js?1666389334"></script>
+    <script src="../../../js/highlight.pack.js?1666389334"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1666389334"></script>
+    <script src="../../../js/learn.js?1666389334"></script>
+    <script src="../../../js/hugo-learn.js?1666389334"></script>
+    
+        
+            <script src="../../../mermaid/mermaid.js?1666389334"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>

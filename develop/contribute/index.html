@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="ja" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.82.0" />
+    <meta content="WebLogic Remote Consoleに貢献する方法。" name="description">
+
+
+    <link rel="icon" href="../../images/logo.png" type="image/png">
+
+    <title>WebLogic Remote Consoleへの貢献 :: WebLogic Remote Console</title>
+
+    
+    <link href="../../css/nucleus.css?1666389334" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1666389334" rel="stylesheet">
+    <link href="../../css/hybrid.css?1666389334" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1666389334" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1666389334" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1666389334" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1666389334" rel="stylesheet">
+    <link href="../../css/theme.css?1666389334" rel="stylesheet">
+    <link href="../../css/tabs.css?1666389334" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1666389334" rel="stylesheet">
+    
+    
+
+    <script src="../../js/jquery-3.6.0.min.js?1666389334"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  <meta HTTP-EQUIV="Content-Type" Content="text/html; charset=utf-8"></head>
+  <style type="text/css"> <!-- .merged:hover {text-decoration: underline;} --> </style>
+<body class="" data-url="/weblogic-remote-console/develop/contribute/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <span class="merged" id="index.20eO8o"  title="原文::  WebLogic Remote Console "><a href="https://oracle.github.io/weblogic-remote-console" id="logo"> <img height="60" src="../../images/logo.png"><br /> WebLogic Remote Console </a></span>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1666389334"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1666389334"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/oracle.github.io\/weblogic-remote-console";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1666389334"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+      
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/setup/" title="開始">
+      <span class="merged" id="index.39N9vl" title="原文 :  Get started "><a href="../../setup/index.html">開始</a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/setup/console/" title="WebLogic Remote Consoleの確認">
+        <span class="merged" id="index.1CC7co" title="原文 :  Explore the WebLogic Remote Console "><a href="../../setup/console/index.html">WebLogic Remote Consoleの確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/setup/admin-console-diff/" title="管理コンソールとの相違点">
+        <span class="merged" id="index.3IM6jZ" title="原文 :  Differences with the Administration Console "><a href="../../setup/admin-console-diff/index.html">管理コンソールとの相違点</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/userguide/" title="ユーザー・ガイド">
+      <span class="merged" id="index.4AUsm1"  title="原文::  User guide "><a href="../../userguide/index.html"> ユーザー・ガイド </a></span>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/projects/" title="プロジェクト">
+        <span class="merged" id="index.1aI9RR"  title="原文::  Projects "><a href="../../userguide/projects/index.html"> プロジェクト </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/userguide/providers/" title="プロバイダ・タイプ">
+      <span class="merged" id="index.4e974p" title="原文 :  Provider types "><a href="../../userguide/providers/index.html">プロバイダ・タイプ</a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/administration-server/" title="管理サーバー">
+        <span class="merged" id="index.25lhee"  title="原文::  Administration Servers "><a href="../../userguide/providers/administration-server/index.html"> 管理サーバー </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/property-list/" title="プロパティ・リスト">
+        <span class="merged" id="index.46kb1z" title="原文 :  Property lists "><a href="../../userguide/providers/property-list/index.html">プロパティ・リスト</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/wdt-model/" title="WDTモデル・ファイル">
+        <span class="merged" id="index.3yOFyQ" title="原文 :  WDT model files "><a href="../../userguide/providers/wdt-model/index.html">WDTモデル・ファイル</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/wdt-composite/" title="WDTコンポジット・モデル">
+        <span class="merged" id="index.3g5bcV" title="原文 :  WDT composite models "><a href="../../userguide/providers/wdt-composite/index.html">WDTコンポジット・モデル</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/dashboards/" title="ダッシュボードの生成">
+        <span class="merged" id="index.n1eUS" title="原文 :  Generate dashboards "><a href="../../userguide/dashboards/index.html">ダッシュボードの生成</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/advanced-settings/" title="接続設定のカスタマイズ">
+        <span class="merged" id="index.4OgXve" title="原文 :  Customize connection settings "><a href="../../userguide/advanced-settings/index.html">接続設定のカスタマイズ</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/upgrade/" title="WebLogic Remote Consoleのアップグレード">
+        <span class="merged" id="index.4E8VKb" title="原文 :  Upgrade the WebLogic Remote Console "><a href="../../userguide/upgrade/index.html">WebLogic Remote Consoleのアップグレード</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/logging/" title="ログ・ファイルの確認">
+        <span class="merged" id="index.N2hEl" title="原文 :  Check log files "><a href="../../userguide/logging/index.html">ログ・ファイルの確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/role-access/" title="アクセスの相違の理解">
+        <span class="merged" id="index.2OBVM6" title="原文 :  Understand access discrepancies "><a href="../../userguide/role-access/index.html">アクセスの相違の理解</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        parent
+        
+        
+        " data-nav-id="/weblogic-remote-console/develop/" title="開発">
+      <span class="merged" id="index.2yJ20M"  title="原文::  Development "><a href="../index.html"> 開発 </a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/build-source/" title="ソースからのビルド">
+        <span class="merged" id="index.4UaZN" title="原文 :  Build from source "><a href="../build-source/index.html">ソースからのビルド</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item active" data-nav-id="/weblogic-remote-console/develop/contribute/" title="WebLogic Remote Consoleへの貢献">
+        <span class="merged" id="index.2iGUpk" title="原文 :  Contribute to WebLogic Remote Console "><a href="index.html">WebLogic Remote Consoleへの貢献</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/alternative-logging/" title="代替ロギング構成ファイルの使用">
+        <span class="merged" id="index.4eNTni" title="原文 :  Use an alternative logging configuration file "><a href="../alternative-logging/index.html">代替ロギング構成ファイルの使用</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/docs-contribute/" title="ドキュメントへの貢献">
+        <span class="merged" id="index.34IraK" title="原文 :  Contribute to the documentation "><a href="../docs-contribute/index.html">ドキュメントへの貢献</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/reference/" title="リファレンス">
+      <span class="merged" id="index.1ok5zL"  title="原文::  Reference "><a href="../../reference/index.html"> リファレンス </a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/faqs/" title=" よくある質問">
+        <span class="merged" id="index.rO3Hb"  title="原文::  Frequently asked questions "><a href="../../reference/faqs/index.html"> よくある質問 </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/known_issues/" title="既知の問題">
+        <span class="merged" id="index.u1CaL" title="原文 :  Known issues "><a href="../../reference/known_issues/index.html">既知の問題</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/troubleshoot/" title="問題のトラブルシューティング">
+        <span class="merged" id="index.2CZXXY"  title="原文::  Troubleshoot issues "><a href="../../reference/troubleshoot/index.html"> 問題のトラブルシューティング </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/security-warnings/" title="セキュリティの問題の確認">
+        <span class="merged" id="index.2uVINT" title="原文 :  Review security issues "><a href="../../reference/security-warnings/index.html">セキュリティの問題の確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+      
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p><span class="merged" id="index.4behA5" title="原文 : Created with from Oracle"><a href="https://www.oracle.com">Oracle</a>から<i class="fas fa-heart"></i>で作成</span></p>
+<p><span class="merged" id="index.1OQYZy"  title="原文:: &nbsp">&nbsp</span></p>
+<p><span class="merged" id="index.4Opz7M" title="原文 :  GitHub repo"><a href="https://github.com/oracle/weblogic-remote-console"><i class="fab fa-github"></i>GitHubリポジトリ</a></span></p>
+<p><span class="merged" id="index.Fba3k" title="原文 :  Public Slack #remote-console"><a href="https://weblogic-slack-inviter.herokuapp.com/"><i class="fab fa-slack"></i>パブリックSlack #remote-console</a></span></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span class="merged" id="index.4G2qTo" title="原文 :  WebLogic Remote Console &gt; Development &gt; Contribute to WebLogic Remote Console "><span id="sidebar-toggle-span"><a data-sidebar-toggle="" href="index.html#" id="sidebar-toggle"><i class="fas fa-bars"></i></a></span> <span id="toc-menu"><i class="fas fa-list-alt"></i></span> <span class="links"><a href='../../index.html'>WebLogic Remote Console</a> > <a href='../index.html'>開発</a> > WebLogic Remote Consoleへの貢献</span></span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><span class="merged" id="index.2y8D0N" title="原文 : Contributing to the WebLogic Remote Console repository"><a href="index.html#contribute">WebLogic Remote Consoleリポジトリへの貢献</a></span></li>
+        <li><span class="merged" id="index.2vUFxh" title="原文 : Pull request process"><a href="index.html#pull_request">プル・リクエスト・プロセス</a></span></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <div style="width:100%"> <div title="免責事項: ここに記載されているドキュメントは、お客様の利便性のために翻訳ソフトウエアにより機械的に翻訳(機械翻訳)したものです。オリジナルの英語版もあわせてご確認ください。" style="width:150px;padding-left:5px;padding-right:5px;border:#ff0000 solid 1px;border-color: gray;font-size: small;color:gray;margin: 0 auto 0 auto;text-align:center"><a href="https://docs.oracle.com/cd/E85181_01/mt_disclaimer.html">機械翻訳について</a></div> </div>
+<h1>
+              
+              <span class="merged" id="index.TwsQ0" title="原文 : Contribute to WebLogic Remote Console">WebLogic Remote Consoleへの貢献</span>
+            </h1>
+          
+
+        
+
+
+<p><span class="merged" id="index.3dTnaa" title="原文 : We welcome contributions to this repository from anyone.">このリポジトリへの貢献は誰からも歓迎します。</span></p>
+<p><span class="merged" id="index.3jX2rP" title="原文 : If you want to submit a pull request to fix a bug or enhance an existing feature, please first open an issue and link to that issue when you submit your pull request.">プル・リクエストを送信してバグを修正するか、既存の機能を拡張する場合は、まず問題を開き、プル・リクエストを送信するときにその問題にリンクしてください。</span></p>
+<p><span class="merged" id="index.1cFp5P" title="原文 : If you have any questions about a possible submission, feel free to open an issue too.">可能な提出案について質問がある場合は、自由に問題を報告してください。</span></p>
+<h3 id="contribute"><span class="merged" id="index.1uMqAV" title="原文 : Contributing to the WebLogic Remote Console repository">WebLogic Remote Consoleリポジトリへの貢献</span></h3>
+<p><span class="merged" id="index.Py9Ee" title="原文 : Pull requests can be made under The Oracle Contributor Agreement (OCA).">プル・リクエストは、<a href="https://oca.opensource.oracle.com/">The Oracle Contributor Agreement</a> (OCA)で実行できます。</span></p>
+<p><span class="merged" id="index.es7Jk" title="原文 : For pull requests to be accepted, the bottom of your commit message must have the following line using your name and e-mail address as it appears in the OCA Signatories list.">プル・リクエストを受け入れるには、コミット・メッセージの最下部には、OCA署名リストに表示される名前と電子メール・アドレスを使用して次の行が必要です。</span></p>
+<pre><code>Signed-off-by: Your Name &lt;you@example.org&gt;
+</code></pre><p><span class="merged" id="index.2nYMlg" title="原文 : This can be automatically added to pull requests by committing with:">これは、次のようにコミットすることでプル・リクエストに自動的に追加できます:</span></p>
+<pre><code>  git commit --signoff
+</code></pre><p><span class="merged" id="index.2gWpqN" title="原文 : Only pull requests from committers that can be verified as having signed the OCA can be accepted.">OCAに署名したことを確認できるコミット担当者からのプル・リクエストのみを受け入れることができます。</span></p>
+<h3 id="pull_request"><span class="merged" id="index.2nSSau" title="原文 : Pull request process">プル・リクエスト・プロセス</span></h3>
+<ol>
+<li><span class="merged" id="index.1fOEXg" title="原文 : Fork this repository">このリポジトリをフォーク</span></li>
+<li><span class="merged" id="index.GQ3jz.spl1" title="原文 : Create a branch in your fork to implement the changes.">変更を実装するためのブランチをフォークに作成します。</span> <span class="merged" id="index.GQ3jz.spl2" title="原文 : We recommend using the issue number as part of your branch name, e.g. 1234-fixes">ブランチ名の一部として問題番号を使用することをお薦めします。たとえば、<code>1234-fixes</code></span> </li>
+<li><span class="merged" id="index.bgnGq" title="原文 : Ensure that any documentation is updated with the changes that are required by your fix.">修正に必要な変更でドキュメントが更新されていることを確認します。</span></li>
+<li><span class="merged" id="index.EkMc0" title="原文 : Ensure that any samples are updated if the base image has been changed.">ベース・イメージが変更された場合は、すべてのサンプルが更新されていることを確認します。</span></li>
+<li><span class="merged" id="index.U87Km.spl1" title="原文 : Submit the pull request.">プル・リクエストを送信します。</span> <span class="merged" id="index.U87Km.spl2" title="原文 : Do not leave the pull request blank."><em>「プル・リクエストを空白のままにしないでください」</em>。</span> <span class="merged" id="index.U87Km.spl3" title="原文 : Explain exactly what your changes are meant to do and provide simple steps on how to validate your changes.">変更の目的を正確に説明し、変更のバリデート方法に関する簡単なステップを提供します。</span> <span class="merged" id="index.U87Km.spl4" title="原文 : Ensure that you reference the issue you created as well.">作成した問題も必ず参照してください。</span> <span class="merged" id="index.U87Km.spl5" title="原文 : We will assign the pull request to 2-3 people for review before it is merged.">プル・リクエストをマージする前にレビュー用に2-3人に割り当てます。</span> </li>
+</ol>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../build-source/index.html" > <i class="fa fa-chevron-left"></i></a> <a class="nav nav-next" href="../alternative-logging/index.html" style="margin-right: 0px;" ><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1666389334"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1666389334"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1666389334"></script>
+    <script src="../../js/jquery.sticky.js?1666389334"></script>
+    <script src="../../js/featherlight.min.js?1666389334"></script>
+    <script src="../../js/highlight.pack.js?1666389334"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1666389334"></script>
+    <script src="../../js/learn.js?1666389334"></script>
+    <script src="../../js/hugo-learn.js?1666389334"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1666389334"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>

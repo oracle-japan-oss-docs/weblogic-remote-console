@@ -1,2 +1,5 @@
-# weblogic-remote-console
-Translated documents for WebLogic Remote Console
+# WebLogic Remote Console
+
+[ドキュメンテーション (日本語)](https://oracle-japan-oss-docs.github.io/weblogic-remote-console/docs)
+
+

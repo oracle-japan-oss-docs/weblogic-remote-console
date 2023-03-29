@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="ja" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.82.0" />
+    <meta content="単純なトラブルシューティング・ステップに関する一般的な問題。" name="description">
+
+
+    <link rel="icon" href="../../images/logo.png" type="image/png">
+
+    <title>問題のトラブルシューティング :: WebLogic Remote Console</title>
+
+    
+    <link href="../../css/nucleus.css?1666389334" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1666389334" rel="stylesheet">
+    <link href="../../css/hybrid.css?1666389334" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1666389334" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1666389334" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1666389334" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1666389334" rel="stylesheet">
+    <link href="../../css/theme.css?1666389334" rel="stylesheet">
+    <link href="../../css/tabs.css?1666389334" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1666389334" rel="stylesheet">
+    
+    
+
+    <script src="../../js/jquery-3.6.0.min.js?1666389334"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  <meta HTTP-EQUIV="Content-Type" Content="text/html; charset=utf-8"></head>
+  <style type="text/css"> <!-- .merged:hover {text-decoration: underline;} --> </style>
+<body class="" data-url="/weblogic-remote-console/reference/troubleshoot/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <span class="merged" id="index.20eO8o"  title="原文::  WebLogic Remote Console "><a href="https://oracle.github.io/weblogic-remote-console" id="logo"> <img height="60" src="../../images/logo.png"><br /> WebLogic Remote Console </a></span>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1666389334"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1666389334"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/oracle.github.io\/weblogic-remote-console";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1666389334"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+      
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/setup/" title="開始">
+      <span class="merged" id="index.39N9vl" title="原文 :  Get started "><a href="../../setup/index.html">開始</a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/setup/console/" title="WebLogic Remote Consoleの確認">
+        <span class="merged" id="index.1CC7co" title="原文 :  Explore the WebLogic Remote Console "><a href="../../setup/console/index.html">WebLogic Remote Consoleの確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/setup/admin-console-diff/" title="管理コンソールとの相違点">
+        <span class="merged" id="index.3IM6jZ" title="原文 :  Differences with the Administration Console "><a href="../../setup/admin-console-diff/index.html">管理コンソールとの相違点</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/userguide/" title="ユーザー・ガイド">
+      <span class="merged" id="index.4AUsm1"  title="原文::  User guide "><a href="../../userguide/index.html"> ユーザー・ガイド </a></span>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/projects/" title="プロジェクト">
+        <span class="merged" id="index.1aI9RR"  title="原文::  Projects "><a href="../../userguide/projects/index.html"> プロジェクト </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/userguide/providers/" title="プロバイダ・タイプ">
+      <span class="merged" id="index.4e974p" title="原文 :  Provider types "><a href="../../userguide/providers/index.html">プロバイダ・タイプ</a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/administration-server/" title="管理サーバー">
+        <span class="merged" id="index.25lhee"  title="原文::  Administration Servers "><a href="../../userguide/providers/administration-server/index.html"> 管理サーバー </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/property-list/" title="プロパティ・リスト">
+        <span class="merged" id="index.46kb1z" title="原文 :  Property lists "><a href="../../userguide/providers/property-list/index.html">プロパティ・リスト</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/wdt-model/" title="WDTモデル・ファイル">
+        <span class="merged" id="index.3yOFyQ" title="原文 :  WDT model files "><a href="../../userguide/providers/wdt-model/index.html">WDTモデル・ファイル</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/wdt-composite/" title="WDTコンポジット・モデル">
+        <span class="merged" id="index.3g5bcV" title="原文 :  WDT composite models "><a href="../../userguide/providers/wdt-composite/index.html">WDTコンポジット・モデル</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/dashboards/" title="ダッシュボードの生成">
+        <span class="merged" id="index.n1eUS" title="原文 :  Generate dashboards "><a href="../../userguide/dashboards/index.html">ダッシュボードの生成</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/advanced-settings/" title="接続設定のカスタマイズ">
+        <span class="merged" id="index.4OgXve" title="原文 :  Customize connection settings "><a href="../../userguide/advanced-settings/index.html">接続設定のカスタマイズ</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/upgrade/" title="WebLogic Remote Consoleのアップグレード">
+        <span class="merged" id="index.4E8VKb" title="原文 :  Upgrade the WebLogic Remote Console "><a href="../../userguide/upgrade/index.html">WebLogic Remote Consoleのアップグレード</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/logging/" title="ログ・ファイルの確認">
+        <span class="merged" id="index.N2hEl" title="原文 :  Check log files "><a href="../../userguide/logging/index.html">ログ・ファイルの確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/role-access/" title="アクセスの相違の理解">
+        <span class="merged" id="index.2OBVM6" title="原文 :  Understand access discrepancies "><a href="../../userguide/role-access/index.html">アクセスの相違の理解</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/develop/" title="開発">
+      <span class="merged" id="index.2qu7dY"  title="原文::  Development "><a href="../../develop/index.html"> 開発 </a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/build-source/" title="ソースからのビルド">
+        <span class="merged" id="index.1ib9qx" title="原文 :  Build from source "><a href="../../develop/build-source/index.html">ソースからのビルド</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/contribute/" title="WebLogic Remote Consoleへの貢献">
+        <span class="merged" id="index.2y0Iit" title="原文 :  Contribute to WebLogic Remote Console "><a href="../../develop/contribute/index.html">WebLogic Remote Consoleへの貢献</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/alternative-logging/" title="代替ロギング構成ファイルの使用">
+        <span class="merged" id="index.2j6ytr" title="原文 :  Use an alternative logging configuration file "><a href="../../develop/alternative-logging/index.html">代替ロギング構成ファイルの使用</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/docs-contribute/" title="ドキュメントへの貢献">
+        <span class="merged" id="index.49o54j" title="原文 :  Contribute to the documentation "><a href="../../develop/docs-contribute/index.html">ドキュメントへの貢献</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        parent
+        
+        
+        " data-nav-id="/weblogic-remote-console/reference/" title="リファレンス">
+      <span class="merged" id="index.kX1Ku"  title="原文::  Reference "><a href="../index.html"> リファレンス </a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/faqs/" title=" よくある質問">
+        <span class="merged" id="index.3huftp"  title="原文::  Frequently asked questions "><a href="../faqs/index.html"> よくある質問 </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/known_issues/" title="既知の問題">
+        <span class="merged" id="index.1D1o6y" title="原文 :  Known issues "><a href="../known_issues/index.html">既知の問題</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item active" data-nav-id="/weblogic-remote-console/reference/troubleshoot/" title="問題のトラブルシューティング">
+        <span class="merged" id="index.375Cul"  title="原文::  Troubleshoot issues "><a href="index.html"> 問題のトラブルシューティング </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/security-warnings/" title="セキュリティの問題の確認">
+        <span class="merged" id="index.1i0YUa" title="原文 :  Review security issues "><a href="../security-warnings/index.html">セキュリティの問題の確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+      
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p><span class="merged" id="index.4behA5" title="原文 : Created with from Oracle"><a href="https://www.oracle.com">Oracle</a>から<i class="fas fa-heart"></i>で作成</span></p>
+<p><span class="merged" id="index.1OQYZy"  title="原文:: &nbsp">&nbsp</span></p>
+<p><span class="merged" id="index.4Opz7M" title="原文 :  GitHub repo"><a href="https://github.com/oracle/weblogic-remote-console"><i class="fab fa-github"></i>GitHubリポジトリ</a></span></p>
+<p><span class="merged" id="index.Fba3k" title="原文 :  Public Slack #remote-console"><a href="https://weblogic-slack-inviter.herokuapp.com/"><i class="fab fa-slack"></i>パブリックSlack #remote-console</a></span></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span class="merged" id="index.13zRZ1" title="原文 :  WebLogic Remote Console &gt; Reference &gt; Troubleshoot issues "><span id="sidebar-toggle-span"><a data-sidebar-toggle="" href="index.html#" id="sidebar-toggle"><i class="fas fa-bars"></i></a></span> <span id="toc-menu"><i class="fas fa-list-alt"></i></span> <span class="links"><a href='../../index.html'>WebLogic Remote Console</a> > <a href='../index.html'>リファレンス</a> > 問題のトラブルシューティング</span></span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><span class="merged" id="index.21zdqR" title="原文 : Check log files for errors"><a href="index.html#check-log-files-for-errors">ログ・ファイルのエラーの確認</a></span></li>
+    <li><span class="merged" id="index.2lKnc0" title="原文 : Diagnose invalid WebLogic configuration issues"><a href="index.html#invalid">無効なWebLogic構成の問題の診断</a></span>
+      <ul>
+        <li><span class="merged" id="index.3WEtQ0"  title="原文:: Administration Server"><a href="index.html#administration-server">管理サーバー</a></span></li>
+        <li><span class="merged" id="index.2KjStd" title="原文 : WDT model files"><a href="index.html#wdt-model-files">WDTモデル・ファイル</a></span></li>
+      </ul>
+    </li>
+    <li><span class="merged" id="index.1FrOV9" title="原文 : Unresponsive WebLogic Remote Console browser window"><a href="index.html#unresponsive">応答のないWebLogic Remote Consoleブラウザ・ウィンドウ</a></span></li>
+    <li><span class="merged" id="index.4NS8bR" title="原文 : Error: Failure reading auto prefs"><a href="index.html#autoprefs">エラー: 自動接頭辞の読取りに失敗しました</a></span></li>
+    <li><span class="merged" id="index.1TvIob" title="原文 : The Edit Tree / start and stop buttons / create buttons / … is missing"><a href="index.html#the-edit-tree--start-and-stop-buttons--create-buttons---is-missing"><em>ツリーの編集 / 開始ボタンと停止ボタン / 作成ボタン / …</em>がありません</a></span></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <div style="width:100%"> <div title="免責事項: ここに記載されているドキュメントは、お客様の利便性のために翻訳ソフトウエアにより機械的に翻訳(機械翻訳)したものです。オリジナルの英語版もあわせてご確認ください。" style="width:150px;padding-left:5px;padding-right:5px;border:#ff0000 solid 1px;border-color: gray;font-size: small;color:gray;margin: 0 auto 0 auto;text-align:center"><a href="https://docs.oracle.com/cd/E85181_01/mt_disclaimer.html">機械翻訳について</a></div> </div>
+<h1>
+              
+              <span class="merged" id="index.2Ck1ZU"  title="原文:: Troubleshoot issues">問題のトラブルシューティング</span>
+            </h1>
+          
+
+        
+
+
+<p><span class="merged" id="index.2elk57" title="原文 : This page provides guidelines to help troubleshoot console issues.">このページでは、コンソールの問題のトラブルシューティングに役立つガイドラインを示します。</span></p>
+<h2 id="check-log-files-for-errors"><span class="merged" id="index.2qf5PT" title="原文 : Check log files for errors">ログ・ファイルのエラーの確認</span></h2>
+<p><span class="merged" id="index.31hPwX.spl1" title="原文 : The WebLogic Remote Console provides log files for both front and back end processes.">WebLogic Remote Consoleは、フロント・エンド・プロセスとバック・エンド・プロセスの両方のログ・ファイルを提供します。</span> <span class="merged" id="index.31hPwX.spl2" title="原文 : For instructions on how to access these log files, see Check Log Files.">これらのログファイルへのアクセス方法については、<a href="../../userguide/logging/index.html">「ログ・ファイルのチェック」</a>を参照してください。</span> </p>
+<h2 id="invalid"><span class="merged" id="index.3a6tnb" title="原文 : Diagnose invalid WebLogic configuration issues">無効なWebLogic構成の問題の診断</span></h2>
+<h3 id="administration-server"><span class="merged" id="index.1ZaUuy"  title="原文:: Administration Server">管理サーバー</span></h3>
+<p><span class="merged" id="index.14wAcv.spl1" title="原文 : The WebLogic Remote Console catches most validation errors when you click Save, or when you commit the change using the shopping cart.">WebLogic Remote Consoleは、保存をクリックするか、ショッピング・カートを使用して変更をコミットすると、ほとんどのバリデーション・エラーを捕捉します。</span> <span class="merged" id="index.14wAcv.spl2" title="原文 : If an error message displays, you need to identify and correct the problem that caused the error before you can activate the changes.">エラー・メッセージが表示された場合は、変更をアクティブにする前にエラーの原因となった問題を特定して修正する必要があります。</span> </p>
+
+<div class="notices note" ><p><span class="merged" id="index.4DuTJM.spl1" title="原文 : If you installed the console extension, you can view the contents of the shopping cart to see all of the pending changes.">コンソール拡張をインストールした場合は、ショッピング・カートの内容を表示して保留中の変更をすべて表示できます。</span> <span class="merged" id="index.4DuTJM.spl2" title="原文 : If you did not install the console extension, you can view the pending changes using the WebLogic Server Administration Console.">コンソール拡張をインストールしなかった場合は、WebLogic Server管理コンソールを使用して保留中の変更を表示できます。</span> </p>
+</div>
+
+<p><span class="merged" id="index.3CysmA" title="原文 : If the cause of the configuration error is not obvious:">構成エラーの原因が明らかでない場合:</span></p>
+<ul>
+<li><span class="merged" id="index.4FWGQX" title="原文 : Check the output from the WebLogic Remote Console and the domain Administration Server.">WebLogic Remote Consoleおよびドメイン管理サーバーからの出力を確認します。</span></li>
+<li><span class="merged" id="index.152eHE" title="原文 : Check the WebLogic Administration Server log.">WebLogic管理サーバー・ログを確認します。</span></li>
+</ul>
+<p><span class="merged" id="index.RtL1m" title="原文 : If you are unable to determine the cause of the error, cancel the edits and make the configuration changes again.">エラーの原因を特定できない場合は、編集を取り消して構成の変更を再実行してください。</span></p>
+<h3 id="wdt-model-files"><span class="merged" id="index.49ZBDY" title="原文 : WDT model files">WDTモデル・ファイル</span></h3>
+<p><span class="merged" id="index.3dDYUC.spl1" title="原文 : The WebLogic Remote Console does not validate WDT model file settings.">WebLogic Remote Console <em>「しない」</em>は、WDTモデル・ファイル設定をバリデートします。</span> <span class="merged" id="index.3dDYUC.spl2" title="原文 : As a result, the WebLogic Remote Console may accept changes or values that are invalid and which may present problems when the model file is used to build or update a domain.">その結果、WebLogic Remote Consoleは、無効な変更または値を受け入れ、モデル・ファイルを使用してドメインをビルドまたは更新するときに問題が発生する可能性があります。</span> <span class="merged" id="index.3dDYUC.spl3" title="原文 : For example, adding integer values that are invalid or out of range for a specific setting, or removing a server or target but not updating the deployments to select a different server or target can cause issues.">たとえば、特定の設定で無効または範囲外である整数値を追加したり、サーバーまたはターゲットを削除しても、デプロイメントを更新して別のサーバーまたはターゲットを選択しないと、問題が発生する可能性があります。</span> </p>
+<p><span class="merged" id="index.3KRwe1" title="原文 : For more information on acceptable values, refer to the WebLogic Deploy Tooling documentation.">許容される値の詳細は、<a href="https://oracle.github.io/weblogic-deploy-tooling/">WebLogic Deploy Tooling</a>ドキュメントを参照してください。</span></p>
+<h2 id="unresponsive"><span class="merged" id="index.3WCwjC" title="原文 : Unresponsive WebLogic Remote Console browser window">応答のないWebLogic Remote Consoleブラウザ・ウィンドウ</span></h2>
+<p><span class="merged" id="index.2bYTh3.spl1" title="原文 : If the WebLogic Remote Console running in the browser becomes unresponsive, verify that the Administration Server to which you are connected is still running.">ブラウザで実行されているWebLogic Remote Consoleが応答しなくなった場合は、接続している管理サーバーがまだ実行中であることを確認します。</span> <span class="merged" id="index.2bYTh3.spl2" title="原文 : If the server is down, restart it, then refresh the browser window.">サーバーが停止している場合は再起動し、ブラウザ・ウィンドウをリフレッシュします。</span> </p>
+<h2 id="autoprefs"><span class="merged" id="index.Af3z5" title="原文 : Error: Failure reading auto prefs">エラー: 自動接頭辞の読取りに失敗しました</span></h2>
+<p><span class="merged" id="index.c9dUe" title="原文 : If the WebLogic Remote Console desktop application shuts down unexpectedly with this error: Failure reading auto prefs, the auto-prefs.json file may be corrupted. auto-prefs.json saves state information about the WebLogic Remote Console and should not be modified by users unless it is corrupted.">WebLogic Remote Consoleデスクトップ・アプリケーションがこのエラーで予期せず停止した場合: <code>Failure reading auto prefs</code>: <code>auto-prefs.json</code>ファイルが破損している可能性があります。<code>auto-prefs.json</code>は、WebLogic Remote Consoleに関する状態情報を保存し、破損かぎりユーザーが変更しないでください。</span></p>
+<p><span class="merged" id="index.4DD1xD" title="原文 : If the file is corrupted, you can reset it but you will lose all data regarding your projects.">ファイルが破損している場合はリセットできますが、プロジェクトに関するデータはすべて失われます。</span></p>
+<p><span class="merged" id="index.2jWSiZ" title="原文 : To reset the file, delete the auto-prefs.json file, then relaunch WebLogic Remote Console.">ファイルをリセットするには、<code>auto-prefs.json</code>ファイルを削除してから、WebLogic Remote Consoleを再起動します。</span></p>
+<p><span class="merged" id="index.1ORnPY" title="原文 : auto-prefs.json is located in:"><code>auto-prefs.json</code>は次の場所にあります:</span></p>
+<ul>
+<li><span class="merged" id="index.2me39I" title="原文 : Linux: $HOME/.config/weblogic-remote-console/auto-prefs.json">Linux: <code>$HOME/.config/weblogic-remote-console/auto-prefs.json</code></span></li>
+<li><span class="merged" id="index.euaUJ" title="原文 : macOS: /Users/&lt;user&gt;/Library/Application Support/weblogic-remote-console/auto-prefs.json">macOS: <code>/Users/&lt;user>/Library/Application Support/weblogic-remote-console/auto-prefs.json</code></span></li>
+<li><span class="merged" id="index.MFAES" title="原文 : Windows: C:\Users\&lt;user&gt;\AppData\Roaming\weblogic-remote-console\auto-prefs.json">Windows: <code>C:\Users\&lt;user>\AppData\Roaming\weblogic-remote-console\auto-prefs.json</code></span></li>
+</ul>
+<h2 id="the-edit-tree--start-and-stop-buttons--create-buttons---is-missing"><span class="merged" id="index.3Qi1gA" title="原文 : The Edit Tree / start and stop buttons / create buttons / … is missing"><em>「ツリーの編集 / 開始ボタンと停止ボタン / 作成ボタン / …」</em>がありません</span></h2>
+<p><span class="merged" id="index.26vP7R.spl1" title="原文 : Check the role of the user you used to log into the Administration Server.">管理サーバーにログインするために使用したユーザーのロールを確認します。</span> <span class="merged" id="index.26vP7R.spl2" title="原文 : Only administrators have access to the full functionality of of WebLogic Remote Console.">管理者のみがWebLogic Remote Consoleの全機能にアクセスできます。</span> <span class="merged" id="index.26vP7R.spl3" title="原文 : Users with other roles such as Deployers, Operators, or Monitors have limited access to areas outside the scope of their responsibility.">デプロイヤ、オペレータ、モニターなどの他のロールを持つユーザーは、職責の範囲外の領域へのアクセスが制限されます。</span> </p>
+<!-- You can check the role of a user by expanding the Kiosk, and selecting the Info bubble ![Navpane icon](/weblogic-remote-console/images/icons/data-providers-info-icon-brn_24x24.png) beside the Administration Server connection with your user. -->
+<p><span class="merged" id="index.122FbH" title="原文 : For an overview of what users in each role can view or do, see Understand Access Discrepancies.">各ロールのユーザーが表示または実行できる操作の概要は、<a href="../../userguide/role-access/index.html">「アクセスの相違の理解」</a>を参照してください。</span></p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../known_issues/index.html" > <i class="fa fa-chevron-left"></i></a> <a class="nav nav-next" href="../security-warnings/index.html" style="margin-right: 0px;" ><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1666389334"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1666389334"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1666389334"></script>
+    <script src="../../js/jquery.sticky.js?1666389334"></script>
+    <script src="../../js/featherlight.min.js?1666389334"></script>
+    <script src="../../js/highlight.pack.js?1666389334"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1666389334"></script>
+    <script src="../../js/learn.js?1666389334"></script>
+    <script src="../../js/hugo-learn.js?1666389334"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1666389334"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>

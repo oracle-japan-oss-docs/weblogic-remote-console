@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="ja" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.82.0" />
+    <meta content="WebLogic Remote ConsoleでWebLogic管理サーバーを構成する方法" name="description">
+
+
+    <link rel="icon" href="../../../images/logo.png" type="image/png">
+
+    <title>管理サーバー :: WebLogic Remote Console</title>
+
+    
+    <link href="../../../css/nucleus.css?1666389334" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1666389334" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1666389334" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1666389334" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1666389334" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1666389334" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1666389334" rel="stylesheet">
+    <link href="../../../css/theme.css?1666389334" rel="stylesheet">
+    <link href="../../../css/tabs.css?1666389334" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1666389334" rel="stylesheet">
+    
+    
+
+    <script src="../../../js/jquery-3.6.0.min.js?1666389334"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  <meta HTTP-EQUIV="Content-Type" Content="text/html; charset=utf-8"></head>
+  <style type="text/css"> <!-- .merged:hover {text-decoration: underline;} --> </style>
+<body class="" data-url="/weblogic-remote-console/userguide/providers/administration-server/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <span class="merged" id="index.34ECQT"  title="原文::  WebLogic Remote Console "><a href="https://oracle.github.io/weblogic-remote-console" id="logo"> <img height="60" src="../../../images/logo.png"><br /> WebLogic Remote Console </a></span>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../../js/lunr.min.js?1666389334"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1666389334"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/oracle.github.io\/weblogic-remote-console";
+    
+</script>
+<script type="text/javascript" src="../../../js/search.js?1666389334"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+      
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/setup/" title="開始">
+      <span class="merged" id="index.176NWa" title="原文 :  Get started "><a href="../../../setup/index.html">開始</a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/setup/console/" title="WebLogic Remote Consoleの確認">
+        <span class="merged" id="index.2bxEX" title="原文 :  Explore the WebLogic Remote Console "><a href="../../../setup/console/index.html">WebLogic Remote Consoleの確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/setup/admin-console-diff/" title="管理コンソールとの相違点">
+        <span class="merged" id="index.1HlGYi" title="原文 :  Differences with the Administration Console "><a href="../../../setup/admin-console-diff/index.html">管理コンソールとの相違点</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        parent
+        
+        
+        " data-nav-id="/weblogic-remote-console/userguide/" title="ユーザー・ガイド">
+      <span class="merged" id="index.3J0qDo"  title="原文::  User guide "><a href="../../index.html"> ユーザー・ガイド </a></span>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/projects/" title="プロジェクト">
+        <span class="merged" id="index.vtRIq"  title="原文::  Projects "><a href="../../projects/index.html"> プロジェクト </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        parent
+        
+        
+        " data-nav-id="/weblogic-remote-console/userguide/providers/" title="プロバイダ・タイプ">
+      <span class="merged" id="index.2myPuK" title="原文 :  Provider types "><a href="../index.html">プロバイダ・タイプ</a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item active" data-nav-id="/weblogic-remote-console/userguide/providers/administration-server/" title="管理サーバー">
+        <span class="merged" id="index.1kg7gJ"  title="原文::  Administration Servers "><a href="index.html"> 管理サーバー </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/property-list/" title="プロパティ・リスト">
+        <span class="merged" id="index.406fAy" title="原文 :  Property lists "><a href="../property-list/index.html">プロパティ・リスト</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/wdt-model/" title="WDTモデル・ファイル">
+        <span class="merged" id="index.1bSoS6" title="原文 :  WDT model files "><a href="../wdt-model/index.html">WDTモデル・ファイル</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/wdt-composite/" title="WDTコンポジット・モデル">
+        <span class="merged" id="index.40BSqB" title="原文 :  WDT composite models "><a href="../wdt-composite/index.html">WDTコンポジット・モデル</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/dashboards/" title="ダッシュボードの生成">
+        <span class="merged" id="index.3BXPPf" title="原文 :  Generate dashboards "><a href="../../dashboards/index.html">ダッシュボードの生成</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/advanced-settings/" title="接続設定のカスタマイズ">
+        <span class="merged" id="index.1E7FP4" title="原文 :  Customize connection settings "><a href="../../advanced-settings/index.html">接続設定のカスタマイズ</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/upgrade/" title="WebLogic Remote Consoleのアップグレード">
+        <span class="merged" id="index.4OogfP" title="原文 :  Upgrade the WebLogic Remote Console "><a href="../../upgrade/index.html">WebLogic Remote Consoleのアップグレード</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/logging/" title="ログ・ファイルの確認">
+        <span class="merged" id="index.3bjDHU" title="原文 :  Check log files "><a href="../../logging/index.html">ログ・ファイルの確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/role-access/" title="アクセスの相違の理解">
+        <span class="merged" id="index.2iA4GO" title="原文 :  Understand access discrepancies "><a href="../../role-access/index.html">アクセスの相違の理解</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/develop/" title="開発">
+      <span class="merged" id="index.2YkDAU"  title="原文::  Development "><a href="../../../develop/index.html"> 開発 </a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/build-source/" title="ソースからのビルド">
+        <span class="merged" id="index.4MPgcT" title="原文 :  Build from source "><a href="../../../develop/build-source/index.html">ソースからのビルド</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/contribute/" title="WebLogic Remote Consoleへの貢献">
+        <span class="merged" id="index.1EfOjJ" title="原文 :  Contribute to WebLogic Remote Console "><a href="../../../develop/contribute/index.html">WebLogic Remote Consoleへの貢献</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/alternative-logging/" title="代替ロギング構成ファイルの使用">
+        <span class="merged" id="index.1RrbPj" title="原文 :  Use an alternative logging configuration file "><a href="../../../develop/alternative-logging/index.html">代替ロギング構成ファイルの使用</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/docs-contribute/" title="ドキュメントへの貢献">
+        <span class="merged" id="index.1qP6lW" title="原文 :  Contribute to the documentation "><a href="../../../develop/docs-contribute/index.html">ドキュメントへの貢献</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/reference/" title="リファレンス">
+      <span class="merged" id="index.26wCfp"  title="原文::  Reference "><a href="../../../reference/index.html"> リファレンス </a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/faqs/" title=" よくある質問">
+        <span class="merged" id="index.1RPrS4"  title="原文::  Frequently asked questions "><a href="../../../reference/faqs/index.html"> よくある質問 </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/known_issues/" title="既知の問題">
+        <span class="merged" id="index.DpMyb" title="原文 :  Known issues "><a href="../../../reference/known_issues/index.html">既知の問題</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/troubleshoot/" title="問題のトラブルシューティング">
+        <span class="merged" id="index.pIQJO"  title="原文::  Troubleshoot issues "><a href="../../../reference/troubleshoot/index.html"> 問題のトラブルシューティング </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/security-warnings/" title="セキュリティの問題の確認">
+        <span class="merged" id="index.462FxC" title="原文 :  Review security issues "><a href="../../../reference/security-warnings/index.html">セキュリティの問題の確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+      
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p><span class="merged" id="index.4behA5" title="原文 : Created with from Oracle"><a href="https://www.oracle.com">Oracle</a>から<i class="fas fa-heart"></i>で作成</span></p>
+<p><span class="merged" id="index.1OQYZy"  title="原文:: &nbsp">&nbsp</span></p>
+<p><span class="merged" id="index.4Opz7M" title="原文 :  GitHub repo"><a href="https://github.com/oracle/weblogic-remote-console"><i class="fab fa-github"></i>GitHubリポジトリ</a></span></p>
+<p><span class="merged" id="index.Fba3k" title="原文 :  Public Slack #remote-console"><a href="https://weblogic-slack-inviter.herokuapp.com/"><i class="fab fa-slack"></i>パブリックSlack #remote-console</a></span></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span class="merged" id="index.v2x1W" title="原文 :  WebLogic Remote Console &gt; User guide &gt; Provider types &gt; Administration Servers "><span id="sidebar-toggle-span"><a data-sidebar-toggle="" href="index.html#" id="sidebar-toggle"><i class="fas fa-bars"></i></a></span> <span id="toc-menu"><i class="fas fa-list-alt"></i></span> <span class="links"><a href='../../../index.html'>WebLogic Remote Console</a> > <a href='../../index.html'>ユーザー・ガイド</a> > <a href='../index.html'>プロバイダ・タイプ</a> > 管理サーバー</span></span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><span class="merged" id="index.2GMxen" title="原文 : Connect to a WebLogic Administration Server"><a href="index.html#connect-to-a-weblogic-administration-server">WebLogic管理サーバーへの接続</a></span></li>
+    <li><span class="merged" id="index.2h2zmp" title="原文 : Edit a WebLogic Administration Server"><a href="index.html#changes_adminserver">WebLogic管理サーバーの編集</a></span>
+      <ul>
+        <li><span class="merged" id="index.L61aC"  title="原文:: Shopping cart"><a href="index.html#shopping_cart">ショッピング・カート</a></span></li>
+      </ul>
+    </li>
+    <li><span class="merged" id="index.8lAOs" title="原文 : Edit the connection details of a WebLogic Administration Server"><a href="index.html#edit-the-connection-details-of-a-weblogic-administration-server">WebLogic管理サーバーの接続詳細を編集</a></span></li>
+    <li><span class="merged" id="index.3yri9x" title="原文 : View the connection details of a WebLogic Administration Server"><a href="index.html#view-the-connection-details-of-a-weblogic-administration-server">WebLogic管理サーバーの接続詳細の表示</a></span></li>
+    <li><span class="merged" id="index.1pKAiM" title="原文 : Delete a connection to a WebLogic Administration Server"><a href="index.html#delete-a-connection-to-a-weblogic-administration-server">WebLogic管理サーバーへの接続の削除</a></span></li>
+    <li><span class="merged" id="index.1SAsDD"  title="原文:: Control Operations"><a href="index.html#controls">コントロール操作</a></span>
+      <ul>
+        <li><span class="merged" id="index.3nbhfG" title="原文 : Change server state"><a href="index.html#change-server-state">サーバーの状態の変更</a></span></li>
+        <li><span class="merged" id="index.1R3euO" title="原文 : Start or stop an application"><a href="index.html#start-or-stop-an-application">アプリケーションの開始または停止</a></span></li>
+      </ul>
+    </li>
+    <li><span class="merged" id="index.31rbyj" title="原文 : Create MBeans"><a href="index.html#create">MBeansの作成</a></span></li>
+    <li><span class="merged" id="index.jRSWG"  title="原文: Managing users and groups"><a href="index.html#managing-users-and-groups">ユーザーとグループの管理</a></span>
+      <ul>
+        <li><span class="merged" id="index.1ycQTs"  title="原文:: Create a user"><a href="index.html#create-a-user">ユーザーの作成</a></span></li>
+        <li><span class="merged" id="index.10JJGL"  title="原文:: Create groups"><a href="index.html#create-groups">グループの作成</a></span></li>
+        <li><span class="merged" id="index.3Kob9Z"  title="原文:: Edit users"><a href="index.html#edit-users">ユーザーの編集</a></span></li>
+        <li><span class="merged" id="index.3PzJVB"  title="原文:: Edit groups"><a href="index.html#edit-groups">グループの編集</a></span></li>
+        <li><span class="merged" id="index.41liAZ"  title="原文:: Delete users"><a href="index.html#delete-users">ユーザーの削除</a></span></li>
+        <li><span class="merged" id="index.1S5Qgh"  title="原文:: Delete groups"><a href="index.html#delete-groups">グループの削除</a></span></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <div style="width:100%"> <div title="免責事項: ここに記載されているドキュメントは、お客様の利便性のために翻訳ソフトウエアにより機械的に翻訳(機械翻訳)したものです。オリジナルの英語版もあわせてご確認ください。" style="width:150px;padding-left:5px;padding-right:5px;border:#ff0000 solid 1px;border-color: gray;font-size: small;color:gray;margin: 0 auto 0 auto;text-align:center"><a href="https://docs.oracle.com/cd/E85181_01/mt_disclaimer.html">機械翻訳について</a></div> </div>
+<h1>
+              
+              <span class="merged" id="index.14usDf"  title="原文:: Administration Servers">管理サーバー</span>
+            </h1>
+          
+
+        
+
+
+<p><span class="merged" id="index.31L19m" title="原文 : The WebLogic Remote Console can connect directly to a WebLogic Administration Server to view and edit its domain, much like the WebLogic Server Administration Console, though there are some differences.">WebLogic Remote Consoleは、WebLogic管理サーバーに直接接続して、WebLogic Server管理コンソールのようにドメインを表示および編集できますが、<a href="../../../setup/admin-console-diff/index.html">「いくつかの違い」</a>があります。</span></p>
+<p><span class="merged" id="index.3bCC6p" title="原文 : You can save the connection details for multiple WebLogic Administration Servers, making it easy to switch between domains with a click.">複数のWebLogic管理サーバーの接続詳細を保存すると、クリックでドメインを切り替えることが容易になります。</span></p>
+<!-- You can even choose to add the same Administration Server multiple times, as long as it's either in a different project or has a different user account associated. -->
+<h2 id="connect-to-a-weblogic-administration-server"><span class="merged" id="index.EBSci" title="原文 : Connect to a WebLogic Administration Server">WebLogic管理サーバーへの接続</span></h2>
+<ol>
+<li><span class="merged" id="index.RdMzz"  title="原文: Start the WebLogic Administration Server.">WebLogic管理サーバーを起動します。</span></li>
+<li><span class="merged" id="index.ltdEy.spl1" title="原文 : Expand the Kiosk and beside the project name, click ⋮.">キオスクを展開し、プロジェクト名の横にある「⋮」をクリックします。</span> <span class="merged" id="index.ltdEy.spl2" title="原文 : Select Add Admin Server Connection Provider."><strong>「管理サーバー接続プロバイダの追加」</strong>を選択します。</span> </li>
+<li><span class="merged" id="index.bkePC.spl1" title="原文 : Enter a name for the Administration Server connection.">管理サーバー接続の名前を入力します。</span> <span class="merged" id="index.bkePC.spl2" title="原文 : This is the name that will appear in the Project list of providers so you can identify which provider you&rsquo;re working on.">これは、作業中のプロバイダを識別できるように、プロバイダのプロジェクト・リストに表示される名前です。</span> </li>
+<li><span class="merged" id="index.2EfXOq.spl1" title="原文 : Enter a username and password for a user account with editing privileges in the selected Administration Server.">選択した管理サーバーで編集権限を持つユーザー・アカウントのユーザー名とパスワードを入力します。</span> <span class="merged" id="index.2EfXOq.spl2" title="原文 : As with the Administration Console, your management capabilities will be limited depending on the level of access granted to your user account.">管理コンソールと同様に、管理機能はユーザー・アカウントに付与されるアクセス・レベルに応じて制限されます。</span> <span class="merged" id="index.2EfXOq.spl3" title="原文 : See Understand access discrepancies for more information.">詳細は、<a href="../../role-access/index.html">「アクセスの相違の理解」</a>を参照してください。</span> <span class="merged" id="index.2EfXOq.spl4" title="原文 : You can choose to have multiple connections to the same Administration Server with different users.">異なるユーザーを持つ同じ管理サーバーへの複数の接続を選択できます。</span> </li>
+<li><span class="merged" id="index.4Is9SE" title="原文 : Enter the URL for the Administration Server.">管理サーバーのURLを入力します。</span></li>
+<li><span class="merged" id="index.X9t2D" title="原文 : Click OK to connect the WebLogic Remote Console to the WebLogic Administration Server."><strong>OK</strong>をクリックして、WebLogic Remote ConsoleをWebLogic管理サーバーに接続します。</span></li>
+</ol>
+<p><span class="merged" id="index.2g6yXs.spl1" title="原文 : The WebLogic Remote Console is now connected to a WebLogic Administration Server.">これで、WebLogic Remote ConsoleはWebLogic管理サーバーに接続されます。</span> <span class="merged" id="index.2g6yXs.spl2" title="原文 : You can make changes to the domain as desired.">必要に応じて、ドメインを変更できます。</span> </p>
+<h2 id="changes_adminserver"><span class="merged" id="index.15j48A" title="原文 : Edit a WebLogic Administration Server">WebLogic管理サーバーの編集</span></h2>
+<p><span class="merged" id="index.1HShKR.spl1" title="原文 : Editing a domain in the WebLogic Remote Console is similar in process to the Administration Console.">WebLogic Remote Consoleでのドメインの編集は、管理コンソールと同様に処理されます。</span> <span class="merged" id="index.1HShKR.spl2" title="原文 : When you start editing a domain, a configuration lock is created that blocks other users from making simultaneous changes.">ドメインの編集を開始すると、他のユーザーが同時に変更をブロックする構成ロックが作成されます。</span> <span class="merged" id="index.1HShKR.spl3" title="原文 : Once you&rsquo;re satisfied with your changes, you can activate these changes and perpetuate them to the Administration and Management Servers.">変更が完了したら、これらの変更をアクティブ化し、管理サーバーと永続化できます。</span> </p>
+
+<div class="notices note" ><p><span class="merged" id="index.3zst0Q.spl1" title="原文 : Certain areas and actions in the WebLogic Remote Console are hidden from non-administrations.">WebLogic Remote Console内の特定の領域およびアクションは、非管理から非表示になります。</span> <span class="merged" id="index.3zst0Q.spl2" title="原文 : For example, users with the Operator role cannot see the Edit Tree at all.">たとえば、オペレータ・ロールを持つユーザーには、ツリーの編集を表示できません。</span> <span class="merged" id="index.3zst0Q.spl3" title="原文 : For more information on what each user role can (or cannot) access, see Understand Access Discrepancies.">各ユーザー・ロールによるアクセス(またはアクセスできない)方法の詳細は、<a href="../../role-access/index.html">「アクセスの相違の理解」</a>を参照してください。</span> </p>
+</div>
+
+<ol>
+<li><span class="merged" id="index.1Qx7i7" title="原文 : Expand the Kiosk and select the Administration Server you want to edit.">キオスクを展開し、編集する管理サーバーを選択します。</span></li>
+<li><span class="merged" id="index.hcwCn.spl1" title="原文 : Click the Edit Tree perspective and make your changes to the domain configuration."><strong>「ツリーの編集」</strong>のパースペクティブをクリックし、ドメイン構成を変更します。</span> <span class="merged" id="index.hcwCn.spl2" title="原文 : Fields marked with require a server restart."><img alt="サーバーの再起動アイコン" src="../../../images/icons/restart-required-blk_24x24.png">でマークされたフィールドには、サーバーの再起動が必要です。</span> </li>
+<li><span class="merged" id="index.2u14Bf" title="原文 : Click Save on every page after making your changes.">変更後、すべてのページの<strong>「保存」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.2WCp0R" title="原文 : If you have the extension installed, expand the Kiosk and select Shopping Cart to view your changes.">拡張機能がインストールされている場合は、キオスクを展開し、<strong>「ショッピング・カート」</strong>を選択して変更を表示します。</span></li>
+<li><span class="merged" id="index.yDpmN.spl1"  title="原文:: Commit your changes.">変更をコミットします。</span> <span class="merged" id="index.yDpmN.spl2" title="原文 : In the upper right corner of the content pane, click and then Commit Changes.">コンテンツ・ペインの右上隅で、<img alt="サーバーの再起動アイコン" src="../../../images/icons/shopping-cart-non-empty-tabstrip_24x24.png">、<strong>「変更のコミット」</strong>の順にクリックします。</span> </li>
+<li><span class="merged" id="index.NUtbj" title="原文 : Restart your server if necessary.">必要に応じてサーバーを再起動します。</span>
+<ol>
+<li><span class="merged" id="index.3SwwPy" title="原文 : Check if any servers require a restart on the Monitoring Tree perspective &gt; Environment &gt; Servers page."><strong>「モニタリング・ツリー」</strong>のパースペクティブ> <strong>「環境」</strong> > <strong>「サーバー」</strong>ページで、再起動が必要なサーバーがあるかどうかを確認します。</span></li>
+</ol>
+</li>
+</ol>
+
+<div class="notices tip" ><p><span class="merged" id="index.3erkaS.spl1" title="原文 : You can restore fields to their default value.">フィールドをデフォルト値にリストアできます。</span> <span class="merged" id="index.3erkaS.spl2" title="原文 : Right-click on a field and click Restore to default.">フィールドを右クリックし、<strong>「デフォルトに戻す」</strong>をクリックします。</span> </p>
+</div>
+
+<h3 id="shopping_cart"><span class="merged" id="index.3PZSRB"  title="原文:: Shopping cart">ショッピング・カート</span></h3>
+<p><span class="merged" id="index.oqest.spl1" title="原文 : The Shopping Cart (equivalent to the Change List in the WebLogic Server Administration Console) holds all the pending changes for the current session in the WebLogic Remote Console.">ショッピング・カート(WebLogic Server管理コンソールの変更リストと同等)には、WebLogic Remote Consoleの現在のセッションの保留中の変更がすべて保持されます。</span> <span class="merged" id="index.oqest.spl2" title="原文 : In the shopping cart, you can see if any changes are pending, commit those changes or discard them entirely.">ショッピング・カートでは、変更が保留中かどうかを確認したり、変更をコミットしたり、変更を完全に破棄したりできます。</span> </p>
+<p><span class="merged" id="index.3Jexk0.spl1" title="原文 : If you installed the console extension, console-rest-ext-2.0.war, you can also see the specific changes you&rsquo;ve made and the status of the lock in the Change Manager.">コンソール拡張<code>console-rest-ext-2.0.war</code>をインストールした場合は、変更した特定の変更および変更マネージャでのロックのステータスも確認できます。</span> <span class="merged" id="index.3Jexk0.spl2" title="原文 : If you need to undo a change, you must discard all shopping cart contents or manually revert the change in the Edit Tree perspective.">変更を元に戻す必要がある場合は、すべてのショッピング・カートの内容を破棄するか、ツリーの編集のパースペクティブで変更を手動で元に戻す必要があります。</span> </p>
+<p><span class="merged" id="index.2HNKrR.spl1"  title="原文: The configuration change lock does not prevent you from making conflicting configuration edits using the same administrator user account.">構成の変更をロックしても、同じ管理ユーザー・アカウントを使用した相反する構成の編集を防ぐことはできません。</span> <span class="merged" id="index.2HNKrR.spl2" title="原文 : For example, if you obtain a configuration change lock in the WebLogic Remote Console, and then use the Administration Console or WebLogic Scripting Tool (WLST) with the same user account, you will access the same edit session that you opened in the WebLogic Remote Console and you will not be blocked from making changes with the other tools.">たとえば、WebLogic Remote Consoleで構成変更ロックを取得した後、同じユーザー・アカウントで管理コンソールまたはWebLogic Scripting Tool (WLST)を使用する場合、WebLogic Remote Consoleで開いたものと同じ編集セッションにアクセスすると、他のツールで変更できなくなります。</span> </p>
+
+<div class="notices note" ><p><span class="merged" id="index.2BVzf5" title="原文 : We recommend against making changes using multiple tools because when one of the sessions activates their changes, it releases the lock and the other session will not be able to save or activate their changes.">セッションの1つが変更をアクティブ化するとロックが解放され、他のセッションは変更を保存またはアクティブ化できないため、複数のツールを使用して変更を行うことをお薦めします。</span></p>
+</div>
+
+<p><span class="merged" id="index.d5OIj.spl1" title="原文 : Some changes can be activated immediately (dynamic) while other changes require a server start to activate (non-dynamic).">一部の変更はただちにアクティブ化(動的)できますが、その他の変更ではサーバーがアクティブ化(動的でない)を開始する必要があります。</span> <span class="merged" id="index.d5OIj.spl2" title="原文 : When you need to activate non-dynamic changes, navigate to the Environment &gt; Servers node in the Monitoring perspective to see which servers need a restart.">非動的変更をアクティブ化する必要がある場合は、モニタリングのパースペクティブから<strong>「環境」</strong> > <strong>「サーバー」</strong>ノードに移動して、再起動が必要なサーバーを確認します。</span> </p>
+<h2 id="edit-the-connection-details-of-a-weblogic-administration-server"><span class="merged" id="index.1jzExB" title="原文 : Edit the connection details of a WebLogic Administration Server">WebLogic管理サーバーの接続詳細を編集</span></h2>
+<ol>
+<li><span class="merged" id="index.46suWi" title="原文 : Expand the Kiosk and beside the WebLogic Administration Server connection that you want to edit, click the icon.">キオスクを展開し、編集するWebLogic管理サーバー接続の横にある<img alt="「設定」アイコン" src="../../../images/icons/data-providers-manage-icon-brn_24x24.png">アイコンをクリックします。</span></li>
+<li><span class="merged" id="index.4bKxmO.spl1" title="原文 : Edit the details of the WebLogic Administration Server.">WebLogic管理サーバーの詳細を編集します。</span> <span class="merged" id="index.4bKxmO.spl2" title="原文 : You can change its name in WebLogic Remote Console, switch user accounts or update the URL.">WebLogic Remote Consoleで名前を変更したり、ユーザー・アカウントを切り替えたり、URLを更新したりできます。</span> </li>
+<li><span class="merged" id="index.2Jw71z"  title="原文: Click OK to save your changes."><strong>「OK」</strong>をクリックして変更を保存します。</span></li>
+</ol>
+<h2 id="view-the-connection-details-of-a-weblogic-administration-server"><span class="merged" id="index.4DBXEr" title="原文 : View the connection details of a WebLogic Administration Server">WebLogic管理サーバーの接続詳細の表示</span></h2>
+<p><span class="merged" id="index.6sWXt" title="原文 : It&rsquo;s easy to view the details of a WebLogic Server Connection.">WebLogic Server接続の詳細を簡単に確認できます。</span></p>
+<ol>
+<li><span class="merged" id="index.13Lxzg" title="原文 : Expand the Kiosk and beside the WebLogic Administration Server, click the icon.">キオスクを展開し、WebLogic管理サーバーの横にある<img alt="「設定」アイコン" src="../../../images/icons/data-providers-info-icon-brn_24x24.png">アイコンをクリックします。</span></li>
+</ol>
+<p><span class="merged" id="index.2L7j06" title="原文 : A list of connection details will appear, including:">次のような接続の詳細のリストが表示されます:</span></p>
+<ul>
+<li><span class="merged" id="index.2IWqWA"  title="原文:: Provider ID">プロバイダID</span></li>
+<li><span class="merged" id="index.3CUq9e"  title="原文:: Domain Name">ドメイン名</span></li>
+<li><span class="merged" id="index.31raVw"  title="原文:: Domain URL">ドメインURL</span></li>
+<li><span class="merged" id="index.m7ZDf"  title="原文:: Domain Version">ドメイン・バージョン</span></li>
+<li><span class="merged" id="index.1JV8z"  title="原文:: Username">ユーザー名</span></li>
+<li><span class="merged" id="index.4WqkRo"  title="原文:: Role">ロール</span></li>
+</ul>
+<h2 id="delete-a-connection-to-a-weblogic-administration-server"><span class="merged" id="index.4SqT3Z" title="原文 : Delete a connection to a WebLogic Administration Server">WebLogic管理サーバーへの接続の削除</span></h2>
+<p><span class="merged" id="index.3NyOoV.spl1" title="原文 : This will only delete the WebLogic Remote Console access to the WebLogic Administration Server.">これにより、WebLogic管理サーバーへのWebLogic Remote Consoleアクセスのみが削除されます。</span> <span class="merged" id="index.3NyOoV.spl2" title="原文 : The domain itself will be unaffected.">ドメイン自体は影響を受けません。</span> </p>
+<ol>
+<li><span class="merged" id="index.Yya2P" title="原文 : Expand the Kiosk and beside the WebLogic Administration Server, click the icon.">キオスクを展開し、WebLogic管理サーバーの横にある<img alt="「設定」アイコン" src="../../../images/icons/data-providers-delete-icon-brn_24x24.png">アイコンをクリックします。</span></li>
+</ol>
+<h2 id="controls"><span class="merged" id="index.Tb0J2"  title="原文:: Control Operations">コントロール操作</span></h2>
+<p><span class="merged" id="index.3WrTF7" title="原文 : The WebLogic Remote Console provides control operations for the Administration Server in the Monitoring perspective.">WebLogic Remote Consoleは、モニタリングのパースペクティブから管理サーバーの制御操作を提供します。</span></p>
+<h3 id="change-server-state"><span class="merged" id="index.3h4Ihm" title="原文 : Change server state">サーバーの状態の変更</span></h3>
+<p><span class="merged" id="index.1ZpDvF" title="原文 : Server state indicates the specific condition of a server in the life cycle management.">サーバーの状態は、ライフサイクル管理におけるサーバーの特定の状態を示します。</span></p>
+<ol>
+<li><span class="merged" id="index.4J4nEh" title="原文 : Expand the Kiosk and select a WebLogic Administration Server connection.">キオスクを展開し、WebLogic管理サーバー接続を選択します。</span></li>
+<li><span class="merged" id="index.330OPW" title="原文 : Choose the Monitoring perspective from the home page.">ホーム・ページから<strong>「モニタリング」</strong>のパースペクティブを選択します。</span></li>
+<li><span class="merged" id="index.1uixWS"  title="原文: Go to Environment &gt; Servers"><strong>「環境」</strong>><strong>「サーバー」</strong>に移動します</span></li>
+<li><span class="merged" id="index.W6e5M" title="原文 : Choose the action for the server(s):">サーバーのアクションを選択します:</span>
+<ul>
+<li><span class="merged" id="index.1jXu4B"  title="原文:: Start">起動</span></li>
+<li><span class="merged" id="index.1tQw90"  title="原文:: Resume">再開</span></li>
+<li><span class="merged" id="index.4ek0MY"  title="原文:: Suspend">中断</span></li>
+<li><span class="merged" id="index.1zZD7M"  title="原文:: Shutdown">停止</span></li>
+<li><span class="merged" id="index.40Wc8W"  title="原文:: Restart SSL">SSLの再起動</span></li>
+</ul>
+</li>
+<li><span class="merged" id="index.2Nlmb2" title="原文 : Choose when to initiate the action:">アクションを開始するタイミングを選択します:</span>
+<ul>
+<li><span class="merged" id="index.gVwNY"  title="原文:: When work completes">「作業完了時」</span></li>
+<li><span class="merged" id="index.6ftqP"  title="原文:: Force shutdown now">「ただちに強制停止」</span></li>
+</ul>
+</li>
+<li><span class="merged" id="index.aQKVl" title="原文 : In the dialog box, move the servers whose state you want to change from Available to Chosen.">ダイアログ・ボックスで、状態を変更するサーバーを<strong>「使用可能」</strong>から<strong>「選択済」</strong>に移動します。</span></li>
+<li><span class="merged" id="index.16d83B" title="原文 : Initiate the action.">処理を開始します。</span></li>
+</ol>
+<h3 id="start-or-stop-an-application"><span class="merged" id="index.4WZGwL" title="原文 : Start or stop an application">アプリケーションの開始または停止</span></h3>
+<ol>
+<li><span class="merged" id="index.4J4nEh.1" title="原文 : Expand the Kiosk and select a WebLogic Administration Server connection.">キオスクを展開し、WebLogic管理サーバー接続を選択します。</span></li>
+<li><span class="merged" id="index.330OPW.1" title="原文 : Choose the Monitoring perspective from the home page.">ホーム・ページから<strong>「モニタリング」</strong>のパースペクティブを選択します。</span></li>
+<li><span class="merged" id="index.1Ax3QB" title="原文 : Go to Deployments &gt; App Deployment Runtimes."><strong>「デプロイメント」</strong> > <strong>「アプリケーション・デプロイメント・ランタイム」</strong>に移動します。</span></li>
+<li><span class="merged" id="index.2brePd" title="原文 : Choose the action for the application:">アプリケーションのアクションを選択します:</span>
+<ul>
+<li><span class="merged" id="index.1jXu4B.1"  title="原文:: Start">起動</span></li>
+<li><span class="merged" id="index.SpaFk"  title="原文:: Stop">停止</span></li>
+</ul>
+</li>
+<li><span class="merged" id="index.1LmB9x" title="原文 : In the dialog box, move the applications whose state you want to change from Available to Chosen.">ダイアログ・ボックスで、状態を変更するアプリケーションを<strong>「使用可能」</strong>から<strong>「選択済」</strong>に移動します。</span></li>
+<li><span class="merged" id="index.SVALv" title="原文 : Initiate the change.">変更を開始します。</span></li>
+</ol>
+<h2 id="create"><span class="merged" id="index.3b4HL6" title="原文 : Create MBeans">MBeansの作成</span></h2>
+<p><span class="merged" id="index.3Zpj2H" title="原文 : The WebLogic Remote Console includes simplified wizards for deploying applications and creating JDBC system resources.">WebLogic Remote Consoleには、アプリケーションのデプロイおよびJDBCシステム・リソースの作成のための簡略化されたウィザードが含まれています。</span></p>
+<p><span class="merged" id="index.44HmMd.spl1" title="原文 : In most other cases, when you create a new MBean on a page, you are prompted to fill in a few key properties, such as Name, then click Create.">ほとんどの場合、ページに新しいMBeanを作成するときに、名前などのいくつかのキー・プロパティを入力するように求められ、<strong>「作成」</strong>をクリックします。</span> <span class="merged" id="index.44HmMd.spl2" title="原文 : Unlike the WebLogic Server Administration Console, the WebLogic Remote Console does not guide you through configuring other properties that you typically need to complete the configuration.">WebLogic Server管理コンソールとは異なり、WebLogic Remote Consoleでは、通常は構成を完了するために必要な他のプロパティを構成する方法はありません。</span> <span class="merged" id="index.44HmMd.spl3" title="原文 : Instead, it displays the new bean&rsquo;s pages where you can click through the tabs to finish configuring the bean.">かわりに、新しいBeanのページが表示され、タブをクリックしてBeanの構成を終了できます。</span> </p>
+
+<div class="notices note" ><p><span class="merged" id="index.3P6uwD.spl1" title="原文 : When you configure a bean property that references another bean, you must first create the other bean.">別のBeanを参照するBeanプロパティを構成する場合は、まず他のBeanを作成する必要があります。</span> <span class="merged" id="index.3P6uwD.spl2" title="原文 : For example, if you want to assign Server1 to Cluster1, you need to create Cluster1 first, unlike in the WebLogic Server Administration Console where you can choose to create Cluster1 during server creation.">たとえば、Server1をCluster1に割り当てる場合、サーバー作成時にCluster1を作成することを選択できるWebLogic Server管理コンソールとは異なり、最初にCluster1を作成する必要があります。</span> </p>
+</div>
+
+<h2 id="managing-users-and-groups"><span class="merged" id="index.ANPVM"  title="原文: Managing users and groups">ユーザーとグループの管理</span></h2>
+<p><span class="merged" id="index.2HQXyt.spl1" title="原文 : You can easily manage the WebLogic Server users and groups that are configured as part of the default authentication provider (WebLogic Authentication Provider) within a security realm.">セキュリティ・レルム内のデフォルトの認証プロバイダ(WebLogic認証プロバイダ)の一部として構成されているWebLogic Serverユーザーおよびグループを簡単に管理できます。</span> <span class="merged" id="index.2HQXyt.spl2" title="原文 : Only the default authentication provider is supported.">デフォルトの認証プロバイダのみがサポートされています。</span> <span class="merged" id="index.2HQXyt.spl3" title="原文 : If you&rsquo;re not using the default authentication provider, you&rsquo;ll need to manage its users and groups through its own external tools.">デフォルトの認証プロバイダを使用しない場合は、独自の外部ツールを使用してユーザーとグループを管理する必要があります。</span> </p>
+<p><span class="merged" id="index.1p4oNn.spl1" title="原文 : Users and groups are managed in the Security Data Tree perspective.">ユーザーおよびグループは、セキュリティ・データ・ツリーのパースペクティブで管理されます。</span> <span class="merged" id="index.1p4oNn.spl2" title="原文 : You must be logged in as a user with the Admin role and have the WebLogic Remote Console extension installed to access this perspective.">このパースペクティブにアクセスするには、Adminロールを持つユーザーとしてログインし、WebLogic Remote Console拡張がインストールされている必要があります。</span> <span class="merged" id="index.1p4oNn.spl3" title="原文 : See Install the WebLogic Remote Console for instructions.">手順については、<a href="../../../setup/index.html#install">「WebLogic Remote Consoleのインストール」</a>を参照してください。</span> </p>
+<p><span class="merged" id="index.1MFk3v" title="原文 : Any changes you make to users and groups are immediate - you don&rsquo;t need to commit or reboot the server to apply your changes.">ユーザーおよびグループに対して行った変更は即時に行われます - 変更を適用するためにサーバーをコミットまたはリブートする必要はありません。</span></p>
+<h3 id="create-a-user"><span class="merged" id="index.2ZgCmS"  title="原文:: Create a user">ユーザーの作成</span></h3>
+<ol>
+<li><span class="merged" id="index.30hvYw" title="原文 : In the Security Data Tree perspective, expand Realms.">セキュリティ・データ・ツリーのパースペクティブで、レルムを展開します。</span></li>
+<li><span class="merged" id="index.1TQU2g" title="原文 : Select the Security Realm to which you want to add users.">ユーザーの追加先のセキュリティ・レルムを選択してください。</span></li>
+<li><span class="merged" id="index.7ta8A" title="原文 : Expand the Authentication Provider node and then select the authentication provider to which you want to add users.">Authentication Providerノードを展開し、ユーザーを追加する認証プロバイダを選択します。</span></li>
+<li><span class="merged" id="index.2qguNH" title="原文 : Expand Users and click New.">ユーザーを展開し、<strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.3ib0gZ.spl1" title="原文 : Enter a Name, Description and Password for this user.">このユーザーの名前、説明およびパスワードを入力します。</span> <span class="merged" id="index.3ib0gZ.spl2" title="原文 : User names must be unique in the security realm and passwords must be eight characters or longer.">ユーザー名はセキュリティ・レルム内で一意で、パスワードは8文字以上である必要があります。</span> </li>
+<li><span class="merged" id="index.2BMUBQ"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></li>
+</ol>
+<h3 id="create-groups"><span class="merged" id="index.1pCDT7"  title="原文:: Create groups">グループの作成</span></h3>
+<ol>
+<li><span class="merged" id="index.30hvYw.1" title="原文 : In the Security Data Tree perspective, expand Realms.">セキュリティ・データ・ツリーのパースペクティブで、レルムを展開します。</span></li>
+<li><span class="merged" id="index.3KFsUw" title="原文 : Select the Security Realm to which you want to add groups.">グループを追加するセキュリティ・レルムを選択します。</span></li>
+<li><span class="merged" id="index.2BIZ8o" title="原文 : Expand the Authentication Provider node and then select the authentication provider to which you want to add groups.">Authentication Providerノードを展開し、グループを追加する認証プロバイダを選択します。</span></li>
+<li><span class="merged" id="index.1Zt0A6" title="原文 : Expand Groups and click New.">グループを展開し、<strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.1sYkCq.spl1" title="原文 : Enter a Name and Description for this group.">このグループの名前と摘要を入力します。</span> <span class="merged" id="index.1sYkCq.spl2" title="原文 : Group names must be unique in the security realm.">グループ名はセキュリティ・レルム内で一意である必要があります。</span> </li>
+<li><span class="merged" id="index.2BMUBQ.1"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></li>
+</ol>
+<h3 id="edit-users"><span class="merged" id="index.2mgpTE"  title="原文:: Edit users">ユーザーの編集</span></h3>
+<ol>
+<li><span class="merged" id="index.242iJW" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Authentication Providers &gt; providerName &gt; Users.">セキュリティ・データ・ツリーのパースペクティブから、レルム><em>realmName</em>>認証プロバイダ><em>providerName</em>>ユーザーに移動します。</span></li>
+<li><span class="merged" id="index.3DZ6UL" title="原文 : Click the user that you want to edit.">編集するユーザーをクリックします。</span></li>
+<li><span class="merged" id="index.qWSkY.spl1" title="原文 : Move through the various tabs to update the properties of the user.">様々なタブを移動して、ユーザーのプロパティを更新します。</span> <span class="merged" id="index.qWSkY.spl2" title="原文 : You cannot edit the name of a user - you must delete and create a new user.">ユーザーの名前は編集できません - 新しいユーザーを削除して作成する必要があります。</span> </li>
+<li><span class="merged" id="index.1axxiR.spl1" title="原文 : You can add users to groups.">グループにユーザーを追加できます。</span> <span class="merged" id="index.1axxiR.spl2" title="原文 : Under the Membership tab, select any Available group to which you want to add the user and move them over to Chosen.">メンバーシップ・タブで、ユーザーを追加する使用可能なグループを選択し、選択済に移動します。</span> </li>
+<li><span class="merged" id="index.11hXOT"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします</span></li>
+</ol>
+<h3 id="edit-groups"><span class="merged" id="index.1DLa89"  title="原文:: Edit groups">グループの編集</span></h3>
+<ol>
+<li><span class="merged" id="index.1plhnp" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Authentication Providers &gt; providerName &gt; Groups.">セキュリティ・データ・ツリーのパースペクティブから、レルム><em>realmName</em>>認証プロバイダ><em>providerName</em>>グループに移動します。</span></li>
+<li><span class="merged" id="index.Hmb3k.spl1" title="原文 : Click the group that you want to edit.">編集するグループをクリックします。</span> <span class="merged" id="index.Hmb3k.spl2" title="原文 : You can modify the group description or, under the Membership tab, nest the current group under other groups.">グループの説明を変更するか、メンバーシップ・タブで現在のグループを他のグループの下にネストできます。</span> <span class="merged" id="index.Hmb3k.spl3" title="原文 : You cannot edit the name of a group - you must delete and create a new group.">グループの名前は編集できません - 新しいグループを削除して作成する必要があります。</span> </li>
+<li><span class="merged" id="index.11hXOT.1"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします</span></li>
+</ol>
+<h3 id="delete-users"><span class="merged" id="index.2e5nAT"  title="原文:: Delete users">ユーザーの削除</span></h3>
+<ol>
+<li><span class="merged" id="index.242iJW.1" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Authentication Providers &gt; providerName &gt; Users.">セキュリティ・データ・ツリーのパースペクティブから、レルム><em>realmName</em>>認証プロバイダ><em>providerName</em>>ユーザーに移動します。</span></li>
+<li><span class="merged" id="index.3cNPGw" title="原文 : Beside the user that you want to delete, click the trash icon .">削除するユーザーの横で、ごみ箱アイコン<img alt="「設定」アイコン" src="../../../images/icons/data-providers-delete-icon-brn_24x24.png">をクリックします。</span></li>
+</ol>
+<h3 id="delete-groups"><span class="merged" id="index.NjghB"  title="原文:: Delete groups">グループの削除</span></h3>
+<p><span class="merged" id="index.4KhmBP" title="原文 : Deleting a group will not delete the users within that group.">グループを削除しても、そのグループ内のユーザーは削除されません。</span></p>
+<ol>
+<li><span class="merged" id="index.1plhnp.1" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Authentication Providers &gt; providerName &gt; Groups.">セキュリティ・データ・ツリーのパースペクティブから、レルム><em>realmName</em>>認証プロバイダ><em>providerName</em>>グループに移動します。</span></li>
+<li><span class="merged" id="index.3GaIrQ" title="原文 : Beside the group that you want to delete, click the trash icon .">削除するグループの横で、ごみ箱アイコン<img alt="「設定」アイコン" src="../../../images/icons/data-providers-delete-icon-brn_24x24.png">をクリックします。</span></li>
+</ol>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../index.html" > <i class="fa fa-chevron-left"></i></a> <a class="nav nav-next" href="../property-list/index.html" style="margin-right: 0px;" ><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../../js/clipboard.min.js?1666389334"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1666389334"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1666389334"></script>
+    <script src="../../../js/jquery.sticky.js?1666389334"></script>
+    <script src="../../../js/featherlight.min.js?1666389334"></script>
+    <script src="../../../js/highlight.pack.js?1666389334"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1666389334"></script>
+    <script src="../../../js/learn.js?1666389334"></script>
+    <script src="../../../js/hugo-learn.js?1666389334"></script>
+    
+        
+            <script src="../../../mermaid/mermaid.js?1666389334"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
