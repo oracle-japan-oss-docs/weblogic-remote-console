@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="ja" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.82.0" />
+    <meta content="How to manage security data in the WebLogic Remote Console" name="description">
+
+
+    <link rel="icon" href="../../../../images/logo.png" type="image/png">
+
+    <title>セキュリティ・データの編集 :: WebLogic Remote Console</title>
+
+    
+    <link href="../../../../css/nucleus.css?1695158062" rel="stylesheet">
+    <link href="../../../../css/fontawesome-all.min.css?1695158062" rel="stylesheet">
+    <link href="../../../../css/hybrid.css?1695158062" rel="stylesheet">
+    <link href="../../../../css/featherlight.min.css?1695158062" rel="stylesheet">
+    <link href="../../../../css/perfect-scrollbar.min.css?1695158062" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1695158062" rel="stylesheet">
+    <link href="../../../../css/atom-one-dark-reasonable.css?1695158062" rel="stylesheet">
+    <link href="../../../../css/theme.css?1695158062" rel="stylesheet">
+    <link href="../../../../css/tabs.css?1695158062" rel="stylesheet">
+    <link href="../../../../css/hugo-theme.css?1695158062" rel="stylesheet">
+    
+    
+
+    <script src="../../../../js/jquery-3.6.0.min.js?1695158062"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  <meta HTTP-EQUIV="Content-Type" Content="text/html; charset=utf-8"></head>
+  <style type="text/css"> <!-- .merged:hover {text-decoration: underline;} --> </style>
+<body class="" data-url="/weblogic-remote-console/userguide/providers/administration-server/security-data/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <span class="merged" id="index.1ix0sp"  title="原文::  WebLogic Remote Console "><a href="https://oracle.github.io/weblogic-remote-console" id="logo"> <img height="60" src="../../../../images/logo.png"><br /> WebLogic Remote Console </a></span>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../../../js/lunr.min.js?1695158062"></script>
+<script type="text/javascript" src="../../../../js/auto-complete.js?1695158062"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/oracle.github.io\/weblogic-remote-console";
+    
+</script>
+<script type="text/javascript" src="../../../../js/search.js?1695158062"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+      
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/setup/" title="開始">
+      <span class="merged" id="index.1iKotU" title="原文 :  Get started "><a href="../../../../setup/index.html">開始</a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/setup/console/" title="WebLogic Remote Consoleの確認">
+        <span class="merged" id="index.33z6QS" title="原文 :  Explore the WebLogic Remote Console "><a href="../../../../setup/console/index.html">WebLogic Remote Consoleの確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/setup/admin-console-diff/" title="管理コンソールとの相違点">
+        <span class="merged" id="index.zIrvK" title="原文 :  Differences with the Administration Console "><a href="../../../../setup/admin-console-diff/index.html">管理コンソールとの相違点</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        parent
+        
+        
+        " data-nav-id="/weblogic-remote-console/userguide/" title="ユーザー・ガイド">
+      <span class="merged" id="index.NR9cp"  title="原文::  User guide "><a href="../../../index.html"> ユーザー・ガイド </a></span>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/projects/" title="プロジェクト">
+        <span class="merged" id="index.2yADuv"  title="原文::  Projects "><a href="../../../projects/index.html"> プロジェクト </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        parent
+        
+        
+        " data-nav-id="/weblogic-remote-console/userguide/providers/" title="プロバイダ・タイプ">
+      <span class="merged" id="index.2Wekig" title="原文 :  Provider types "><a href="../../index.html">プロバイダ・タイプ</a></span>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        parent
+        
+        
+        " data-nav-id="/weblogic-remote-console/userguide/providers/administration-server/" title="管理サーバー">
+      <span class="merged" id="index.qpnHw"  title="原文::  Administration Servers "><a href="../index.html"> 管理サーバー </a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item active" data-nav-id="/weblogic-remote-console/userguide/providers/administration-server/security-data/" title="セキュリティ・データの編集">
+        <span class="merged" id="index.2GmQzZ" title="原文 :  Editing security data "><a href="index.html">セキュリティ・データの編集</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/property-list/" title="プロパティ・リスト">
+        <span class="merged" id="index.2n2QMW" title="原文 :  Property lists "><a href="../../property-list/index.html">プロパティ・リスト</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/wdt-model/" title="WDTモデル・ファイル">
+        <span class="merged" id="index.4RrAMh" title="原文 :  WDT model files "><a href="../../wdt-model/index.html">WDTモデル・ファイル</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/providers/wdt-composite/" title="WDTコンポジット・モデル">
+        <span class="merged" id="index.3C75fE" title="原文 :  WDT composite models "><a href="../../wdt-composite/index.html">WDTコンポジット・モデル</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/dashboards/" title="ダッシュボードの生成">
+        <span class="merged" id="index.4Vwk8O" title="原文 :  Generate dashboards "><a href="../../../dashboards/index.html">ダッシュボードの生成</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/advanced-settings/" title="設定のカスタマイズ">
+        <span class="merged" id="index.3aAUAq"  title="原文::  Customize settings "><a href="../../../advanced-settings/index.html"> 設定のカスタマイズ </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/upgrade/" title="WebLogic Remote Consoleのアップグレード">
+        <span class="merged" id="index.3qVbuv" title="原文 :  Upgrade the WebLogic Remote Console "><a href="../../../upgrade/index.html">WebLogic Remote Consoleのアップグレード</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/logging/" title="ログ・ファイルの確認">
+        <span class="merged" id="index.iM7gm" title="原文 :  Check log files "><a href="../../../logging/index.html">ログ・ファイルの確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/role-access/" title="アクセスの相違の理解">
+        <span class="merged" id="index.3KyuAM" title="原文 :  Understand access discrepancies "><a href="../../../role-access/index.html">アクセスの相違の理解</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/develop/" title="開発">
+      <span class="merged" id="index.r4nOZ"  title="原文::  Development "><a href="../../../../develop/index.html"> 開発 </a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/build-source/" title="ソースからのビルド">
+        <span class="merged" id="index.2dQQr8" title="原文 :  Build from source "><a href="../../../../develop/build-source/index.html">ソースからのビルド</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/contribute/" title="WebLogic Remote Consoleへの貢献">
+        <span class="merged" id="index.1B23Vv" title="原文 :  Contribute to WebLogic Remote Console "><a href="../../../../develop/contribute/index.html">WebLogic Remote Consoleへの貢献</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/alternative-logging/" title="代替ロギング構成ファイルの使用">
+        <span class="merged" id="index.2HW1gB" title="原文 :  Use an alternative logging configuration file "><a href="../../../../develop/alternative-logging/index.html">代替ロギング構成ファイルの使用</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/docs-contribute/" title="ドキュメントへの貢献">
+        <span class="merged" id="index.7Y7Oa" title="原文 :  Contribute to the documentation "><a href="../../../../develop/docs-contribute/index.html">ドキュメントへの貢献</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li class="dd-item
+        
+        
+        
+        " data-nav-id="/weblogic-remote-console/reference/" title="リファレンス">
+      <span class="merged" id="index.3vFcXQ"  title="原文::  Reference "><a href="../../../../reference/index.html"> リファレンス </a></span>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/faqs/" title="よくある質問">
+        <span class="merged" id="index.3c5FWS"  title="原文::  Frequently asked questions "><a href="../../../../reference/faqs/index.html"> よくある質問 </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/known_issues/" title="既知の問題">
+        <span class="merged" id="index.3VsZSF"  title="原文::  Known issues "><a href="../../../../reference/known_issues/index.html">既知の問題</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/troubleshoot/" title="問題のトラブルシューティング">
+        <span class="merged" id="index.3s4uYd"  title="原文::  Troubleshoot issues "><a href="../../../../reference/troubleshoot/index.html"> 問題のトラブルシューティング </a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li class="dd-item " data-nav-id="/weblogic-remote-console/reference/security-warnings/" title="セキュリティの問題の確認">
+        <span class="merged" id="index.34t66c" title="原文 :  Review security issues "><a href="../../../../reference/security-warnings/index.html">セキュリティの問題の確認</a></span>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+      
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p><span class="merged" id="index.4behA5" title="原文 : Created with from Oracle"><a href="https://www.oracle.com">Oracle</a>から<i class="fas fa-heart"></i>で作成</span></p>
+<p><span class="merged" id="index.1OQYZy"  title="原文:: &nbsp">&nbsp</span></p>
+<p><span class="merged" id="index.4Opz7M" title="原文 :  GitHub repo"><a href="https://github.com/oracle/weblogic-remote-console"><i class="fab fa-github"></i>GitHubリポジトリ</a></span></p>
+<p><span class="merged" id="index.2f9ZjF" title="原文 :  Public Slack #remote-console"><a href="https://join.slack.com/t/oracle-weblogic/shared_invite/zt-1ni1gtjv6-PGC6CQ4uIte3KBdm_67~aQ"><i class="fab fa-slack"></i>パブリックSlack #remote-console</a></span></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span class="merged" id="index.2NeSbC" title="原文 :  WebLogic Remote Console &gt; User guide &gt; Provider types &gt; Administration Servers &gt; Editing security data "><span id="sidebar-toggle-span"><a data-sidebar-toggle="" href="index.html#" id="sidebar-toggle"><i class="fas fa-bars"></i></a></span> <span id="toc-menu"><i class="fas fa-list-alt"></i></span> <span class="links"><a href='../../../../index.html'>WebLogic Remote Console</a> > <a href='../../../index.html'>ユーザー・ガイド</a> > <a href='../../index.html'>プロバイダ・タイプ</a> > <a href='../index.html'>管理サーバー</a> > セキュリティ・データの編集</span></span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><span class="merged" id="index.MOuTL"  title="原文: Managing users and groups"><a href="index.html#user_groups">ユーザーとグループの管理</a></span>
+      <ul>
+        <li><span class="merged" id="index.1ycQTs"  title="原文:: Create a user"><a href="index.html#create-a-user">ユーザーの作成</a></span></li>
+        <li><span class="merged" id="index.10JJGL"  title="原文:: Create groups"><a href="index.html#create-groups">グループの作成</a></span></li>
+        <li><span class="merged" id="index.3Kob9Z"  title="原文:: Edit users"><a href="index.html#edit-users">ユーザーの編集</a></span></li>
+        <li><span class="merged" id="index.3PzJVB"  title="原文:: Edit groups"><a href="index.html#edit-groups">グループの編集</a></span></li>
+        <li><span class="merged" id="index.41liAZ"  title="原文:: Delete users"><a href="index.html#delete-users">ユーザーの削除</a></span></li>
+        <li><span class="merged" id="index.1S5Qgh"  title="原文:: Delete groups"><a href="index.html#delete-groups">グループの削除</a></span></li>
+      </ul>
+    </li>
+    <li><span class="merged" id="index.2cNQKx" title="原文 : Managing Security Policies and Roles"><a href="index.html#managing-security-policies-and-roles">セキュリティ・ポリシーおよびロールの管理</a></span>
+      <ul>
+        <li><span class="merged" id="index.3o2l8i"  title="原文:: Security roles"><a href="index.html#security-roles">セキュリティ・ロール</a></span></li>
+        <li><span class="merged" id="index.2sSxpB"  title="原文:: Security policies"><a href="index.html#sec_policies">セキュリティ・ポリシー</a></span></li>
+      </ul>
+    </li>
+    <li><span class="merged" id="index.2TTAXh" title="原文 : Managing credential mappers"><a href="index.html#managing-credential-mappers">資格証明マッパーの管理</a></span>
+      <ul>
+        <li><span class="merged" id="index.zxWPm" title="原文 : App Deployments: EJBs"><a href="index.html#ejbs">アプリ・デプロイメント: EJB</a></span></li>
+        <li><span class="merged" id="index.1RHB3M" title="原文 : App Deployments: JDBC Application"><a href="index.html#jdbc-apps">アプリ・デプロイメント: JDBCアプリケーション</a></span></li>
+        <li><span class="merged" id="index.4faJ22" title="原文 : App Deployments: JDBC Modules"><a href="index.html#jdbc-modules">アプリ・デプロイメント: JDBCモジュール</a></span></li>
+        <li><span class="merged" id="index.2Zofmq" title="原文 : App Deployments: Resource Adapters"><a href="index.html#resource-adapters">アプリ・デプロイメント: リソース・アダプタ</a></span></li>
+        <li><span class="merged" id="index.yxR8S"  title="原文:: Data Sources"><a href="index.html#data-sources">データソース</a></span></li>
+        <li><span class="merged" id="index.13pFmP"  title="原文:: Remote Resources"><a href="index.html#remote-resources">リモート・リソース</a></span></li>
+        <li><span class="merged" id="index.2etpD7" title="原文 : Credential mappings"><a href="index.html#credential-mappings">資格証明マッピング</a></span></li>
+        <li><span class="merged" id="index.4NYGKl"  title="原文:: Credentials"><a href="index.html#credentials">資格証明</a></span></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <div style="width:100%"> <div title="免責事項: ここに記載されているドキュメントは、お客様の利便性のために翻訳ソフトウエアにより機械的に翻訳(機械翻訳)したものです。オリジナルの英語版もあわせてご確認ください。" style="width:150px;padding-left:5px;padding-right:5px;border:#ff0000 solid 1px;border-color: gray;font-size: small;color:gray;margin: 0 auto 0 auto;text-align:center"><a href="https://docs.oracle.com/cd/E85181_01/mt_disclaimer.html">機械翻訳について</a></div> </div>
+<h1>
+              
+              <span class="merged" id="index.11a0to" title="原文 : Editing security data">セキュリティ・データの編集</span>
+            </h1>
+          
+
+        
+
+
+<p><span class="merged" id="index.2A45mH" title="原文 : You can manage security data and supported security providers for your domain in the Security Data tree perspective.">セキュリティ・データ・ツリーのパースペクティブから、ドメインのセキュリティ・データとサポートされているセキュリティ・プロバイダを管理できます。</span></p>
+
+<div class="notices note" ><p><span class="merged" id="index.3ay13Y.spl1" title="原文 : You must be logged in as a user with the Admin role and have the WebLogic Remote Console extension installed to access this perspective.">このパースペクティブにアクセスするには、Adminロールを持つユーザーとしてログインし、WebLogic Remote Console拡張がインストールされている必要があります。</span> <span class="merged" id="index.3ay13Y.spl2" title="原文 : See Install the WebLogic Remote Console for instructions.">手順については、<a href="../../../../setup/index.html#install">「WebLogic Remote Consoleのインストール」</a>を参照してください。</span> </p>
+</div>
+
+<p><span class="merged" id="index.4b1aDB" title="原文 : Any changes you make within the Security Data perspective are immediate - you don’t need to commit or reboot the server to apply your changes.">セキュリティ・データのパースペクティブで行った変更は、即時に行われます - 変更を適用するために、サーバーをコミットまたはリブートする必要はありません。</span></p>
+<h2 id="user_groups"><span class="merged" id="index.ANPVM"  title="原文: Managing users and groups">ユーザーとグループの管理</span></h2>
+<p><span class="merged" id="index.2HQXyt.spl1" title="原文 : You can easily manage the WebLogic Server users and groups that are configured as part of the default authentication provider (WebLogic Authentication Provider) within a security realm.">セキュリティ・レルム内のデフォルトの認証プロバイダ(WebLogic認証プロバイダ)の一部として構成されているWebLogic Serverユーザーおよびグループを簡単に管理できます。</span> <span class="merged" id="index.2HQXyt.spl2" title="原文 : Only the default authentication provider is supported.">デフォルトの認証プロバイダのみがサポートされています。</span> <span class="merged" id="index.2HQXyt.spl3" title="原文 : If you’re not using the default authentication provider, you’ll need to manage its users and groups through its own external tools.">デフォルトの認証プロバイダを使用しない場合は、独自の外部ツールを使用してユーザーとグループを管理する必要があります。</span> </p>
+<h3 id="create-a-user"><span class="merged" id="index.2ZgCmS"  title="原文:: Create a user">ユーザーの作成</span></h3>
+<ol>
+<li><span class="merged" id="index.30hvYw" title="原文 : In the Security Data Tree perspective, expand Realms.">セキュリティ・データ・ツリーのパースペクティブで、レルムを展開します。</span></li>
+<li><span class="merged" id="index.1TQU2g" title="原文 : Select the Security Realm to which you want to add users.">ユーザーの追加先のセキュリティ・レルムを選択してください。</span></li>
+<li><span class="merged" id="index.7ta8A" title="原文 : Expand the Authentication Provider node and then select the authentication provider to which you want to add users.">Authentication Providerノードを展開し、ユーザーを追加する認証プロバイダを選択します。</span></li>
+<li><span class="merged" id="index.2qguNH" title="原文 : Expand Users and click New.">ユーザーを展開し、<strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.3ib0gZ.spl1" title="原文 : Enter a Name, Description and Password for this user.">このユーザーの名前、説明およびパスワードを入力します。</span> <span class="merged" id="index.3ib0gZ.spl2" title="原文 : User names must be unique in the security realm and passwords must be eight characters or longer.">ユーザー名はセキュリティ・レルム内で一意で、パスワードは8文字以上である必要があります。</span> </li>
+<li><span class="merged" id="index.2BMUBQ"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></li>
+</ol>
+<h3 id="create-groups"><span class="merged" id="index.1pCDT7"  title="原文:: Create groups">グループの作成</span></h3>
+<ol>
+<li><span class="merged" id="index.30hvYw.1" title="原文 : In the Security Data Tree perspective, expand Realms.">セキュリティ・データ・ツリーのパースペクティブで、レルムを展開します。</span></li>
+<li><span class="merged" id="index.3KFsUw" title="原文 : Select the Security Realm to which you want to add groups.">グループを追加するセキュリティ・レルムを選択します。</span></li>
+<li><span class="merged" id="index.2BIZ8o" title="原文 : Expand the Authentication Provider node and then select the authentication provider to which you want to add groups.">Authentication Providerノードを展開し、グループを追加する認証プロバイダを選択します。</span></li>
+<li><span class="merged" id="index.1Zt0A6" title="原文 : Expand Groups and click New.">グループを展開し、<strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.1sYkCq.spl1" title="原文 : Enter a Name and Description for this group.">このグループの名前と摘要を入力します。</span> <span class="merged" id="index.1sYkCq.spl2" title="原文 : Group names must be unique in the security realm.">グループ名はセキュリティ・レルム内で一意である必要があります。</span> </li>
+<li><span class="merged" id="index.2BMUBQ.1"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></li>
+</ol>
+<h3 id="edit-users"><span class="merged" id="index.2mgpTE"  title="原文:: Edit users">ユーザーの編集</span></h3>
+<ol>
+<li><span class="merged" id="index.242iJW" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Authentication Providers &gt; providerName &gt; Users.">セキュリティ・データ・ツリーのパースペクティブから、「レルム」> <em>realmName</em> >「認証プロバイダ」> <em>providerName</em> >「ユーザー」に移動します。</span></li>
+<li><span class="merged" id="index.3DZ6UL" title="原文 : Click the user that you want to edit.">編集するユーザーをクリックします。</span></li>
+<li><span class="merged" id="index.qWSkY.spl1" title="原文 : Move through the various tabs to update the properties of the user.">様々なタブを移動して、ユーザーのプロパティを更新します。</span> <span class="merged" id="index.qWSkY.spl2" title="原文 : You cannot edit the name of a user - you must delete and create a new user.">ユーザーの名前は編集できません - 新しいユーザーを削除して作成する必要があります。</span> </li>
+<li><span class="merged" id="index.1axxiR.spl1" title="原文 : You can add users to groups.">グループにユーザーを追加できます。</span> <span class="merged" id="index.1axxiR.spl2" title="原文 : Under the Membership tab, select any Available group to which you want to add the user and move them over to Chosen.">メンバーシップ・タブで、ユーザーを追加する使用可能なグループを選択し、選択済に移動します。</span> </li>
+<li><span class="merged" id="index.11hXOT"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします</span></li>
+</ol>
+<h3 id="edit-groups"><span class="merged" id="index.1DLa89"  title="原文:: Edit groups">グループの編集</span></h3>
+<ol>
+<li><span class="merged" id="index.1plhnp" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Authentication Providers &gt; providerName &gt; Groups.">セキュリティ・データ・ツリーのパースペクティブから、「レルム」> <em>realmName</em> >「認証プロバイダ」> <em>providerName</em> >「グループ」に移動します。</span></li>
+<li><span class="merged" id="index.Hmb3k.spl1" title="原文 : Click the group that you want to edit.">編集するグループをクリックします。</span> <span class="merged" id="index.Hmb3k.spl2" title="原文 : You can modify the group description or, under the Membership tab, nest the current group under other groups.">グループの説明を変更するか、メンバーシップ・タブで現在のグループを他のグループの下にネストできます。</span> <span class="merged" id="index.Hmb3k.spl3" title="原文 : You cannot edit the name of a group - you must delete and create a new group.">グループの名前は編集できません - 新しいグループを削除して作成する必要があります。</span> </li>
+<li><span class="merged" id="index.11hXOT.1"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします</span></li>
+</ol>
+<h3 id="delete-users"><span class="merged" id="index.2e5nAT"  title="原文:: Delete users">ユーザーの削除</span></h3>
+<ol>
+<li><span class="merged" id="index.242iJW.1" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Authentication Providers &gt; providerName &gt; Users.">セキュリティ・データ・ツリーのパースペクティブから、「レルム」> <em>realmName</em> >「認証プロバイダ」> <em>providerName</em> >「ユーザー」に移動します。</span></li>
+<li><span class="merged" id="index.3wYSPH" title="原文 : Beside the user that you want to delete, click the trash icon .">削除するユーザーの横で、ごみ箱アイコン<img alt="「設定」アイコン" src="../../../../images/icons/data-providers-delete-icon-brn_24x24.png">をクリックします。</span></li>
+</ol>
+<h3 id="delete-groups"><span class="merged" id="index.NjghB"  title="原文:: Delete groups">グループの削除</span></h3>
+<p><span class="merged" id="index.4KhmBP" title="原文 : Deleting a group will not delete the users within that group.">グループを削除しても、そのグループ内のユーザーは削除されません。</span></p>
+<ol>
+<li><span class="merged" id="index.1plhnp.1" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Authentication Providers &gt; providerName &gt; Groups.">セキュリティ・データ・ツリーのパースペクティブから、「レルム」> <em>realmName</em> >「認証プロバイダ」> <em>providerName</em> >「グループ」に移動します。</span></li>
+<li><span class="merged" id="index.3nnw9" title="原文 : Beside the group that you want to delete, click the trash icon .">削除するグループの横で、ごみ箱アイコン<img alt="「設定」アイコン" src="../../../../images/icons/data-providers-delete-icon-brn_24x24.png">をクリックします。</span></li>
+</ol>
+<h2 id="managing-security-policies-and-roles"><span class="merged" id="index.1Z4H98" title="原文 : Managing Security Policies and Roles">セキュリティ・ポリシーおよびロールの管理</span></h2>
+<p><span class="merged" id="index.jYry3" title="原文 : Use security policies to manage who can access a resource in a WebLogic Server domain.">セキュリティ・ポリシーを使用して、WebLogic Serverドメイン内のリソースにアクセスできるユーザーを管理します。</span></p>
+<p><span class="merged" id="index.3mCx4t.spl1"  title="原文: A resource is an entity (such as a Web Service or a server instance) or an action (such as a method in a Web Service or the act of shutting down a server instance).">リソースとは、エンティティ(Webサービスやサーバー・インスタンスなど)またはアクション(WebLogic Server内のメソッドやサーバー・インスタンスを停止する操作など)です。</span> <span class="merged" id="index.3mCx4t.spl2" title="原文 : For a list of resource types, see Resource Types You Can Secure with Policies.">リソース・タイプのリストについては、<a href="https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/roles/types.html">「ポリシーで保護できるリソース・タイプ」</a>を参照してください。</span> </p>
+<p><span class="merged" id="index.32Wvhr.spl1" title="原文 : A security policy specifies which users, groups, or roles can access the resource according to a set of conditions.">セキュリティ・ポリシーは、一連の条件に従って、リソースにアクセスできるユーザー、グループまたはロールを指定します。</span> <span class="merged" id="index.32Wvhr.spl2" title="原文 : Whenever possible, you should use security roles to determine access control.">可能な場合は常に、セキュリティ・ロールを使用してアクセス制御を決定する必要があります。</span> <span class="merged" id="index.32Wvhr.spl3"  title="原文: A security role, like a security group, grants an identity to a user.">セキュリティ・グループなどのセキュリティロールによって、ユーザーにアイデンティティが付与されます。</span> <span class="merged" id="index.32Wvhr.spl4"  title="原文: Unlike a group, however, membership in a role can be based on a set of conditions that are evaluated at runtime.">ただしグループとは違い、ロールのメンバーシップは実行時に評価される条件群に基づいて動作できます。</span> </p>
+<p><span class="merged" id="index.2gqy3j.spl1" title="原文 : For most types of WebLogic resources, you can use the WebLogic Remote Console to define the security policies and roles that restrict access.">ほとんどのタイプのWebLogicリソースでは、WebLogic Remote Consoleを使用して、アクセスを制限するセキュリティ・ポリシーおよびロールを定義できます。</span> <span class="merged" id="index.2gqy3j.spl2"  title="原文: However, for Web application and EJB resources, you can also use deployment descriptors.">ただし、WebアプリケーションおよびEJBリソースの場合は、デプロイメント・ディスクリプタも使用できます。</span> </p>
+<p><span class="merged" id="index.1hCt8q" title="原文 : The general process to secure a WebLogic resource is:">WebLogicリソースを保護する一般的なプロセスは次のとおりです:</span></p>
+<ol>
+<li><span class="merged" id="index.2x1sZR" title="原文 : Create users and groups"><a href="index.html#user_groups">「ユーザーとグループ」</a>の作成</span></li>
+<li><span class="merged" id="index.3IIzIi.spl1" title="原文 : Optional: Manage default security roles or create new ones."><strong>オプション</strong>: デフォルトのセキュリティ・ロールを管理するか、新しいセキュリティ・ロールを作成します。</span> <span class="merged" id="index.3IIzIi.spl2" title="原文 : We recommend that you use roles to secure WebLogic resources (instead of users or groups) to increase efficiency for administrators who work with many users.">ロールを使用して、(ユーザーまたはグループではなく)WebLogicリソースを保護し、多くのユーザーと連携する管理者の効率を高めることをお薦めします。</span> <span class="merged" id="index.3IIzIi.spl3"  title="原文: You can use the default roles that WebLogic Server provides or create your own.">WebLogic Serverが提供するデフォルトのロールを使用することも、独自のものを作成することも可能です。</span> </li>
+<li><span class="merged" id="index.1nMLnY" title="原文 : Create and apply security policies.">セキュリティ・ポリシーを作成して適用します。</span></li>
+</ol>
+<p><span class="merged" id="index.2ecCuY"  title="原文: For more information, see Securing Resources Using Roles and Policies for Oracle WebLogic Server.">詳細は、<a href="https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/roles/intro.html#GUID-E454A766-0F19-472B-A470-F2BD9B6BEF64">ロールおよびポリシーによるOracle WebLogic Serverリソースの保護</a>を参照してください。</span></p>
+<h3 id="security-roles"><span class="merged" id="index.20PGYj"  title="原文:: Security roles">セキュリティ・ロール</span></h3>
+<p><span class="merged" id="index.4R4hwB.spl1"  title="原文: A security role is an identity granted to users or groups based on specific conditions.">セキュリティ・ロールは、特定の条件に基いてユーザーまたはグループに付与されるIDです。</span> <span class="merged" id="index.4R4hwB.spl2"  title="原文: Multiple users or groups can be granted the same security role and a user or group can be in more than one security role.">複数のユーザーまたはグループに同じセキュリティ・ロールを付与することができます。また、ユーザーまたはグループは複数のセキュリティ・ロール内に存在できます。</span> <span class="merged" id="index.4R4hwB.spl3"  title="原文: Security roles are used by policies to determine who can access a WebLogic resource.">セキュリティ・ロールは、ポリシーにおいてWebLogicリソースにアクセスできるユーザーを決定するために使用されます。</span> </p>
+<p><span class="merged" id="index.3S8pFC.spl1" title="原文 : WebLogic Server provides a default set of roles that you can use with any policy (global roles).">WebLogic Serverには、任意のポリシー(グローバル・ロール)で使用できるデフォルトのロール・セットが用意されています。</span> <span class="merged" id="index.3S8pFC.spl2" title="原文 : You can create your own global roles or create roles that can be used by policies only for a specific resource (scoped roles).">独自のグローバル・ロールを作成することも、特定のリソース(スコープ付きロール)に対してのみポリシーで使用できるロールを作成することもできます。</span> <span class="merged" id="index.3S8pFC.spl3"  title="原文: For example, you can place all of your system administrators in WebLogic Server’s Admin role.">たとえば、システム管理者をすべて、WebLogic ServerのAdminロールに入れるとします。</span> <span class="merged" id="index.3S8pFC.spl4"  title="原文: You can then create a scoped role for a specific EJB that contains highly sensitive business logic.">その後、機密性の高いビジネス・ロジックを含む特定のEJBについては、スコープ指定ロールを作成できます。</span> <span class="merged" id="index.3S8pFC.spl5"  title="原文: When you create a policy for the EJB, you can specify that only the scoped role can access the EJB.">EJBのポリシーを作成する場合、スコープ指定ロールのみがEJBにアクセス可能であると指定することができます。</span> </p>
+<p><span class="merged" id="index.2oR8Zh.spl1"  title="原文: If two roles conflict, the role of a narrower scope overrides the role of the broader scope.">2つのロールが競合している場合、スコープの狭いロールによってスコープの広いロールがオーバーライドされます。</span> <span class="merged" id="index.2oR8Zh.spl2"  title="原文: For example, a scoped role for an EJB resource overrides a global role or a scoped role for the enterprise application that contains the EJB.">たとえば、EJBリソースに対するスコープ指定ロールは、グローバル・ロールや、そのEJBを含むエンタープライズ・アプリケーションに対するスコープ指定ロールをオーバーライドします。</span> </p>
+<p><span class="merged" id="index.49CvAu" title="原文 : Security roles are created within a security realm, and the roles can be used only when the realm is active.">セキュリティ・ロールはセキュリティ・レルム内に作成され、ロールはレルムがアクティブである場合にのみ使用できます。</span></p>
+<p><span class="merged" id="index.3fMZnd" title="原文 : For more information, see Overview of Security Roles.">詳細については、<a href="https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/roles/secroles.html#GUID-79645C45-C982-454D-A22C-6115B86EDAD3">「セキュリティ・ロールの概要」</a>を参照してください。</span></p>
+<h4 id="create-global-roles"><span class="merged" id="index.39Vyvw" title="原文 : Create global roles">グローバル・ロールの作成</span></h4>
+<p><span class="merged" id="index.kCaCe" title="原文 : Before creating a new global security role, review the Global Security Roles in Securing Resources Using Roles and Policies for Oracle WebLogic Server to assess if an existing role is sufficient for your needs.">新しいグローバル・セキュリティ・ロールを作成する前に、<em>「Oracle WebLogic Serverのロールおよびポリシーを使用したリソースの保護」</em>の<a href="https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/roles/secroles.html#GUID-84859935-E7A5-4D3E-8A11-CBF63F93571A">「グローバル・セキュリティ・ロール」</a>を確認して、既存のロールがニーズに十分であるかどうかを評価します。</span></p>
+<ol>
+<li><span class="merged" id="index.30hvYw.2" title="原文 : In the Security Data Tree perspective, expand Realms.">セキュリティ・データ・ツリーのパースペクティブで、レルムを展開します。</span></li>
+<li><span class="merged" id="index.1XwpNi" title="原文 : Select the Security Realm where you want to add a global role.">グローバル・ロールを追加するセキュリティ・レルムを選択します。</span></li>
+<li><span class="merged" id="index.4BIid8" title="原文 : Expand Role Mappers &gt; XACMLRoleMapper &gt; Global &gt; Roles.">「ロール・マッパー」 >「XACMLRoleMapper」 >「グローバル」 >「ロール」を展開します。</span></li>
+<li><span class="merged" id="index.1pYFbB"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.D3DZQ" title="原文 : Enter a name for the new global role and click Create.">新しいグローバル・ロールの名前を入力し、<strong>「作成」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.11hXOT.2"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします</span></li>
+</ol>
+<p><span class="merged" id="index.1xWuJa.spl1" title="原文 : After the role is created, you can build a policy that uses conditions to determine which users or groups it encompasses.">ロールの作成後、条件を使用するポリシーを作成して、ロールに含まれるユーザーまたはグループを決定できます。</span> <span class="merged" id="index.1xWuJa.spl2" title="原文 : We recommend that whenever possible you use the Group condition which grants the security role to all members of the specified group.">可能な場合は常に、指定したグループのすべてのメンバーにセキュリティ・ロールを付与するグループ条件を使用することをお薦めします。</span> <span class="merged" id="index.1xWuJa.spl3" title="原文 : See Edit a policy for more details on how you can edit conditions.">条件の編集方法の詳細は、<a href="index.html#edit-policy">「ポリシーを編集」</a>を参照してください。</span> </p>
+<p><span class="merged" id="index.4K5iac" title="原文 : For a description of conditions in the Predicate List, see Security Role Conditions">述語リストの条件の詳細は、<a href="https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/roles/secroles.html#GUID-06D3F08F-5A98-4649-A3F4-5D08B76C72CD">「セキュリティ・ロール条件」</a>を参照してください</span></p>
+<h4 id="create-scoped-roles"><span class="merged" id="index.5zibH" title="原文 : Create scoped roles">スコープ指定ロールの作成</span></h4>
+<p><span class="merged" id="index.3HwGJ3" title="原文 : Scoped roles can only be used with policies that apply to specific resources.">スコープ付きロールは、特定のリソースに適用されるポリシーでのみ使用できます。</span></p>
+<ol>
+<li><span class="merged" id="index.30hvYw.3" title="原文 : In the Security Data Tree perspective, expand Realms.">セキュリティ・データ・ツリーのパースペクティブで、レルムを展開します。</span></li>
+<li><span class="merged" id="index.4eLHOP" title="原文 : Select the Security Realm where you want to add a scoped role.">スコープ付きロールを追加するセキュリティ・レルムを選択します。</span></li>
+<li><span class="merged" id="index.mU3QJ" title="原文 : Expand Role Mappers &gt; XACMLRoleMapper &gt; Resource &gt; Roles.">「ロール・マッパー」 >「XACMLRoleMapper」 >「<em>リソース</em>」 >「ロール」を展開します。</span></li>
+<li><span class="merged" id="index.1pYFbB.1"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.2u6uvH" title="原文 : Enter a name for the new scoped role and click Create.">新しいスコープ指定ロールの名前を入力し、<strong>「作成」</strong>をクリックします。</span></li>
+</ol>
+<p><span class="merged" id="index.4RTJi9.spl1" title="原文 : After the role is created, you can build a policy that uses conditions to determine which users or groups it encompasses We recommend that whenever possible, that you use the Group condition which grants the security role to all members of a specified group.">ロールの作成後、条件を使用するポリシーを作成して、ロールに含まれるユーザーまたはグループを決定できます。可能な場合は常に、指定したグループのすべてのメンバーにセキュリティ・ロールを付与するグループ条件を使用することをお薦めします。</span> <span class="merged" id="index.4RTJi9.spl2" title="原文 : See Edit a policy for more details on how you can edit conditions.">条件の編集方法の詳細は、<a href="index.html#edit-policy">「ポリシーを編集」</a>を参照してください。</span> </p>
+<p><span class="merged" id="index.4K5iac.1" title="原文 : For a description of conditions in the Predicate List, see Security Role Conditions">述語リストの条件の詳細は、<a href="https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/roles/secroles.html#GUID-06D3F08F-5A98-4649-A3F4-5D08B76C72CD">「セキュリティ・ロール条件」</a>を参照してください</span></p>
+<h3 id="sec_policies"><span class="merged" id="index.2NztRq"  title="原文:: Security policies">セキュリティ・ポリシー</span></h3>
+<p><span class="merged" id="index.eIt1I.spl1" title="原文 : A security policy specifies the conditions that users, groups, or roles must meet to access a resource.">セキュリティ・ポリシーは、リソースにアクセスするためにユーザー、グループまたはロールが満たす必要がある条件を指定します。</span> <span class="merged" id="index.eIt1I.spl2" title="原文 : Policies must have one or more conditions and you can combine conditions to create complex policies for more dynamic access control.">ポリシーには1つ以上の条件が必要です。条件を組み合せて複雑なポリシーを作成し、より動的なアクセス制御を実現できます。</span> </p>
+<p><span class="merged" id="index.D9Opk.spl1" title="原文 : Root level policies apply to all instances of a specific resource type, for example, all JMS resources in your domain.">ルート・レベルのポリシーは、特定のリソース・タイプのすべてのインスタンス(たとえば、ドメイン内のすべてのJMSリソース)に適用されます。</span> <span class="merged" id="index.D9Opk.spl2" title="原文 : All default security policies are root level policies.">デフォルトのセキュリティ・ポリシーはすべて、ルート・レベルのポリシーです。</span> </p>
+<p><span class="merged" id="index.2FnNf2.spl1" title="原文 : You can also create policies that only apply to a specific resource instance.">特定のリソース・インスタンスにのみ適用されるポリシーを作成することもできます。</span> <span class="merged" id="index.2FnNf2.spl2"  title="原文: If the instance contains other resources, the policy will apply to the included resource as well.">インスタンスに他のリソースが含まれている場合、それに対してもこのポリシーが適用されます。</span> <span class="merged" id="index.2FnNf2.spl3" title="原文 : For example, you can create a policy for an entire JMS system resource, or for a particular queue or topic within that resource.">たとえば、JMSシステム・リソース全体、またはそのリソース内の特定のキューまたはトピックのポリシーを作成できます。</span> </p>
+<p><span class="merged" id="index.2c3lLS.spl1"  title="原文: The policy of a narrower scope overrides policy of a broader scope.">スコープが狭いほうのポリシーが、広いほうのポリシーをオーバーライドします。</span> <span class="merged" id="index.2c3lLS.spl2" title="原文 : For example, if you create a security policy for a JMS system resource and a policy for a JMS queue within that system resource, the JMS queue will be protected by its own policy and will ignore the policy for the system resource.">たとえば、JMSシステム・リソースのセキュリティ・ポリシーとそのシステム・リソース内のJMSキューのポリシーを作成する場合、JMSキューは独自のポリシーによって保護され、システム・リソースのポリシーは無視されます。</span> </p>
+<p><span class="merged" id="index.2OpiUe"  title="原文: For more information, see Security Policies in Securing Resources Using Roles and Policies for Oracle WebLogic Server.">詳細は、<em>Oracle WebLogic Serverロールおよびポリシーによるリソースの保護</em>の<a href="https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/roles/sec_poly.html">セキュリティ・ポリシー</a>を参照してください。</span></p>
+<p><span class="merged" id="index.4NGENi.spl1" title="原文 : It’s recommended that you use the Role condition where possible.">可能な場合は、ロール条件を使用することをお薦めします。</span> <span class="merged" id="index.4NGENi.spl2" title="原文 : Basing conditions on security roles lets you create one security policy that takes into account multiple users or groups, and is a more efficient method of management.">セキュリティ・ロールに基づいて条件を使用すると、複数のユーザーまたはグループを対象にして1つのセキュリティ・ポリシーを作成できるため、管理が効率的になります。</span> </p>
+<p><span class="merged" id="index.17gTB5" title="原文 : See Security Policy Conditions in Securing Resources Using Roles and Policies for Oracle WebLogic Server to learn more.">詳細は、<em>「Oracle WebLogic Serverのロールおよびポリシーを使用したリソースの保護」</em>の<a href="https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/roles/sec_poly.html#GUID-F91088E1-EFA5-42BE-BD14-27127C797F23">「セキュリティ・ポリシー条件」</a>を参照してください。</span></p>
+<h4 id="create-a-policy-for-resource-instances"><span class="merged" id="index.4FMjQI" title="原文 : Create a policy for resource instances">リソース・インスタンスのポリシーの作成</span></h4>
+<p><span class="merged" id="index.3WlM3Y.spl1" title="原文 : You can create a security policy that only applies to a specific resource instance.">特定のリソース・インスタンスにのみ適用されるセキュリティ・ポリシーを作成できます。</span> <span class="merged" id="index.3WlM3Y.spl2" title="原文 : If the instance contains other resources, the policy will apply to the included resources as well.">インスタンスに他のリソースが含まれている場合、ポリシーは含まれているリソースにも適用されます。</span> </p>
+<ol>
+<li><span class="merged" id="index.30hvYw.4" title="原文 : In the Security Data Tree perspective, expand Realms.">セキュリティ・データ・ツリーのパースペクティブで、レルムを展開します。</span></li>
+<li><span class="merged" id="index.6eua9" title="原文 : Select the Security Realm that contains the resource instance where you want to add a policy.">ポリシーを追加するリソース・インスタンスを含むセキュリティ・レルムを選択します。</span></li>
+<li><span class="merged" id="index.3C5G9W" title="原文 : Expand Authorizers &gt; XACMLAuthorizer &gt; resourceInstance.">「承認者」 >「XACMLAuthorizer」 >「<em>resourceInstance</em>」を展開します。</span></li>
+<li><span class="merged" id="index.3t4GpA" title="原文 : Click Add Condition to open the Add New First Condition dialog box."><strong>「条件の追加」</strong>をクリックして、「新しい最初の条件の追加」ダイアログ・ボックスを開きます。</span></li>
+<li><span class="merged" id="index.6ibC0.spl1" title="原文 : Select a predicate from the Predicate List."><strong>「述語リスト」</strong>から述語を選択します。</span> <span class="merged" id="index.6ibC0.spl2" title="原文 : Depending on the predicate you choose, you may need to configure arguments for the condition.">選択した述語によっては、条件の引数を構成する必要がある場合があります。</span> </li>
+<li><span class="merged" id="index.2gYB66"  title="原文:: Click OK."><strong>「OK」</strong>をクリックします</span></li>
+<li><span class="merged" id="index.11hXOT.3"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします</span></li>
+</ol>
+<p><span class="merged" id="index.33SZ7i" title="原文 : You can add more conditions to the policy to increase its complexity.">ポリシーにさらに条件を追加して、複雑さを増すことができます。</span></p>
+<h4 id="edit-policy"><span class="merged" id="index.1AiKx3"  title="原文:: Edit a policy">ポリシーを編集します</span></h4>
+<p><span class="merged" id="index.4RCUTt" title="原文 : You can edit a policy by modifying a condition’s arguments or by modifying the relationships between conditions in the policy.">ポリシーを編集するには、条件の引数を変更するか、ポリシー内の条件間の関係を変更します。</span></p>
+<ol>
+<li><span class="merged" id="index.2Eh9iC" title="原文 : Go to the policy that you want to edit.">編集するポリシーに移動します。</span></li>
+<li><span class="merged" id="index.2f9HpL.spl1" title="原文 : Click on the condition you want to edit.">編集する条件をクリックします。</span> <span class="merged" id="index.2f9HpL.spl2" title="原文 : You can only edit the arguments of the condition.">条件の引数のみを編集できます。</span> <span class="merged" id="index.2f9HpL.spl3" title="原文 : If you want to use a different predicate for the condition, you must add a new condition.">条件に別の述語を使用する場合は、新しい条件を追加する必要があります。</span> </li>
+</ol>
+<p><span class="merged" id="index.3J6cxx" title="原文 : Conditions have three different types of relationships: AND, OR, and Combination.">条件には3つの異なるタイプの関係があります: AND、ORおよびCombination。</span></p>
+<ul>
+<li><span class="merged" id="index.4H6Vfw" title="原文 : AND: All of the conditions joined by an AND operator must be met.">AND: AND演算子で結合されたすべての条件を満たす必要があります。</span></li>
+<li><span class="merged" id="index.2SuuUC" title="原文 : OR: At least one of the conditions joined by an OR operator must be met.">OR: OR演算子で結合された条件の少なくとも1つを満たす必要があります。</span></li>
+<li><span class="merged" id="index.3nIx1C.spl1" title="原文 : Combination: Two or more conditions are combined and must be evaluated as a group.">組合せ: 2つ以上の条件が結合され、グループとして評価される必要があります。</span> <span class="merged" id="index.3nIx1C.spl2" title="原文 : Conditions within a combination are themselves related to each other through AND or OR operators.">組合せ<em>「内」</em>の条件は、AND演算子またはOR演算子を介して相互に関連します。</span> </li>
+</ul>
+<p><span class="merged" id="index.3xxqrR.spl1" title="原文 : By default, a new condition is added as a simple condition at the top of the list of conditions.">デフォルトでは、新しい条件は、条件リストの最上部に単純な条件として追加されます。</span> <span class="merged" id="index.3xxqrR.spl2" title="原文 : To insert a new condition elsewhere, select an existing condition and then click Add Condition.">新しい条件を他の場所に挿入するには、既存の条件を選択してから条件の追加をクリックします。</span> <span class="merged" id="index.3xxqrR.spl3" title="原文 : You’ll get a dropdown list with options to add the new condition either above or below the selected condition.">選択した条件の上または下に新しい条件を追加するオプションがあるドロップダウン・リストが表示されます。</span> <span class="merged" id="index.3xxqrR.spl4" title="原文 : The order of conditions is not meaningful to how the policy is interpreted.">条件の順序は、ポリシーの解釈方法には意味がありません。</span> </p>
+<p><span class="merged" id="index.46xj9E.spl1" title="原文 : A policy can contain multiple simple or compound conditions or a mix of simple and compound conditions.">ポリシーには、複数の単純な条件または複合条件、または単純な条件と複合条件の混在を含めることができます。</span> <span class="merged" id="index.46xj9E.spl2" title="原文 : You can also nest compound conditions.">複合条件をネストすることもできます。</span> </p>
+
+<div class="notices tip" ><p><span class="merged" id="index.2zUmwU.spl1" title="原文 : Why use compound conditions?">複合条件を使用する理由</span> <span class="merged" id="index.2zUmwU.spl2" title="原文 : Consider this scenario: a resource exists where you want Administrators to always have access, but Deployers to only have access between 9 am and 5 pm.">このシナリオについて: 管理者が常にアクセスできるようにするリソースが存在しますが、デプロイヤは午前9時から午後5時までの間のみアクセスできます。</span> <span class="merged" id="index.2zUmwU.spl3" title="原文 : The following policy would address both requirements.">次のポリシーは、両方の要件に対応します。</span> </p>
+<ul>
+<li>
+<p><span class="merged" id="index.1SseeZ" title="原文 : Condition 1 (simple): Role: Admin">条件1 (単純): Role: 管理者</span></p>
+<ul>
+<li><span class="merged" id="index.34nAJH"  title="原文:: OR"><strong>または</strong></span></li>
+</ul>
+</li>
+<li>
+<p><span class="merged" id="index.h5B5m" title="原文 : Condition 2 (compound): Role: Deployer AND access occurs between 09:00:00 and 17:00:00 GMT -7:00">条件2 (複合): Role: デプロイヤとアクセスは、09:00:00から17:00:00 GMT -7:00の間に行われます</span></p>
+</li>
+</ul>
+</div>
+
+<p><span class="merged" id="index.19BNOD" title="原文 : Use the actions on the Policy page to edit a policy.">ポリシー・ページのアクションを使用して、ポリシーを編集します。</span></p>
+<table>
+<thead>
+<tr>
+<th><span class="merged" id="index.1B5r9w"  title="原文:: Action">Action</span></th>
+<th><span class="merged" id="index.4JM9z7"  title="原文:: Description">説明</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="merged" id="index.v4vB1"  title="原文:: Add Condition">条件の追加</span></td>
+<td><span class="merged" id="index.MPCmP.spl1" title="原文 : Adds a new condition to the policy.">新しい条件をポリシーに追加します。</span> <span class="merged" id="index.MPCmP.spl2" title="原文 : You can choose to add the new condition above or below another condition.">新しい条件を別の条件の上または下に追加することを選択できます。</span> </td>
+</tr>
+<tr>
+<td><span class="merged" id="index.1l08kS"  title="原文:: Combine">組合せ</span></td>
+<td><span class="merged" id="index.33HzsP" title="原文 : When multiple conditions are selected, you can combine them to create a compound condition.">複数の条件を選択した場合は、条件を組み合せて複合条件を作成できます。</span></td>
+</tr>
+<tr>
+<td><span class="merged" id="index.l6YlY"  title="原文:: Uncombine">結合解除</span></td>
+<td><span class="merged" id="index.2deAYE" title="原文 : When a compound condition is selected, you can break it into independent conditions.">複合条件を選択すると、独立した条件に分割できます。</span></td>
+</tr>
+<tr>
+<td><span class="merged" id="index.22E1VG"  title="原文:: Remove">削除</span></td>
+<td><span class="merged" id="index.Qrh8s.spl1" title="原文 : Deletes a simple or compound condition from the policy.">ポリシーから単純条件または複合条件を削除します。</span> <span class="merged" id="index.Qrh8s.spl2" title="原文 : When there are no conditions in a policy, the default policy will apply.">ポリシーに条件がない場合、デフォルト・ポリシーが適用されます。</span> </td>
+</tr>
+<tr>
+<td><span class="merged" id="index.1OUYXK"  title="原文:: Negate">Negate</span></td>
+<td><span class="merged" id="index.3XsxRq.spl1" title="原文 : Reverses the meaning of a condition.">条件の意味を反転します。</span> <span class="merged" id="index.3XsxRq.spl2" title="原文 : The criteria to access a resource becomes the opposite of the original condition.">リソースにアクセスする基準は、元の条件とは反対になります。</span> </td>
+</tr>
+<tr>
+<td><span class="merged" id="index.2f2nY9"  title="原文:: Reset">リセット</span></td>
+<td><span class="merged" id="index.2XSf64.spl1" title="原文 : Reverts the policy to its last saved change, not the last change.">ポリシーを最後の変更ではなく、最後の<em>「保存済」</em>変更に戻します。</span> <span class="merged" id="index.2XSf64.spl2" title="原文 : It’s recommended that you save your policy frequently or you may unintentionally lose several changes using the Reset action.">頻繁にポリシーを保存するか、リセット・アクションを使用して意図せずに複数の変更が失われる可能性があります。</span> </td>
+</tr>
+</tbody>
+</table>
+<p><span class="merged" id="index.54VKD.spl1" title="原文 : You can also edit a policy from its Advanced tab where the policy is expressed as string.">ポリシーを文字列として表す<strong>「拡張」</strong>タブからポリシーを編集することもできます。</span> <span class="merged" id="index.54VKD.spl2" title="原文 : Any changes made to a policy in the Advanced tab are reflected in the main Policy tab, and vice versa.">詳細タブでポリシーに加えた変更は、メインのポリシー・タブに反映され、その逆も同様です。</span> </p>
+<h4 id="delete-a-policy"><span class="merged" id="index.3qX3X8"  title="原文:: Delete a policy">ポリシーを削除します</span></h4>
+<p><span class="merged" id="index.3xI9Ec" title="原文 : Before you delete a policy, make sure that the default security policy for the resource instance will provide adequate access control.">ポリシーを削除する前に、リソース・インスタンスのデフォルトのセキュリティ・ポリシーで適切なアクセス制御が提供されていることを確認してください。</span></p>
+<ol>
+<li><span class="merged" id="index.1N7j9y" title="原文 : Go to the policy you want to delete.">削除するポリシーに移動します。</span></li>
+<li><span class="merged" id="index.UwfeL" title="原文 : Delete all of the conditions in the policy.">ポリシーのすべての条件を削除します。</span></li>
+<li><span class="merged" id="index.11hXOT.4"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします</span></li>
+</ol>
+<h2 id="managing-credential-mappers"><span class="merged" id="index.2hOaSR" title="原文 : Managing credential mappers">資格証明マッパーの管理</span></h2>
+<p><span class="merged" id="index.3TrLwJ.spl1" title="原文 : A Credential Mapping provider lets WebLogic Server map a WebLogic resource to a set of credentials in an external system so that the WebLogic resource can log into that external system on behalf of a subject that has already been authenticated.">資格証明マッピング・プロバイダを使用すると、WebLogic ServerはWebLogicリソースを外部システムの資格証明セットにマップできるため、WebLogicリソースは、すでに認証されているサブジェクトのかわりにその外部システムにログインできます。</span> <span class="merged" id="index.3TrLwJ.spl2" title="原文 : You can map multiple WebLogic resources (of the same type) to the same external system (and even to the same subject within that system).">複数のWebLogicリソースを(同じタイプの)同じ外部システム(およびそのシステム内の同じサブジェクトにさえマップできます。</span> </p>
+<p><span class="merged" id="index.qivlL.spl1" title="原文 : You can manage the credential mappings for the default credential mapper provider (WebLogic Credential Mapping Provider) within a security realm.">セキュリティ・レルム内のデフォルトの資格証明マッパー・プロバイダ(WebLogic資格証明マッピング・プロバイダ)の資格証明マッピングを管理できます。</span> <span class="merged" id="index.qivlL.spl2" title="原文 : Only the default credential mapping provider is supported.">デフォルトの資格証明マッピング・プロバイダのみがサポートされています。</span> </p>
+<p><span class="merged" id="index.3PVkG9" title="原文 : The general process for mapping credentials remains the same across WebLogic resources:">資格証明をマッピングするための一般的なプロセスは、WebLogicリソース全体で同じままです:</span></p>
+<ol>
+<li><span class="merged" id="index.8JClS" title="原文 : Configure an applicable MBean in the Edit Tree perspective such as deploying an app or adding a data source.">アプリケーションのデプロイやデータ・ソースの追加など、ツリーの編集のパースペクティブから適用可能なMBeanを構成します。</span></li>
+<li><span class="merged" id="index.2jNKyX" title="原文 : Commit your changes and reboot the server if any of your changes are non-dynamic.">変更が動的でない場合は、変更をコミットし、サーバーをリブートします。</span></li>
+<li><span class="merged" id="index.2tDdfp.spl1" title="原文 : In the Security Data Tree perspective, under Credential Mappers, find the corresponding node for the MBean.">セキュリティ・データ・ツリーのパースペクティブの資格証明マッパーで、MBeanに対応するノードを見つけます。</span> <span class="merged" id="index.2tDdfp.spl2" title="原文 : If necessary, define the properties of a WebLogic resource to identify it and form a connection between the MBean’s configuration data and its security data.">必要に応じて、WebLogicリソースのプロパティを定義して識別し、MBeanの構成データとそのセキュリティ・データの間の接続を形成します。</span> </li>
+<li><span class="merged" id="index.1U0OhT" title="原文 : Create mappings for the WebLogic resource.">WebLogicリソースのマッピングを作成します。</span></li>
+</ol>
+<p><span class="merged" id="index.7vgt5" title="原文 : You can create credential mappings for the following WebLogic resources:">次のWebLogicリソースの資格証明マッピングを作成できます:</span></p>
+<ul>
+<li><span class="merged" id="index.zjQBh"  title="原文:: App Deployments">アプリケーション・デプロイメント</span>
+<ul>
+<li><span class="merged" id="index.2P7LxR"  title="原文:: EJBs"><a href="index.html#ejbs">EJB</a></span></li>
+<li><span class="merged" id="index.1osPem" title="原文 : JDBC applications"><a href="index.html#jdbc-apps">JDBCアプリケーション</a></span></li>
+<li><span class="merged" id="index.4ZZPat"  title="原文:: JDBC modules"><a href="index.html#jdbc-modules">JDBCモジュール</a></span></li>
+<li><span class="merged" id="index.3Al0rl"  title="原文:: Resource adapters"><a href="index.html#resource-adapters">リソース・アダプタ</a></span></li>
+</ul>
+</li>
+<li><span class="merged" id="index.yxR8S.1"  title="原文:: Data Sources"><a href="index.html#data-sources">データソース</a></span></li>
+<li><span class="merged" id="index.13pFmP.1"  title="原文:: Remote Resources"><a href="index.html#remote-resources">リモート・リソース</a></span></li>
+</ul>
+<h3 id="ejbs"><span class="merged" id="index.4MOjjc" title="原文 : App Deployments: EJBs">アプリ・デプロイメント: EJB</span></h3>
+<h4 id="identify-an-ejb-component"><span class="merged" id="index.Rt5jK" title="原文 : Identify an EJB Component">EJBコンポーネントの識別</span></h4>
+<p><span class="merged" id="index.2tYte5" title="原文 : The first time you add a reference to an EJB component, you’ll also create a credential mapping for that EJB component.">EJBコンポーネントに初めて参照を追加する場合は、そのEJBコンポーネントの資格証明マッピングも作成します。</span></p>
+<ol>
+<li><span class="merged" id="index.30hvYw.5" title="原文 : In the Security Data Tree perspective, expand Realms.">セキュリティ・データ・ツリーのパースペクティブで、レルムを展開します。</span></li>
+<li><span class="merged" id="index.qbGbY.spl1" title="原文 : Select the Security Realm where you want to add a EJB component.">EJBコンポーネントを追加するセキュリティ・レルムを選択します。</span> <span class="merged" id="index.qbGbY.spl2" title="原文 : Go to Credential Mappers &gt; credentialMapperName &gt; App Deployments &gt; applicationName &gt; EJBs.">「資格証明マッパー」 >「<em>credentialMapperName</em>」 >「アプリ・デプロイメント」 >「<em>applicationName</em>」 >「EJB」に移動します。</span> </li>
+<li><span class="merged" id="index.1pYFbB.2"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.1iMp78" title="原文 : Fill in the fields as required.">必要に応じてフィールドに入力します。</span></li>
+<li><span class="merged" id="index.2BMUBQ.2"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></li>
+</ol>
+<p><span class="merged" id="index.37b6JX.spl1" title="原文 : A reference to the EJB component is added under the EJBs node.">EJBコンポーネントへの参照がEJBノードの下に追加されます。</span> <span class="merged" id="index.37b6JX.spl2" title="原文 : The name of the EJB component is generated by the properties of the application and those you set when adding the EJB component.">EJBコンポーネントの名前は、アプリケーションのプロパティおよびEJBコンポーネントの追加時に設定したプロパティによって生成されます。</span> </p>
+<p><span class="merged" id="index.UZ3kR" title="原文 : For information on how to manage the credential mappings, see Credential Mappings.">資格証明マッピングの管理方法の詳細は、<a href="index.html#credential-mappings">「資格証明マッピング」</a>を参照してください。</span></p>
+<h4 id="remove-a-reference-to-an-ejb-component"><span class="merged" id="index.3WZYk" title="原文 : Remove a reference to an EJB Component">EJBコンポーネントへの参照の削除</span></h4>
+<p><span class="merged" id="index.3l6gT4.spl1" title="原文 : You cannot delete a reference to an EJB component with multiple credential mappings.">複数の資格証明マッピングを持つEJBコンポーネントへの参照は削除できません。</span> <span class="merged" id="index.3l6gT4.spl2" title="原文 : To delete an EJB component reference, you must delete all of the credential mappings first - which will then delete the EJB component reference automatically - or delete all but one of the credential mappings and then follow these steps:">EJBコンポーネント参照を削除するには、まずすべての資格証明マッピングを削除する必要があります - これにより自動的にEJBコンポーネント参照が削除されます - または、いずれかの資格証明マッピングを除くすべてを削除してから、次のステップに従います:</span> </p>
+<ol>
+<li><span class="merged" id="index.1DllF0" title="原文 : In the Security Data Tree perspective, go to Credential Mappers &gt; credentialMapperName &gt; App Deployments &gt; applicationName &gt; EJBs.">「セキュリティ・データ・ツリー」のパースペクティブで、「資格証明マッパー」 > <em>credentialMapperName</em> >「アプリ・デプロイメント」> <em>applicationName</em> > EJBに移動します。</span></li>
+<li><span class="merged" id="index.PlloA" title="原文 : Beside the EJB component that you want to delete, click the trash icon .">削除するEJBコンポーネントの横にあるごみ箱アイコン<img alt="「設定」アイコン" src="../../../../images/icons/data-providers-delete-icon-brn_24x24.png">をクリックします。</span></li>
+</ol>
+<h3 id="jdbc-apps"><span class="merged" id="index.2U9Q9k" title="原文 : App Deployments: JDBC Application">アプリ・デプロイメント: JDBCアプリケーション</span></h3>
+<p><span class="merged" id="index.WsYVn" title="原文 : You can only add credential mappings for JDBC applications, not manage the JDBC applications themselves.">JDBCアプリケーションの資格証明マッピングのみを追加でき、JDBCアプリケーション自体は管理できません。</span></p>
+<p><span class="merged" id="index.UZ3kR.1" title="原文 : For information on how to manage the credential mappings, see Credential Mappings.">資格証明マッピングの管理方法の詳細は、<a href="index.html#credential-mappings">「資格証明マッピング」</a>を参照してください。</span></p>
+<h3 id="jdbc-modules"><span class="merged" id="index.33rbZd" title="原文 : App Deployments: JDBC Modules">アプリ・デプロイメント: JDBCモジュール</span></h3>
+<h4 id="identify-a-jdbc-module"><span class="merged" id="index.DNowO" title="原文 : Identify a JDBC Module">JDBCモジュールの識別</span></h4>
+<p><span class="merged" id="index.36otrv" title="原文 : The first time you add a reference to a JDBC module, you’ll also create a credential mapping for that JDBC module.">JDBCモジュールに初めて参照を追加する場合は、そのJDBCモジュールの資格証明マッピングも作成します。</span></p>
+<ol>
+<li><span class="merged" id="index.30hvYw.6" title="原文 : In the Security Data Tree perspective, expand Realms.">セキュリティ・データ・ツリーのパースペクティブで、レルムを展開します。</span></li>
+<li><span class="merged" id="index.1ix9pY.spl1" title="原文 : Select the Security Realm where you want to add a JDBC module.">JDBCモジュールを追加するセキュリティ・レルムを選択します。</span> <span class="merged" id="index.1ix9pY.spl2" title="原文 : Go to Credential Mappers &gt; credentialMapperName &gt; App Deployments &gt; applicationName &gt; JDBC Modules.">「資格証明マッパー」 > <em>credentialMapperName</em> >「アプリ・デプロイメント」 > <em>applicationName</em> >「JDBCモジュール」に移動します。</span> </li>
+<li><span class="merged" id="index.1pYFbB.3"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.1iMp78.1" title="原文 : Fill in the fields as required.">必要に応じてフィールドに入力します。</span></li>
+<li><span class="merged" id="index.2BMUBQ.3"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></li>
+</ol>
+<p><span class="merged" id="index.UZ3kR.2" title="原文 : For information on how to manage the credential mappings, see Credential Mappings.">資格証明マッピングの管理方法の詳細は、<a href="index.html#credential-mappings">「資格証明マッピング」</a>を参照してください。</span></p>
+<h4 id="remove-a-reference-to-a-jdbc-module"><span class="merged" id="index.1VRhjo" title="原文 : Remove a reference to a JDBC Module">JDBCモジュールへの参照の削除</span></h4>
+<p><span class="merged" id="index.3Eqo68.spl1" title="原文 : You cannot delete a reference to a JDBC module with multiple credential mappings.">複数の資格証明マッピングを持つJDBCモジュールへの参照は削除できません。</span> <span class="merged" id="index.3Eqo68.spl2" title="原文 : To delete a JDBC module reference, you must delete all of the credential mappings first - which will then delete the JDBC module reference automatically - or delete all but one of the credential mappings and then follow these steps:">JDBCモジュール参照を削除するには、まずすべての資格証明マッピングを削除する必要があります - JDBCモジュール参照を自動的に削除 - または、いずれかの資格証明マッピングを除くすべてを削除してから、次のステップに従います:</span> </p>
+<ol>
+<li><span class="merged" id="index.2qFkhd" title="原文 : In the Security Data Tree perspective, go to Credential Mappers &gt; credentialMapperName &gt; App Deployments &gt; applicationName &gt; JDBC Module.">「セキュリティ・データ・ツリー」のパースペクティブから、「資格証明マッパー」 > <em>credentialMapperName</em> >「アプリ・デプロイメント」> <em>applicationName</em> >「JDBCモジュール」に移動します。</span></li>
+<li><span class="merged" id="index.4Xfu0f" title="原文 : Beside the JDBC module that you want to delete, click the trash icon .">削除するJDBCモジュールの横にあるごみ箱アイコン<img alt="「設定」アイコン" src="../../../../images/icons/data-providers-delete-icon-brn_24x24.png">をクリックします。</span></li>
+</ol>
+<h3 id="resource-adapters"><span class="merged" id="index.19tnSv" title="原文 : App Deployments: Resource Adapters">アプリ・デプロイメント: リソース・アダプタ</span></h3>
+<h4 id="identify-a-resource-adapter"><span class="merged" id="index.3wDxsh" title="原文 : Identify a Resource Adapter">リソース・アダプタの識別</span></h4>
+<p><span class="merged" id="index.4aA6F5" title="原文 : The first time you add a reference to a resource adapter, you’ll also create a credential mapping for that resource adapter.">リソース・アダプタに初めて参照を追加する場合は、そのリソース・アダプタの資格証明マッピングも作成します。</span></p>
+<ol>
+<li><span class="merged" id="index.30hvYw.7" title="原文 : In the Security Data Tree perspective, expand Realms.">セキュリティ・データ・ツリーのパースペクティブで、レルムを展開します。</span></li>
+<li><span class="merged" id="index.2f6Hcu.spl1" title="原文 : Select the Security Realm where you want to add a resource adapter.">リソース・アダプタを追加するセキュリティ・レルムを選択します。</span> <span class="merged" id="index.2f6Hcu.spl2" title="原文 : Go to Credential Mappers &gt; credentialMapperName &gt; App Deployments &gt; applicationName &gt; Resource Adapters.">「資格証明マッパー」 >「<em>credentialMapperName</em>」 >「アプリ・デプロイメント」 >「<em>applicationName</em>」 >「リソース・アダプタ」に移動します。</span> </li>
+<li><span class="merged" id="index.1pYFbB.4"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.1iMp78.2" title="原文 : Fill in the fields as required.">必要に応じてフィールドに入力します。</span></li>
+<li><span class="merged" id="index.2BMUBQ.4"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></li>
+</ol>
+<p><span class="merged" id="index.3XiHA7.spl1" title="原文 : A reference to a resource adapter is added under the Remote Adapters node.">リソース・アダプタへの参照がリモート・アダプタ・ノードの下に追加されます。</span> <span class="merged" id="index.3XiHA7.spl2" title="原文 : The name of the resource adapter is generated by combining its property values.">リソース・アダプタの名前は、そのプロパティ値を組み合わせることで生成されます。</span> </p>
+<p><span class="merged" id="index.UZ3kR.3" title="原文 : For information on how to manage the credential mappings, see Credential Mappings.">資格証明マッピングの管理方法の詳細は、<a href="index.html#credential-mappings">「資格証明マッピング」</a>を参照してください。</span></p>
+<h4 id="remove-a-reference-to-resource-adapter"><span class="merged" id="index.1rPazn" title="原文 : Remove a reference to Resource Adapter">リソース・アダプタへの参照の削除</span></h4>
+<p><span class="merged" id="index.14Axnd.spl1" title="原文 : You cannot delete a reference to a resource adapter with multiple credential mappings.">複数の資格証明マッピングを持つリソース・アダプタへの参照は削除できません。</span> <span class="merged" id="index.14Axnd.spl2" title="原文 : To delete a resource adapter reference, you must delete all of the credential mappings first - which will then delete the resource adapter reference automatically - or delete all but one of the credential mappings and then follow these steps:">リソース・アダプタ参照を削除するには、まずすべての資格証明マッピングを削除する必要があります - これにより、リソース・アダプタ参照が自動的に削除されます - または、いずれかの資格証明マッピングを除くすべてを削除してから、次のステップに従います:</span> </p>
+<ol>
+<li><span class="merged" id="index.3S6fyK" title="原文 : In the Security Data Tree perspective, go to Credential Mappers &gt; credentialMapperName &gt; App Deployments &gt; applicationName &gt; Resource Adapter.">「セキュリティ・データ・ツリー」のパースペクティブで、「資格証明マッパー」 > <em>credentialMapperName</em> >「アプリ・デプロイメント」> <em>applicationName</em> >「リソース・アダプタ」に移動します。</span></li>
+<li><span class="merged" id="index.R1gcB" title="原文 : Beside the Resource Adapter that you want to delete, click the trash icon .">削除するリソース・アダプタの横にあるごみ箱アイコン<img alt="「設定」アイコン" src="../../../../images/icons/data-providers-delete-icon-brn_24x24.png">をクリックします。</span></li>
+</ol>
+<h3 id="data-sources"><span class="merged" id="index.NSkCh"  title="原文:: Data Sources">データソース</span></h3>
+<p><span class="merged" id="index.44vuxt.spl1" title="原文 : You can only add credential mappings for data sources, not manage the data sources themselves.">データ・ソースの資格証明マッピングのみを追加でき、データ・ソース自体を管理することはできません。</span> <span class="merged" id="index.44vuxt.spl2" title="原文 : You can manage data sources in the Edit tree perspective.">データ・ソースはツリーの編集のパースペクティブで管理できます。</span> </p>
+<p><span class="merged" id="index.UZ3kR.4" title="原文 : For information on how to manage the credential mappings, see Credential Mappings.">資格証明マッピングの管理方法の詳細は、<a href="index.html#credential-mappings">「資格証明マッピング」</a>を参照してください。</span></p>
+<h3 id="remote-resources"><span class="merged" id="index.2dhfV"  title="原文:: Remote Resources">リモート・リソース</span></h3>
+<h4 id="identify-a-remote-resource"><span class="merged" id="index.3O8xnF" title="原文 : Identify a remote resource">リモート・リソースの識別</span></h4>
+<p><span class="merged" id="index.2OLptb" title="原文 : The first time you add a reference to a remote resource, you’ll also create a credential mapping for that remote resource.">リモート・リソースに初めて参照を追加する場合は、そのリモート・リソースの資格証明マッピングも作成します。</span></p>
+
+<div class="notices note" ><p><span class="merged" id="index.2sflC6.spl1" title="原文 : If you add a remote resource with the cross-domain protocol enabled, it will create a WebLogic Server user named cross-domain.">クロスドメイン・プロトコルが有効なリモート・リソースを追加すると、クロスドメインという名前のWebLogic Serverユーザーが作成されます。</span> <span class="merged" id="index.2sflC6.spl2" title="原文 : Only the cross-domain user can be used to create credential mappings.">資格証明マッピングの作成に使用できるのは、クロスドメイン・ユーザーのみです。</span> <span class="merged" id="index.2sflC6.spl3" title="原文 : While the WebLogic Remote Console will let you add other WebLogic Server users and credential mappings within the remote resource, the mappings will not work and will not provide access to the remote resource.">WebLogic Remote Consoleでは、リモート・リソース内に他のWebLogic Serverユーザーおよび資格証明マッピングを追加できますが、マッピングは機能せず、リモート・リソースへのアクセスは提供されません。</span> </p>
+</div>
+
+<ol>
+<li><span class="merged" id="index.30hvYw.8" title="原文 : In the Security Data Tree perspective, expand Realms.">セキュリティ・データ・ツリーのパースペクティブで、レルムを展開します。</span></li>
+<li><span class="merged" id="index.47RB3o.spl1" title="原文 : Select the Security Realm where you want to add a credential mapping.">資格証明マッピングを追加するセキュリティ・レルムを選択します。</span> <span class="merged" id="index.47RB3o.spl2" title="原文 : Navigate down to Credential Mappers &gt; credentialMapperName &gt; Remote Resources.">「資格証明マッパー」 >「<em>credentialMapperName</em>」 >「リモート・リソース」にナビゲートします。</span> </li>
+<li><span class="merged" id="index.1pYFbB.5"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.XwYPC.spl1"  title="原文: Fill in the fields as needed.">必要に応じて、各フィールドに入力します。</span> <span class="merged" id="index.XwYPC.spl2" title="原文 : Certain fields are disabled depending on whether you choose to use the cross-domain protocol.">ドメイン間プロトコルの使用を選択したかどうかによって、特定のフィールドは無効になります。</span> </li>
+<li><span class="merged" id="index.2BMUBQ.5"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></li>
+</ol>
+<p><span class="merged" id="index.33pCIi.spl1" title="原文 : A reference to a remote resource is added under the remote resources node.">リモート・リソースへの参照がリモート・リソース・ノードの下に追加されます。</span> <span class="merged" id="index.33pCIi.spl2" title="原文 : The name of the remote resource is generated by combining its property values.">リモート・リソースの名前は、そのプロパティ値を組み合わせて生成されます。</span> </p>
+<p><span class="merged" id="index.UZ3kR.5" title="原文 : For information on how to manage the credential mappings, see Credential Mappings.">資格証明マッピングの管理方法の詳細は、<a href="index.html#credential-mappings">「資格証明マッピング」</a>を参照してください。</span></p>
+<h4 id="remove-a-reference-to-a-remote-resource"><span class="merged" id="index.2O20tj" title="原文 : Remove a reference to a remote resource">リモート・リソースへの参照の削除</span></h4>
+<p><span class="merged" id="index.1wENvQ.spl1" title="原文 : You cannot delete a reference to a remote resource with multiple credential mappings.">複数の資格証明マッピングを持つリモート・リソースへの参照は削除できません。</span> <span class="merged" id="index.1wENvQ.spl2" title="原文 : To delete a remote resource reference, you must delete all of the credential mappings first - which will then delete the remote resource reference automatically - or delete all but one of the credential mappings and then follow these steps:">リモート・リソース参照を削除するには、まずすべての資格証明マッピングを削除する必要があります - これにより、リモート・リソース参照が自動的に削除されます - または、いずれかの資格証明マッピングを除くすべてを削除してから、次のステップに従います:</span> </p>
+<ol>
+<li><span class="merged" id="index.3SInQC" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Credential Mappers &gt; credentialMapperName &gt; Remote Resources.">「セキュリティ・データ・ツリー」のパースペクティブから、「レルム」 >「<em>realmName</em>」 >「資格証明マッパー」 >「<em>credentialMapperName</em>」 >「リモート・リソース」に移動します。</span></li>
+<li><span class="merged" id="index.2o1uY0" title="原文 : Beside the remote resource that you want to delete, click the trash icon .">削除するリモート・リソースの横にあるごみ箱アイコン<img alt="「設定」アイコン" src="../../../../images/icons/data-providers-delete-icon-brn_24x24.png">をクリックします。</span></li>
+</ol>
+<h3 id="credential-mappings"><span class="merged" id="index.3Wzn7A" title="原文 : Credential mappings">資格証明マッピング</span></h3>
+<h4 id="add-a-credential-mapping"><span class="merged" id="index.2WNopZ" title="原文 : Add a credential mapping">資格証明マッピングの追加</span></h4>
+<p><span class="merged" id="index.Q0pxk" title="原文 : You can add a new credential mapping to associate another WebLogic resource to a remote user.">新しい資格証明マッピングを追加して、別のWebLogicリソースをリモート・ユーザーに関連付けることができます。</span></p>
+<p><span class="merged" id="index.3jIrKT" title="原文 : The credential mappings and credentials for each WebLogic resource appear under the resource’s node.">各WebLogicリソースの資格証明マッピングおよび資格証明は、リソースのノードの下に表示されます。</span></p>
+<ol>
+<li><span class="merged" id="index.EDcq2" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Credential Mappers &gt; credentialMapperName &gt; wlResourceType &gt; wlResourceName &gt; Credential Mappings.">「セキュリティ・データ・ツリー」のパースペクティブから、「レルム」 >「<em>realmName</em>」 >「資格証明マッパー」 >「<em>credentialMapperName</em>」 >「<em>wlResourceType</em>」 >「<em>wlResourceName</em>」 >「資格証明マッピング」に移動します。</span></li>
+<li><span class="merged" id="index.1pYFbB.6"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.15F3Ss.spl1"  title="原文: Fill in the fields as needed.">必要に応じて、各フィールドに入力します。</span> <span class="merged" id="index.15F3Ss.spl2" title="原文 : If you want to map to a remote user that is already referenced in the remote resource, disable the Create Credential toggle.">リモート・リソースですでに参照されているリモート・ユーザーにマップする場合は、資格証明の作成トグルを無効にします。</span> </li>
+<li><span class="merged" id="index.2BMUBQ.6"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></li>
+</ol>
+<h4 id="remap-a-weblogic-resource"><span class="merged" id="index.jAWIA" title="原文 : Remap a WebLogic resource">WebLogicリソースの再マップ</span></h4>
+<p><span class="merged" id="index.2WYk2i.spl1" title="原文 : You can edit a credential mapping to associate a WebLogic user for a WebLogic resource to a different remote user.">資格証明マッピングを編集して、WebLogicリソースのWebLogicユーザーを別のリモート・ユーザーに関連付けることができます。</span> <span class="merged" id="index.2WYk2i.spl2" title="原文 : The WebLogic Remote Console must already be aware of the remote user before you can remap the WebLogic Server user.">WebLogic Remote Consoleは、WebLogic Serverユーザーを再マップする前に、リモート・ユーザーをすでに認識している必要があります。</span> <span class="merged" id="index.2WYk2i.spl3" title="原文 : If you want to remap the WebLogic resource to a new remote user, you must first add it to the WebLogic Remote Console.">WebLogicリソースを新しいリモート・ユーザーに再マップする場合は、まずWebLogic Remote Consoleに追加する必要があります。</span> </p>
+<ol>
+<li><span class="merged" id="index.EDcq2.1" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Credential Mappers &gt; credentialMapperName &gt; wlResourceType &gt; wlResourceName &gt; Credential Mappings.">「セキュリティ・データ・ツリー」のパースペクティブから、「レルム」 >「<em>realmName</em>」 >「資格証明マッパー」 >「<em>credentialMapperName</em>」 >「<em>wlResourceType</em>」 >「<em>wlResourceName</em>」 >「資格証明マッピング」に移動します。</span></li>
+<li><span class="merged" id="index.2cQwEa" title="原文 : Select the credential mapping you want to edit.">編集する資格証明マッピングを選択します。</span></li>
+<li><span class="merged" id="index.2NvXQ0" title="原文 : In the Remote User field, replace the current remote user with the username of the remote user you want to remap the WebLogic resource to.">「リモート・ユーザー」フィールドで、現在のリモート・ユーザーを、WebLogicリソースの再マップ先のリモート・ユーザーのユーザー名に置き換えます。</span></li>
+<li><span class="merged" id="index.3dYW5S"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></li>
+</ol>
+<h4 id="delete-a-credential-mapping"><span class="merged" id="index.jp6of" title="原文 : Delete a credential mapping">資格証明マッピングの削除</span></h4>
+<p><span class="merged" id="index.dxZxa" title="原文 : When you delete a credential mapping, the remote user that the WebLogic resource was previously associated with is also deleted if it was the only credential mapping using that remote user.">資格証明マッピングを削除すると、WebLogicリソースが以前に関連付けられたリモート・ユーザーも、そのリモート・ユーザーを使用する唯一の資格証明マッピングだった場合、削除されます。</span></p>
+<ol>
+<li><span class="merged" id="index.EDcq2.2" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Credential Mappers &gt; credentialMapperName &gt; wlResourceType &gt; wlResourceName &gt; Credential Mappings.">「セキュリティ・データ・ツリー」のパースペクティブから、「レルム」 >「<em>realmName</em>」 >「資格証明マッパー」 >「<em>credentialMapperName</em>」 >「<em>wlResourceType</em>」 >「<em>wlResourceName</em>」 >「資格証明マッピング」に移動します。</span></li>
+<li><span class="merged" id="index.39TNWI" title="原文 : Beside the credential mapping that you want to delete, click the trash icon .">削除する資格証明マッピングの横にあるごみ箱アイコン<img alt="「設定」アイコン" src="../../../../images/icons/data-providers-delete-icon-brn_24x24.png">をクリックします。</span></li>
+</ol>
+<h3 id="credentials"><span class="merged" id="index.2HTIAz"  title="原文:: Credentials">資格証明</span></h3>
+<h4 id="add-a-credential"><span class="merged" id="index.1UWqpA"  title="原文:: Add a credential">資格証明を追加します</span></h4>
+<p><span class="merged" id="index.3BROZo" title="原文 : After you have added the first set of credentials for a remote system to a WebLogic resource, you can add more users from that remote system.">リモート・システムの最初の資格証明セットをWebLogicリソースに追加した後、そのリモート・システムからさらにユーザーを追加できます。</span></p>
+<ol>
+<li><span class="merged" id="index.2EmqLK" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Credential Mappers &gt; credentialMapperName &gt; wlResourceType &gt; wlResourceName &gt; Credentials">セキュリティ・データ・ツリーのパースペクティブから、「レルム」 >「<em>realmName</em>」 >「資格証明マッパー」 >「<em>credentialMapperName</em>」 >「<em>wlResourceType</em>」 >「<em>wlResourceName</em>」 >「資格証明」に移動</span></li>
+<li><span class="merged" id="index.1pYFbB.7"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></li>
+<li><span class="merged" id="index.38nDWO" title="原文 : Enter the username and password for the remote user.">リモート・ユーザーのユーザー名とパスワードを入力します。</span></li>
+<li><span class="merged" id="index.2BMUBQ.7"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></li>
+</ol>
+<p><span class="merged" id="index.4OvgzF" title="原文 : You can now map a WebLogic user for the WebLogic resource to the new set of credentials.">これで、WebLogicリソースのWebLogicユーザーを新しい資格証明セットにマップできます。</span></p>
+<h4 id="change-a-remote-user-password"><span class="merged" id="index.1dqtWP" title="原文 : Change a remote user password">リモート・ユーザー・パスワードの変更</span></h4>
+<p><span class="merged" id="index.455tCl" title="原文 : If the password of the remote user changes, you’ll need to update it in the WebLogic Remote Console or the mapping will break and prevent the WebLogic resource from logging into the remote system.">リモート・ユーザーのパスワードが変更された場合は、WebLogic Remote Consoleで更新する必要があります。そうしないと、マッピングが中断され、WebLogicリソースがリモート・システムにログインできなくなります。</span></p>
+<ol>
+<li><span class="merged" id="index.4SoF1t" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Credential Mappers &gt; credentialMapperName &gt; wlResourceType &gt; wlResourceName &gt; Credentials.">「セキュリティ・データ・ツリー」のパースペクティブから、「レルム」 >「<em>realmName</em>」 >「資格証明マッパー」 >「<em>credentialMapperName</em>」 >「<em>wlResourceType</em>」 >「<em>wlResourceName</em>」 >「資格証明」に移動します。</span></li>
+<li><span class="merged" id="index.3CnOUc" title="原文 : Select the remote user whose password you want to change.">パスワードを変更するリモート・ユーザーを選択します。</span></li>
+<li><span class="merged" id="index.2efntk"  title="原文:: Change the password.">パスワードを変更します。</span></li>
+<li><span class="merged" id="index.11hXOT.5"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします</span></li>
+</ol>
+<h4 id="remove-a-credential"><span class="merged" id="index.1vHsKm"  title="原文:: Remove a credential">資格証明を削除します</span></h4>
+<p><span class="merged" id="index.2tGLc2" title="原文 : Each WebLogic resource has its own set of credentials Removing a credential from the WebLogic Remote Console will not affect the user in the remote system.">各WebLogicリソースには、独自の資格証明セットがあります。WebLogic Remote Consoleから資格証明を削除しても、リモート・システムのユーザーには影響しません。</span></p>
+<p><span class="merged" id="index.TOlNx" title="原文 : You cannot delete a credential that currently has a WebLogic resource mapped to it.">現在WebLogicリソースがマップされている資格証明は削除できません。</span></p>
+<ol>
+<li><span class="merged" id="index.EDcq2.3" title="原文 : In the Security Data Tree perspective, go to Realms &gt; realmName &gt; Credential Mappers &gt; credentialMapperName &gt; wlResourceType &gt; wlResourceName &gt; Credential Mappings.">「セキュリティ・データ・ツリー」のパースペクティブから、「レルム」 >「<em>realmName</em>」 >「資格証明マッパー」 >「<em>credentialMapperName</em>」 >「<em>wlResourceType</em>」 >「<em>wlResourceName</em>」 >「資格証明マッピング」に移動します。</span></li>
+<li><span class="merged" id="index.eu0tq" title="原文 : You’ll need to either map the current credential mapping to a different credential or delete all of the credential mappings using that credential:">現在の資格証明マッピングを別の資格証明にマップするか、その資格証明を使用してすべての資格証明マッピングを削除する必要があります:</span>
+<ul>
+<li><span class="merged" id="index.21o4Qo" title="原文 : Select any relevant mappings and update the Remote User field to a new remote user.">関連するマッピングを選択し、「リモート・ユーザー」フィールドを新しいリモート・ユーザーに更新します。</span></li>
+<li><span class="merged" id="index.1H7AXz.spl1" title="原文 : Beside any credential mappings that you want to delete, click the trash icon .">削除する資格証明マッピングの横にあるごみ箱アイコン<img alt="「設定」アイコン" src="../../../../images/icons/data-providers-delete-icon-brn_24x24.png">をクリックします。</span> <span class="merged" id="index.1H7AXz.spl2" title="原文 : Once all credential mappings associated with the credential are deleted, the credential itself will also be automatically deleted and you can skip the rest of the steps.">資格証明に関連付けられているすべての資格証明マッピングが削除されると、資格証明自体も自動的に削除され、残りのステップをスキップできます。</span> </li>
+</ul>
+</li>
+<li><span class="merged" id="index.1NT8j7" title="原文 : Under the same WebLogic resource, expand the Credentials node.">同じWebLogicリソースで、資格証明ノードを展開します。</span></li>
+<li><span class="merged" id="index.xRr69" title="原文 : Beside the credential that you want to delete, click the trash icon .">削除する資格証明の横にあるごみ箱アイコン<img alt="「設定」アイコン" src="../../../../images/icons/data-providers-delete-icon-brn_24x24.png">をクリックします。</span></li>
+<li><span class="merged" id="index.11hXOT.6"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします</span></li>
+</ol>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../index.html" > <i class="fa fa-chevron-left"></i></a> <a class="nav nav-next" href="../../property-list/index.html" style="margin-right: 0px;" ><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../../../js/clipboard.min.js?1695158062"></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1695158062"></script>
+    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1695158062"></script>
+    <script src="../../../../js/jquery.sticky.js?1695158062"></script>
+    <script src="../../../../js/featherlight.min.js?1695158062"></script>
+    <script src="../../../../js/highlight.pack.js?1695158062"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../../../js/modernizr.custom-3.6.0.js?1695158062"></script>
+    <script src="../../../../js/learn.js?1695158062"></script>
+    <script src="../../../../js/hugo-learn.js?1695158062"></script>
+    
+        
+            <script src="../../../../mermaid/mermaid.js?1695158062"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
