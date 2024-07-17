@@ -12,20 +12,20 @@
     <title>ソースからのビルド :: WebLogic Remote Console</title>
 
     
-    <link href="../../css/nucleus.css?1697403033" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1697403033" rel="stylesheet">
-    <link href="../../css/hybrid.css?1697403033" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1697403033" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1697403033" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1697403033" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1697403033" rel="stylesheet">
-    <link href="../../css/theme.css?1697403033" rel="stylesheet">
-    <link href="../../css/tabs.css?1697403033" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1697403033" rel="stylesheet">
+    <link href="../../css/nucleus.css?1719337042" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1719337042" rel="stylesheet">
+    <link href="../../css/hybrid.css?1719337042" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1719337042" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1719337042" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1719337042" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1719337042" rel="stylesheet">
+    <link href="../../css/theme.css?1719337042" rel="stylesheet">
+    <link href="../../css/tabs.css?1719337042" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1719337042" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.6.0.min.js?1697403033"></script>
+    <script src="../../js/jquery-3.6.0.min.js?1719337042"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1697403033"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1697403033"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1719337042"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1719337042"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/oracle.github.io\/weblogic-remote-console";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1697403033"></script>
+<script type="text/javascript" src="../../js/search.js?1719337042"></script>
 
     
   </div>
@@ -352,7 +352,7 @@
   
     
       <li class="dd-item " data-nav-id="/weblogic-remote-console/userguide/advanced-settings/" title="設定のカスタマイズ">
-        <span class="merged" id="index.1YQa0"  title="原文::  Customize settings "><a href="../../userguide/advanced-settings/index.html"> 設定のカスタマイズ </a></span>
+        <span class="merged" id="index.1YQa0" title="原文 :  Customize settings "><a href="../../userguide/advanced-settings/index.html"> 設定のカスタマイズ </a></span>
     </li>
      
   
@@ -474,24 +474,6 @@
     
       <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/contribute/" title="WebLogic Remote Consoleへの貢献">
         <span class="merged" id="index.3Al3JW" title="原文 :  Contribute to WebLogic Remote Console "><a href="../contribute/index.html">WebLogic Remote Consoleへの貢献</a></span>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li class="dd-item " data-nav-id="/weblogic-remote-console/develop/alternative-logging/" title="代替ロギング構成ファイルの使用">
-        <span class="merged" id="index.4eNTni" title="原文 :  Use an alternative logging configuration file "><a href="../alternative-logging/index.html">代替ロギング構成ファイルの使用</a></span>
     </li>
      
   
@@ -699,10 +681,10 @@
 <h3 id="prerequisites"><span class="merged" id="index.2LZvWc"  title="原文:: Prerequisites">前提条件</span></h3>
 <p><span class="merged" id="index.4H6CvU" title="原文 : Before you can build the WebLogic Remote Console, you need to install the following software in your local build environment:">WebLogic Remote Consoleをビルドする前に、ローカル・ビルド環境に次のソフトウェアをインストールする必要があります:</span></p>
 <ul>
-<li><span class="merged" id="index.4WkkJH" title="原文 : Java SE 11"><a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html">Java SE 11</a></span></li>
+<li><span class="merged" id="index.4KvZSK" title="原文 : Java SE 11+"><a href="https://www.oracle.com/java/technologies/downloads">Java SE 11以上</a></span></li>
 <li><span class="merged" id="index.2tyG9u" title="原文 : Maven 3.6.1+"><a href="https://maven.apache.org/download.cgi">Maven 3.6.1+</a></span></li>
-<li><span class="merged" id="index.1d5Xy9" title="原文 : nodejs 14.16+ This download includes npm."><a href="https://nodejs.org/en/download/">nodejs 14.16+</a>このダウンロードにはnpmが含まれています。</span></li>
-<li><span class="merged" id="index.pa4ds.spl1" title="原文 : Oracle JET 14.1.0 client libraries To install the required Oracle JET software, run npm install --location=global @oracle/ojet-cli@~14.1.0."><a href="https://www.oracle.com/tools/downloads/jet-downloads.html">「Oracle JET 14.1.0クライアント・ライブラリ」</a>必要なOracle JETソフトウェアをインストールするには、<code>npm install --location=global @oracle/ojet-cli@~14.1.0</code>を実行します。</span> <span class="merged" id="index.pa4ds.spl2" title="原文 : On Linux and macOS, you will need to use sudo.">LinuxおよびmacOSでは、<code>sudo</code>を使用する必要があります。</span> </li>
+<li><span class="merged" id="index.2Y7oRG" title="原文 : Node.js 18.0.0+ This download includes npm."><a href="https://nodejs.org/en/download/">Node.js 18.0.0+</a>このダウンロードにはnpmが含まれています。</span></li>
+<li><span class="merged" id="index.2V7WXC.spl1" title="原文 : Oracle JET 15.1.0 client libraries To install the required Oracle JET software, run npm install --location=global @oracle/ojet-cli@~15.1.0."><a href="https://www.oracle.com/tools/downloads/jet-downloads.html">「Oracle JET 15.1.0クライアント・ライブラリ」</a>必要なOracle JETソフトウェアをインストールするには、<code>npm install --location=global @oracle/ojet-cli@~15.1.0</code>を実行します。</span> <span class="merged" id="index.2V7WXC.spl2" title="原文 : On Linux and macOS, you will need to use sudo.">LinuxおよびmacOSでは、<code>sudo</code>を使用する必要があります。</span> </li>
 </ul>
 <p><span class="merged" id="index.1i9Kwo" title="原文 : You can verify you’ve installed the correct versions of the listed software by running the following commands:">次のコマンドを実行して、リストされているソフトウェアの正しいバージョンをインストールしたことを確認できます:</span></p>
 <pre><code>   java -version
@@ -1096,22 +1078,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1214,19 +1180,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1697403033"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1697403033"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1697403033"></script>
-    <script src="../../js/jquery.sticky.js?1697403033"></script>
-    <script src="../../js/featherlight.min.js?1697403033"></script>
-    <script src="../../js/highlight.pack.js?1697403033"></script>
+    <script src="../../js/clipboard.min.js?1719337043"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1719337043"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1719337043"></script>
+    <script src="../../js/jquery.sticky.js?1719337043"></script>
+    <script src="../../js/featherlight.min.js?1719337043"></script>
+    <script src="../../js/highlight.pack.js?1719337043"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1697403033"></script>
-    <script src="../../js/learn.js?1697403033"></script>
-    <script src="../../js/hugo-learn.js?1697403033"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1719337043"></script>
+    <script src="../../js/learn.js?1719337043"></script>
+    <script src="../../js/hugo-learn.js?1719337043"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1697403033"></script>
+            <script src="../../mermaid/mermaid.js?1719337043"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
