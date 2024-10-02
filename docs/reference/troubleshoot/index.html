@@ -12,20 +12,20 @@
     <title>問題のトラブルシューティング :: WebLogic Remote Console</title>
 
     
-    <link href="../../css/nucleus.css?1719337042" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1719337042" rel="stylesheet">
-    <link href="../../css/hybrid.css?1719337042" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1719337042" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1719337042" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1719337042" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1719337042" rel="stylesheet">
-    <link href="../../css/theme.css?1719337042" rel="stylesheet">
-    <link href="../../css/tabs.css?1719337042" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1719337042" rel="stylesheet">
+    <link href="../../css/nucleus.css?1724783132" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1724783132" rel="stylesheet">
+    <link href="../../css/hybrid.css?1724783132" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1724783132" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1724783132" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1724783132" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1724783132" rel="stylesheet">
+    <link href="../../css/theme.css?1724783132" rel="stylesheet">
+    <link href="../../css/tabs.css?1724783132" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1724783132" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.6.0.min.js?1719337042"></script>
+    <script src="../../js/jquery-3.6.0.min.js?1724783132"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1719337042"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1719337042"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1724783132"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1724783132"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/oracle.github.io\/weblogic-remote-console";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1719337042"></script>
+<script type="text/javascript" src="../../js/search.js?1724783132"></script>
 
     
   </div>
@@ -703,7 +703,7 @@
 <p><span class="merged" id="index.11Hdfa" title="原文 : If the WebLogic Server domain is in a different network, configure the proxy server of the WebLogic Remote Console.">WebLogic Serverドメインが別のネットワークにある場合、WebLogic Remote Consoleの<a href="../../userguide/advanced-settings/index.html#proxy">「プロキシ・サーバーの構成」</a>。</span></p>
 </li>
 <li>
-<p><span class="merged" id="index.D4rQe" title="原文 : If your domain is in a Docker container or behind a load-balancer, make sure to open a port that makes your Administration server’s management URL accessible to clients.">ドメインがDockerコンテナ内またはロード・バランサの背後にある場合は、管理サーバーの管理URLをクライアントからアクセスできるようにするポートを開いてください。</span></p>
+<p><span class="merged" id="index.lNNX9" title="原文 : If your domain is behind a load-balancer or firewall, or is in a Docker container, make sure your Administration Server’s management endpoint (management/*) is accessible to clients.">ドメインがロード・バランサまたはファイアウォールの背後にある場合、またはDockerコンテナ内にある場合は、管理サーバーの管理エンドポイント(<code>management/*</code>)がクライアントからアクセスできることを確認してください。</span></p>
 </li>
 </ul>
 <hr>
@@ -748,11 +748,11 @@
 <ul>
 <li>
 <p><span class="merged" id="index.1AlGwu" title="原文 : For HTTP, run:">HTTPの場合は、次を実行します:</span></p>
-<p><span class="merged" id="index.3M0oH"  title="原文: curl -v --user &lt;username&gt;:&lt;password&gt; http://&lt;adminServerHost&gt;:&lt;adminServerPort&gt;/management/weblogic/latest/serverRuntime"><code>curl -v --user &lt;username>:&lt;password> http://&lt;adminServerHost>:&lt;adminServerPort>/management/weblogic/latest/serverRuntime</code></span></p>
+<p><code>curl -v --user &lt;username>:&lt;password> http://&lt;adminServerHost>:&lt;adminServerPort>/management/weblogic/latest/serverRuntime</code></p>
 </li>
 <li>
 <p><span class="merged" id="index.2YyBma" title="原文 : For HTTPS, run:">HTTPSの場合は、次を実行します:</span></p>
-<p><span class="merged" id="index.4Ump0c"  title="原文: curl -v -k --user &lt;username&gt;:&lt;password&gt; https://&lt;adminServerHost&gt;:&lt;adminServerPort&gt;/management/weblogic/latest/serverRuntime"><code>curl -v -k --user &lt;username>:&lt;password> https://&lt;adminServerHost>:&lt;adminServerPort>/management/weblogic/latest/serverRuntime</code></span></p>
+<p><code>curl -v -k --user &lt;username>:&lt;password> https://&lt;adminServerHost>:&lt;adminServerPort>/management/weblogic/latest/serverRuntime</code></p>
 <p><span class="merged" id="index.1m7PGQ.spl1" title="原文 : If the command fails, then a more general connectivity issue is affecting your domain.">コマンドが失敗すると、より一般的な接続の問題がドメインに影響します。</span> <span class="merged" id="index.1m7PGQ.spl2" title="原文 : See ‘Connectivity Issues’ for next steps.">次のステップについては、「接続の問題」を参照してください。</span> </p>
 </li>
 </ul>
@@ -762,11 +762,11 @@
 <ul>
 <li>
 <p><span class="merged" id="index.1AlGwu.1" title="原文 : For HTTP, run:">HTTPの場合は、次を実行します:</span></p>
-<p><span class="merged" id="index.1rTEfO"  title="原文: curl -v --user &lt;username&gt;:&lt;password&gt; http://&lt;adminServerHost&gt;:&lt;adminServerPort&gt;/management/weblogic/latest/domainRuntime/serverRuntimes/&lt;adminServerName&gt;"><code>curl -v --user &lt;username>:&lt;password> http://&lt;adminServerHost>:&lt;adminServerPort>/management/weblogic/latest/domainRuntime/serverRuntimes/&lt;adminServerName></code></span></p>
+<p><code>curl -v --user &lt;username>:&lt;password> http://&lt;adminServerHost>:&lt;adminServerPort>/management/weblogic/latest/domainRuntime/serverRuntimes/&lt;adminServerName></code></p>
 </li>
 <li>
 <p><span class="merged" id="index.2YyBma.1" title="原文 : For HTTPS, run:">HTTPSの場合は、次を実行します:</span></p>
-<p><span class="merged" id="index.1OiLjP"  title="原文: curl -v -k --user &lt;username&gt;:&lt;password&gt; https://&lt;adminServerHost&gt;:&lt;adminServerPort&gt;/management/weblogic/latest/domainRuntime/serverRuntimes/&lt;adminServerName&gt;"><code>curl -v -k --user &lt;username>:&lt;password> https://&lt;adminServerHost>:&lt;adminServerPort>/management/weblogic/latest/domainRuntime/serverRuntimes/&lt;adminServerName></code></span></p>
+<p><code>curl -v -k --user &lt;username>:&lt;password> https://&lt;adminServerHost>:&lt;adminServerPort>/management/weblogic/latest/domainRuntime/serverRuntimes/&lt;adminServerName></code></p>
 <p><span class="merged" id="index.1e0EkL" title="原文 : If this command fails, then the problem is a REST communication failure between servers.">このコマンドが失敗した場合、問題はサーバー間のREST通信障害です。</span></p>
 </li>
 </ul>
@@ -1243,19 +1243,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1719337043"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1719337043"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1719337043"></script>
-    <script src="../../js/jquery.sticky.js?1719337043"></script>
-    <script src="../../js/featherlight.min.js?1719337043"></script>
-    <script src="../../js/highlight.pack.js?1719337043"></script>
+    <script src="../../js/clipboard.min.js?1724783132"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1724783132"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1724783132"></script>
+    <script src="../../js/jquery.sticky.js?1724783132"></script>
+    <script src="../../js/featherlight.min.js?1724783132"></script>
+    <script src="../../js/highlight.pack.js?1724783132"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1719337043"></script>
-    <script src="../../js/learn.js?1719337043"></script>
-    <script src="../../js/hugo-learn.js?1719337043"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1724783132"></script>
+    <script src="../../js/learn.js?1724783132"></script>
+    <script src="../../js/hugo-learn.js?1724783132"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1719337043"></script>
+            <script src="../../mermaid/mermaid.js?1724783132"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

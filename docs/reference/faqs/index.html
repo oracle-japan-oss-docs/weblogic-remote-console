@@ -12,20 +12,20 @@
     <title>よくある質問 :: WebLogic Remote Console</title>
 
     
-    <link href="../../css/nucleus.css?1719337042" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1719337042" rel="stylesheet">
-    <link href="../../css/hybrid.css?1719337042" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1719337042" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1719337042" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1719337042" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1719337042" rel="stylesheet">
-    <link href="../../css/theme.css?1719337042" rel="stylesheet">
-    <link href="../../css/tabs.css?1719337042" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1719337042" rel="stylesheet">
+    <link href="../../css/nucleus.css?1724783132" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1724783132" rel="stylesheet">
+    <link href="../../css/hybrid.css?1724783132" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1724783132" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1724783132" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1724783132" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1724783132" rel="stylesheet">
+    <link href="../../css/theme.css?1724783132" rel="stylesheet">
+    <link href="../../css/tabs.css?1724783132" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1724783132" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.6.0.min.js?1719337042"></script>
+    <script src="../../js/jquery-3.6.0.min.js?1724783132"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1719337042"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1719337042"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1724783132"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1724783132"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/oracle.github.io\/weblogic-remote-console";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1719337042"></script>
+<script type="text/javascript" src="../../js/search.js?1724783132"></script>
 
     
   </div>
@@ -678,8 +678,11 @@
 
 
 <p><span class="merged" id="index.3Qrnnx" title="原文 : This section provides answers to frequently asked questions about the WebLogic Remote Console.">この項では、WebLogic Remote Consoleに関するよくある質問の回答を示します。</span></p>
+<h4 id="my-domain-is-behind-a-firewall-how-do-i-connect-to-the-weblogic-remote-console"><span class="merged" id="index.4Vcyto.spl1" title="原文 : My domain is behind a firewall.">ドメインがファイアウォールの背後にあります。</span> <span class="merged" id="index.4Vcyto.spl2" title="原文 : How do I connect to the WebLogic Remote Console?">WebLogic Remote Consoleに接続するにはどうすればよいですか。</span> </h4>
+<p><span class="merged" id="index.3cZPhE.spl1" title="原文 : For WebLogic Remote Console to connect to a domain’s Administration Server, the management endpoint of the domain, management/*, must be publicly accessible.">WebLogic Remote Consoleがドメインの管理サーバーに接続するには、ドメインの管理エンドポイント<code>management/*</code>がパブリックにアクセス可能である必要があります。</span> <span class="merged" id="index.3cZPhE.spl2" title="原文 : If your Administration Server is behind a firewall or load balancer, or otherwise externally unavailable, you will need to expose the endpoint manually.">管理サーバーがファイアウォールまたはロード・バランサの背後にある場合、または外部で使用できない場合は、エンドポイントを手動で公開する必要があります。</span> </p>
+<p><span class="merged" id="index.1Fx2zP" title="原文 : TIP: If you needed to expose console/* to access the WebLogic Server Administration Console for your domain, simply follow the same procedure to expose management/* for the WebLogic Remote Console."><strong>TIP</strong>: <code>console/*</code>を公開してドメインのWebLogic Server <em>管理</em>コンソールにアクセスする必要がある場合は、同じ手順に従って、WebLogic Remote Consoleの<code>management/*</code>を公開します。</span></p>
 <h4 id="can-i-connect-the-weblogic-remote-console-to-domains-running-in-weblogic-on-oracle-cloud-infrastructure"><span class="merged" id="index.3Nu5O" title="原文 : Can I connect the WebLogic Remote Console to domains running in WebLogic on Oracle Cloud Infrastructure?">WebLogic Remote Consoleを、Oracle Cloud InfrastructureのWebLogicで実行されているドメインに接続できますか。</span></h4>
-<p><span class="merged" id="index.OTVaS.spl1"  title="原文:: Yes, you can.">はい、できます。</span> <span class="merged" id="index.OTVaS.spl2" title="原文 : First, make sure that the domain’s administration server is publicly accessible so the WebLogic Remote Console can establish a connection to the administration server.">まず、WebLogic Remote Consoleが管理サーバーへの接続を確立できるように、ドメインの管理サーバーにパブリックにアクセスできることを確認します。</span> <span class="merged" id="index.OTVaS.spl3" title="原文 : Then, in the WebLogic Remote Console, enter your credentials and the publicly accessible URL for the WebLogic Administration Server.">次に、WebLogic Remote Consoleに、WebLogic管理サーバーの資格証明とパブリックにアクセス可能なURLを入力します。</span> </p>
+<p><span class="merged" id="index.32sP3X.spl1"  title="原文:: Yes, you can.">はい、できます。</span> <span class="merged" id="index.32sP3X.spl2" title="原文 : First, make sure that the domain’s Administration Server is publicly accessible so the WebLogic Remote Console can establish a connection to the administration server.">まず、WebLogic Remote Consoleが管理サーバーへの接続を確立できるように、ドメインの管理サーバーがパブリックにアクセス可能であることを確認します。</span> <span class="merged" id="index.32sP3X.spl3" title="原文 : Then, in the WebLogic Remote Console, enter your credentials and the publicly accessible URL for the WebLogic Administration Server.">次に、WebLogic Remote Consoleに、WebLogic管理サーバーの資格証明とパブリックにアクセス可能なURLを入力します。</span> </p>
 <h4 id="can-i-connect-the-weblogic-remote-console-to-domains-running-on-other-cloud-providers-such-as-amazon-web-services-google-cloud-microsoft-azure-and-so-on"><span class="merged" id="index.4FUd2" title="原文 : Can I connect the WebLogic Remote Console to domains running on other cloud providers such as Amazon Web Services, Google Cloud, Microsoft Azure and so on?">WebLogic Remote Consoleを、Amazon Web Services、Google Cloud、Microsoft Azureなどの他のクラウド・プロバイダで実行されているドメインに接続できますか。</span></h4>
 <p><span class="merged" id="index.3WudbY.spl1" title="原文 : Yes, you can connect to other cloud providers.">はい、他のクラウド・プロバイダに接続できます。</span> <span class="merged" id="index.3WudbY.spl2" title="原文 : You’ll need to make sure the domain’s administration server is publicly accessible to allow a connection between the WebLogic Remote Console and the cloud provider.">WebLogic Remote Consoleとクラウド・プロバイダ間の接続を許可するために、ドメインの管理サーバーにパブリックにアクセスできるようにする必要があります。</span> <span class="merged" id="index.3WudbY.spl3" title="原文 : Then, in the WebLogic Remote Console, enter your credentials and the publicly accessible URL for the WebLogic Administration Server.">次に、WebLogic Remote Consoleに、WebLogic管理サーバーの資格証明とパブリックにアクセス可能なURLを入力します。</span> </p>
 <p><span class="merged" id="index.3Sm4Vy" title="原文 : Visit your cloud providers&apos; documentation for more specific instructions on how to expose the management/* endpoint of the WebLogic Server.">WebLogic Serverの<code>management/*</code>エンドポイントを公開する方法の詳細な手順は、クラウド・プロバイダのドキュメントを参照してください。</span></p>
@@ -1159,19 +1162,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1719337043"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1719337043"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1719337043"></script>
-    <script src="../../js/jquery.sticky.js?1719337043"></script>
-    <script src="../../js/featherlight.min.js?1719337043"></script>
-    <script src="../../js/highlight.pack.js?1719337043"></script>
+    <script src="../../js/clipboard.min.js?1724783132"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1724783132"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1724783132"></script>
+    <script src="../../js/jquery.sticky.js?1724783132"></script>
+    <script src="../../js/featherlight.min.js?1724783132"></script>
+    <script src="../../js/highlight.pack.js?1724783132"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1719337043"></script>
-    <script src="../../js/learn.js?1719337043"></script>
-    <script src="../../js/hugo-learn.js?1719337043"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1724783132"></script>
+    <script src="../../js/learn.js?1724783132"></script>
+    <script src="../../js/hugo-learn.js?1724783132"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1719337043"></script>
+            <script src="../../mermaid/mermaid.js?1724783132"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
