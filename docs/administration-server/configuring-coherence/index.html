@@ -1,0 +1,921 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="ja" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="application/rss&#43;xml" href="index.xml">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Coherence | WebLogic Remote Consoleの構成</title>
+<meta content="Oracle Coherenceを使用すると、使用頻繁度の高いデータへの迅速かつ信頼性のあるアクセスを実現することにより、企業はミッションクリティカルなアプリケーションを予測どおりに拡張できるようになります。 Coherenceは、複数のサーバー間でメモリー内のデータを自動的かつ動的にパーティション化することで、サーバー障害が発生した場合でも、継続的なデータ可用性およびトランザクションの整合性を実現します。 WebLogic Serverドメインには、CoherenceクラスタおよびCoherenceベース・アプリケーションの管理とデプロイメントを簡素化するCoherenceコンテナが含まれます。 Coherenceは、WebLogic Serverに依存しないスタンドアロン・モードでもインストールできます。 WebLogic Remote ConsoleはスタンドアロンのCoherenceインストールを管理できないため、このドキュメントでは、CoherenceをWebLogic Serverとともに使用することのみに重点を置いています。 " name="description">
+<meta property="og:url" content="https://oracle.github.io/weblogic-remote-console/administration-server/configuring-coherence/">
+  <meta property="og:site_name" content="WebLogic Remote Console">
+  <meta content=" Coherenceの構成" property="og:title">
+  <meta content="Oracle Coherenceを使用すると、使用頻繁度の高いデータへの迅速かつ信頼性のあるアクセスを実現することにより、企業はミッションクリティカルなアプリケーションを予測どおりに拡張できるようになります。 Coherenceは、複数のサーバー間でメモリー内のデータを自動的かつ動的にパーティション化することで、サーバー障害が発生した場合でも、継続的なデータ可用性およびトランザクションの整合性を実現します。 WebLogic Serverドメインには、CoherenceクラスタおよびCoherenceベース・アプリケーションの管理とデプロイメントを簡素化するCoherenceコンテナが含まれます。 Coherenceは、WebLogic Serverに依存しないスタンドアロン・モードでもインストールできます。 WebLogic Remote ConsoleはスタンドアロンのCoherenceインストールを管理できないため、このドキュメントでは、CoherenceをWebLogic Serverとともに使用することのみに重点を置いています。 " property="og:description">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Configuring Coherence">
+  <meta itemprop="description" content="Oracle Coherence enables organizations to predictably scale mission-critical applications by providing fast and reliable access to frequently used data. By automatically and dynamically partitioning data in memory across multiple servers, Coherence enables continuous data availability and transactional integrity, even in the event of a server failure.
+WebLogic Server domains include a Coherence container that simplifies the management and deployment of Coherence clusters and Coherence-based applications.
+Note Coherence can also be installed in a standalone mode that does not rely on WebLogic Server. WebLogic Remote Console cannot administer standalone Coherence installations, therefore this documentation focuses solely on using Coherence with WebLogic Server.">
+  <meta itemprop="wordCount" content="3938">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Configuring Coherence">
+  <meta name="twitter:description" content="Oracle Coherence enables organizations to predictably scale mission-critical applications by providing fast and reliable access to frequently used data. By automatically and dynamically partitioning data in memory across multiple servers, Coherence enables continuous data availability and transactional integrity, even in the event of a server failure.
+WebLogic Server domains include a Coherence container that simplifies the management and deployment of Coherence clusters and Coherence-based applications.
+Note Coherence can also be installed in a standalone mode that does not rely on WebLogic Server. WebLogic Remote Console cannot administer standalone Coherence installations, therefore this documentation focuses solely on using Coherence with WebLogic Server.">
+<link rel="preload" href="../../scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" as="style" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
+<link href="../../scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" rel="stylesheet" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  <meta HTTP-EQUIV="Content-Type" Content="text/html; charset=utf-8"></head>
+  <style type="text/css"> <!-- .merged:hover {text-decoration: underline;} --> </style>
+<body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <span class="merged" id="index.4HI2lZ"  title="原文:: WebLogic Remote Console"><a class="navbar-brand" href="../../index.html"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">WebLogic Remote Console</span></a></span>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <span class="merged" id="index.4BXA3a"  title="原文:: Documentation"><a class="nav-link" href="../../overview"><span>ドキュメント</span></a></span>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <span class="merged" id="index.1rBGLa" title="原文 : Releases"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="index.html#" role="button">リリース</a></span>
+  <ul class="dropdown-menu">
+    <li><span class="merged" id="index.3qEipK" title="原文 : Latest (v2.4.16)"><a class="dropdown-item" href="../../overview">最新(v2.4.16)</a></span></li>
+    </ul>
+</div></li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <span class="merged" id="index.2jII9A" title="原文 :  Light "><svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>ライト<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <span class="merged" id="index.2I3lw8" title="原文 :  Dark "><svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>ダーク<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <span class="merged" id="index.2ddEmA" title="原文 :  Auto "><svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>自動<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site ¦"
+    aria-label="Search this site ¦"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/weblogic-remote-console/offline-search-index.435a82cb353472bb29e0cc0f9a02ede0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site ¦"
+    aria-label="Search this site ¦"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/weblogic-remote-console/offline-search-index.435a82cb353472bb29e0cc0f9a02ede0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="td-sidebar-nav collapse td-sidebar-nav--search-disabled foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-weblogic-remote-consoleoverview-li">
+  <span class="merged" id="index.3zbEcv" title="原文 : About WebLogic Remote Console"><a class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" href="../../overview/index.html" id="m-weblogic-remote-consoleoverview"><span class="">WebLogic Remote Consoleについて</span></a></span>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleset-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-console-check"/>
+  <label for="m-weblogic-remote-consoleset-console-check"><span class="merged" id="index.3nah3n"  title="原文:: Get Started"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/index.html" id="m-weblogic-remote-consoleset-console"><span class="">開始</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleset-consoleget-know-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consoleget-know-console-check"/>
+  <label for="m-weblogic-remote-consoleset-consoleget-know-console-check"><span class="merged" id="index.3Qoefu"  title="原文:: Get to Know the Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/get-know-console/index.html" id="m-weblogic-remote-consoleset-consoleget-know-console"><span class="">コンソールの理解</span></a></span></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-check"/>
+  <label for="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-check"><span class="merged" id="index.bU5Da" title="原文 : A Map of the Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/get-know-console/bean-map/index.html" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map"><span class="">コンソールのマップ</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-check"/>
+  <label for="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-check"><span class="merged" id="index.tx3R1" title="原文 : Contribute to WebLogic Remote Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/contribute-wrc-repository/index.html" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository"><span class="">WebLogic Remote Consoleに貢献</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consolesupport-information-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consolesupport-information-check"/>
+  <label for="m-weblogic-remote-consoleset-consolesupport-information-check"><span class="merged" id="index.37eR7r"  title="原文:: Support Information"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/support-information/index.html" id="m-weblogic-remote-consoleset-consolesupport-information"><span class="">サポート情報</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-weblogic-remote-consoleadministration-server-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-server-check" checked/>
+  <label for="m-weblogic-remote-consoleadministration-server-check"><span class="merged" id="index.2ThZsC"  title="原文:: Administration Server"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../index.html" id="m-weblogic-remote-consoleadministration-server"><span class="">管理サーバー</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverdomain-configuration-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverdomain-configuration-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverdomain-configuration-check"><span class="merged" id="index.4ML0vm"  title="原文:: Domain Configuration"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../domain-configuration/index.html" id="m-weblogic-remote-consoleadministration-serverdomain-configuration"><span class="">ドメインの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serversecuring-domains-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serversecuring-domains-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serversecuring-domains-check"><span class="merged" id="index.BiUhC" title="原文 : Securing Domains"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../securing-domains/index.html" id="m-weblogic-remote-consoleadministration-serversecuring-domains"><span class="">ドメインの保護</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverdeploying-applications-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverdeploying-applications-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverdeploying-applications-check"><span class="merged" id="index.2tf9Du"  title="原文:: Deploying Applications"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../deploying-applications/index.html" id="m-weblogic-remote-consoleadministration-serverdeploying-applications"><span class="">アプリケーションのデプロイ</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-servermonitoring-domains-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-servermonitoring-domains-check"/>
+  <label for="m-weblogic-remote-consoleadministration-servermonitoring-domains-check"><span class="merged" id="index.1OH0qB" title="原文 : Monitoring Domains"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../monitoring-domains/index.html" id="m-weblogic-remote-consoleadministration-servermonitoring-domains"><span class="">ドメインのモニタリング</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverconfiguring-services-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverconfiguring-services-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverconfiguring-services-check"><span class="merged" id="index.2H1mEc"  title="原文:: Configuring Services"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../configuring-services/index.html" id="m-weblogic-remote-consoleadministration-serverconfiguring-services"><span class="">サービスの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-check" checked/>
+  <label for="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-check"><span class="merged" id="index.1JCR7A"  title="原文:: Configuring Coherence"><a class="align-left ps-0  active td-sidebar-link td-sidebar-link__section" href="index.html" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence"><span class="td-sidebar-nav-active-item">Coherenceの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverscheduling-work-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverscheduling-work-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverscheduling-work-check"><span class="merged" id="index.1L6kt7" title="原文 : Scheduling Work"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../scheduling-work/index.html" id="m-weblogic-remote-consoleadministration-serverscheduling-work"><span class="">作業のスケジューリング</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverinteroperability-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverinteroperability-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverinteroperability-check"><span class="merged" id="index.4T1dij" title="原文 : Interoperating with Oracle Tuxedo"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../interoperability/index.html" id="m-weblogic-remote-consoleadministration-serverinteroperability"><span class="">Oracle Tuxedoとの相互運用</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleweblogic-deploy-tooling-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-tooling-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-tooling-check"><span class="merged" id="index.cdq9l"  title="原文:: WebLogic Deploy Tooling"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/index.html" id="m-weblogic-remote-consoleweblogic-deploy-tooling"><span class="">WebLogic Deploy Tooling</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-check"><span class="merged" id="index.3yTvIZ" title="原文 : WDT Model Files"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/wdt-model-files/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files"><span class="">WDTモデル・ファイル</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-check"><span class="merged" id="index.3aBgeR" title="原文 : WDT Composite Models"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/wdt-composites/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites"><span class="">WDTコンポジット・モデル</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-check"><span class="merged" id="index.3CFtu4" title="原文 : Property Lists"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/property-lists/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists"><span class="">プロパティ・リスト</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-check"/>
+  <label for="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-check"><span class="merged" id="index.2p4mmh" title="原文 : Troubleshoot Issues with WebLogic Remote Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../troubleshoot-weblogic-remote-console/index.html" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console"><span class="">WebLogic Remote Consoleに関する問題のトラブルシューティング</span></a></span></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><span class="merged" id="index.3lF92d" title="原文 : Coherence Clusters and Managed Coherence Servers"><a href="index.html#coherence-clusters-and-managed-coherence-servers">Coherenceクラスタおよび管理対象Coherenceサーバー</a></span></li>
+    <li><span class="merged" id="index.44H4e2" title="原文 : Configure Coherence: Main Steps"><a href="index.html#GUID-B7D3071F-A32F-4AE9-9A36-FF28E3B674C8">Coherenceの構成: 主なステップ</a></span></li>
+    <li><span class="merged" id="index.u5zrE"  title="原文: Create a Coherence Cluster"><a href="index.html#GUID-D042E373-ED9F-4EC1-B0F4-89DFD803DF0C">Coherenceクラスタ構成の作成</a></span></li>
+    <li><span class="merged" id="index.2g5ZTD"  title="原文:: Configure Coherence Clusters"><a href="index.html#GUID-C27281D9-1D27-48BB-B1D2-DEBCB7935466">Coherenceクラスタの構成</a></span>
+      <ul>
+        <li><span class="merged" id="index.2X8sMb" title="原文 : Configure Coherence Federation"><a href="index.html#GUID-587E8B6E-E352-4169-AE37-779D4C114278">Coherenceフェデレーションの構成</a></span></li>
+        <li><span class="merged" id="index.2w0FVe" title="原文 : Configure Coherence Persistence"><a href="index.html#GUID-D586A7ED-2690-420C-BE6A-6BA32D989DF7">Coherence永続性の構成</a></span></li>
+        <li><span class="merged" id="index.20tY4T" title="原文 : Configure Coherence Logging"><a href="index.html#GUID-B31786DE-73A9-4ECB-B9A6-EDF549BF61CF">Coherenceロギングの構成</a></span></li>
+        <li><span class="merged" id="index.3rgZEq" title="原文 : Set Up the Coherence Security Framework"><a href="index.html#GUID-03F09E60-A5B5-4FE0-AE6F-25430D63C602">Coherenceセキュリティ・フレームワークの設定</a></span></li>
+        <li><span class="merged" id="index.32jXpC" title="原文 : Target Coherence Clusters"><a href="index.html#GUID-EA8324AB-56FA-48C1-8218-3E399409F390">ターゲットCoherenceクラスタ</a></span></li>
+        <li><span class="merged" id="index.3Gwk0p" title="原文 : Create a Cluster Cache Configuration"><a href="index.html#GUID-5122006C-7CEE-4B96-BB24-01758E0AFEAE">クラスタ・キャッシュ構成の作成</a></span></li>
+        <li><span class="merged" id="index.4FPjx6" title="原文 : Secure Coherence Caches"><a href="index.html#GUID-4C734AB5-62A9-4DBF-8FCC-9CAF4DC842CB">Coherenceキャッシュの保護</a></span></li>
+        <li><span class="merged" id="index.49a80I" title="原文 : Secure a Coherence Service Configuration"><a href="index.html#GUID-FB54E265-1370-4543-9FE4-A65AE0EDED58">Coherenceサービス構成の保護</a></span></li>
+        <li><span class="merged" id="index.42sY2o" title="原文 : Specify a Coherence Well Known Address"><a href="index.html#GUID-E028304F-5CF5-4FD8-82A7-B74338196538">Coherence既知アドレスの指定</a></span></li>
+        <li><span class="merged" id="index.4YeHjS" title="原文 : Configure a Coherence Address Provider"><a href="index.html#GUID-8CBEB83E-5388-4E93-9BC0-93D6D11AA06F">Coherenceアドレス・プロバイダの構成</a></span></li>
+      </ul>
+    </li>
+    <li><span class="merged" id="index.1ueLC3" title="原文 : Coherence Deployment Tiers"><a href="index.html#GUID-26E0D6DA-EB7D-4BCA-8707-49C3162A5CF1">Coherenceデプロイメント層</a></span>
+      <ul>
+        <li><span class="merged" id="index.27CpXB"  title="原文: Create a Coherence Data Tier"><a href="index.html#GUID-F9B1FB82-B316-4CD1-824F-03A0984EE59A">Coherenceデータ層の作成</a></span></li>
+        <li><span class="merged" id="index.31wY3A"  title="原文: Create a Coherence Application Tier"><a href="index.html#GUID-8A5079EB-A4AD-4C47-B6F3-576C6A4EE515">Coherenceアプリケーション層の作成</a></span></li>
+        <li><span class="merged" id="index.4MQHcq"  title="原文: Create a Coherence Proxy Tier"><a href="index.html#GUID-042599BA-C133-43E0-8572-30B84149BB4F">Coherenceプロキシ層の作成</a></span></li>
+      </ul>
+    </li>
+    <li><span class="merged" id="index.1l5NQC" title="原文 : Create a Managed Coherence Server"><a href="index.html#GUID-48BEE50E-2995-4C42-96EF-2F28416512FC">管理対象Coherenceサーバーの作成</a></span></li>
+    <li><span class="merged" id="index.1h3IZe" title="原文 : Configure and Deploy Coherence on a Single-Server Cluster"><a href="index.html#GUID-DB577D5C-A80B-48DB-A940-C95D764532C5">単一サーバー・クラスタでのCoherenceの構成およびデプロイ</a></span></li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+            <div style="width:100%"> <div title="免責事項: ここに記載されているドキュメントは、お客様の利便性のために翻訳ソフトウエアにより機械的に翻訳(機械翻訳)したものです。オリジナルの英語版もあわせてご確認ください。" style="width:150px;padding-left:5px;padding-right:5px;border:#ff0000 solid 1px;border-color: gray;font-size: small;color:gray;margin: 0 auto 0 auto;text-align:center"><a href="https://docs.oracle.com/cd/E85181_01/mt_disclaimer.html">機械翻訳について</a></div> </div>
+<nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <span class="merged" id="index.2dQIDB" title="原文 : About WebLogic Remote Console"><a href="../../overview/index.html">WebLogic Remote Consoleについて</a></span></li>
+  <li class="breadcrumb-item">
+    <span class="merged" id="index.35qlXG"  title="原文:: Administration Server"><a href="../index.html">管理サーバー</a></span></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <span class="merged" id="index.3BH9YU"  title="原文:: Configuring Coherence"> Coherenceの構成</span></li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1><span class="merged" id="index.3BH9YU.1"  title="原文:: Configuring Coherence"> Coherenceの構成</span></h1>
+  
+	<header class="article-meta">
+		
+</header>
+	<p><span class="merged" id="index.2UpvoP.spl1"  title="原文: Oracle Coherence enables organizations to predictably scale mission-critical applications by providing fast and reliable access to frequently used data.">Oracle Coherenceを使用すると、使用頻繁度の高いデータへの迅速かつ信頼性のあるアクセスを実現することにより、企業はミッションクリティカルなアプリケーションを予測どおりに拡張できるようになります。</span> <span class="merged" id="index.2UpvoP.spl2" title="原文 : By automatically and dynamically partitioning data in memory across multiple servers, Coherence enables continuous data availability and transactional integrity, even in the event of a server failure.">Coherenceは、複数のサーバー間でメモリー内のデータを自動的かつ動的にパーティション化することで、サーバー障害が発生した場合でも、継続的なデータ可用性およびトランザクションの整合性を実現します。</span> </p>
+<p><span class="merged" id="index.1NqXYd" title="原文 : WebLogic Server domains include a Coherence container that simplifies the management and deployment of Coherence clusters and Coherence-based applications.">WebLogic Serverドメインには、CoherenceクラスタおよびCoherenceベース・アプリケーションの管理とデプロイメントを簡素化するCoherenceコンテナが含まれます。</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu"  title="原文:: Note">ノート</span></h4>
+
+    <p><span class="merged" id="index.179vCj.spl1" title="原文 : Coherence can also be installed in a standalone mode that does not rely on WebLogic Server.">Coherenceは、WebLogic Serverに依存しないスタンドアロン・モードでインストールすることもできます。</span> <span class="merged" id="index.179vCj.spl2" title="原文 : WebLogic Remote Console cannot administer standalone Coherence installations, therefore this documentation focuses solely on using Coherence with WebLogic Server.">WebLogic Remote ConsoleはスタンドアロンのCoherenceインストールを管理できないため、このドキュメントでは、CoherenceをWebLogic Serverとともに使用することのみに重点を置いています。</span> </p>
+<p><span class="merged" id="index.4MSaAS" title="原文 : To learn more about standalone Coherence, see Introducing the Oracle Coherence Standard Installation Topologies in Installing Oracle Coherence.">スタンドアロンCoherenceについてさらに学習するには、<strong>「Oracle Coherenceのインストール」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=COHIN-GUID-440D6D47-086F-4A0A-A71A-ABD691DA83BD">「Oracle Coherence標準インストール・トポロジの概要」</a>を参照してください。</span></p>
+
+
+</div>
+<h2 id="coherence-clusters-and-managed-coherence-servers"><span class="merged" id="index.8yxsl" title="原文 : Coherence Clusters and Managed Coherence Servers">Coherenceクラスタおよび管理対象Coherenceサーバー</span></h2>
+<p><span class="merged" id="index.1WrjBX.spl1" title="原文 : Coherence is integrated within WebLogic Server as a container subsystem, known as a Coherence cluster.">Coherenceは、Coherenceクラスタと呼ばれるコンテナ・サブシステムとしてWebLogic Server内に統合されます。</span> <span class="merged" id="index.1WrjBX.spl2"  title="原文: The use of a container aligns the lifecycle of a Coherence member with the lifecycle of a Managed Server: starting or stopping a server JVM starts and stops a Coherence cluster member.">コンテナを使用すると、Coherenceメンバーのライフサイクルを管理対象サーバーのライフサイクルにあわせることができます。サーバーJVMを起動または停止すると、Coherenceクラスタ・メンバーも起動または停止します。</span> </p>
+<p><span class="merged" id="index.4Vh375.spl1" title="原文 : A WebLogic Server domain can contain a single Coherence cluster that can be associated with multiple WebLogic Server clusters.">WebLogic Serverドメインには、複数のWebLogic Serverクラスタに関連付けることができる単一のCoherenceクラスタを含めることができます。</span> <span class="merged" id="index.4Vh375.spl2" title="原文 : Within a Coherence cluster are Coherence cluster members.">Coherenceクラスタ内には、Coherenceクラスタ・メンバーがあります。</span> </p>
+<p><span class="merged" id="index.3rtt5S.spl1" title="原文 : Managed Coherence servers are Managed Servers that are configured to be Coherence cluster members.">管理対象Coherenceサーバーは、Coherenceクラスタ・メンバーとして構成される管理対象サーバーです。</span> <span class="merged" id="index.3rtt5S.spl2" title="原文 : Managed Coherence servers provide in-memory distributed caching for applications to increase application scalability, availability, and performance.">管理対象Coherenceサーバーは、アプリケーションのスケーラビリティ、可用性およびパフォーマンスを向上させるために、アプリケーションにインメモリー分散キャッシュを提供します。</span> </p>
+<p><span class="merged" id="index.1h8wyC" title="原文 : Managed servers can be explicitly associated with a Coherence cluster or they can be associated with a WebLogic Server cluster that is associated with a Coherence cluster.">管理対象サーバーは、Coherenceクラスタに明示的に関連付けることも、Coherenceクラスタに関連付けられているWebLogic Serverクラスタに関連付けることもできます。</span></p>
+<p><span class="merged" id="index.3tt5Yq.spl1"  title="原文: Managed Coherence servers that are part of a WebLogic Server cluster inherit their Coherence settings from the WebLogic Server cluster.">WebLogic Serverクラスタの一部である管理対象Coherenceサーバーは、WebLogic ServerクラスタからそのCoherence設定を継承します。</span> <span class="merged" id="index.3tt5Yq.spl2" title="原文 : WebLogic Server clusters are typically used to set up Coherence deployment tiers that organize managed Coherence servers based on their role in the Coherence cluster.">WebLogic Serverクラスタは、通常、Coherenceクラスタ内のロールに基づいて管理対象Coherenceサーバーを編成するCoherenceデプロイメント層を設定するために使用されます。</span> </p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.1"  title="原文:: Note">ノート</span></h4>
+
+    <p><span class="merged" id="index.3F3QFa.spl1" title="原文 : Similar to WebLogic Server clusters, Coherence clusters consist of multiple managed Coherence server instances.">WebLogic Serverクラスタと同様に、Coherenceクラスタは複数の管理対象Coherenceサーバー・インスタンスで構成されます。</span> <span class="merged" id="index.3F3QFa.spl2"  title="原文: However, Coherence clusters use different clustering protocols and are configured separately from WebLogic Server clusters.">ただし、Coherenceクラスタは異なるクラスタリング・プロトコルを使用し、WebLogic Serverクラスタとは別に構成されます。</span> </p>
+<p><span class="merged" id="index.6DKrB"  title="原文: With Coherence clusters, a client interacts with the data in a local cache, and the distribution and backup of the data is automatically performed across cluster members.">Coherenceクラスタでは、クライアントはローカル・キャッシュ内のデータを扱い、データの分散およびバックアップがクラスタ・メンバー間で自動的に実行されます。</span></p>
+
+
+</div>
+<p><span class="merged" id="index.3dmXxD" title="原文 : For more information, see Configuring and Managing Coherence Clusters in Administering Clusters for Oracle WebLogic Server.">詳細は、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-C4577955-59DB-4333-A817-7C26641C4EDC">「Coherenceクラスタの構成および管理」</a>を参照してください。</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.2"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.4KexLB.spl1" title="原文 : In previous releases, Coherence cluster members were organized into Coherence servers (also known as Coherence data nodes).">以前のリリースでは、Coherenceクラスタ・メンバーはCoherenceサーバー(Coherenceデータ・ノードとも呼ばれる)に編成されていました。</span> <span class="merged" id="index.4KexLB.spl2" title="原文 : This feature is deprecated and not supported by WebLogic Remote Console.">この機能は非推奨であり、WebLogic Remote Consoleではサポートされていません。</span> <span class="merged" id="index.4KexLB.spl3" title="原文 : Coherence tiers should be configured to use Managed Coherence servers instead.">Coherence層は、かわりに管理対象Coherenceサーバーを使用するように構成する必要があります。</span> 
+
+</div>
+<h2 id="GUID-B7D3071F-A32F-4AE9-9A36-FF28E3B674C8"><span class="merged" id="index.4d2xzz" title="原文 : Configure Coherence: Main Steps">Coherenceの構成: 主なステップ</span></h2>
+<p><span class="merged" id="index.2eaEjO" title="原文 : For optimal performance or scalability, Coherence is typically set up using WebLogic Server clusters to represent deployment tiers.">最適なパフォーマンスまたはスケーラビリティのために、Coherenceは通常、デプロイメント層を表すためにWebLogic Serverクラスタを使用して設定されます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.45nztg.spl1"  title="原文: Verify whether your domain’s topology can support separate WebLogic Server clusters to represent Coherence deployment tiers.">独立したWebLogic ServerクラスタをCoherenceデプロイメント層として保持することがドメインのトポロジで許可されていることを確認します。</span> <span class="merged" id="index.45nztg.spl2" title="原文 : For guidance, see Cluster Architectures in Administering Clusters for Oracle WebLogic Server.">ガイダンスは、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-7B99ADBA-F318-42A5-AC72-063DD8EBEFA3">「クラスタ・アーキテクチャ」</a>を参照してください。</span> </p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.3"  title="原文:: Note">ノート</span></h4>
+
+    <p><span class="merged" id="index.2EPHgm.spl1" title="原文 : Alternatively, for development purposes, you can set up a single standalone Managed Server instance to act as both a cache server and a cache client.">または、開発目的で、キャッシュ・サーバーとキャッシュ・クライアントの両方として機能する単一のスタンドアロン管理対象サーバー・インスタンスを設定できます。</span> <span class="merged" id="index.2EPHgm.spl2" title="原文 : See Configure and Deploy Coherence on a Single-Server Cluster."><a href="../../index.html#GUID-DB577D5C-A80B-48DB-A940-C95D764532C5">「単一サーバー・クラスタでのCoherenceの構成およびデプロイ」</a>を参照してください。</span> </p>
+<p><span class="merged" id="index.2TUfQb" title="原文 : Single-server topologies are not recommended for production use.">単一サーバー・トポロジは、本番での使用にはお薦めしません。</span></p>
+
+
+</div>
+</li>
+<li>
+<p><span class="merged" id="index.40sLBV" title="原文 : Configure a Coherence cluster as described in Create a Coherence Cluster."><a href="index.html#GUID-D042E373-ED9F-4EC1-B0F4-89DFD803DF0C">「Coherenceクラスタの作成」</a>の説明に従って、Coherenceクラスタを構成します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.lchCy" title="原文 : Configure a data tier as described in Create a Coherence Data Tier."><a href="index.html#GUID-F9B1FB82-B316-4CD1-824F-03A0984EE59A">「Coherenceデータ層の作成」</a>の説明に従って、データ層を構成します。</span></p>
+<p><span class="merged" id="index.2JPioK.spl1"  title="原文: A Coherence data tier is a WebLogic Server cluster that is associated with a Coherence cluster and hosts any number of storage-enabled managed Coherence servers.">Coherenceデータ層は、Coherenceクラスタに関連付けられているWebLogic Serverクラスタであり、ストレージが有効な任意の数の管理対象Coherenceサーバーをホストします。</span> <span class="merged" id="index.2JPioK.spl2" title="原文 : For more information, see Configuring and Managing a Coherence Data Tier in Administering Clusters for Oracle WebLogic Server.">詳細は、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-0B8C8447-3007-4E0D-9CA8-9B676E9D7A5E">「Coherenceデータ層の構成および管理」</a>を参照してください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.2pWAc0" title="原文 : Configure an application tier as described in Create a Coherence Application Tier."><a href="index.html#GUID-8A5079EB-A4AD-4C47-B6F3-576C6A4EE515">「Coherenceアプリケーション層の作成」</a>の説明に従って、アプリケーション層を構成します。</span></p>
+<p><span class="merged" id="index.L45NF.spl1" title="原文 : A Coherence application tier is a WebLogic Server cluster that is associated with a Coherence cluster and hosts any number of storage-disabled managed Coherence servers.">Coherenceアプリケーション層は、Coherenceクラスタに関連付けられているWebLogic Serverクラスタで、ストレージが無効な管理対象Coherenceサーバーをいくつでもホストします。</span> <span class="merged" id="index.L45NF.spl2" title="原文 : For more information, see Configuring and Managing a Coherence Application Tier in Administering Clusters for Oracle WebLogic Server.">詳細は、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-AF4B64A6-598A-4DFB-978B-D7C3B92F42E4">「Coherenceアプリケーション層の構成および管理」</a>を参照してください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.1kW9AR" title="原文 : Configure a proxy tier as described in Create a Coherence Proxy Tier."><a href="index.html#GUID-042599BA-C133-43E0-8572-30B84149BB4F">「Coherenceプロキシ層の作成」</a>の説明に従って、プロキシ層を構成します。</span></p>
+<p><span class="merged" id="index.1qdgEl.spl1"  title="原文: A Coherence proxy tier is a WebLogic Server cluster that is associated with a Coherence cluster and hosts any number of managed Coherence proxy servers.">Coherenceプロキシ層は、Coherenceクラスタに関連付けられているWebLogic Serverクラスタであり、任意の数の管理対象Coherenceプロキシ・サーバーをホストします。</span> <span class="merged" id="index.1qdgEl.spl2"  title="原文: Managed Coherence proxy servers allow Coherence*Extend clients to use Coherence caches without being cluster members.">管理対象Coherenceプロキシ・サーバーにより、Coherence*Extendクライアントは、クラスタ・メンバーにならなくてもCoherenceキャッシュを使用することが可能になります。</span> <span class="merged" id="index.1qdgEl.spl3" title="原文 : For more information, see Configuring and Managing a Coherence Proxy Tier in Administering Clusters for Oracle WebLogic Server.">詳細は、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-FC671FC0-0A23-4FA0-BBAD-0A3A72DFF261">「Coherenceプロキシ層の構成および管理」</a>を参照してください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.3oC4x5.spl1" title="原文 : Create and package a Coherence Grid Archive (GAR) module for any application modules (Web application, EJB, and so on) that use Coherence.">Coherenceを使用するアプリケーション・モジュール(Webアプリケーション、EJBなど)用のCoherenceグリッド・アーカイブ(GAR)モジュールを作成してパッケージ化します。</span> <span class="merged" id="index.3oC4x5.spl2" title="原文 : For more information, see Creating Coherence Applications for WebLogic Server in Developing Oracle Coherence Applications for Oracle WebLogic Server.">詳細は、<strong>「Oracle WebLogic Server用のOracle Coherenceアプリケーションの開発」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=WLCOH-GUID-C34A3F98-55D5-4D5A-8BCC-E3EBC718B57D">「WebLogic Server用のCoherenceアプリケーションの作成」</a>を参照してください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.NIVrN" title="原文 : Deploy your Coherence GAR module to your WebLogic Server domain as described in Install an Application."><a href="../deploying-applications/index.html#GUID-C9A911B0-1942-4383-BD91-49BC745F21DA">「アプリケーションのインストール」</a>の説明に従って、Coherence GARモジュールをWebLogic Serverドメインにデプロイします。</span></p>
+<p><span class="merged" id="index.3VWk8j.spl1" title="原文 : Standalone GARs are deployed in the same way as other Java EE modules.">スタンドアロンGARは、他のJava EEモジュールと同じ方法でデプロイされます。</span> <span class="merged" id="index.3VWk8j.spl2" title="原文 : For more information, see Deploying Coherence Applications in WebLogic Server in Developing Oracle Coherence Applications for Oracle WebLogic Server.">詳細は、<strong>「Oracle WebLogic Server用のOracle Coherenceアプリケーションの開発」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=WLCOH-GUID-9284398A-509D-4BC0-9007-502CCCA4D758">「WebLogic ServerでのCoherenceアプリケーションのデプロイ」</a>を参照してください。</span> </p>
+</li>
+</ol>
+<h2 id="GUID-D042E373-ED9F-4EC1-B0F4-89DFD803DF0C"><span class="merged" id="index.1nXToc"  title="原文: Create a Coherence Cluster">Coherenceクラスタの作成</span></h2>
+<p><span class="merged" id="index.1c1jyD" title="原文 : Coherence clusters enable applications to share data management and caching services among server instances and clusters hosting the applications that need access to them.">Coherenceクラスタを使用すると、アプリケーションは、アクセスが必要なアプリケーションをホストするサーバー・インスタンスおよびクラスタ間でデータ管理およびキャッシュ・サービスを共有できます。</span></p>
+<p><span class="merged" id="index.TNiFi"  title="原文: Configure cluster properties and then target Coherence clusters to WebLogic Server instances or clusters in the domain.">クラスタのプロパティを構成した後、CoherenceクラスタをドメインのWebLogic Serverインスタンスまたはクラスタにターゲット設定します。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1yRKSL" title="原文 : In the Edit Tree, go to Environment, then Coherence Clusters."><strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「Coherenceクラスタ」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1nPQzY" title="原文 : Enter a name for the Coherence cluster and click Create.">Coherenceクラスタの名前を入力し、<strong>「作成」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3NE0MG" title="原文 : Select a Clustering Mode and then adjust the Coherence general properties according to the clustering mode you selected."><strong>「クラスタリング・モード」</strong>を選択し、選択したクラスタリング・モードに応じてCoherence一般プロパティを調整します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2Smc6N.spl1" title="原文 : If you want to specify operational settings that are not available through the provided MBeans, you can upload a cluster configuration file with your supplemental settings.">提供されているMBeansを介して使用できない操作設定を指定する場合は、追加設定を使用してクラスタ構成ファイルをアップロードできます。</span> <span class="merged" id="index.2Smc6N.spl2" title="原文 : Click Import Configuration, then, in the Custom Cluster Configuration File Name dialog box, enter the location of the cluster configuration file, relative to the domain configuration directory."><strong>「構成のインポート」</strong>をクリックし、<strong>「カスタム・クラスタ構成ファイル名」</strong>ダイアログ・ボックスで、ドメイン構成ディレクトリに対するクラスタ構成ファイルのロケーションを入力します。</span> </p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.4"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.2MMVEB" title="原文 : Avoid configuring the same operational settings in both an external cluster configuration file and through the MBeans.">外部クラスタ構成ファイルとMBeansの両方に同じ操作設定を構成しないでください。</span>
+
+</div>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.9qO3U" title="原文 : Next, you should consider updating the following configuration options:">次に、次の構成オプションの更新を検討してください:</span></p>
+<ul>
+<li>
+<p><span class="merged" id="index.32jXpC.1" title="原文 : Target Coherence Clusters"><a href="index.html#GUID-EA8324AB-56FA-48C1-8218-3E399409F390">ターゲットCoherenceクラスタ</a></span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2X8sMb.1" title="原文 : Configure Coherence Federation"><a href="index.html#GUID-587E8B6E-E352-4169-AE37-779D4C114278">Coherenceフェデレーションの構成</a></span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2w0FVe.1" title="原文 : Configure Coherence Persistence"><a href="index.html#GUID-D586A7ED-2690-420C-BE6A-6BA32D989DF7">Coherence永続性の構成</a></span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3rgZEq.1" title="原文 : Set Up the Coherence Security Framework"><a href="index.html#GUID-03F09E60-A5B5-4FE0-AE6F-25430D63C602">Coherenceセキュリティ・フレームワークの設定</a></span></p>
+</li>
+</ul>
+<h2 id="GUID-C27281D9-1D27-48BB-B1D2-DEBCB7935466"><span class="merged" id="index.ZJNss"  title="原文:: Configure Coherence Clusters">Coherenceクラスタの構成</span></h2>
+<p><span class="merged" id="index.4RQ6vn" title="原文 : A Coherence cluster provides several cluster settings that can be configured for a specific domain.">Coherenceクラスタには、特定のドメインに構成できる複数のクラスタ設定が用意されています。</span></p>
+<p><span class="merged" id="index.MPNvl" title="原文 : You should update the default values of the Coherence cluster as needed for your environment.">環境の必要に応じて、Coherenceクラスタのデフォルト値を更新する必要があります。</span></p>
+<h3 id="GUID-587E8B6E-E352-4169-AE37-779D4C114278"><span class="merged" id="index.2CTfYH" title="原文 : Configure Coherence Federation">Coherenceフェデレーションの構成</span></h3>
+<p><span class="merged" id="index.3vsK12.spl1" title="原文 : Use Coherence federation to federate cache data asynchronously across multiple geographically dispersed clusters.">Coherenceフェデレーションを使用して、地理的に分散した複数のクラスタ間でキャッシュ・データを非同期にフェデレートします。</span> <span class="merged" id="index.3vsK12.spl2" title="原文 : Federating cached data across clusters provides redundancy, off-site backup, and multiple points of access for application users in different geographical locations.">クラスタ間でキャッシュされたデータをフェデレートすると、異なる地理的ロケーションにあるアプリケーション・ユーザーに対して冗長性、オフサイト・バックアップおよび複数のアクセス・ポイントが提供されます。</span> </p>
+<p><span class="merged" id="index.4fHp4c" title="原文 : For more information, see Federating Caches Across Clusters in Administering Oracle Coherence.">詳細は、<strong>「Oracle Coherenceの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=COHAG-GUID-B88851EC-BE98-40D5-B026-E29B66DFE384">「クラスタ間でのキャッシュのフェデレート」</a>を参照してください。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1yRKSL.1" title="原文 : In the Edit Tree, go to Environment, then Coherence Clusters."><strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「Coherenceクラスタ」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.31NTXj" title="原文 : Click the Coherence cluster that you want to edit, then select the Coherence Federation tab.">編集するCoherenceクラスタをクリックし、<strong>「Coherenceフェデレーション」</strong>タブを選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1DK1un" title="原文 : Select a Federation Topology from the drop-down list.">ドロップダウン・リストから<strong>「フェデレーション・トポロジ」</strong>を選択します。</span></p>
+<p><span class="merged" id="index.3BCvXS.spl1"  title="原文: When a topology is selected, a topology configuration is automatically created and named Default-Topology.">トポロジを選択すると、トポロジ構成が自動的に作成され、<code>Default-Topology</code>という名前が付けられます。</span> <span class="merged" id="index.3BCvXS.spl2" title="原文 : The Default-Topology topology configuration is created and used if no other federation topology is specified in the cache configuration file.">キャッシュ構成ファイルで他のフェデレーション・トポロジが指定されていない場合、デフォルト・トポロジ・トポロジ構成が作成され、使用されます。</span> </p>
+<p><span class="merged" id="index.HpWKX.spl1" title="原文 : When using federation, complementary topologies must be configured on both the local and remote clusters.">フェデレーションを使用する場合は、ローカル・クラスタとリモート・クラスタの両方で補完トポロジを構成する必要があります。</span> <span class="merged" id="index.HpWKX.spl2" title="原文 : For example, if a local cluster is set to use active-passive, then the remote cluster must be set to use passive-active.">たとえば、ローカル・クラスタが<code>active-passive</code>を使用するように設定されている場合、リモート・クラスタは<code>passive-active</code>を使用するように設定する必要があります。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.3polLx" title="原文 : In the Remote Coherence Cluster Name field, enter the name of the remote cluster to which this cluster is being federated."><strong>「リモートCoherenceクラスタ名」</strong>フィールドに、このクラスタのフェデレート先のリモート・クラスタの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4uZri" title="原文 : In the Remote Participant Hosts field, enter one or more hosts (separated by commas) that are running managed Coherence servers on the remote cluster."><strong>「リモート参加者ホスト」</strong>フィールドに、リモート・クラスタで管理対象Coherenceサーバーを実行している1つ以上のホスト(カンマ区切り)を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.J1oKe.spl1" title="原文 : If required, change the cluster port of the remote cluster in the Remote Coherence Cluster Listen Port.">必要に応じて、<strong>「リモートCoherenceクラスタ・リスニング・ポート」</strong>のリモート・クラスタのクラスタ・ポートを変更します。</span> <span class="merged" id="index.J1oKe.spl2"  title="原文: The default cluster port is typically not changed.">通常、デフォルトのクラスタ・ポートは変更しません。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.1"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h3 id="GUID-D586A7ED-2690-420C-BE6A-6BA32D989DF7"><span class="merged" id="index.2bBcAD" title="原文 : Configure Coherence Persistence">Coherence永続性の構成</span></h3>
+<p><span class="merged" id="index.1IDzZ.spl1" title="原文 : Use Coherence persistence to save and recover Coherence distributed caches.">Coherence永続性を使用して、Coherence分散キャッシュを保存およびリカバリします。</span> <span class="merged" id="index.1IDzZ.spl2"  title="原文: Cached data is persisted so that it can be quickly recovered after a catastrophic failure or after a cluster restart due to planned maintenance.">致命的障害や、計画的メンテナンスによるクラスタ再起動の後に迅速なリカバリができるように、キャッシュされたデータは保持されます。</span> </p>
+<p><span class="merged" id="index.1sW7p6" title="原文 : For more information on configuring persistence in Coherence, see Persisting Caches in Administering Oracle Coherence.">Coherenceでの永続性の構成の詳細は、<strong>「Oracle Coherenceの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=COHAG-GUID-3DC46E44-21E4-4DC4-9D12-231DE57FE7A1">「キャッシュの永続化」</a>を参照してください。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1yRKSL.2" title="原文 : In the Edit Tree, go to Environment, then Coherence Clusters."><strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「Coherenceクラスタ」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2RWEX6" title="原文 : Click the Coherence cluster that you want to edit, then select the Coherence Persistence tab.">編集するCoherenceクラスタをクリックし、<strong>「Coherence永続性」</strong>タブを選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3vZN3G" title="原文 : Choose a Persistence Mode from the drop-down list.">ドロップダウン・リストから<strong>「永続性モード」</strong>を選択します。</span></p>
+<ul>
+<li><span class="merged" id="index.2JixNz.spl1" title="原文 : On-Demand: In this mode, a cache service is manually persisted and recovered upon request using the persistence coordinator."><strong>On-Demand</strong>: このモードでは、キャッシュ・サービスは、永続性コーディネータを使用してリクエストに応じて手動で永続化およびリカバリされます。</span> <span class="merged" id="index.2JixNz.spl2"  title="原文: The persistence coordinator is exposed as an MBean interface that provides operations for creating, archiving, and recovering snapshots of a cache service.">永続性コーディネータは、キャッシュ・サービスのスナップショットの作成、アーカイブおよびリカバリの操作を提供するMBeanインタフェースとして公開されています。</span> </li>
+<li><span class="merged" id="index.4Q39wo.spl1" title="原文 : Active: In this mode, cache contents are automatically persisted on all mutations and are automatically recovered on cluster/service startup."><strong>アクティブ</strong>: このモードでは、キャッシュの内容はすべての突然変異で自動的に保持され、クラスタ/サービスの起動時に自動的に回復されます。</span> <span class="merged" id="index.4Q39wo.spl2"  title="原文: The persistence coordinator can still be used in active persistence mode to perform on-demand snapshots.">その場合も、永続性コーディネータをアクティブ永続性モードで使用して、オンデマンド・スナップショットを実行できます。</span> </li>
+<li><span class="merged" id="index.2smpb.spl1" title="原文 : Active-Async: In this mode, the storage servers can persist data asynchronously."><strong>Active-Async</strong>: このモードでは、ストレージ・サーバーはデータを非同期に保持できます。</span> <span class="merged" id="index.2smpb.spl2"  title="原文: Thus, a mutating request is successful after the primary stores the data and (if there is a synchronous backup) after the backup receives the update.">したがって、変更リクエストは、プライマリがデータを格納し、(同期バックアップがある場合は)バックアップが更新を受信した後で正常に処理されます。</span> </li>
+<li><span class="merged" id="index.26zcMH" title="原文 : Active Backup: In this mode, persistence behaves similarly to the active persistence mode but it also stores backup partitions asynchronously on a disk."><strong>アクティブなバックアップ</strong>: このモードでは、永続性はアクティブな永続性モードと同様に動作しますが、バックアップ・パーティションもディスクに非同期的に格納されます。</span></li>
+</ul>
+</li>
+<li>
+<p><span class="merged" id="index.1JOMfC.spl1" title="原文 : You can override the default locations where various persistence files are stored.">様々な永続性ファイルが格納されているデフォルトのロケーションをオーバーライドできます。</span> <span class="merged" id="index.1JOMfC.spl2" title="原文 : Enter new file locations in the appropriate fields:">適切なフィールドに新しいファイルのロケーションを入力します:</span> </p>
+<ul>
+<li><span class="merged" id="index.28rN8j"  title="原文:: Active Directory"><strong>Active Directory</strong></span></li>
+<li><span class="merged" id="index.3gcgoi"  title="原文:: Snapshot Directory"><strong>スナップショット・ディレクトリ</strong></span></li>
+<li><span class="merged" id="index.2rApk3"  title="原文:: Trash Directory"><strong>ごみ箱ディレクトリ</strong></span></li>
+<li><span class="merged" id="index.23HoJi"  title="原文:: Backup Directory"><strong>バックアップ・ディレクトリ</strong></span></li>
+<li><span class="merged" id="index.1rqiqY"  title="原文:: Events Directory"><strong>イベント・ディレクトリ</strong></span></li>
+</ul>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.2"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h3 id="GUID-B31786DE-73A9-4ECB-B9A6-EDF549BF61CF"><span class="merged" id="index.4A5owS" title="原文 : Configure Coherence Logging">Coherenceロギングの構成</span></h3>
+<p><span class="merged" id="index.3TiBy1" title="原文 : You can configure logging properties for a Coherence cluster.">Coherenceクラスタのロギング・プロパティを構成できます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1yRKSL.3" title="原文 : In the Edit Tree, go to Environment, then Coherence Clusters."><strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「Coherenceクラスタ」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2aPhM" title="原文 : Click the Coherence cluster that you want to edit, then select the Logging tab.">編集するCoherenceクラスタをクリックし、<strong>「ログ」</strong>タブを選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4eQXFW" title="原文 : Make sure the Enabled option is turned on."><strong>「有効」</strong>オプションがオンになっていることを確認します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2iEzVS" title="原文 : In the Logger Name field, enter the logger name for the Coherence logs."><strong>「ロガー名」</strong>フィールドに、Coherenceログのログ出力名を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1Y6pt0" title="原文 : In the Message Format field, enter the Coherence logs message format."><strong>「メッセージ書式」</strong>フィールドに、Coherenceログ・メッセージ形式を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3wPFpB.spl1" title="原文 : In the Severity Level field, enter the logging severity level for Coherence logs."><strong>「重要度レベル」</strong>フィールドに、Coherenceログのロギング重大度レベルを入力します。</span> <span class="merged" id="index.3wPFpB.spl2" title="原文 : The maximum level you can set is 9.">設定できる最大レベルは<code>9</code>です。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.4b7Df5" title="原文 : In the Character Limit field, enter the character limit for Coherence logs."><strong>「文字制限」</strong>フィールドに、Coherenceログの文字制限を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.3"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h3 id="GUID-03F09E60-A5B5-4FE0-AE6F-25430D63C602"><span class="merged" id="index.32rdp" title="原文 : Set Up the Coherence Security Framework">Coherenceセキュリティ・フレームワークの設定</span></h3>
+<p><span class="merged" id="index.RBJZu.spl1" title="原文 : You can enable and configure the Coherence security framework.">Coherenceセキュリティ・フレームワークを有効化および構成できます。</span> <span class="merged" id="index.RBJZu.spl2"  title="原文: If you do not enable security, then any non-WebLogic Server JVM can access the Coherence cluster without going through WebLogic Server authorization.">セキュリティを有効にしないと、WebLogic Server以外のすべてのJVMがWebLogic Server認可なしでCoherenceクラスタにアクセスできるようになります。</span> </p>
+<p><span class="merged" id="index.2iJgXd" title="原文 : For more information, see Securing Oracle Coherence in Oracle WebLogic Server in Securing Oracle Coherence.">詳細は、<strong>「Oracle Coherenceの保護」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=COHSG-GUID-D80F3D67-668C-4C91-B340-0A96B26B05D8">「Oracle WebLogic ServerでのOracle Coherenceの保護」</a>を参照してください。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1yRKSL.4" title="原文 : In the Edit Tree, go to Environment, then Coherence Clusters."><strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「Coherenceクラスタ」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1Glzcu" title="原文 : Click the Coherence cluster that you want to edit, then select the Security tab.">編集するCoherenceクラスタをクリックし、<strong>「セキュリティ」</strong>タブを選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4bZmBY" title="原文 : Turn on the Security Framework Enabled option and then configure the security parameters to meet the requirements of your environment."><strong>「セキュリティ・フレームワーク使用可能」</strong>オプションをオンにして、環境の要件を満たすようにセキュリティ・パラメータを構成します。</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.5"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.3HlXAT" title="原文 : If the Secured Production option is not set, Coherence will inherit its domain mode from WebLogic Server."><strong>「保護された生産」</strong>オプションが設定されていない場合、CoherenceはWebLogic Serverからドメイン・モードを継承します。</span>
+
+</div>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.4"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1nv40P.spl1" title="原文 : Enable an Identity Asserter for a Coherence cluster to assert a client’s identity token.">Coherenceクラスタのアイデンティティ・アサーション・プロバイダを有効にして、クライアントのアイデンティティ・トークンをアサートします。</span> <span class="merged" id="index.1nv40P.spl2" title="原文 : For local extend clients, an identity asserter is already enabled for asserting a token of type weblogic.security.acl.internal.AuthenticatedSubject.">ローカル拡張クライアントの場合、アイデンティティ・アサータは、<code>weblogic.security.acl.internal.AuthenticatedSubject</code>タイプのトークンをアサートするためにすでに有効化されています。</span> <span class="merged" id="index.1nv40P.spl3" title="原文 : For remote (outside of WebLogic Server) extend clients, a custom identity asserter implementation class must be packaged in a GAR.">リモート(WebLogic Serverの外部)拡張クライアントの場合、カスタム・アイデンティティ・アサータ実装クラスをGARにパッケージ化する必要があります。</span> <span class="merged" id="index.1nv40P.spl4"  title="原文: However, an identity asserter is not required if the remote extend client passes null as the token.">ただし、リモートのExtendクライアントがトークンとして<code>null</code>を渡す場合、アイデンティティ・アサータは必要ありません。</span> <span class="merged" id="index.1nv40P.spl5"  title="原文: If the proxy service receives a non-null token and there is no identity asserter implementation class configured, a SecurityException is thrown and the connection attempt is rejected.">プロキシ・サービスがnullでないトークンを受信し、アイデンティティ・アサータの実装クラスが構成されていない場合、<code>SecurityException</code>がスローされ、接続試行が拒否されます。</span> </p>
+<ol>
+<li>
+<p><span class="merged" id="index.2WMZf3" title="原文 : Under the current Coherence cluster node in the navigation tree, select Coherence Identity Asserter.">ナビゲーション・ツリーの現在のCoherenceクラスタ・ノードで、<strong>「Coherenceアイデンティティ・アサーション・プロバイダ」</strong>を選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4MNTbf.spl1" title="原文 : In the Class Name field, enter the fully qualified name of the asserter class."><strong>「クラス名」</strong>フィールドに、アサータ・クラスの完全修飾名を入力します。</span> <span class="merged" id="index.4MNTbf.spl2" title="原文 : For example, to use the default identity asserter, enter com.tangosol.net.security.DefaultIdentityAsserter.">たとえば、デフォルトのアイデンティティ・アサータを使用するには、<code>com.tangosol.net.security.DefaultIdentityAsserter</code>と入力します。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.5"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4I18Hb" title="原文 : If there are any arguments, open the Identity Asserter Constructor Arguments node and click New to add class constructor arguments.">引数がある場合は、<strong>「アイデンティティ・アサーション・プロバイダ・コンストラクタの引数」</strong>ノードを開き、<strong>「新規」</strong>をクリックしてクラス・コンストラクタ引数を追加します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.6"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+</li>
+</ol>
+<p><span class="merged" id="index.2qsRf5" title="原文 : If you want to define WebLogic Server roles and policies for authorizing access to Coherence services and caches, see Secure a Coherence Service Configuration or Secure Coherence Caches, respectively.">Coherenceサービスおよびキャッシュへのアクセスを認可するためのWebLogic Serverロールおよびポリシーを定義する場合は、それぞれ<a href="index.html#GUID-FB54E265-1370-4543-9FE4-A65AE0EDED58">「Coherenceサービス構成の保護」</a>または<a href="index.html#GUID-4C734AB5-62A9-4DBF-8FCC-9CAF4DC842CB">「Coherenceキャッシュの保護」</a>を参照してください。</span></p>
+<h3 id="GUID-EA8324AB-56FA-48C1-8218-3E399409F390"><span class="merged" id="index.iAzzr" title="原文 : Target Coherence Clusters">ターゲットCoherenceクラスタ</span></h3>
+<p><span class="merged" id="index.1WSsAl" title="原文 : Target Coherence clusters to WebLogic Server instances or clusters that host applications that need access to Coherence data caches and services.">Coherenceクラスタを、Coherenceデータ・キャッシュおよびサービスにアクセスする必要があるアプリケーションをホストするWebLogic Serverインスタンスまたはクラスタにターゲット指定します。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1yRKSL.5" title="原文 : In the Edit Tree, go to Environment, then Coherence Clusters."><strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「Coherenceクラスタ」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1LKV3s" title="原文 : Click the Coherence cluster that you want to edit, then select the Members tab.">編集するCoherenceクラスタをクリックし、<strong>「メンバー」</strong>タブを選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3cauwh.spl1" title="原文 : Select the servers or clusters where you want to deploy the Coherence cluster configuration and move them under Chosen.">Coherenceクラスタ構成をデプロイするサーバーまたはクラスタを選択し、<strong>「選択済」</strong>の下に移動します。</span> <span class="merged" id="index.3cauwh.spl2" title="原文 : Move any unwanted servers or clusters under Available.">不要なサーバーまたはクラスタを<strong>「使用可能」</strong>の下に移動します。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.7"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h3 id="GUID-5122006C-7CEE-4B96-BB24-01758E0AFEAE"><span class="merged" id="index.2QzbJP" title="原文 : Create a Cluster Cache Configuration">クラスタ・キャッシュ構成の作成</span></h3>
+<p><span class="merged" id="index.2URKlg.spl1" title="原文 : A Coherence cache configuration file defines the caches and services that are used by an application.">Coherenceキャッシュ構成ファイルでは、アプリケーションで使用されるキャッシュとサービスを定義します。</span> <span class="merged" id="index.2URKlg.spl2"  title="原文: Typically, a cache configuration file is included in a GAR module.">通常、キャッシュ構成ファイルは、GARモジュールに含まれています。</span> </p>
+<p><span class="merged" id="index.10iRkP.spl1"  title="原文: A GAR is deployed to all managed Coherence servers in the data tier and can also be deployed as part of an EAR to the application tier.">GARは、データ層内のすべての管理対象Coherenceサーバーにデプロイされますが、EARの一部としてアプリケーション層にデプロイすることもできます。</span> <span class="merged" id="index.10iRkP.spl2" title="原文 : The GAR ensures that the cache configuration is available on every Coherence cluster member.">GARにより、すべてのCoherenceクラスタ・メンバーでキャッシュ構成が使用可能になります。</span> </p>
+<p><span class="merged" id="index.2TcFpE.spl1" title="原文 : However, there are cases that require a different cache configuration file to be used on specific managed Coherence servers.">ただし、特定の管理対象Coherenceサーバーで異なるキャッシュ構成ファイルを使用する必要がある場合があります。</span> <span class="merged" id="index.2TcFpE.spl2"  title="原文: For example, a proxy tier requires access to all artifacts in the GAR but needs a different cache configuration file that defines the proxy services to start.">たとえば、プロキシ層では、GAR内のすべてのアーティファクトにアクセスする必要がありますが、起動するプロキシ・サービスが定義されている別のキャッシュ構成ファイルが必要です。</span> </p>
+<p><span class="merged" id="index.1dOqG2.spl1" title="原文 : You can use WebLogic Remote Console to define a cluster cache configuration.">WebLogic Remote Consoleを使用して、クラスタ・キャッシュ構成を定義できます。</span> <span class="merged" id="index.1dOqG2.spl2"  title="原文: A cache configuration file can be associated with WebLogic clusters or Managed Coherence Servers at runtime.">キャッシュ構成ファイルは、実行時にWebLogicクラスタまたは管理対象Coherenceサーバーに関連付けることができます。</span> <span class="merged" id="index.1dOqG2.spl3"  title="原文: In this case, the cache configuration overrides the cache configuration file that is included in a GAR.">この場合、そのキャッシュ構成が、GARに含まれているキャッシュ構成ファイルをオーバーライドします。</span> <span class="merged" id="index.1dOqG2.spl4"  title="原文: You can also omit the cache configuration file from a GAR file and assign it at runtime.">GARファイル内のキャッシュ構成ファイルを省略し、実行時に割り当てることもできます。</span> </p>
+<p><span class="merged" id="index.2XlDGp.spl1"  title="原文: To override a cache configuration file at runtime, the cache configuration file must be bound to a JNDI name.">実行時にキャッシュ構成ファイルをオーバーライドするには、キャッシュ構成ファイルがJNDI名にバインドされている必要があります。</span> <span class="merged" id="index.2XlDGp.spl2" title="原文 : The JNDI name is defined using the override-property attribute of the element. The element is located in the coherence-application.xml file that is packaged in a GAR file. For more information on the coherence-application.xml file, see coherence-application.xml Deployment Descriptor Elements in Developing Oracle Coherence Applications for Oracle WebLogic Server. For more information on importing a cache configuration file, see Overriding a Cache Configuration File in Administering Clusters for Oracle WebLogic Server.">JNDI名は、<code><cache-configuration-ref></code>要素の<code>override-property</code>属性を使用して定義されます。要素は、GARファイルにパッケージ化されている<code>coherence-application.xml</code>ファイルにあります。<code>coherence-application.xml</code>ファイルの詳細は、<strong>「Oracle WebLogic Server用のOracle Coherenceアプリケーションの開発」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=WLCOH-GUID-124B798C-C9E4-40B7-85A2-4F901F3A4455">「coherence-application.xmlデプロイメント記述子の要素」</a>を参照してください。キャッシュ構成ファイルのインポートの詳細は、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-08312E14-C94D-40E3-A09F-5667ECE22171">「キャッシュ構成ファイルのオーバーライド」</a>を参照してください。</span> </p>
+<ol>
+<li>
+<p><span class="merged" id="index.3voXlj.spl1" title="原文 : If you haven’t already done so, create a Coherence cluster.">まだ作成していない場合は、Coherenceクラスタを作成します。</span> <span class="merged" id="index.3voXlj.spl2" title="原文 : See Create a Coherence Cluster."><a href="index.html#GUID-D042E373-ED9F-4EC1-B0F4-89DFD803DF0C">「Coherenceクラスタの作成」</a>を参照してください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.3gluIV" title="原文 : In the Edit Tree, go to Environment, then Coherence Clusters, then myCoherenceCluster, then Coherence Cache Configs."><strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「Coherenceクラスタ」</strong>、<em>myCoherenceCluster</em>、<strong>「Coherenceキャッシュ構成」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB.1"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4SMQrP" title="原文 : In the Name field, enter a name for the Coherence cache configuration."><strong>「名前」</strong>フィールドに、Coherenceキャッシュ構成の名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1nsDD7" title="原文 : In the JNDI Name field, enter the JNDI name to which the cache configuration file is bound."><strong>「JNDI名」</strong>フィールドに、キャッシュ構成ファイルのバインド先のJNDI名を入力します。</span></p>
+<p><span class="merged" id="index.2UMOZX"  title="原文: This JNDI name is prefixed with cache-config/ and must match the value in the override-property of your cache-configuration-ref entry in coherence-application.xml.">このJNDI名の接頭辞は<code>cache-config/</code>で、<code>coherence-application.xml</code>の<code>cache-configuration-ref</code>エントリ内の<code>override-property</code>にある値と一致する必要があります。</span></p>
+<p><span class="merged" id="index.4901Vk" title="原文 : For example, JNDI name of ExamplesGAR must match the override-property of cache-config/ExamplesGAR.">たとえば、JNDI名<code>ExamplesGAR</code>は、<code>cache-config/ExamplesGAR</code>の<code>override-property</code>と一致する必要があります。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.GTlUa.spl1" title="原文 : In the Cache Configuration File field, enter the full path to the cache configuration file."><strong>「キャッシュ構成ファイル」</strong>フィールドに、キャッシュ構成ファイルへのフルパスを入力します。</span> <span class="merged" id="index.GTlUa.spl2"  title="原文: Alternatively, you may specify a URL.">または、URLを指定することもできます。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.2BMUBQ"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.uAOPL.spl1" title="原文 : On the Targets tab, select the servers or clusters where you want to target the cluster cache configuration and move them under Chosen."><strong>「ターゲット」</strong>タブで、クラスタ・キャッシュ構成をターゲットとするサーバーまたはクラスタを選択し、<strong>「選択済」</strong>の下に移動します。</span> <span class="merged" id="index.uAOPL.spl2" title="原文 : Move unwanted servers or clusters under Available.">不要なサーバーまたはクラスタを<strong>「使用可能」</strong>の下に移動します。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.8"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h3 id="GUID-4C734AB5-62A9-4DBF-8FCC-9CAF4DC842CB"><span class="merged" id="index.4MwbqW" title="原文 : Secure Coherence Caches">Coherenceキャッシュの保護</span></h3>
+<p><span class="merged" id="index.3fz9y9" title="原文 : Use WebLogic Server authorization to restrict access to specific Coherence caches.">WebLogic Server認可を使用して、特定のCoherenceキャッシュへのアクセスを制限します。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.3voXlj.1.spl1" title="原文 : If you haven’t already done so, create a Coherence cluster.">まだ作成していない場合は、Coherenceクラスタを作成します。</span> <span class="merged" id="index.3voXlj.1.spl2" title="原文 : See Create a Coherence Cluster."><a href="index.html#GUID-D042E373-ED9F-4EC1-B0F4-89DFD803DF0C">「Coherenceクラスタの作成」</a>を参照してください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.2wZklA" title="原文 : In the Edit Tree, go to Environment, then Coherence Clusters, then myCoherenceCluster, then Coherence Caches."><strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「Coherenceクラスタ」</strong>、<em>myCoherenceCluster</em>、<strong>「Coherenceキャッシュ」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB.2"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2gFf85.spl1" title="原文 : In the Name field, enter a name for the Coherence cache."><strong>「名前」</strong>フィールドに、Coherenceキャッシュの名前を入力します。</span> <span class="merged" id="index.2gFf85.spl2" title="原文 : The name of the cache must match exactly the name of the cache used in an application.">キャッシュの名前は、<em>「正確」</em>とアプリケーションで使用されるキャッシュの名前と一致する必要があります。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.1vglYr" title="原文 : Click Create and commit your changes."><strong>「作成」</strong>をクリックし、変更をコミットします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1tdwdU.spl1" title="原文 : Apply a security role that is scoped to the Coherence cache.">Coherenceキャッシュにスコープ指定されたセキュリティ・ロールを適用します。</span> <span class="merged" id="index.1tdwdU.spl2" title="原文 : See Create a Scoped Role."><a href="../securing-domains/index.html#GUID-CB641FD2-694F-452C-AC47-8E126374EF8D">「スコープ付きロールの作成」</a>を参照してください。</span> </p>
+</li>
+</ol>
+<h3 id="GUID-FB54E265-1370-4543-9FE4-A65AE0EDED58"><span class="merged" id="index.30jofP" title="原文 : Secure a Coherence Service Configuration">Coherenceサービス構成の保護</span></h3>
+<p><span class="merged" id="index.4H50XZ.spl1" title="原文 : You can use WebLogic Server authorization to restrict access to Coherence services.">WebLogic Server認可を使用すると、Coherenceサービスへのアクセスを制限できます。</span> <span class="merged" id="index.4H50XZ.spl2"  title="原文: Specifying authorization on a cache service affects access to all the caches that are created by that service.">キャッシュ・サービスに認証を指定すると、そのサービスで作成されるすべてのキャッシュへのアクセスに影響します。</span> </p>
+<ol>
+<li>
+<p><span class="merged" id="index.Ry0NC" title="原文 : In the Edit Tree, go to Environment, then Coherence Clusters, then myCoherenceCluster, then Coherence Services."><strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「Coherenceクラスタ」</strong>、<em>myCoherenceCluster</em>、<strong>「Coherenceサービス」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB.3"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1CvenC.spl1" title="原文 : In the Name field, enter a name for the Coherence service."><strong>「名前」</strong>フィールドに、Coherenceサービスの名前を入力します。</span> <span class="merged" id="index.1CvenC.spl2" title="原文 : The name of the service must match exactly the name of the service used in an application.">サービスの名前は、アプリケーションで使用されるサービスの名前である<em>「正確」</em>と一致する必要があります。</span> </p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.6"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.1i5xs2.spl1"  title="原文: The exact name must include the scope name as a prefix to the service name.">正確な名前には、サービス名に接頭辞としてスコープ名を含める必要があります。</span> <span class="merged" id="index.1i5xs2.spl2"  title="原文: The scope name can be explicitly defined in the cache configuration file or, more commonly, taken from the deployment module name.">スコープ名は、キャッシュ構成ファイルに明示的に定義するか、より一般的には開発モジュール名から取ることができます。</span> <span class="merged" id="index.1i5xs2.spl3"  title="原文: For example, if you deploy a GAR named contacts.gar that defines a service named ContactsService, then the exact service name is contacts:ContactsService.">たとえば、<code>ContactsService</code>という名前のサービスを定義する<code>contacts.gar</code>という名前のGARをデプロイする場合、正確なサービス名は<code>contacts:ContactsService</code>となります。</span> 
+
+</div>
+</li>
+<li>
+<p><span class="merged" id="index.1vglYr.1" title="原文 : Click Create and commit your changes."><strong>「作成」</strong>をクリックし、変更をコミットします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2KYe0V.spl1" title="原文 : Apply a security role that is scoped to the Coherence service.">Coherenceサービスにスコープ指定されたセキュリティ・ロールを適用します。</span> <span class="merged" id="index.2KYe0V.spl2" title="原文 : See Create a Scoped Role."><a href="../securing-domains/index.html#GUID-CB641FD2-694F-452C-AC47-8E126374EF8D">「スコープ付きロールの作成」</a>を参照してください。</span> </p>
+</li>
+</ol>
+<h3 id="GUID-E028304F-5CF5-4FD8-82A7-B74338196538"><span class="merged" id="index.33vsdh" title="原文 : Specify a Coherence Well Known Address">Coherence既知アドレスの指定</span></h3>
+<p><span class="merged" id="index.3D3Pcy.spl1" title="原文 : Configure a well known address for a Coherence cluster.">Coherenceクラスタの既知のアドレスを構成します。</span> <span class="merged" id="index.3D3Pcy.spl2"  title="原文: Other members can use this address to enroll in the cluster.">他のメンバーはこのアドレスを使用してクラスタに登録できます</span> </p>
+<ol>
+<li>
+<p><span class="merged" id="index.2CQIL6" title="原文 : In the Edit Tree, go to Environment, then Coherence Clusters, then myCoherenceCluster, then Coherence Cluster Well Known Addresses."><strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「Coherenceクラスタ」</strong>、<em>myCoherenceCluster</em>、<strong>「Coherenceクラスタの既知のアドレス」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB.4"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.377DDw" title="原文 : In the Name field, enter a name for the Coherence well known address."><strong>「名前」</strong>フィールドに、Coherenceの既知のアドレスの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4LOLo6" title="原文 : In the Listen Address field, enter the IP address of the Coherence cluster member."><strong>「リスニング・アドレス」</strong>フィールドに、Coherenceクラスタ・メンバーのIPアドレスを入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2BMUBQ.1"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h3 id="GUID-8CBEB83E-5388-4E93-9BC0-93D6D11AA06F"><span class="merged" id="index.3wkTSN" title="原文 : Configure a Coherence Address Provider">Coherenceアドレス・プロバイダの構成</span></h3>
+<p><span class="merged" id="index.195v1M" title="原文 : An address provider specifies the TCP listener address (IP or DNS name, and port) for a proxy service.">アドレス・プロバイダは、プロキシ・サービスのTCPリスナー・アドレス(IPまたはDNS名およびポート)を指定します。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.e768A" title="原文 : In the Edit Tree, go to Environment, then Coherence Clusters, then myCoherenceCluster, then Coherence Address Providers."><strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「Coherenceクラスタ」</strong>、<em>myCoherenceCluster</em>、<strong>「Coherenceアドレス・プロバイダ」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB.5"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2OacvO" title="原文 : In the Name field, enter a name for the Coherence address provider."><strong>「名前」</strong>フィールドに、Coherenceアドレス・プロバイダの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2BMUBQ.2"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></p>
+<p><span class="merged" id="index.zCTvF" title="原文 : A node for the new address provider will appear under the Coherence Address Providers.">新しいアドレス・プロバイダのノードが<strong>「Coherenceアドレス・プロバイダ」</strong>の下に表示されます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.22I2iM" title="原文 : Expand the new node and go to Coherence Socket Addresses.">新しいノードを展開し、<strong>「Coherenceソケット・アドレス」</strong>に進みます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB.6"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1NkBqw" title="原文 : Enter a name for the socket address.">ソケット・アドレスの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.vSYBm" title="原文 : In the Address field, specify the listen address for your socket address."><strong>「住所」</strong>フィールドで、ソケット・アドレスのリスニング・アドレスを指定します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3GuFf" title="原文 : In the Port field, specify the listen port for your socket address."><strong>「ポート」</strong>フィールドで、ソケット・アドレスのリスニング・ポートを指定します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2BMUBQ.3"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h2 id="GUID-26E0D6DA-EB7D-4BCA-8707-49C3162A5CF1"><span class="merged" id="index.3kxQa3" title="原文 : Coherence Deployment Tiers">Coherenceデプロイメント層</span></h2>
+<p><span class="merged" id="index.38P5nA" title="原文 : In production environments, Coherence is typically set up using WebLogic Server clusters to represent deployment tiers.">本番環境では、Coherenceは、通常、デプロイメント層を表すためにWebLogic Serverクラスタを使用して設定されます。</span></p>
+<p><span class="merged" id="index.1Gj0hD" title="原文 : There are three types of Coherence deployment tiers:">Coherenceデプロイメント層には3つのタイプがあります:</span></p>
+<ul>
+<li><span class="merged" id="index.3kHYxH" title="原文 : Data Tier which hosts one or more cache servers">1つ以上のキャッシュ・サーバーをホストする<strong>「データ層」</strong></span></li>
+<li><span class="merged" id="index.rPjA1" title="原文 : Application Tier which hosts one or more cache clients">1つ以上のキャッシュ・クライアントをホストする<strong>「アプリケーション層」</strong></span></li>
+<li><span class="merged" id="index.XWVH5" title="原文 : Proxy Tier which hosts one or more managed Coherence proxy servers and the Coherence extend client tier that hosts extend clients">1つ以上の管理対象Coherenceプロキシ・サーバーをホストする<strong>「プロキシ層」</strong>と、クライアントを拡張するホストであるCoherence拡張クライアント層</span></li>
+</ul>
+<p><span class="merged" id="index.40XUNy"  title="原文: The tiered topology approach provides optimal scalability and performance.">階層型トポロジのアプローチにより、最適なスケーラビリティとパフォーマンスが提供されます。</span></p>
+<p><span class="merged" id="index.vkr4a" title="原文 : For more information on Coherence deployment tiers, see Creating Coherence Deployment Tiers in Administering Clusters for Oracle WebLogic Server.">Coherenceデプロイメント層の詳細は、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-133FFEBE-568D-4E5A-8C14-85388F4FB054">「Coherenceデプロイメント層の作成」</a>を参照してください。</span></p>
+<h3 id="GUID-F9B1FB82-B316-4CD1-824F-03A0984EE59A"><span class="merged" id="index.Dr0ex"  title="原文: Create a Coherence Data Tier">Coherenceデータ層の作成</span></h3>
+<p><span class="merged" id="index.Cj7Rt"  title="原文: A Coherence data tier is a WebLogic Server cluster that is associated with a Coherence cluster and hosts any number of storage-enabled managed Coherence servers.">Coherenceデータ層は、Coherenceクラスタに関連付けられているWebLogic Serverクラスタであり、ストレージが有効な任意の数の管理対象Coherenceサーバーをホストします。</span></p>
+<p><span class="merged" id="index.1i5Q2J" title="原文 : For more information on Coherence data tiers, see Configuring and Managing a Coherence Data Tier in Administering Clusters for Oracle WebLogic Server.">Coherenceデータ層の詳細は、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-0B8C8447-3007-4E0D-9CA8-9B676E9D7A5E">「Coherenceデータ層の構成および管理」</a>を参照してください。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.106LLc" title="原文 : If you haven’t already done so, create a Coherence cluster as described in Create a Coherence Cluster.">まだ作成していない場合は、<a href="index.html#GUID-D042E373-ED9F-4EC1-B0F4-89DFD803DF0C">「Coherenceクラスタの作成」</a>の説明に従ってCoherenceクラスタを作成します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1y8O6N" title="原文 : Create a WebLogic Server cluster as described in Create a Cluster."><a href="../domain-configuration/index.html#GUID-EEE59519-29C3-4003-828A-9A3DC25059DA">「クラスタの作成」</a>の説明に従って、WebLogic Serverクラスタを作成します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.Slo4X" title="原文 : On the WebLogic Server cluster that you just created, go to the Advanced tab, then the Coherence subtab.">作成したWebLogic Serverクラスタで、<strong>「拡張」</strong>タブ、「<strong>Coherence</strong>」サブタブに移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.iZpiM" title="原文 : From the Coherence Cluster System Resource drop-down list, select the Coherence cluster."><strong>「Coherenceクラスタ・システム・リソース」</strong>ドロップダウン・リストから、Coherenceクラスタを選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.32YANU" title="原文 : Turn on the Local Storage Enabled option."><strong>「ローカル・ストレージ有効」</strong>オプションをオンにします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.9"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3K1l4x" title="原文 : Create one or more managed Coherence servers as described in Create a Managed Coherence Server and assign them to this data tier."><a href="index.html#GUID-48BEE50E-2995-4C42-96EF-2F28416512FC">「管理対象Coherenceサーバーの作成」</a>の説明に従って、1つ以上の管理対象Coherenceサーバーを作成し、このデータ層に割り当てます。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.2BOeLY.spl1" title="原文 : You should also create a Coherence application tier and, optionally, a Coherence proxy tier.">また、Coherenceアプリケーション層と、オプションでCoherenceプロキシ層も作成する必要があります。</span> <span class="merged" id="index.2BOeLY.spl2" title="原文 : See Create a Coherence Application Tier or Create a Coherence Proxy Tier."><a href="index.html#GUID-8A5079EB-A4AD-4C47-B6F3-576C6A4EE515">「Coherenceアプリケーション層の作成」</a>または<a href="index.html#GUID-042599BA-C133-43E0-8572-30B84149BB4F">「Coherenceプロキシ層の作成」</a>を参照してください。</span> </p>
+<h3 id="GUID-8A5079EB-A4AD-4C47-B6F3-576C6A4EE515"><span class="merged" id="index.32VMc6"  title="原文: Create a Coherence Application Tier">Coherenceアプリケーション層の作成</span></h3>
+<p><span class="merged" id="index.2PqNlx" title="原文 : A Coherence application tier is a WebLogic Server cluster that is associated with a Coherence cluster and hosts any number of storage-disabled managed Coherence servers.">Coherenceアプリケーション層は、Coherenceクラスタに関連付けられているWebLogic Serverクラスタで、ストレージが無効な管理対象Coherenceサーバーをいくつでもホストします。</span></p>
+<p><span class="merged" id="index.2fYvsx" title="原文 : For more information on Coherence application tiers, see Configuring and Managing a Coherence Application Tier in Administering Clusters for Oracle WebLogic Server.">Coherenceアプリケーション層の詳細は、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-AF4B64A6-598A-4DFB-978B-D7C3B92F42E4">「Coherenceアプリケーション層の構成および管理」</a>を参照してください。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.106LLc.1" title="原文 : If you haven’t already done so, create a Coherence cluster as described in Create a Coherence Cluster.">まだ作成していない場合は、<a href="index.html#GUID-D042E373-ED9F-4EC1-B0F4-89DFD803DF0C">「Coherenceクラスタの作成」</a>の説明に従ってCoherenceクラスタを作成します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1y8O6N.1" title="原文 : Create a WebLogic Server cluster as described in Create a Cluster."><a href="../domain-configuration/index.html#GUID-EEE59519-29C3-4003-828A-9A3DC25059DA">「クラスタの作成」</a>の説明に従って、WebLogic Serverクラスタを作成します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.Slo4X.1" title="原文 : On the WebLogic Server cluster that you just created, go to the Advanced tab, then the Coherence subtab.">作成したWebLogic Serverクラスタで、<strong>「拡張」</strong>タブ、「<strong>Coherence</strong>」サブタブに移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.iZpiM.1" title="原文 : From the Coherence Cluster System Resource drop-down list, select the Coherence cluster."><strong>「Coherenceクラスタ・システム・リソース」</strong>ドロップダウン・リストから、Coherenceクラスタを選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.278GXA.spl1" title="原文 : Turn off the Local Storage Enabled option."><strong>「ローカル・ストレージ有効」</strong>オプションをオフにします。</span> <span class="merged" id="index.278GXA.spl2"  title="原文: Servers in the application tier should never be used to store cache data.">アプリケーション層内のサーバーは、キャッシュ・データの格納には使用しないでください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.10"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2xpTEe" title="原文 : Create one or more managed Coherence servers as described in Create a Managed Coherence Server and assign them to this application tier."><a href="index.html#GUID-48BEE50E-2995-4C42-96EF-2F28416512FC">「管理対象Coherenceサーバーの作成」</a>の説明に従って、1つ以上の管理対象Coherenceサーバーを作成し、このアプリケーション層に割り当てます。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.4D0uSk.spl1" title="原文 : You should also create a Coherence data tier and, optionally, a Coherence proxy tier.">また、Coherenceデータ層と、オプションでCoherenceプロキシ層も作成する必要があります。</span> <span class="merged" id="index.4D0uSk.spl2" title="原文 : See Create a Coherence Data Tier or Create a Coherence Proxy Tier."><a href="index.html#GUID-F9B1FB82-B316-4CD1-824F-03A0984EE59A">「Coherenceデータ層の作成」</a>または<a href="index.html#GUID-042599BA-C133-43E0-8572-30B84149BB4F">「Coherenceプロキシ層の作成」</a>を参照してください。</span> </p>
+<h3 id="GUID-042599BA-C133-43E0-8572-30B84149BB4F"><span class="merged" id="index.365ruV"  title="原文: Create a Coherence Proxy Tier">Coherenceプロキシ層の作成</span></h3>
+<p><span class="merged" id="index.2gdlQf.spl1"  title="原文: A Coherence proxy tier is a WebLogic Server cluster that is associated with a Coherence cluster and hosts any number of managed Coherence proxy servers.">Coherenceプロキシ層は、Coherenceクラスタに関連付けられているWebLogic Serverクラスタであり、任意の数の管理対象Coherenceプロキシ・サーバーをホストします。</span> <span class="merged" id="index.2gdlQf.spl2"  title="原文: Managed Coherence proxy servers allow Coherence*Extend clients to use Coherence caches without being cluster members.">管理対象Coherenceプロキシ・サーバーにより、Coherence*Extendクライアントは、クラスタ・メンバーにならなくてもCoherenceキャッシュを使用することが可能になります。</span> </p>
+<p><span class="merged" id="index.Awgaa.spl1"  title="原文: The number of managed Coherence proxy servers that are required in a proxy tier depends on the number of expected clients.">プロキシ層で必要な管理対象Coherenceプロキシ・サーバーの数は、予想されるクライアントの数によって異なります。</span> <span class="merged" id="index.Awgaa.spl2" title="原文 : At least two proxy servers must be created to allow for load balancing.">ロード・バランシングを可能にするには、少なくとも2つのプロキシ・サーバーを作成する必要があります。</span> <span class="merged" id="index.Awgaa.spl3" title="原文 : However, additional servers may be required when supporting a large number of client connections and requests.">ただし、多数のクライアント接続およびリクエストをサポートする場合は、追加のサーバーが必要になることがあります。</span> </p>
+<p><span class="merged" id="index.2fA6Ji" title="原文 : For details on Coherence*Extend and creating extend clients, see Introduction to Coherence*Extend in Developing Remote Clients for Oracle Coherence.">Coherence*ExtendおよびExtendクライアントの作成の詳細は、<strong>「Oracle Coherenceのリモート・クライアントの開発」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=COHCG-GUID-E935592F-DCA2-44BD-96D5-E276DFA3D3F9">「Coherence*Extendの概要」</a>を参照してください。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.106LLc.2" title="原文 : If you haven’t already done so, create a Coherence cluster as described in Create a Coherence Cluster.">まだ作成していない場合は、<a href="index.html#GUID-D042E373-ED9F-4EC1-B0F4-89DFD803DF0C">「Coherenceクラスタの作成」</a>の説明に従ってCoherenceクラスタを作成します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1y8O6N.2" title="原文 : Create a WebLogic Server cluster as described in Create a Cluster."><a href="../domain-configuration/index.html#GUID-EEE59519-29C3-4003-828A-9A3DC25059DA">「クラスタの作成」</a>の説明に従って、WebLogic Serverクラスタを作成します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.Slo4X.2" title="原文 : On the WebLogic Server cluster that you just created, go to the Advanced tab, then the Coherence subtab.">作成したWebLogic Serverクラスタで、<strong>「拡張」</strong>タブ、「<strong>Coherence</strong>」サブタブに移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.iZpiM.2" title="原文 : From the Coherence Cluster System Resource drop-down list, select the Coherence cluster."><strong>「Coherenceクラスタ・システム・リソース」</strong>ドロップダウン・リストから、Coherenceクラスタを選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.40wPSd.spl1" title="原文 : Turn off the Local Storage Enabled option."><strong>「ローカル・ストレージ有効」</strong>オプションをオフにします。</span> <span class="merged" id="index.40wPSd.spl2" title="原文 : Servers in the proxy tier should never be used to store cache data.">プロキシ層のサーバーは、キャッシュ・データの格納に使用しないでください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.11"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1uFKRy" title="原文 : Create one or more managed Coherence servers as described in Create a Managed Coherence Server and assign them to this proxy tier."><a href="index.html#GUID-48BEE50E-2995-4C42-96EF-2F28416512FC">「管理対象Coherenceサーバーの作成」</a>の説明に従って、1つ以上の管理対象Coherenceサーバーを作成し、このプロキシ層に割り当てます。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.2xJxga.spl1" title="原文 : You should also create a Coherence data tier and a Coherence application tier.">また、Coherenceデータ層とCoherenceアプリケーション層も作成する必要があります。</span> <span class="merged" id="index.2xJxga.spl2" title="原文 : See Create a Coherence Data Tier and Create a Coherence Application Tier."><a href="index.html#GUID-F9B1FB82-B316-4CD1-824F-03A0984EE59A">「Coherenceデータ層の作成」</a>および<a href="index.html#GUID-8A5079EB-A4AD-4C47-B6F3-576C6A4EE515">「Coherenceアプリケーション層の作成」</a>を参照してください。</span> </p>
+<h2 id="GUID-48BEE50E-2995-4C42-96EF-2F28416512FC"><span class="merged" id="index.7VKas" title="原文 : Create a Managed Coherence Server">管理対象Coherenceサーバーの作成</span></h2>
+<p><span class="merged" id="index.3uUrDJ" title="原文 : A Managed Coherence server is a Managed Server that is configured to be Coherence cluster member and provide in-memory distributed caching for applications.">管理対象Coherenceサーバーは、Coherenceクラスタ・メンバーとして構成され、アプリケーションにインメモリー分散キャッシュを提供する管理対象サーバーです。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.3RA1Nm"  title="原文: Create a WebLogic Server Managed Server, as described in Create a Managed Server."><a href="../domain-configuration/index.html#GUID-50C0A18E-83F6-4865-ABF7-6127D0D0F49D">管理対象サーバーの作成に関する項</a>の説明に従って、WebLogic Server管理対象サーバーを作成します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1v5BTf" title="原文 : On the Managed Server that you just created, from the Cluster drop-down list, select a cluster that is acting as a Coherence deployment tier.">作成した管理対象サーバーで、<strong>「クラスタ」</strong>ドロップダウン・リストから、Coherenceデプロイメント層として機能するクラスタを選択します。</span></p>
+<p><span class="merged" id="index.452wkC" title="原文 : For information on Coherence deployment tiers, see Coherence Deployment Tiers.">Coherenceデプロイメント層の詳細は、<a href="index.html#GUID-26E0D6DA-EB7D-4BCA-8707-49C3162A5CF1">「Coherenceデプロイメント層」</a>を参照してください。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.12"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h2 id="GUID-DB577D5C-A80B-48DB-A940-C95D764532C5"><span class="merged" id="index.TxDRo" title="原文 : Configure and Deploy Coherence on a Single-Server Cluster">単一サーバー・クラスタでのCoherenceの構成およびデプロイ</span></h2>
+<p><span class="merged" id="index.2E9Yrr.spl1" title="原文 : During development, a single-server cluster offers a quick way to start and stop a cluster.">開発中は、単一サーバー・クラスタによって、クラスタをすばやく起動および停止できます。</span> <span class="merged" id="index.2E9Yrr.spl2"  title="原文: A single-server cluster is a cluster that is constrained to run on a single managed server instance and does not access the network.">単一サーバー・クラスタは、単一の管理対象サーバー・インスタンス上で実行するように制限されている、ネットワークにアクセスしないクラスタです。</span> <span class="merged" id="index.2E9Yrr.spl3"  title="原文: The server instance acts as a storage-enabled cluster member, a client, and (optionally) a proxy.">サーバー・インスタンスは、ストレージ有効クラスタ・メンバー、クライアントおよび(オプションで)プロキシとして機能します。</span> </p>
+<p><span class="merged" id="index.2IXgM6" title="原文 : For more information on using a single-server Coherence cluster, see Using a Single-Server Cluster in Administering Clusters for Oracle WebLogic Server.">単一サーバーCoherenceクラスタの使用方法の詳細は、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-8B3138E3-53B0-4263-A24B-C3F681A61D9B">「単一サーバー・クラスタの使用」</a>を参照してください。</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.7"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.1DQvNg" title="原文 : To set up Coherence for production use, follow the steps outlined in Configure Coherence: Main Steps instead.">本番用にCoherenceを設定するには、かわりに<a href="../../index.html#GUID-B7D3071F-A32F-4AE9-9A36-FF28E3B674C8">「Coherenceの構成: 主なステップ」</a>で概説されているステップに従います。</span>
+
+</div>
+<ol>
+<li>
+<p><span class="merged" id="index.106LLc.3" title="原文 : If you haven’t already done so, create a Coherence cluster as described in Create a Coherence Cluster.">まだ作成していない場合は、<a href="index.html#GUID-D042E373-ED9F-4EC1-B0F4-89DFD803DF0C">「Coherenceクラスタの作成」</a>の説明に従ってCoherenceクラスタを作成します。</span></p>
+<p><span class="merged" id="index.1yKBT8.spl1" title="原文 : If you are using multicast communication, set Time To Live to 0.">マルチキャスト通信を使用している場合は、<strong>Time To Live</strong>を<code>0</code>に設定します。</span> <span class="merged" id="index.1yKBT8.spl2" title="原文 : For more information about communication for Coherence clusters, see Configure Cluster Communication in Administering Clusters for Oracle WebLogic Server.">Coherenceクラスタの通信の詳細は、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-6EA50819-A366-46DE-9DE5-95F274569934">「クラスタ通信の構成」</a>を参照してください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.3RA1Nm.1"  title="原文: Create a WebLogic Server Managed Server, as described in Create a Managed Server."><a href="../domain-configuration/index.html#GUID-50C0A18E-83F6-4865-ABF7-6127D0D0F49D">管理対象サーバーの作成に関する項</a>の説明に従って、WebLogic Server管理対象サーバーを作成します。</span></p>
+<p><span class="merged" id="index.7scxO" title="原文 : Do not create a managed Coherence server.">管理対象<em>Coherence</em>サーバーは作成しないでください。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3Z26Rv" title="原文 : On the Managed Server that you just created, go to the Advanced tab and then its Coherence subtab.">作成した管理対象サーバーで、<strong>「拡張」</strong>タブに移動し、その<strong>Coherence</strong>サブタブに移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.iZpiM.3" title="原文 : From the Coherence Cluster System Resource drop-down list, select the Coherence cluster."><strong>「Coherenceクラスタ・システム・リソース」</strong>ドロップダウン・リストから、Coherenceクラスタを選択します。</span></p>
+<p><span class="merged" id="index.2o0tlq" title="原文 : This standalone Managed Server will now inherit settings directly from the Coherence cluster.">このスタンドアロン管理対象サーバーは、Coherenceクラスタから直接設定を継承するようになりました。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3MpYlD" title="原文 : Turn on the Local Storage Enabled option to ensure the Managed Server will be a storage-enabled Coherence member (cache server)."><strong>「ローカル・ストレージ有効」</strong>オプションを有効にして、管理対象サーバーをストレージが有効なCoherenceメンバー(キャッシュ・サーバー)にします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.nb73r.spl1"  title="原文: Set the Unicast Listen Address to an address that is routed to loop back."><strong>「ユニキャスト・リスニング・アドレス」</strong>を、ループバックにルーティングされるアドレスに設定します。</span> <span class="merged" id="index.nb73r.spl2"  title="原文: On most computers, setting the address to 127.0.0.1 works.">ほとんどのコンピュータで、アドレスを<code>127.0.0.1</code>に設定すれば問題ありません。</span> </p>
+<p><span class="merged" id="index.o0Iat" title="原文 : For more information about unicast settings for Coherence cluster members, see Configure Coherence Cluster Member Unicast Settings in Administering Clusters for Oracle WebLogic Server.">Coherenceクラスタ・メンバーのユニキャスト設定の詳細は、<strong>「Oracle WebLogic Serverクラスタの管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CLUST-GUID-5F143155-0B1D-4EFE-8BAC-DE51F9D8F8D6">「Coherenceクラスタ・メンバーのユニキャスト設定の構成」</a>を参照してください。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.13"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2PRTNe.spl1"  title="原文: Create and package a Coherence Grid Archive (GAR) module for any application modules (Web application, EJB, etc.) that use Coherence.">Coherenceを使用するアプリケーション・モジュール(WebアプリケーションやEJBなど)用にCoherence Grid Archive (GAR)モジュールを作成してパッケージ化します。</span> <span class="merged" id="index.2PRTNe.spl2" title="原文 : See Creating Coherence Applications for WebLogic Server in Developing Oracle Coherence Applications for Oracle WebLogic Server."><strong>「Oracle WebLogic Server用のOracle Coherenceアプリケーションの開発」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=WLCOH-GUID-C34A3F98-55D5-4D5A-8BCC-E3EBC718B57D">「WebLogic Server用のCoherenceアプリケーションの作成」</a>を参照してください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.IM2fp.spl1"  title="原文: Deploy your Coherence GAR module to your WebLogic Server domain.">Coherence GARモジュールをWebLogic Serverドメインにデプロイします。</span> <span class="merged" id="index.IM2fp.spl2" title="原文 : Standalone GARs are deployed in the same way as other Jakarta EE modules.">スタンドアロンGARは、他のJakarta EEモジュールと同じ方法でデプロイされます。</span> <span class="merged" id="index.IM2fp.spl3" title="原文 : See Deploying Coherence Applications in WebLogic Server in Developing Oracle Coherence Applications for Oracle WebLogic Server."><strong>「Oracle WebLogic Server用のOracle Coherenceアプリケーションの開発」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=WLCOH-GUID-9284398A-509D-4BC0-9007-502CCCA4D758">「WebLogic ServerでのCoherenceアプリケーションのデプロイ」</a>を参照してください。</span> </p>
+</li>
+</ol>
+
+  <div class="section-index">
+    
+    
+    </div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="merged" id="index.VxO9l" title="原文 : © 2020-2025 Oracle | UPL 1.0All Rights Reserved"><span class="td-footer__copyright">© 2020-2025 <span class="td-footer__authors">Oracle | <a href="https://github.com/oracle/weblogic-remote-console/blob/main/LICENSE.txt">UPL 1.0</a></span></span> <span class="td-footer__all_rights_reserved">All Rights Reserved<</span></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="../../js/main.min.90902a026ed2aee7ed45d85797f4c790b240ba148ac6f8a6f194cb1981ffecf5.js" integrity="sha256-kJAqAm7SruftRdhXl/THkLJAuhSKxvim8ZTLGYH/7PU=" crossorigin="anonymous"></script>
+<script defer src="../../js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='../../js/tabpane-persist.js'></script>
+
+  </body>
+</html>

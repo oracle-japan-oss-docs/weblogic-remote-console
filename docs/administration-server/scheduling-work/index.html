@@ -1,0 +1,597 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="ja" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="application/rss&#43;xml" href="index.xml">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../favicons/android-192x192.png" sizes="192x192">
+
+<title>スケジューリング作業 | WebLogic Remote Console</title>
+<meta content="ワーク・マネージャを使用すると、定義したルールに基づいて作業に優先順位を付け、実際の実行時パフォーマンス統計をモニタリングしてアプリケーションのパフォーマンスを最適化できます。 ワーク・マネージャは、WebLogic Serverドメインにグローバルに適用できます。 ワーク・マネージャは、WebLogic Serverによって実行される作業を管理する一連のリクエスト・クラスおよびスレッド制約を定義します。 リクエスト・クラスは、アプリケーション要求の特定のクラスのフェア・シェア・スレッド資格、レスポンス時間の目標値、またはコンテキスト・ポリシーを定義します。 " name="description">
+<meta property="og:url" content="https://oracle.github.io/weblogic-remote-console/administration-server/scheduling-work/">
+  <meta property="og:site_name" content="WebLogic Remote Console">
+  <meta content="作業のスケジューリング" property="og:title">
+  <meta content="ワーク・マネージャを使用すると、定義したルールに基づいて作業に優先順位を付け、実際の実行時パフォーマンス統計をモニタリングしてアプリケーションのパフォーマンスを最適化できます。 ワーク・マネージャは、WebLogic Serverドメインにグローバルに適用できます。 ワーク・マネージャは、WebLogic Serverによって実行される作業を管理する一連のリクエスト・クラスおよびスレッド制約を定義します。 リクエスト・クラスは、アプリケーション要求の特定のクラスのフェア・シェア・スレッド資格、レスポンス時間の目標値、またはコンテキスト・ポリシーを定義します。 " property="og:description">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Scheduling Work">
+  <meta itemprop="description" content="You can use Work Managers to prioritize work based on rules that you define and by monitoring actual run time performance statistics to then optimize the performance of your applications.
+Work Managers can be applied globally to a WebLogic Server domain.
+A Work Manager defines a set of request classes and thread constraints that manage work performed by WebLogic Server.
+A request class defines a fair share thread entitlement, a response time goal, or a context policy for a particular class of application request.">
+  <meta itemprop="wordCount" content="1473">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Scheduling Work">
+  <meta name="twitter:description" content="You can use Work Managers to prioritize work based on rules that you define and by monitoring actual run time performance statistics to then optimize the performance of your applications.
+Work Managers can be applied globally to a WebLogic Server domain.
+A Work Manager defines a set of request classes and thread constraints that manage work performed by WebLogic Server.
+A request class defines a fair share thread entitlement, a response time goal, or a context policy for a particular class of application request.">
+<link rel="preload" href="../../scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" as="style" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
+<link href="../../scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" rel="stylesheet" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  <meta HTTP-EQUIV="Content-Type" Content="text/html; charset=utf-8"></head>
+  <style type="text/css"> <!-- .merged:hover {text-decoration: underline;} --> </style>
+<body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <span class="merged" id="index.4HI2lZ"  title="原文:: WebLogic Remote Console"><a class="navbar-brand" href="../../index.html"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">WebLogic Remote Console</span></a></span>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <span class="merged" id="index.4BXA3a"  title="原文:: Documentation"><a class="nav-link" href="../../overview"><span>ドキュメント</span></a></span>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <span class="merged" id="index.1rBGLa" title="原文 : Releases"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="index.html#" role="button">リリース</a></span>
+  <ul class="dropdown-menu">
+    <li><span class="merged" id="index.3qEipK" title="原文 : Latest (v2.4.16)"><a class="dropdown-item" href="../../overview">最新(v2.4.16)</a></span></li>
+    </ul>
+</div></li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <span class="merged" id="index.2jII9A" title="原文 :  Light "><svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>ライト<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <span class="merged" id="index.2I3lw8" title="原文 :  Dark "><svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>ダーク<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <span class="merged" id="index.2ddEmA" title="原文 :  Auto "><svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>自動<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site ¦"
+    aria-label="Search this site ¦"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/weblogic-remote-console/offline-search-index.435a82cb353472bb29e0cc0f9a02ede0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site ¦"
+    aria-label="Search this site ¦"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/weblogic-remote-console/offline-search-index.435a82cb353472bb29e0cc0f9a02ede0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="td-sidebar-nav collapse td-sidebar-nav--search-disabled foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-weblogic-remote-consoleoverview-li">
+  <span class="merged" id="index.3zbEcv" title="原文 : About WebLogic Remote Console"><a class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" href="../../overview/index.html" id="m-weblogic-remote-consoleoverview"><span class="">WebLogic Remote Consoleについて</span></a></span>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleset-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-console-check"/>
+  <label for="m-weblogic-remote-consoleset-console-check"><span class="merged" id="index.3nah3n"  title="原文:: Get Started"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/index.html" id="m-weblogic-remote-consoleset-console"><span class="">開始</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleset-consoleget-know-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consoleget-know-console-check"/>
+  <label for="m-weblogic-remote-consoleset-consoleget-know-console-check"><span class="merged" id="index.3Qoefu"  title="原文:: Get to Know the Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/get-know-console/index.html" id="m-weblogic-remote-consoleset-consoleget-know-console"><span class="">コンソールの理解</span></a></span></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-check"/>
+  <label for="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-check"><span class="merged" id="index.bU5Da" title="原文 : A Map of the Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/get-know-console/bean-map/index.html" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map"><span class="">コンソールのマップ</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-check"/>
+  <label for="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-check"><span class="merged" id="index.tx3R1" title="原文 : Contribute to WebLogic Remote Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/contribute-wrc-repository/index.html" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository"><span class="">WebLogic Remote Consoleに貢献</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consolesupport-information-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consolesupport-information-check"/>
+  <label for="m-weblogic-remote-consoleset-consolesupport-information-check"><span class="merged" id="index.37eR7r"  title="原文:: Support Information"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/support-information/index.html" id="m-weblogic-remote-consoleset-consolesupport-information"><span class="">サポート情報</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-weblogic-remote-consoleadministration-server-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-server-check" checked/>
+  <label for="m-weblogic-remote-consoleadministration-server-check"><span class="merged" id="index.2ThZsC"  title="原文:: Administration Server"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../index.html" id="m-weblogic-remote-consoleadministration-server"><span class="">管理サーバー</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverdomain-configuration-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverdomain-configuration-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverdomain-configuration-check"><span class="merged" id="index.4ML0vm"  title="原文:: Domain Configuration"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../domain-configuration/index.html" id="m-weblogic-remote-consoleadministration-serverdomain-configuration"><span class="">ドメインの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serversecuring-domains-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serversecuring-domains-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serversecuring-domains-check"><span class="merged" id="index.BiUhC" title="原文 : Securing Domains"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../securing-domains/index.html" id="m-weblogic-remote-consoleadministration-serversecuring-domains"><span class="">ドメインの保護</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverdeploying-applications-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverdeploying-applications-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverdeploying-applications-check"><span class="merged" id="index.2tf9Du"  title="原文:: Deploying Applications"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../deploying-applications/index.html" id="m-weblogic-remote-consoleadministration-serverdeploying-applications"><span class="">アプリケーションのデプロイ</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-servermonitoring-domains-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-servermonitoring-domains-check"/>
+  <label for="m-weblogic-remote-consoleadministration-servermonitoring-domains-check"><span class="merged" id="index.1OH0qB" title="原文 : Monitoring Domains"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../monitoring-domains/index.html" id="m-weblogic-remote-consoleadministration-servermonitoring-domains"><span class="">ドメインのモニタリング</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverconfiguring-services-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverconfiguring-services-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverconfiguring-services-check"><span class="merged" id="index.2H1mEc"  title="原文:: Configuring Services"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../configuring-services/index.html" id="m-weblogic-remote-consoleadministration-serverconfiguring-services"><span class="">サービスの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-check"><span class="merged" id="index.4MDlqf"  title="原文:: Configuring Coherence"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../configuring-coherence/index.html" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence"><span class="">Coherenceの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-weblogic-remote-consoleadministration-serverscheduling-work-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverscheduling-work-check" checked/>
+  <label for="m-weblogic-remote-consoleadministration-serverscheduling-work-check"><span class="merged" id="index.2p6Jcb" title="原文 : Scheduling Work"><a class="align-left ps-0  active td-sidebar-link td-sidebar-link__section" href="index.html" id="m-weblogic-remote-consoleadministration-serverscheduling-work"><span class="td-sidebar-nav-active-item">作業のスケジューリング</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverinteroperability-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverinteroperability-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverinteroperability-check"><span class="merged" id="index.4T1dij" title="原文 : Interoperating with Oracle Tuxedo"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../interoperability/index.html" id="m-weblogic-remote-consoleadministration-serverinteroperability"><span class="">Oracle Tuxedoとの相互運用</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleweblogic-deploy-tooling-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-tooling-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-tooling-check"><span class="merged" id="index.cdq9l"  title="原文:: WebLogic Deploy Tooling"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/index.html" id="m-weblogic-remote-consoleweblogic-deploy-tooling"><span class="">WebLogic Deploy Tooling</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-check"><span class="merged" id="index.3yTvIZ" title="原文 : WDT Model Files"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/wdt-model-files/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files"><span class="">WDTモデル・ファイル</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-check"><span class="merged" id="index.3aBgeR" title="原文 : WDT Composite Models"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/wdt-composites/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites"><span class="">WDTコンポジット・モデル</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-check"><span class="merged" id="index.3CFtu4" title="原文 : Property Lists"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/property-lists/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists"><span class="">プロパティ・リスト</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-check"/>
+  <label for="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-check"><span class="merged" id="index.2p4mmh" title="原文 : Troubleshoot Issues with WebLogic Remote Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../troubleshoot-weblogic-remote-console/index.html" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console"><span class="">WebLogic Remote Consoleに関する問題のトラブルシューティング</span></a></span></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><span class="merged" id="index.Dql6i" title="原文 : Create a Global Work Manager"><a href="index.html#GUID-FC4F63E2-4793-4311-8A98-4F9C9D2697BE">グローバル・ワーク・マネージャの作成</a></span></li>
+    <li><span class="merged" id="index.cXgfn" title="原文 : Create Request Classes"><a href="index.html#GUID-DB4D6BD0-3948-4E6A-ACDC-D9D663C49F03">リクエスト区分の作成</a></span></li>
+    <li><span class="merged" id="index.3ZVTMn"  title="原文:: Create Constraints"><a href="index.html#GUID-BAE0F946-EEA6-449C-8893-D83BBCD23179">制約の作成</a></span></li>
+    <li><span class="merged" id="index.5RnGd" title="原文 : Assign a Request Class or Constraints to a Work Manager"><a href="index.html#GUID-77305107-4C5F-46CC-83E5-EC0EE3CC238F">ワーク・マネージャへのリクエスト・クラスまたは制約の割当て</a></span></li>
+    <li><span class="merged" id="index.3VhuY3" title="原文 : Create a Work Manager Shutdown Trigger"><a href="index.html#GUID-46144962-EBE3-428D-AE95-89A3B7505A70">ワーク・マネージャ停止トリガーの作成</a></span></li>
+    <li><span class="merged" id="index.2evpqH"  title="原文: Concurrent Managed Object Templates"><a href="index.html#GUID-F4073670-85D5-4246-A195-966A6C331C02">同時管理対象オブジェクト・テンプレート</a></span>
+      <ul>
+        <li><span class="merged" id="index.2aqubr" title="原文 : Create a Global Managed Executor Service Template"><a href="index.html#GUID-FF036380-DF70-429B-95EA-A9C962637804">グローバル管理対象エグゼキュータ・サービス・テンプレートの作成</a></span></li>
+        <li><span class="merged" id="index.2dLIlE" title="原文 : Create a Global Managed Scheduled Executor Service Template"><a href="index.html#GUID-8BF9B3FC-6EF0-4097-89A7-E3453CD7BAB1">グローバル管理対象スケジュール済エグゼキュータ・サービス・テンプレートの作成</a></span></li>
+        <li><span class="merged" id="index.DQIa8" title="原文 : Create a Global Managed Thread Factory Template"><a href="index.html#GUID-0FF74BB7-79AE-4DD4-BCD1-9E211140CAC4">グローバル管理対象スレッド・ファクトリ・テンプレートの作成</a></span></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+            <div style="width:100%"> <div title="免責事項: ここに記載されているドキュメントは、お客様の利便性のために翻訳ソフトウエアにより機械的に翻訳(機械翻訳)したものです。オリジナルの英語版もあわせてご確認ください。" style="width:150px;padding-left:5px;padding-right:5px;border:#ff0000 solid 1px;border-color: gray;font-size: small;color:gray;margin: 0 auto 0 auto;text-align:center"><a href="https://docs.oracle.com/cd/E85181_01/mt_disclaimer.html">機械翻訳について</a></div> </div>
+<nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <span class="merged" id="index.2dQIDB" title="原文 : About WebLogic Remote Console"><a href="../../overview/index.html">WebLogic Remote Consoleについて</a></span></li>
+  <li class="breadcrumb-item">
+    <span class="merged" id="index.35qlXG"  title="原文:: Administration Server"><a href="../index.html">管理サーバー</a></span></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <span class="merged" id="index.5CfLb" title="原文 : Scheduling Work">作業のスケジューリング</span></li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1><span class="merged" id="index.5CfLb.1" title="原文 : Scheduling Work">作業のスケジューリング</span></h1>
+  
+	<header class="article-meta">
+		
+</header>
+	<p><span class="merged" id="index.18Ktn9" title="原文 : You can use Work Managers to prioritize work based on rules that you define and by monitoring actual run time performance statistics to then optimize the performance of your applications.">ワーク・マネージャを使用すると、定義したルールに基づいて作業に優先順位を付け、実際の実行時パフォーマンス統計をモニタリングしてアプリケーションのパフォーマンスを最適化できます。</span></p>
+<p><span class="merged" id="index.MYtbB" title="原文 : Work Managers can be applied globally to a WebLogic Server domain.">ワーク・マネージャは、WebLogic Serverドメインにグローバルに適用できます。</span></p>
+<p><span class="merged" id="index.1k6zpk"  title="原文: A Work Manager defines a set of request classes and thread constraints that manage work performed by WebLogic Server.">ワーク・マネージャは、WebLogic Serverによって実行される作業を管理する一連のリクエスト・クラスおよびスレッド制約を定義します。</span></p>
+<p><span class="merged" id="index.4IExkv"  title="原文: A request class defines a fair share thread entitlement, a response time goal, or a context policy for a particular class of application request.">リクエスト・クラスは、アプリケーション要求の特定のクラスのフェア・シェア・スレッド資格、レスポンス時間の目標値、またはコンテキスト・ポリシーを定義します。</span></p>
+<p><span class="merged" id="index.oWbvG"  title="原文: Thread constraints define the maximum number of threads to allocate for requests, the minimum number of threads to use for resolving deadlocks, and the total number of requests that can be queued or running before WebLogic Server begins rejecting requests.">スレッド制約は、要求に割り当てるスレッドの最大数、デッドロックの解決に使用するスレッドの最小数、およびWebLogic Serverが要求を拒否するまでにキューに入れることができる要求または実行できる要求の総数を定義します。</span></p>
+<p><span class="merged" id="index.gCTpk" title="原文 : See Using Work Managers to Optimize Scheduled Work in Administering Server Environments for Oracle WebLogic Server."><strong>「Oracle WebLogic Serverのサーバー環境の管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CNFGD-GUID-0670CD7C-AC96-46D4-AA43-1F99F21F1CC3">「ワーク・マネージャを使用したスケジュール済作業の最適化」</a>を参照してください。</span></p>
+<h2 id="GUID-FC4F63E2-4793-4311-8A98-4F9C9D2697BE"><span class="merged" id="index.2WW0FP" title="原文 : Create a Global Work Manager">グローバル・ワーク・マネージャの作成</span></h2>
+<p><span class="merged" id="index.4D73Oo" title="原文 : You can create global Work Managers that are used to prioritize thread execution.">スレッド実行の優先順位付けに使用するグローバル・ワーク・マネージャを作成できます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.bYgA9" title="原文 : In the Edit Tree, go to Scheduling, then Work Managers."><strong>「編集ツリー」</strong>で、<strong>「スケジュール」</strong>、<strong>「ワーク・マネージャ」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.Jh05l" title="原文 : Enter a name for the new Work Manager and click Create.">新しいワーク・マネージャの名前を入力し、<strong>「作成」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.AcCce" title="原文 : Update the default values as appropriate.">必要に応じてデフォルト値を更新します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3HgUkL.spl1" title="原文 : On the Targets tab, select the servers or clusters on which you plan to deploy applications that reference the Work Manager and move them under Chosen."><strong>「ターゲット」</strong>タブで、ワーク・マネージャを参照するアプリケーションをデプロイするサーバーまたはクラスタを選択し、<strong>「選択済」</strong>の下に移動します。</span> <span class="merged" id="index.3HgUkL.spl2" title="原文 : Move unwanted servers or clusters under Available.">不要なサーバーまたはクラスタを<strong>「使用可能」</strong>の下に移動します。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.kBjWk.spl1" title="原文 : Next, you must create at least one request class or constraint.">次に、少なくとも1つのリクエスト・クラスまたは制約を作成する必要があります。</span> <span class="merged" id="index.kBjWk.spl2"  title="原文: The global Work Manager uses request classes and constraints to determine how to prioritize work.">グローバル・ワーク・マネージャは、作業をどのように優先度付けするかを判断するのにリクエスト・クラスおよび制約を使用します。</span> <span class="merged" id="index.kBjWk.spl3" title="原文 : See Create Request Classes and Create Constraints."><a href="index.html#GUID-DB4D6BD0-3948-4E6A-ACDC-D9D663C49F03">「リクエスト区分の作成」</a>および<a href="index.html#GUID-BAE0F946-EEA6-449C-8893-D83BBCD23179">「制約の作成」</a>を参照してください。</span> </p>
+<h2 id="GUID-DB4D6BD0-3948-4E6A-ACDC-D9D663C49F03"><span class="merged" id="index.3EBjMJ" title="原文 : Create Request Classes">リクエスト区分の作成</span></h2>
+<p><span class="merged" id="index.20mUmX"  title="原文: Request classes express a scheduling guideline that WebLogic Server uses to allocate threads to requests.">リクエスト・クラスは、要求へのスレッドの割当てに使用するスケジューリング・ガイドラインを表現します。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1xyedS" title="原文 : In the Edit Tree, go to Scheduling, then choose one of the request class types:"><strong>「編集ツリー」</strong>で、<strong>「スケジュール」</strong>に移動し、次のいずれかのリクエスト・クラス・タイプを選択します:</span></p>
+<ul>
+<li><span class="merged" id="index.2wPR3G"  title="原文:: Context Request Classes"><strong>コンテキスト・リクエスト・クラス</strong></span></li>
+<li><span class="merged" id="index.1Lbacq"  title="原文:: Fair Share Request Classes"><strong>フェア・シェア・リクエスト・クラス</strong></span></li>
+<li><span class="merged" id="index.29ZmKj" title="原文 : Response Time Request Classes For information on the different request class types, see Request Classes in Administering Server Environments for Oracle WebLogic Server."><strong>「レスポンス時間リクエスト・クラス」</strong>様々なリクエスト・クラス・タイプの詳細は、<strong>「Oracle WebLogic Serverのサーバー環境の管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CNFGD-GUID-9C8BC85F-C61D-4DFA-A46E-9558ADF91735">「リクエスト・クラス」</a>を参照してください。</span></li>
+</ul>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB.1"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3u459d" title="原文 : Enter a name for the new request class and, for Response Time request classes, update the Response Time Goal value.">新しいリクエスト・クラスの名前を入力し、レスポンス時間リクエスト・クラスの場合は<strong>「レスポンス時間目標」</strong>値を更新します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2BMUBQ"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2SYXTD" title="原文 : On the Targets tab, select the servers or clusters on which you plan to deploy applications that reference this request class and move them under Chosen."><strong>「ターゲット」</strong>タブで、このリクエスト・クラスを参照するアプリケーションをデプロイするサーバーまたはクラスタを選択し、<strong>「選択済」</strong>の下に移動します。</span></p>
+<p><span class="merged" id="index.1LCZ0g" title="原文 : The servers or clusters that you select must share at least one target with the applicable Work Manager.">選択するサーバーまたはクラスタは、該当するワーク・マネージャと少なくとも1つのターゲットを共有する必要があります。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.1"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.3RwF2N.spl1" title="原文 : Next, you must assign this request class to a Work Manager to use it.">次に、このリクエスト・クラスを使用するワーク・マネージャに割り当てる必要があります。</span> <span class="merged" id="index.3RwF2N.spl2" title="原文 : See Assign a Request Class or Constraints to a Work Manager."><a href="index.html#GUID-77305107-4C5F-46CC-83E5-EC0EE3CC238F">「ワーク・マネージャへのリクエスト・クラスまたは制約の割当て」</a>を参照してください。</span> </p>
+<h2 id="GUID-BAE0F946-EEA6-449C-8893-D83BBCD23179"><span class="merged" id="index.1oLwW4"  title="原文:: Create Constraints">制約の作成</span></h2>
+<p><span class="merged" id="index.1IXtTq" title="原文 : A constraint defines the minimum and maximum numbers of threads allocated to execute requests and the total number of requests that can be queued or executing before WebLogic Server begins rejecting requests.">制約では、リクエストの実行に割り当てられるスレッドの最小数と最大数、およびWebLogic Serverがリクエストの拒否を開始する前にキューに入れたり実行したりできるリクエストの合計数を定義します。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.44tCkb" title="原文 : In the Edit Tree, go to Scheduling, then choose one of the constraint types:"><strong>「編集ツリー」</strong>で、<strong>「スケジュール」</strong>に移動し、次のいずれかの制約タイプを選択します:</span></p>
+<ul>
+<li><span class="merged" id="index.4U48E6"  title="原文:: Capacities"><strong>容量</strong></span></li>
+<li><span class="merged" id="index.20pKdo"  title="原文:: Max Threads Constraints"><strong>最大スレッド数制約</strong></span></li>
+<li><span class="merged" id="index.3BvgbF" title="原文 : Min Threads Constraints For information on the different request class types, see Constraints in Administering Server Environments for Oracle WebLogic Server."><strong>「最小スレッド数制約」</strong>様々なリクエスト・クラス・タイプの詳細は、<strong>「Oracle WebLogic Serverのサーバー環境の管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CNFGD-GUID-DBFDE1EF-481A-41B9-985F-444EBCD96FF5">「制約」</a>を参照してください。</span></li>
+</ul>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB.2"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4JL7Wi" title="原文 : Enter a name for the new constraint and click Create.">新しい制約の名前を入力し、<strong>「作成」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.27ObOD.spl1" title="原文 : Update the default values for the constraint as necessary.">必要に応じて、制約のデフォルト値を更新します。</span> <span class="merged" id="index.27ObOD.spl2"  title="原文: Click Save when you are done with your changes.">変更が完了したら、<strong>「保存」</strong>をクリックします。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.21YtES" title="原文 : On the Targets tab, select the servers or clusters on which you plan to deploy applications that reference this constraint and move them under Chosen."><strong>「ターゲット」</strong>タブで、この制約を参照するアプリケーションをデプロイするサーバーまたはクラスタを選択し、<strong>「選択済」</strong>の下に移動します。</span></p>
+<p><span class="merged" id="index.1LCZ0g.1" title="原文 : The servers or clusters that you select must share at least one target with the applicable Work Manager.">選択するサーバーまたはクラスタは、該当するワーク・マネージャと少なくとも1つのターゲットを共有する必要があります。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.2"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.6b9Id" title="原文 : Repeat to add another type of constraint, if necessary.">必要に応じて、この手順を繰り返して別のタイプの制約を追加します。</span></p>
+<p><span class="merged" id="index.3MQp75" title="原文 : Each Work Manager can contain only one constraint of each type.">各ワーク・マネージャには、各タイプの制約を1つのみ含めることができます。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.4D0NL2.spl1" title="原文 : Next, you must assign this constraint to a Work Manager to use it.">次に、この制約を使用するには、ワーク・マネージャにこの制約を割り当てる必要があります。</span> <span class="merged" id="index.4D0NL2.spl2" title="原文 : See Assign a Request Class or Constraints to a Work Manager."><a href="index.html#GUID-77305107-4C5F-46CC-83E5-EC0EE3CC238F">「ワーク・マネージャへのリクエスト・クラスまたは制約の割当て」</a>を参照してください。</span> </p>
+<h2 id="GUID-77305107-4C5F-46CC-83E5-EC0EE3CC238F"><span class="merged" id="index.1gEA6u" title="原文 : Assign a Request Class or Constraints to a Work Manager">ワーク・マネージャへのリクエスト・クラスまたは制約の割当て</span></h2>
+<p><span class="merged" id="index.3Nbdce" title="原文 : Before you can use the settings defined in a request class or constraint, you must assign it to a Work Manager.">リクエスト・クラスまたは制約に定義されている設定を使用するには、その設定をワーク・マネージャに割り当てる必要があります。</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu"  title="原文:: Note">ノート</span></h4>
+
+    <ul>
+<li>
+<p><span class="merged" id="index.30O3iI" title="原文 : Request Classes: Each Work Manager can contain only one request class, but you can share request classes among multiple Work Managers."><strong>リクエスト・クラス</strong>: 各ワーク・マネージャには、<em>一つ</em>リクエスト・クラスのみを含めることができますが、複数のワーク・マネージャ間でリクエスト・クラスを共有できます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1FBX0R" title="原文 : Constraints: Each Work Manager can contain only one constraint of each type, but you can share constraints among multiple Work Managers."><strong>制約</strong>: 各ワーク・マネージャには、各<em>type</em>の制約を1つのみ含めることができますが、複数のワーク・マネージャ間で制約を共有できます。</span></p>
+</li>
+</ul>
+
+
+</div>
+<ol>
+<li>
+<p><span class="merged" id="index.1Xq3Zh.spl1" title="原文 : If you haven’t done so already, create a global Work Manager.">まだ作成していない場合は、グローバル・ワーク・マネージャを作成します。</span> <span class="merged" id="index.1Xq3Zh.spl2" title="原文 : See Create a Global Work Manager."><a href="index.html#GUID-FC4F63E2-4793-4311-8A98-4F9C9D2697BE">「グローバル・ワーク・マネージャの作成」</a>を参照してください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.K7OYG" title="原文 : In the Edit Tree, go to Scheduling, then Work Managers and select the Work Manager where you want to assign the request class or constraints."><strong>「編集ツリー」</strong>で、<strong>「スケジュール」</strong>、<strong>「ワーク・マネージャ」</strong>の順に移動し、リクエスト・クラスまたは制約を割り当てるワーク・マネージャを選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3nTEwp" title="原文 : Use the applicable drop-down lists to choose a request class or constraints to assign to this Work Manager.">該当するドロップダウン・リストを使用して、このワーク・マネージャに割り当てるリクエスト・クラスまたは制約を選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.3"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h2 id="GUID-46144962-EBE3-428D-AE95-89A3B7505A70"><span class="merged" id="index.plwgn" title="原文 : Create a Work Manager Shutdown Trigger">ワーク・マネージャ停止トリガーの作成</span></h2>
+<p><span class="merged" id="index.1gEdKI" title="原文 : You can define how a Work Manager should handle stuck threads.">ワーク・マネージャがスタック・スレッドを処理する方法を定義できます。</span></p>
+<p><span class="merged" id="index.2kuhd9" title="原文 : For more information, see Stuck Thread Handling in Administering Server Environments for Oracle WebLogic Server.">詳細は、<strong>「Oracle WebLogic Serverのサーバー環境の管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CNFGD-GUID-63A11D05-8128-40EE-8E52-854BDE516BEE">「スタック・スレッドの処理」</a>を参照してください。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1Xq3Zh.1.spl1" title="原文 : If you haven’t done so already, create a global Work Manager.">まだ作成していない場合は、グローバル・ワーク・マネージャを作成します。</span> <span class="merged" id="index.1Xq3Zh.1.spl2" title="原文 : See Create a Global Work Manager."><a href="index.html#GUID-FC4F63E2-4793-4311-8A98-4F9C9D2697BE">「グローバル・ワーク・マネージャの作成」</a>を参照してください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.qQ6pQ" title="原文 : In the Edit Tree, go to Scheduling, then Work Managers, then myWorkManager, then Work Manager Shutdown Trigger."><strong>「編集ツリー」</strong>で、<strong>「スケジュール」</strong>、<strong>「ワーク・マネージャ」</strong>、<em>myWorkManager</em>、<strong>「ワーク・マネージャ停止トリガー」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2BMUBQ.1"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1QEmUu" title="原文 : Update the default values as needed.">必要に応じてデフォルト値を更新します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.4"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h2 id="GUID-F4073670-85D5-4246-A195-966A6C331C02"><span class="merged" id="index.gHGgN"  title="原文: Concurrent Managed Object Templates">同時管理対象オブジェクト・テンプレート</span></h2>
+<p><span class="merged" id="index.38aOnX.spl1" title="原文 : WebLogic Server provides concurrency capabilities to Jakarta EE applications by using Concurrent Managed Object (CMO) templates to make threads container-managed.">WebLogic Serverは、同時管理対象オブジェクト(CMO)テンプレートを使用してスレッドをコンテナ管理することにより、Jakarta EEアプリケーションに同時実行性機能を提供します。</span> <span class="merged" id="index.38aOnX.spl2"  title="原文: You can configure CMO templates and then make them available for use by application components, such as servlets and EJBs.">CMOテンプレートを構成して、それをアプリケーション・コンポーネント(サーブレットやEJBなど)で使用できるように設定できます。</span> </p>
+<p><span class="merged" id="index.3D0dOU"  title="原文: You can define three types of CMO templates:">3つのタイプのCMOテンプレートを定義できます。</span></p>
+<ul>
+<li><span class="merged" id="index.3ScrcI.spl1"  title="原文: Managed Executor Service Template - Used by applications to execute submitted tasks asynchronously.">管理対象エグゼキュータ・サービス・テンプレート - 発行されたタスクを非同期的に実行するためにアプリケーションが使用します。</span> <span class="merged" id="index.3ScrcI.spl2" title="原文 : See Create a Global Managed Executor Service Template."><a href="index.html#GUID-FF036380-DF70-429B-95EA-A9C962637804">「グローバル管理対象エグゼキュータ・サービス・テンプレートの作成」</a>を参照してください。</span> </li>
+<li><span class="merged" id="index.2Ap2xs.spl1"  title="原文: Managed Scheduled Executor Service Template - Used by applications to execute submitted tasks asynchronously at specific times.">管理対象スケジュール済エグゼキュータ・サービス・テンプレート - 発行されたタスクを特定の時点で非同期的に実行するためにアプリケーションが使用します。</span> <span class="merged" id="index.2Ap2xs.spl2" title="原文 : See Create a Global Managed Scheduled Executor Service Template."><a href="index.html#GUID-8BF9B3FC-6EF0-4097-89A7-E3453CD7BAB1">「グローバル管理対象スケジュール済エグゼキュータ・サービス・テンプレートの作成」</a>を参照してください。</span> </li>
+<li><span class="merged" id="index.1DO7cT.spl1"  title="原文: Managed Thread Factory Template - Used by applications to create managed threads.">管理対象スレッド・ファクトリ・テンプレート - 管理対象スレッドを作成するためにアプリケーションが使用します。</span> <span class="merged" id="index.1DO7cT.spl2" title="原文 : See Create a Global Managed Thread Factory Template."><a href="index.html#GUID-0FF74BB7-79AE-4DD4-BCD1-9E211140CAC4">「グローバル管理対象スレッド・ファクトリ・テンプレートの作成」</a>を参照してください。</span> </li>
+</ul>
+<p><span class="merged" id="index.1WMVht" title="原文 : For more information, see Configuring Concurrent Managed Objects in Administering Server Environments for Oracle WebLogic Server.">詳細は、<strong>「Oracle WebLogic Serverのサーバー環境の管理」</strong>の<a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/middleware/fusion-middleware/weblogic-remote-console/administer&amp;id=CNFGD-GUID-9BD68EFA-5614-43F8-BB69-870F55605951">「同時管理対象オブジェクトの構成」</a>を参照してください。</span></p>
+<h3 id="GUID-FF036380-DF70-429B-95EA-A9C962637804"><span class="merged" id="index.2VtQiW" title="原文 : Create a Global Managed Executor Service Template">グローバル管理対象エグゼキュータ・サービス・テンプレートの作成</span></h3>
+<p><span class="merged" id="index.4OAWkg"  title="原文: You can create managed executor service (MES) templates that are used by applications to execute submitted tasks asynchronously.">発行されたタスクを非同期的に実行するためにアプリケーションによって使用される管理対象エグゼキュータ・サービス(MES)テンプレートを作成できます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1GVH3t" title="原文 : In the Edit Tree, go to Scheduling, then Managed Executor Service Templates."><strong>「編集ツリー」</strong>で、<strong>「スケジュール」</strong>、<strong>「管理対象エグゼキュータ・サービス・テンプレート」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB.3"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.Rk7Pp"  title="原文: Enter a name for the new MES template.">新しいMESテンプレートの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2BMUBQ.2"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.369xGW" title="原文 : If you want to use a non-default Work Manager with this MES template, in the Dispatch Policy field, enter the name of the custom Work Manager.">このMESテンプレートでデフォルト以外のワーク・マネージャを使用する場合は、<strong>「ディスパッチ・ポリシー」</strong>フィールドにカスタム・ワーク・マネージャの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2rdGAv" title="原文 : If you want to specify the priority of the long running daemon thread, update the value in the Long Running Threads Priority field.">長時間実行デーモン・スレッドの優先度を指定する場合は、<strong>「長時間実行スレッドの優先度」</strong>フィールドの値を更新します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1JvptW" title="原文 : If you want to define the maximum number of concurrent long-running tasks submitted to this MES template in the domain, update the value in the Max Concurrent Long Running Requests field.">ドメインでこのMESテンプレートに送信される同時長時間実行タスクの最大数を定義する場合は、<strong>「最大同時長時間実行リクエスト数」</strong>フィールドの値を更新します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.5"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.s5sVd.spl1" title="原文 : On the Targets tab, select the servers or clusters where this MES template will be accessible and move them under Chosen."><strong>「ターゲット」</strong>タブで、このMESテンプレートにアクセスできるサーバーまたはクラスタを選択し、<strong>「選択済」</strong>の下に移動します。</span> <span class="merged" id="index.s5sVd.spl2" title="原文 : Move unwanted servers or clusters under Available.">不要なサーバーまたはクラスタを<strong>「使用可能」</strong>の下に移動します。</span> </p>
+<p><span class="merged" id="index.18gowY" title="原文 : Only applications that have been deployed to the selected servers and clusters can use this MES template.">このMESテンプレートを使用できるのは、選択したサーバーおよびクラスタにデプロイされたアプリケーションのみです。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.6"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h3 id="GUID-8BF9B3FC-6EF0-4097-89A7-E3453CD7BAB1"><span class="merged" id="index.1sckgr" title="原文 : Create a Global Managed Scheduled Executor Service Template">グローバル管理対象スケジュール済エグゼキュータ・サービス・テンプレートの作成</span></h3>
+<p><span class="merged" id="index.1UebNr"  title="原文: You can create managed scheduled executor service (MSES) templates that are used by applications to execute submitted tasks asynchronously at specific times.">発行されたタスクを特定の時点で非同期的に実行するためにアプリケーションによって使用される管理対象スケジュール済エグゼキュータ・サービス(MSES)テンプレートを作成できます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.4ebSNJ" title="原文 : In the Edit Tree, go to Scheduling, then Managed Scheduled Executor Service Templates."><strong>「編集ツリー」</strong>で、<strong>「スケジュール」</strong>、<strong>「管理対象スケジュール済エグゼキュータ・サービス・テンプレート」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB.4"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.nuwW5"  title="原文: Enter a name for the new MSES template.">新しいMSESテンプレートの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2BMUBQ.3"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3L3sHN" title="原文 : If you want to use a non-default Work Manager with this MSES template, in the Dispatch Policy field, enter the name of the custom Work Manager.">このMSESテンプレートでデフォルト以外のワーク・マネージャを使用する場合は、<strong>「ディスパッチ・ポリシー」</strong>フィールドにカスタム・ワーク・マネージャの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2rdGAv.1" title="原文 : If you want to specify the priority of the long running daemon thread, update the value in the Long Running Threads Priority field.">長時間実行デーモン・スレッドの優先度を指定する場合は、<strong>「長時間実行スレッドの優先度」</strong>フィールドの値を更新します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pgI5M" title="原文 : If you want to define the maximum number of concurrent long-running tasks submitted to this MSES template in the domain, update the value in the Max Concurrent Long Running Requests field.">ドメインでこのMSESテンプレートに送信される同時長時間実行タスクの最大数を定義する場合は、<strong>「最大同時長時間実行リクエスト数」</strong>フィールドの値を更新します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.7"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.qhIFV.spl1" title="原文 : On the Targets tab, select the servers or clusters where this MSES template will be accessible and move them under Chosen."><strong>「ターゲット」</strong>タブで、このMSESテンプレートにアクセスできるサーバーまたはクラスタを選択し、<strong>「選択済」</strong>の下に移動します。</span> <span class="merged" id="index.qhIFV.spl2" title="原文 : Move unwanted servers or clusters under Available.">不要なサーバーまたはクラスタを<strong>「使用可能」</strong>の下に移動します。</span> </p>
+<p><span class="merged" id="index.1OLT70" title="原文 : Only applications that have been deployed to the selected servers and clusters can use this MSES template.">このMSESテンプレートを使用できるのは、選択したサーバーおよびクラスタにデプロイされているアプリケーションのみです。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.8"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<h3 id="GUID-0FF74BB7-79AE-4DD4-BCD1-9E211140CAC4"><span class="merged" id="index.xjEJ3" title="原文 : Create a Global Managed Thread Factory Template">グローバル管理対象スレッド・ファクトリ・テンプレートの作成</span></h3>
+<p><span class="merged" id="index.Q1AHo"  title="原文: You can create managed thread factory (MTF) templates that are used by applications to create managed threads.">管理対象スレッドを作成するためにアプリケーションによって使用される管理対象スレッド・ファクトリ(MTF)テンプレートを作成できます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.32qfEp" title="原文 : In the Edit Tree, go to Scheduling, then Managed Thread Factory Templates."><strong>「編集ツリー」</strong>で、<strong>「スケジュール」</strong>、<strong>「管理対象スレッド・ファクトリ・テンプレート」</strong>の順に移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1pYFbB.5"  title="原文:: Click New."><strong>「新規」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1TLRTD"  title="原文: Enter a name for the new MTF template.">新しいMTFテンプレートの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2BMUBQ.4"  title="原文:: Click Create."><strong>「作成」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3PQ1EA.spl1" title="原文 : If you want to specify the priority assigned to the thread, update the value in the Priority field.">スレッドに割り当てられる優先度を指定する場合は、<strong>「優先度」</strong>フィールドの値を更新します。</span> <span class="merged" id="index.3PQ1EA.spl2"  title="原文: The greater the number, the higher the priority.">数字が大きいほど、優先度が高くなります。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.16j0oA" title="原文 : If you want to define the maximum number of threads that are created by the MTF and are still executing the run() method of the tasks, update the value in the Max Concurrent New Threads field.">MTFによって作成されるスレッドの最大数を定義し、タスクの<code>run()</code>メソッドを引き続き実行する場合は、<strong>「最大同時新規スレッド数」</strong>フィールドの値を更新します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.9"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3VOTqL.spl1" title="原文 : On the Targets tab, select the servers or clusters where this MTF template will be accessible and move them under Chosen."><strong>「ターゲット」</strong>タブで、このMTFテンプレートにアクセスできるサーバーまたはクラスタを選択し、<strong>「選択済」</strong>の下に移動します。</span> <span class="merged" id="index.3VOTqL.spl2" title="原文 : Move unwanted servers or clusters under Available.">不要なサーバーまたはクラスタを<strong>「使用可能」</strong>の下に移動します。</span> </p>
+<p><span class="merged" id="index.2AOaj6" title="原文 : Only applications that have been deployed to the selected servers and clusters can use this MTF template.">このMTFテンプレートを使用できるのは、選択したサーバーおよびクラスタにデプロイされているアプリケーションのみです。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.11hXOT.10"  title="原文:: Click Save."><strong>「保存」</strong>をクリックします。</span></p>
+</li>
+</ol>
+
+  <div class="section-index">
+    
+    
+    </div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="merged" id="index.VxO9l" title="原文 : © 2020-2025 Oracle | UPL 1.0All Rights Reserved"><span class="td-footer__copyright">© 2020-2025 <span class="td-footer__authors">Oracle | <a href="https://github.com/oracle/weblogic-remote-console/blob/main/LICENSE.txt">UPL 1.0</a></span></span> <span class="td-footer__all_rights_reserved">All Rights Reserved<</span></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="../../js/main.min.90902a026ed2aee7ed45d85797f4c790b240ba148ac6f8a6f194cb1981ffecf5.js" integrity="sha256-kJAqAm7SruftRdhXl/THkLJAuhSKxvim8ZTLGYH/7PU=" crossorigin="anonymous"></script>
+<script defer src="../../js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='../../js/tabpane-persist.js'></script>
+
+  </body>
+</html>

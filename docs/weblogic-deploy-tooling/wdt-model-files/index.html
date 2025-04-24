@@ -1,0 +1,538 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="ja" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="application/rss&#43;xml" href="index.xml">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../favicons/android-192x192.png" sizes="192x192">
+
+<title>WDTモデル・ファイル | WebLogic Remote Console</title>
+<meta content="WDTメタデータ・モデル・ファイルは、WebLogic Serverドメイン構成の説明です。 これらのモデルは、実行中のWebLogic Serverドメインに接続されていません。モデル・ファイルを編集してから、WebLogic Deploy Tooling (WDT)を使用してライブ・ドメインを構築または変更します。 WDTモデル・ファイルは、ドメインの単純な表現です。 通常、YAMLで記述されますが、WebLogic Remote ConsoleはJSON形式のモデルも受け入れます。 簡潔にするために、WDTモデル・ファイルではデフォルト構成からの離脱のみが記述されます。 " name="description">
+<meta property="og:url" content="https://oracle.github.io/weblogic-remote-console/weblogic-deploy-tooling/wdt-model-files/">
+  <meta property="og:site_name" content="WebLogic Remote Console">
+  <meta content="WDTモデル・ファイル" property="og:title">
+  <meta content="WDTメタデータ・モデル・ファイルは、WebLogic Serverドメイン構成の説明です。 これらのモデルは、実行中のWebLogic Serverドメインに接続されていません。モデル・ファイルを編集してから、WebLogic Deploy Tooling (WDT)を使用してライブ・ドメインを構築または変更します。 WDTモデル・ファイルは、ドメインの単純な表現です。 通常、YAMLで記述されますが、WebLogic Remote ConsoleはJSON形式のモデルも受け入れます。 簡潔にするために、WDTモデル・ファイルではデフォルト構成からの離脱のみが記述されます。 " property="og:description">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="WDT Model Files">
+  <meta itemprop="description" content="WDT metadata model files are descriptions of a WebLogic Server domain configuration. These models are not connected to a running WebLogic Server domain; you make edits to a model file and then use WebLogic Deploy Tooling (WDT) to build or modify live domains.
+WDT model files are simplistic representations of a domain. They are generally written in YAML but WebLogic Remote Console also accepts models in JSON format. For brevity, a WDT model file only describes departures from the default configuration.">
+  <meta itemprop="wordCount" content="1180">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="WDT Model Files">
+  <meta name="twitter:description" content="WDT metadata model files are descriptions of a WebLogic Server domain configuration. These models are not connected to a running WebLogic Server domain; you make edits to a model file and then use WebLogic Deploy Tooling (WDT) to build or modify live domains.
+WDT model files are simplistic representations of a domain. They are generally written in YAML but WebLogic Remote Console also accepts models in JSON format. For brevity, a WDT model file only describes departures from the default configuration.">
+<link rel="preload" href="../../scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" as="style" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
+<link href="../../scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" rel="stylesheet" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  <meta HTTP-EQUIV="Content-Type" Content="text/html; charset=utf-8"></head>
+  <style type="text/css"> <!-- .merged:hover {text-decoration: underline;} --> </style>
+<body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <span class="merged" id="index.4HI2lZ"  title="原文:: WebLogic Remote Console"><a class="navbar-brand" href="../../index.html"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">WebLogic Remote Console</span></a></span>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <span class="merged" id="index.4BXA3a"  title="原文:: Documentation"><a class="nav-link" href="../../overview"><span>ドキュメント</span></a></span>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <span class="merged" id="index.1rBGLa" title="原文 : Releases"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="index.html#" role="button">リリース</a></span>
+  <ul class="dropdown-menu">
+    <li><span class="merged" id="index.3qEipK" title="原文 : Latest (v2.4.16)"><a class="dropdown-item" href="../../overview">最新(v2.4.16)</a></span></li>
+    </ul>
+</div></li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <span class="merged" id="index.2jII9A" title="原文 :  Light "><svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>ライト<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <span class="merged" id="index.2I3lw8" title="原文 :  Dark "><svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>ダーク<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <span class="merged" id="index.2ddEmA" title="原文 :  Auto "><svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>自動<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site ¦"
+    aria-label="Search this site ¦"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/weblogic-remote-console/offline-search-index.435a82cb353472bb29e0cc0f9a02ede0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site ¦"
+    aria-label="Search this site ¦"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/weblogic-remote-console/offline-search-index.435a82cb353472bb29e0cc0f9a02ede0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="td-sidebar-nav collapse td-sidebar-nav--search-disabled foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-weblogic-remote-consoleoverview-li">
+  <span class="merged" id="index.3zbEcv" title="原文 : About WebLogic Remote Console"><a class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" href="../../overview/index.html" id="m-weblogic-remote-consoleoverview"><span class="">WebLogic Remote Consoleについて</span></a></span>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleset-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-console-check"/>
+  <label for="m-weblogic-remote-consoleset-console-check"><span class="merged" id="index.3nah3n"  title="原文:: Get Started"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/index.html" id="m-weblogic-remote-consoleset-console"><span class="">開始</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleset-consoleget-know-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consoleget-know-console-check"/>
+  <label for="m-weblogic-remote-consoleset-consoleget-know-console-check"><span class="merged" id="index.3Qoefu"  title="原文:: Get to Know the Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/get-know-console/index.html" id="m-weblogic-remote-consoleset-consoleget-know-console"><span class="">コンソールの理解</span></a></span></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-check"/>
+  <label for="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-check"><span class="merged" id="index.bU5Da" title="原文 : A Map of the Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/get-know-console/bean-map/index.html" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map"><span class="">コンソールのマップ</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-check"/>
+  <label for="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-check"><span class="merged" id="index.tx3R1" title="原文 : Contribute to WebLogic Remote Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/contribute-wrc-repository/index.html" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository"><span class="">WebLogic Remote Consoleに貢献</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consolesupport-information-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consolesupport-information-check"/>
+  <label for="m-weblogic-remote-consoleset-consolesupport-information-check"><span class="merged" id="index.37eR7r"  title="原文:: Support Information"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../set-console/support-information/index.html" id="m-weblogic-remote-consoleset-consolesupport-information"><span class="">サポート情報</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleadministration-server-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-server-check"/>
+  <label for="m-weblogic-remote-consoleadministration-server-check"><span class="merged" id="index.Spfgp"  title="原文:: Administration Server"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/index.html" id="m-weblogic-remote-consoleadministration-server"><span class="">管理サーバー</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverdomain-configuration-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverdomain-configuration-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverdomain-configuration-check"><span class="merged" id="index.1N5nug"  title="原文:: Domain Configuration"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/domain-configuration/index.html" id="m-weblogic-remote-consoleadministration-serverdomain-configuration"><span class="">ドメインの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serversecuring-domains-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serversecuring-domains-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serversecuring-domains-check"><span class="merged" id="index.2NTM7Q" title="原文 : Securing Domains"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/securing-domains/index.html" id="m-weblogic-remote-consoleadministration-serversecuring-domains"><span class="">ドメインの保護</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverdeploying-applications-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverdeploying-applications-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverdeploying-applications-check"><span class="merged" id="index.4SHSFL"  title="原文:: Deploying Applications"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/deploying-applications/index.html" id="m-weblogic-remote-consoleadministration-serverdeploying-applications"><span class="">アプリケーションのデプロイ</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-servermonitoring-domains-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-servermonitoring-domains-check"/>
+  <label for="m-weblogic-remote-consoleadministration-servermonitoring-domains-check"><span class="merged" id="index.3eDzbe" title="原文 : Monitoring Domains"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/monitoring-domains/index.html" id="m-weblogic-remote-consoleadministration-servermonitoring-domains"><span class="">ドメインのモニタリング</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverconfiguring-services-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverconfiguring-services-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverconfiguring-services-check"><span class="merged" id="index.3yEJPu"  title="原文:: Configuring Services"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/configuring-services/index.html" id="m-weblogic-remote-consoleadministration-serverconfiguring-services"><span class="">サービスの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-check"><span class="merged" id="index.3mwRCk"  title="原文:: Configuring Coherence"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/configuring-coherence/index.html" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence"><span class="">Coherenceの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverscheduling-work-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverscheduling-work-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverscheduling-work-check"><span class="merged" id="index.4gOYwY" title="原文 : Scheduling Work"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/scheduling-work/index.html" id="m-weblogic-remote-consoleadministration-serverscheduling-work"><span class="">作業のスケジューリング</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverinteroperability-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverinteroperability-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverinteroperability-check"><span class="merged" id="index.1HvO0a" title="原文 : Interoperating with Oracle Tuxedo"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/interoperability/index.html" id="m-weblogic-remote-consoleadministration-serverinteroperability"><span class="">Oracle Tuxedoとの相互運用</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-weblogic-remote-consoleweblogic-deploy-tooling-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-tooling-check" checked/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-tooling-check"><span class="merged" id="index.4KIF0v"  title="原文:: WebLogic Deploy Tooling"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../index.html" id="m-weblogic-remote-consoleweblogic-deploy-tooling"><span class="">WebLogic Deploy Tooling</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-check" checked/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-check"><span class="merged" id="index.1EK0Oy" title="原文 : WDT Model Files"><a class="align-left ps-0  active td-sidebar-link td-sidebar-link__section" href="index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files"><span class="td-sidebar-nav-active-item">WDTモデル・ファイル</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-check"><span class="merged" id="index.AyXYi" title="原文 : WDT Composite Models"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../wdt-composites/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites"><span class="">WDTコンポジット・モデル</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-check"><span class="merged" id="index.3cqRkl" title="原文 : Property Lists"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../property-lists/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists"><span class="">プロパティ・リスト</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-check"/>
+  <label for="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-check"><span class="merged" id="index.2p4mmh" title="原文 : Troubleshoot Issues with WebLogic Remote Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../troubleshoot-weblogic-remote-console/index.html" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console"><span class="">WebLogic Remote Consoleに関する問題のトラブルシューティング</span></a></span></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><span class="merged" id="index.3dgBFc" title="原文 : WDT Model"><a href="index.html#GUID-1416166A-7D57-4D8C-AB68-4D82914E59FB">WDTモデル</a></span></li>
+    <li><span class="merged" id="index.3WmNx2" title="原文 : WDT Model Tokens"><a href="index.html#GUID-0C7510AB-67B2-4EF5-8DAB-5A09DC2BD2E8">WDTモデル・トークン</a></span>
+      <ul>
+        <li><span class="merged" id="index.3EiY7X" title="原文 : Standalone WDT Model Tokens"><a href="index.html#standalone-wdt-model-tokens">スタンドアロンWDTモデル・トークン</a></span></li>
+        <li><span class="merged" id="index.3bGU5l" title="原文 : WDT Variables"><a href="index.html#wdt-variables">WDT変数</a></span></li>
+      </ul>
+    </li>
+    <li><span class="merged" id="index.3WXugP" title="原文 : Create a WDT Model File"><a href="index.html#GUID-1ECF1B50-BE85-413F-8417-34A8E0CC8FB0">WDTモデル・ファイルの作成</a></span></li>
+    <li><span class="merged" id="index.fSQqq" title="原文 : Upload a WDT Model File"><a href="index.html#GUID-EC821453-1C8A-49DD-A2AB-B5BF58B0B00E">WDTモデル・ファイルのアップロード</a></span></li>
+    <li><span class="merged" id="index.49rlOX" title="原文 : Edit a WDT Model File"><a href="index.html#GUID-B0B9CBA4-29E4-417D-8094-5BA8B4522ED7">WDTモデル・ファイルの編集</a></span></li>
+    <li><span class="merged" id="index.2JFhdA" title="原文 : Build a WebLogic Server Domain"><a href="index.html#GUID-4A5C092D-A16B-4F7F-A5CC-38DCF2293FBE">WebLogic Serverドメインの作成</a></span></li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+            <div style="width:100%"> <div title="免責事項: ここに記載されているドキュメントは、お客様の利便性のために翻訳ソフトウエアにより機械的に翻訳(機械翻訳)したものです。オリジナルの英語版もあわせてご確認ください。" style="width:150px;padding-left:5px;padding-right:5px;border:#ff0000 solid 1px;border-color: gray;font-size: small;color:gray;margin: 0 auto 0 auto;text-align:center"><a href="https://docs.oracle.com/cd/E85181_01/mt_disclaimer.html">機械翻訳について</a></div> </div>
+<nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <span class="merged" id="index.2dQIDB" title="原文 : About WebLogic Remote Console"><a href="../../overview/index.html">WebLogic Remote Consoleについて</a></span></li>
+  <li class="breadcrumb-item">
+    <span class="merged" id="index.Y14QZ"  title="原文:: WebLogic Deploy Tooling"><a href="../index.html">WebLogic Deploy Tooling</a></span></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <span class="merged" id="index.31vmjn" title="原文 : WDT Model Files">WDTモデル・ファイル</span></li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1><span class="merged" id="index.31vmjn.1" title="原文 : WDT Model Files">WDTモデル・ファイル</span></h1>
+  
+	<header class="article-meta">
+		
+</header>
+	<p><span class="merged" id="index.1yF1TA.spl1" title="原文 : WDT metadata model files are descriptions of a WebLogic Server domain configuration.">WDTメタデータ・モデル・ファイルは、WebLogic Serverドメイン構成の説明です。</span> <span class="merged" id="index.1yF1TA.spl2" title="原文 : These models are not connected to a running WebLogic Server domain; you make edits to a model file and then use WebLogic Deploy Tooling (WDT) to build or modify live domains.">これらのモデルは、実行中のWebLogic Serverドメインに接続されていません。モデル・ファイルを編集してから、WebLogic Deploy Tooling (WDT)を使用してライブ・ドメインを構築または変更します。</span> </p>
+<p><span class="merged" id="index.2LJ9Nf.spl1" title="原文 : WDT model files are simplistic representations of a domain.">WDTモデル・ファイルは、ドメインの単純な表現です。</span> <span class="merged" id="index.2LJ9Nf.spl2" title="原文 : They are generally written in YAML but WebLogic Remote Console also accepts models in JSON format.">通常、これらは<code>YAML</code>で記述されますが、WebLogic Remote Consoleは<code>JSON</code>形式のモデルも受け入れます。</span> <span class="merged" id="index.2LJ9Nf.spl3" title="原文 : For brevity, a WDT model file only describes departures from the default configuration.">簡潔にするために、WDTモデル・ファイルではデフォルト構成からの離脱のみが記述されます。</span> </p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.USQIJ.spl1" title="原文 : WebLogic Remote Console does not validate the data that you insert into WDT model files.">WebLogic Remote Consoleでは、WDTモデル・ファイルに挿入したデータはバリデートされません。</span> <span class="merged" id="index.USQIJ.spl2" title="原文 : It will accept changes or values that are invalid and that will present problems when the model file is used to build or update a domain.">これは、無効な変更または値を受け入れ、モデル・ファイルを使用してドメインを構築または更新するときに問題が発生します。</span> 
+
+</div>
+<h2 id="GUID-1416166A-7D57-4D8C-AB68-4D82914E59FB"><span class="merged" id="index.1iMVrI"  title="原文:: WDT Model">WDTモデル</span></h2>
+<pre tabindex="0"><code>topology:
+    Server:
+        AdminServer:
+        ManagedServer1:
+            Cluster: Cluster2
+        ManagedServer2:
+            Cluster: Cluster2
+        ManagedServer3:
+    ServerTemplate:
+        ServerTemplate1:
+    Cluster:
+        Cluster1:
+            DynamicServers:
+                ServerTemplate: ServerTemplate1
+                DynamicClusterSize: 3
+        Cluster2:
+resources:
+    JDBCSystemResource:
+        DataSource1:
+            JdbcResource:
+                JDBCDriverParams:
+                    DriverName: oracle.jdbc.replay.OracleXADataSourceImpl
+                    URL: &#39;jdbc:oracle:thin:@//dbhost:1521/Database1&#39;
+                JDBCDataSourceParams:
+                    JNDIName: [
+                        jdbc/myDS
+                    ]
+                    GlobalTransactionsProtocol: TwoPhaseCommit
+                DatasourceType: GENERIC
+            Target: [
+                Cluster2
+            ]
+            
+appDeployments:
+    Application:
+        Application1:
+            Target: [
+                Cluster1
+            ]
+            SourcePath: /apps/benefits/benefits.war
+            StagingMode: default
+</code></pre><h2 id="GUID-0C7510AB-67B2-4EF5-8DAB-5A09DC2BD2E8"><span class="merged" id="index.4ANcYV" title="原文 : WDT Model Tokens">WDTモデル・トークン</span></h2>
+<p><span class="merged" id="index.10zCrc" title="原文 : Use a WDT model token to increase the flexibility of a WDT model file by replacing a fixed value with a dynamic one.">WDTモデル・トークンを使用して、固定値を動的ファイルに置き換えることで、WDTモデル・ファイルの柔軟性を高めます。</span></p>
+<p><span class="merged" id="index.2LsrP.spl1" title="原文 : With WDT model tokens, you can create WDT model files that adapt based on the applicable WDT tokens.">WDTモデル・トークンを使用すると、適用可能なWDTトークンに基づいて適応するWDTモデル・ファイルを作成できます。</span> <span class="merged" id="index.2LsrP.spl2" title="原文 : Rather than creating multiple WDT model files whose only difference is a few fixed values, you can create a single file and update the tokens as needed.">唯一の差異がいくつかの固定値である複数のWDTモデル・ファイルを作成するのではなく、1つのファイルを作成して、必要に応じてトークンを更新できます。</span> </p>
+<p><span class="merged" id="index.3OyTgz.spl1" title="原文 : WebLogic Remote Console supports multiple types of WDT model tokens.">WebLogic Remote Consoleは、複数のタイプのWDTモデル・トークンをサポートします。</span> <span class="merged" id="index.3OyTgz.spl2" title="原文 : All tokens follow this format: @@TYPE:KEY@@ where TYPE is the model token type and KEY is the variable value.">すべてのトークンがこの形式に従います: <code>@@TYPE:KEY@@</code>。<code>TYPE</code>はモデル・トークン・タイプ、<code>KEY</code>は変数値です。</span> <span class="merged" id="index.3OyTgz.spl3" title="原文 : For more information on the different types of WDT model tokens and their syntax, see Model Tokens in WebLogic Deploy Tooling.">様々なタイプのWDTモデル・トークンとその構文の詳細は、<a href="https://oracle.github.io/weblogic-deploy-tooling/"><em>WebLogic Deploy Tooling</em></a>のモデル・トークンを参照してください。</span> </p>
+<p><span class="merged" id="index.43Zk9S" title="原文 : WebLogic Remote Console allows you to insert WDT model tokens in two ways:">WebLogic Remote Consoleでは、WDTモデル・トークンを次の2つの方法で挿入できます:</span></p>
+<ul>
+<li><span class="merged" id="index.XekV4" title="原文 : Standalone WDT model tokens">スタンドアロンWDTモデル・トークン</span></li>
+<li><span class="merged" id="index.2ws8o1" title="原文 : WDT variables">WDT変数</span></li>
+</ul>
+<h3 id="standalone-wdt-model-tokens"><span class="merged" id="index.2WafY" title="原文 : Standalone WDT Model Tokens">スタンドアロンWDTモデル・トークン</span></h3>
+<p><span class="merged" id="index.2P9dU0.spl1" title="原文 : Standalone WDT model token are tokens that replaced when the WDT model file is passed through WebLogic Deploy Tooling or through another external process.">スタンドアロンWDTモデル・トークンは、WDTモデル・ファイルがWebLogic Deploy Toolingまたは別の外部プロセスを通過したときに置換されるトークンです。</span> <span class="merged" id="index.2P9dU0.spl2" title="原文 : WebLogic Remote Console knows nothing about the value of the token and cannot update it.">WebLogic Remote Consoleは、トークンの値について何も認識せず、更新できません。</span> </p>
+<h3 id="wdt-variables"><span class="merged" id="index.ejuow"  title="原文:: WDT Variables">WDT変数</span></h3>
+<p><span class="merged" id="index.1iNhvR.spl1" title="原文 : WDT variables allow you to manage WDT model tokens and their values from within WebLogic Remote Console.">WDT変数を使用すると、WebLogic Remote Console内からWDTモデル・トークンとその値を管理できます。</span> <span class="merged" id="index.1iNhvR.spl2" title="原文 : First, you create a property list with a set of tokens and their values, then you assign a property list to a WDT model file.">最初に、トークンとその値のセットを含むプロパティ・リストを作成し、次にプロパティ・リストをWDTモデル・ファイルに割り当てます。</span> <span class="merged" id="index.1iNhvR.spl3" title="原文 : After they are linked, any properties that you create in the property list become available to insert into the associated WDT model file.">リンクされると、プロパティ・リストで作成したプロパティが、関連付けられたWDTモデル・ファイルに挿入できるようになります。</span> <span class="merged" id="index.1iNhvR.spl4" title="原文 : By centralizing model tokens in a property lists, you can easily update their values and review available tokens.">プロパティ・リストでモデル・トークンを一元化することで、その値を簡単に更新し、使用可能なトークンを確認できます。</span> </p>
+<p><span class="merged" id="index.1dYXdP" title="原文 : For more information, see Property Lists.">詳細については、<a href="../property-lists/index.html#GUID-62721515-29E5-4DC4-BBD8-E2D1C8A7529D">「プロパティ・リスト」</a>を参照してください。</span></p>
+<p><span class="merged" id="index.1M7VOp" title="原文 : Each WDT model file can only pull from one property list, but you can use the same property list for multiple WDT model files.">各WDTモデル・ファイルは、1つのプロパティ・リストからのみプルできますが、複数のWDTモデル・ファイルに対して同じプロパティ・リストを使用できます。</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.1"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.14bqby.spl1" title="原文 : You can use both standalone WDT model tokens and WDT variables in the same WDT model file.">スタンドアロンのWDTモデル・トークンとWDT変数の両方を同じWDTモデル・ファイルで使用できます。</span> <span class="merged" id="index.14bqby.spl2" title="原文 : This can be useful if you want to synchronize certain values and leave other values as slightly more static or to be changed by a later process.">これは、特定の値を同期し、他の値を少し静的なままにする場合や、後のプロセスで変更する場合に便利です。</span> 
+
+</div>
+<h2 id="GUID-1ECF1B50-BE85-413F-8417-34A8E0CC8FB0"><span class="merged" id="index.2hzSxz" title="原文 : Create a WDT Model File">WDTモデル・ファイルの作成</span></h2>
+<p><span class="merged" id="index.4fPEhl" title="原文 : To create a WDT model file for use with the WebLogic Deploy Tooling:">WebLogic Deploy Toolingで使用するWDTモデル・ファイルを作成するには:</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1FZ53Q.spl1" title="原文 : Open the Providers drawer and beside the project name, click More ︙.">プロバイダ・ドロワーを開き、プロジェクト名の横にある<strong>「その他」</strong>をクリックします。</span> <span class="merged" id="index.1FZ53Q.spl2" title="原文 : Select Create Provider for New WDT Model File."><strong>「新規WDTモデル・ファイルのプロバイダの作成」</strong>を選択します。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.gaytc" title="原文 : Enter a name for the WDT model file provider.">WDTモデル・ファイル・プロバイダの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.PthpJ.spl1" title="原文 : In the WDT Model Filename field, enter a name for the WDT model file."><strong>「WDTモデル・ファイル名」</strong>フィールドに、WDTモデル・ファイルの名前を入力します。</span> <span class="merged" id="index.PthpJ.spl2" title="原文 : Include .yaml or .json at the end of the file name.">ファイル名の末尾に<code>.yaml</code>または<code>.json</code>を含めます。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.1mE7BZ" title="原文 : Click Pick Directory and browse to the directory where you want to save the new WDT model file."><strong>「ディレクトリを選択」</strong>をクリックして、新しいWDTモデル・ファイルを保存するディレクトリを参照します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3PNLSd" title="原文 : Enable Use Sparse Template to create a WDT model file which does not contain any references to an Administration Server."><strong>「スパース・テンプレートの使用」</strong>を有効にして、管理サーバーへの参照を含まないWDTモデル・ファイルを作成します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1YhtcI.spl1" title="原文 : If you want to use WDT variables with this WDT model file, then from the WDT Variables dropdown list, choose a property list provider.">このWDTモデル・ファイルでWDT変数を使用する場合は、<strong>「WDT変数」</strong>ドロップダウン・リストからプロパティ・リスト・プロバイダを選択します。</span> <span class="merged" id="index.1YhtcI.spl2" title="原文 : If you don’t have a property list provider yet, you can add one later.">まだプロパティ・リスト・プロバイダがない場合は、後で追加できます。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.2qh6YH" title="原文 : Click OK to create the WDT model file."><strong>OK</strong>をクリックして、WDTモデル・ファイルを作成します。</span></p>
+</li>
+</ol>
+<h2 id="GUID-EC821453-1C8A-49DD-A2AB-B5BF58B0B00E"><span class="merged" id="index.ssfiR" title="原文 : Upload a WDT Model File">WDTモデル・ファイルのアップロード</span></h2>
+<p><span class="merged" id="index.1tM8Au" title="原文 : If you created a WDT model file elsewhere, you can upload it to WebLogic Remote Console and continue to edit it.">WDTモデル・ファイルを別の場所に作成した場合は、それをWebLogic Remote Consoleにアップロードして編集を続行できます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1xjwaq.spl1" title="原文 : Open the Providers drawer and beside the project name, click More ︙.">プロバイダ・ドロワーを開き、プロジェクト名の横にある<strong>「その他」</strong>をクリックします。</span> <span class="merged" id="index.1xjwaq.spl2" title="原文 : Select Add WDT Model File Provider."><strong>「WDTモデル・ファイル・プロバイダの追加」</strong>を選択します。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.gaytc.1" title="原文 : Enter a name for the WDT model file provider.">WDTモデル・ファイル・プロバイダの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.fHoCK" title="原文 : Click Upload File and browse to the directory where you saved the WDT model file."><strong>「ファイルのアップロード」</strong>をクリックして、WDTモデル・ファイルを保存したディレクトリを参照します。</span></p>
+<p><span class="merged" id="index.49fNW3" title="原文 : The WDT model file must be in YAML or JSON format.">WDTモデル・ファイルは、<code>YAML</code>または<code>JSON</code>形式である必要があります。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4KNCl2.spl1" title="原文 : If you want to use WDT variables with this WDT model file, then from the WDT Variables drop-down list, choose a property list provider.">このWDTモデル・ファイルでWDT変数を使用する場合は、<strong>「WDT変数」</strong>ドロップダウン・リストからプロパティ・リスト・プロバイダを選択します。</span> <span class="merged" id="index.4KNCl2.spl2" title="原文 : If you don’t have a property list provider yet, you can edit this provider’s settings later to add one.">まだプロパティ・リスト・プロバイダがない場合は、このプロバイダの設定を後で編集して追加できます。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.1iCvbf" title="原文 : Click OK to upload the WDT model file."><strong>OK</strong>をクリックして、WDTモデル・ファイルをアップロードします。</span></p>
+</li>
+</ol>
+<h2 id="GUID-B0B9CBA4-29E4-417D-8094-5BA8B4522ED7"><span class="merged" id="index.1SdQuJ" title="原文 : Edit a WDT Model File">WDTモデル・ファイルの編集</span></h2>
+<p><span class="merged" id="index.B0nsX" title="原文 : To make changes to a WDT model file:">WDTモデル・ファイルを変更するには:</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.2"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.424YQ1.spl1" title="原文 : For guidance on where to find specific domain configuration options and how to apply them, review the tasks under Administration Server.">特定のドメイン構成オプションの場所とその適用方法のガイダンスについては、<a href="../../administration-server#GUID-BC6883D0-1917-4130-B79B-02727F1242D6">「管理サーバー」</a>にあるタスクを確認してください。</span> <span class="merged" id="index.424YQ1.spl2" title="原文 : The WDT Model Tree perspective is very similar to the Edit Tree perspective in an Administration Server provider.">WDTモデル・ツリーのパースペクティブは、管理サーバー・プロバイダの「ツリーの編集」パースペクティブとよく似ています。</span> 
+
+</div>
+<ol>
+<li>
+<p><span class="merged" id="index.1F2tPb" title="原文 : Open the WDT model file that you want to edit.">編集するWDTモデル・ファイルを開きます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3eqajP" title="原文 : Click WDT Model Tree and go to the node where you want to make your changes."><strong>「WDTモデル・ツリー」</strong>をクリックして、変更を行うノードに移動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4EN9da" title="原文 : Beside the domain configuration that you want to modify, click WDT Settings to open the WDT settings dialog box.">変更するドメイン構成の横にある<strong>「WDT設定」</strong>をクリックして、「WDT設定」ダイアログ・ボックスを開きます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3BoNLL" title="原文 : Set a new value for the field, using one of the following options:">次のいずれかのオプションを使用して、フィールドに新しい値を設定します:</span></p>
+</li>
+</ol>
+<table id="GUID-B0B9CBA4-29E4-417D-8094-5BA8B4522ED7__TABLE_YMB_PZN_SDC">
+                              <span class="merged" id="index.4d3cnZ" title="原文 : Describes the various ways to set values for a field."><span>フィールドの値を設定するための様々な方法について説明します。</span></span>
+                              <thead>
+                                 <tr>
+                                    <th><span class="merged" id="index.1hmKoA"  title="原文:: Option">オプション</span></th>
+                                    <th><span class="merged" id="index.4JM9z7"  title="原文:: Description">説明</span></th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td><span class="merged" id="index.pkY3P" title="原文 : Default (unset)">デフォルト(設定解除)</span></td>
+                                    <td><span class="merged" id="index.1Ll5od" title="原文 : Restore field to its default value.">フィールドをデフォルト値にリストアします。</span></td>
+                                 </tr>
+                                 <tr>
+                                    <td><span class="merged" id="index.2mTNYN"  title="原文:: Select Value">Select Value</span></td>
+                                    <td><span class="merged" id="index.2rmGdM" title="原文 : Select a reference to a component that exists in the current WDT model file.">現在のWDTモデル・ファイルに存在するコンポーネントへの参照を選択します。</span></td>
+                                 </tr>
+                                 <tr>
+                                    <td><span class="merged" id="index.1T6URR"  title="原文:: Enter Value">値の入力</span></td>
+                                    <td><span class="merged" id="index.3ZkKjP" title="原文 : Enter a fixed value.">固定値を入力します。</span></td>
+                                 </tr>
+                                 <tr>
+                                    <td><span class="merged" id="index.2VNYoM"  title="原文:: Enter Model Token">モデル・トークンの入力</span></td>
+                                    <td><span class="merged" id="index.44HJ2o" title="原文 : Enter a WDT model token.">WDTモデル・トークンを入力します。</span></td>
+                                 </tr>
+                                 <tr>
+                                    <td><span class="merged" id="index.lWodk"  title="原文:: Enter Unresolved Reference">未解決の参照の入力</span></td>
+                                    <td><span class="merged" id="index.4CzYI9" title="原文 : Enter a reference to a component that does not exist in the current WDT model file but will exist at a later point.">現在のWDTモデル・ファイルには存在しないが後で存在するコンポーネントへの参照を入力します。</span></td>
+                                 </tr>
+                                 <tr>
+                                    <td><span class="merged" id="index.3ha002"  title="原文:: Select Model Token Variable">モデル・トークン変数の選択</span></td>
+                                    <td><span class="merged" id="index.3QtZtf.spl1" title="原文 : Select a WDT model token variable from the list of available options.">使用可能なオプションのリストからWDTモデル・トークン変数を選択します。</span> <span class="merged" id="index.3QtZtf.spl2" title="原文 : The WDT model file must be connected with a property list to see this option.">このオプションを表示するには、WDTモデル・ファイルをプロパティ・リストに接続する必要があります。</span> </td>
+                                 </tr>
+                                 <tr>
+                                    <td><span class="merged" id="index.3nKh00"  title="原文:: Create Model Token Variable">モデル・トークン変数の作成</span></td>
+                                    <td><span class="merged" id="index.223k8q.spl1" title="原文 : Enter a Variable Name and Variable Value to create a new WDT model token variable.">新しいWDTモデル・トークン変数を作成するには、変数名と変数値を入力します。</span> <span class="merged" id="index.223k8q.spl2" title="原文 : New model token variables are added to the connected property list.">新しいモデル・トークン変数が接続されたプロパティ・リストに追加されます。</span> <span class="merged" id="index.223k8q.spl3" title="原文 : The WDT model file must be connected with a property list to see this option.">このオプションを表示するには、WDTモデル・ファイルをプロパティ・リストに接続する必要があります。</span> </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+<ol start="5">
+<li><span class="merged" id="index.30spXr" title="原文 : Click Save Now to update the YAML file with your changes."><strong>「今すぐ保存」</strong>をクリックして、変更内容で<code>YAML</code>ファイルを更新します。</span></li>
+</ol>
+<p><span class="merged" id="index.27X1m4" title="原文 : If you want to restore fields to their default value, right-click on a field and click Restore to default.">フィールドをデフォルト値に戻す場合は、フィールドを右クリックして<strong>「デフォルトに戻す」</strong>をクリックします。</span></p>
+<h2 id="GUID-4A5C092D-A16B-4F7F-A5CC-38DCF2293FBE"><span class="merged" id="index.4UPDYn" title="原文 : Build a WebLogic Server Domain">WebLogic Serverドメインの作成</span></h2>
+<p><span class="merged" id="index.eZ2kC" title="原文 : When you’re satisfied with the properties of your WDT model file, you can transform it into a live WebLogic Server domain with WebLogic Deploy Tooling (WDT).">WDTモデル・ファイルのプロパティに問題がなければ、WebLogic Deploy Tooling (WDT)を使用してライブのWebLogic Serverドメインに変換できます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.1xW6r.spl1" title="原文 : Save the WDT model file in WebLogic Remote Console.">WDTモデル・ファイルをWebLogic Remote Consoleに保存します。</span> <span class="merged" id="index.1xW6r.spl2" title="原文 : Make a note of the location of the YAML file on your computer.">コンピュータ上の<code>YAML</code>ファイルのロケーションをノートにとります。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.3PfCfW" title="原文 : Download the latest version of WDT from the WDT GitHub Repository."><a href="https://github.com/oracle/weblogic-deploy-tooling">「WDT GitHubリポジトリ」</a>から最新バージョンのWDTをダウンロードします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2ABI6w" title="原文 : Follow the instructions in the WDT Documentation for creating a domain from a WDT model file."><a href="https://oracle.github.io/weblogic-deploy-tooling/">「WDTドキュメント」</a>の指示に従って、WDTモデル・ファイルからドメインを作成します。</span></p>
+</li>
+</ol>
+
+  <div class="section-index">
+    
+    
+    </div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="merged" id="index.VxO9l" title="原文 : © 2020-2025 Oracle | UPL 1.0All Rights Reserved"><span class="td-footer__copyright">© 2020-2025 <span class="td-footer__authors">Oracle | <a href="https://github.com/oracle/weblogic-remote-console/blob/main/LICENSE.txt">UPL 1.0</a></span></span> <span class="td-footer__all_rights_reserved">All Rights Reserved<</span></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="../../js/main.min.90902a026ed2aee7ed45d85797f4c790b240ba148ac6f8a6f194cb1981ffecf5.js" integrity="sha256-kJAqAm7SruftRdhXl/THkLJAuhSKxvim8ZTLGYH/7PU=" crossorigin="anonymous"></script>
+<script defer src="../../js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='../../js/tabpane-persist.js'></script>
+
+  </body>
+</html>

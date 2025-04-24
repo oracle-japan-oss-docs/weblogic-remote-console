@@ -1,0 +1,704 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="ja" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="application/rss&#43;xml" href="index.xml">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../favicons/android-192x192.png" sizes="192x192">
+
+<title>スタート・ガイド | WebLogic Remote Console</title>
+<meta content="WebLogic Remote Consoleはインストールが簡単で、ドメインの管理をすばやく開始できます。 WebLogic Remote Consoleは2つの形式で使用できます: デスクトップWebLogic Remote Console。コンピュータにインストールされているデスクトップ・アプリケーションです。 ホストされたWebLogic Remote Console。管理サーバーにデプロイされ、ブラウザを介してアクセスされるwebアプリケーションです。 2つの形式は概して同様の機能を持ちますが、デスクトップ・アプリケーションではブラウザの使用時に不可能な特定の利便性が提供されます。 " name="description">
+<meta property="og:url" content="https://oracle.github.io/weblogic-remote-console/set-console/">
+  <meta property="og:site_name" content="WebLogic Remote Console">
+  <meta content="開始" property="og:title">
+  <meta content="WebLogic Remote Consoleはインストールが簡単で、ドメインの管理をすばやく開始できます。 WebLogic Remote Consoleは2つの形式で使用できます: デスクトップWebLogic Remote Console。コンピュータにインストールされているデスクトップ・アプリケーションです。 ホストされたWebLogic Remote Console。管理サーバーにデプロイされ、ブラウザを介してアクセスされるwebアプリケーションです。 2つの形式は概して同様の機能を持ちますが、デスクトップ・アプリケーションではブラウザの使用時に不可能な特定の利便性が提供されます。 " property="og:description">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Get Started">
+  <meta itemprop="description" content="WebLogic Remote Console is easy to install and you can quickly start managing your domains.
+WebLogic Remote Console is available in two formats:
+Desktop WebLogic Remote Console, a desktop application installed on your computer. Hosted WebLogic Remote Console, a web application deployed to an Administration Server and accessed through a browser. Generally, the two formats have similar functionality, though the desktop application offers certain conveniences that are not possible when using a browser.">
+  <meta itemprop="wordCount" content="1883">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Get Started">
+  <meta name="twitter:description" content="WebLogic Remote Console is easy to install and you can quickly start managing your domains.
+WebLogic Remote Console is available in two formats:
+Desktop WebLogic Remote Console, a desktop application installed on your computer. Hosted WebLogic Remote Console, a web application deployed to an Administration Server and accessed through a browser. Generally, the two formats have similar functionality, though the desktop application offers certain conveniences that are not possible when using a browser.">
+<link rel="preload" href="../scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" as="style" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
+<link href="../scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" rel="stylesheet" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  <meta HTTP-EQUIV="Content-Type" Content="text/html; charset=utf-8"></head>
+  <style type="text/css"> <!-- .merged:hover {text-decoration: underline;} --> </style>
+<body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <span class="merged" id="index.1wBep"  title="原文:: WebLogic Remote Console"><a class="navbar-brand" href="../index.html"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">WebLogic Remote Console</span></a></span>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <span class="merged" id="index.xfBR3"  title="原文:: Documentation"><a class="nav-link" href="../overview"><span>ドキュメント</span></a></span>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <span class="merged" id="index.1rBGLa" title="原文 : Releases"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="index.html#" role="button">リリース</a></span>
+  <ul class="dropdown-menu">
+    <li><span class="merged" id="index.310fQz" title="原文 : Latest (v2.4.16)"><a class="dropdown-item" href="../overview">最新(v2.4.16)</a></span></li>
+    </ul>
+</div></li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <span class="merged" id="index.2jII9A" title="原文 :  Light "><svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>ライト<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <span class="merged" id="index.2I3lw8" title="原文 :  Dark "><svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>ダーク<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <span class="merged" id="index.2ddEmA" title="原文 :  Auto "><svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>自動<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site ¦"
+    aria-label="Search this site ¦"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/weblogic-remote-console/offline-search-index.435a82cb353472bb29e0cc0f9a02ede0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site ¦"
+    aria-label="Search this site ¦"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/weblogic-remote-console/offline-search-index.435a82cb353472bb29e0cc0f9a02ede0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="td-sidebar-nav collapse td-sidebar-nav--search-disabled foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-weblogic-remote-consoleoverview-li">
+  <span class="merged" id="index.2ahF6i" title="原文 : About WebLogic Remote Console"><a class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" href="../overview/index.html" id="m-weblogic-remote-consoleoverview"><span class="">WebLogic Remote Consoleについて</span></a></span>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-weblogic-remote-consoleset-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-console-check" checked/>
+  <label for="m-weblogic-remote-consoleset-console-check"><span class="merged" id="index.4brsDl"  title="原文:: Get Started"><a class="align-left ps-0  active td-sidebar-link td-sidebar-link__section" href="index.html" id="m-weblogic-remote-consoleset-console"><span class="td-sidebar-nav-active-item">開始</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleset-consoleget-know-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consoleget-know-console-check"/>
+  <label for="m-weblogic-remote-consoleset-consoleget-know-console-check"><span class="merged" id="index.2qlz52"  title="原文:: Get to Know the Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="get-know-console/index.html" id="m-weblogic-remote-consoleset-consoleget-know-console"><span class="">コンソールの理解</span></a></span></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-check"/>
+  <label for="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-check"><span class="merged" id="index.6bwig" title="原文 : A Map of the Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="get-know-console/bean-map/index.html" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map"><span class="">コンソールのマップ</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-check"/>
+  <label for="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-check"><span class="merged" id="index.4MfEDv" title="原文 : Contribute to WebLogic Remote Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="contribute-wrc-repository/index.html" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository"><span class="">WebLogic Remote Consoleに貢献</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consolesupport-information-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consolesupport-information-check"/>
+  <label for="m-weblogic-remote-consoleset-consolesupport-information-check"><span class="merged" id="index.O2KMq"  title="原文:: Support Information"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="support-information/index.html" id="m-weblogic-remote-consoleset-consolesupport-information"><span class="">サポート情報</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleadministration-server-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-server-check"/>
+  <label for="m-weblogic-remote-consoleadministration-server-check"><span class="merged" id="index.2et5Fd"  title="原文:: Administration Server"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../administration-server/index.html" id="m-weblogic-remote-consoleadministration-server"><span class="">管理サーバー</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverdomain-configuration-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverdomain-configuration-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverdomain-configuration-check"><span class="merged" id="index.4fabY4"  title="原文:: Domain Configuration"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../administration-server/domain-configuration/index.html" id="m-weblogic-remote-consoleadministration-serverdomain-configuration"><span class="">ドメインの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serversecuring-domains-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serversecuring-domains-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serversecuring-domains-check"><span class="merged" id="index.1G8n1i" title="原文 : Securing Domains"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../administration-server/securing-domains/index.html" id="m-weblogic-remote-consoleadministration-serversecuring-domains"><span class="">ドメインの保護</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverdeploying-applications-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverdeploying-applications-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverdeploying-applications-check"><span class="merged" id="index.3RjSRl"  title="原文:: Deploying Applications"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../administration-server/deploying-applications/index.html" id="m-weblogic-remote-consoleadministration-serverdeploying-applications"><span class="">アプリケーションのデプロイ</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-servermonitoring-domains-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-servermonitoring-domains-check"/>
+  <label for="m-weblogic-remote-consoleadministration-servermonitoring-domains-check"><span class="merged" id="index.3x3YFG" title="原文 : Monitoring Domains"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../administration-server/monitoring-domains/index.html" id="m-weblogic-remote-consoleadministration-servermonitoring-domains"><span class="">ドメインのモニタリング</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverconfiguring-services-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverconfiguring-services-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverconfiguring-services-check"><span class="merged" id="index.1zuFRg"  title="原文:: Configuring Services"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../administration-server/configuring-services/index.html" id="m-weblogic-remote-consoleadministration-serverconfiguring-services"><span class="">サービスの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-check"><span class="merged" id="index.2frOQt"  title="原文:: Configuring Coherence"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../administration-server/configuring-coherence/index.html" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence"><span class="">Coherenceの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverscheduling-work-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverscheduling-work-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverscheduling-work-check"><span class="merged" id="index.1CGTTk" title="原文 : Scheduling Work"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../administration-server/scheduling-work/index.html" id="m-weblogic-remote-consoleadministration-serverscheduling-work"><span class="">作業のスケジューリング</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverinteroperability-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverinteroperability-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverinteroperability-check"><span class="merged" id="index.4SElMl" title="原文 : Interoperating with Oracle Tuxedo"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../administration-server/interoperability/index.html" id="m-weblogic-remote-consoleadministration-serverinteroperability"><span class="">Oracle Tuxedoとの相互運用</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleweblogic-deploy-tooling-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-tooling-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-tooling-check"><span class="merged" id="index.1x5db3"  title="原文:: WebLogic Deploy Tooling"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../weblogic-deploy-tooling/index.html" id="m-weblogic-remote-consoleweblogic-deploy-tooling"><span class="">WebLogic Deploy Tooling</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-check"><span class="merged" id="index.47WDb6" title="原文 : WDT Model Files"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../weblogic-deploy-tooling/wdt-model-files/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files"><span class="">WDTモデル・ファイル</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-check"><span class="merged" id="index.1AIk1k" title="原文 : WDT Composite Models"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../weblogic-deploy-tooling/wdt-composites/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites"><span class="">WDTコンポジット・モデル</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-check"><span class="merged" id="index.3nMBTH" title="原文 : Property Lists"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../weblogic-deploy-tooling/property-lists/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists"><span class="">プロパティ・リスト</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-check"/>
+  <label for="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-check"><span class="merged" id="index.4avaoB" title="原文 : Troubleshoot Issues with WebLogic Remote Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../troubleshoot-weblogic-remote-console/index.html" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console"><span class="">WebLogic Remote Consoleに関する問題のトラブルシューティング</span></a></span></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><span class="merged" id="index.3FKF7Z"  title="原文:: System Requirements"><a href="index.html#GUID-FFC1F9AC-7CE7-4BC1-9D3D-BD59CC228C6B">システム要件</a></span></li>
+    <li><span class="merged" id="index.3nTpYL" title="原文 : Install Desktop WebLogic Remote Console"><a href="index.html#GUID-F178ACDD-4929-4918-8126-274997E5312E">デスクトップのインストールWebLogic Remote Console</a></span></li>
+    <li><span class="merged" id="index.1ssrp1" title="原文 : Deploy Hosted WebLogic Remote Console"><a href="index.html#GUID-9974090F-7983-4641-9121-36A29B6F6735">ホストされたWebLogic Remote Consoleのデプロイ</a></span></li>
+    <li><span class="merged" id="index.4W6DVy" title="原文 : Start Hosted WebLogic Remote Console"><a href="index.html#GUID-3F16AD12-C29D-49F1-8FA3-DAECD71D516D">ホストされたWebLogic Remote Consoleの起動</a></span></li>
+    <li><span class="merged" id="index.4P0JZE" title="原文 : Install the WebLogic Remote Console Extension"><a href="index.html#GUID-40440E0F-0310-4830-9B4B-00FC9ABBB591">WebLogic Remote Console拡張機能のインストール</a></span>
+      <ul>
+        <li><span class="merged" id="index.1ie0ql" title="原文 : Features of the WebLogic Remote Console Extension"><a href="index.html#GUID-6357222A-F7D4-46FC-BC87-22D6D1A6568A">WebLogic Remote Console拡張機能の機能</a></span></li>
+      </ul>
+    </li>
+    <li><span class="merged" id="index.12varg"  title="原文:: Provider Types"><a href="index.html#GUID-82C1C605-D42E-45EA-AC16-5BA3D5853C96">プロバイダ・タイプ</a></span></li>
+    <li><span class="merged" id="index.3DTcuk" title="原文 : Connect to a Provider"><a href="index.html#GUID-98F273C5-CC1E-4272-B560-604CA23A739A">プロバイダへの接続</a></span></li>
+    <li><span class="merged" id="index.1eDYhA" title="原文 : Upgrade Desktop WebLogic Remote Console"><a href="index.html#GUID-281298E0-AEE6-4DEC-ADF1-949780E75D76">デスクトップのアップグレードWebLogic Remote Console</a></span></li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+            <div style="width:100%"> <div title="免責事項: ここに記載されているドキュメントは、お客様の利便性のために翻訳ソフトウエアにより機械的に翻訳(機械翻訳)したものです。オリジナルの英語版もあわせてご確認ください。" style="width:150px;padding-left:5px;padding-right:5px;border:#ff0000 solid 1px;border-color: gray;font-size: small;color:gray;margin: 0 auto 0 auto;text-align:center"><a href="https://docs.oracle.com/cd/E85181_01/mt_disclaimer.html">機械翻訳について</a></div> </div>
+<nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <span class="merged" id="index.4KS8Nf" title="原文 : About WebLogic Remote Console"><a href="../overview/index.html">WebLogic Remote Consoleについて</a></span></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <span class="merged" id="index.JbgHr"  title="原文:: Get Started">開始</span></li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1><span class="merged" id="index.JbgHr.1"  title="原文:: Get Started">開始</span></h1>
+  
+	<header class="article-meta">
+		
+</header>
+	<p><span class="merged" id="index.1P2Kkr" title="原文 : WebLogic Remote Console is easy to install and you can quickly start managing your domains.">WebLogic Remote Consoleはインストールが簡単で、ドメインの管理をすばやく開始できます。</span></p>
+<p><span class="merged" id="index.eNsAW" title="原文 : WebLogic Remote Console is available in two formats:">WebLogic Remote Consoleは、次の2つの形式で使用できます:</span></p>
+<ul>
+<li><span class="merged" id="index.Adt3C" title="原文 : Desktop WebLogic Remote Console, a desktop application installed on your computer."><strong>「デスクトップWebLogic Remote Console」</strong>。コンピュータにインストールされているデスクトップ・アプリケーション。</span></li>
+<li><span class="merged" id="index.4Vmub0" title="原文 : Hosted WebLogic Remote Console, a web application deployed to an Administration Server and accessed through a browser."><strong>「ホストWebLogic Remote Console」</strong>。管理サーバーにデプロイされ、ブラウザを介してアクセスされるwebアプリケーション。</span></li>
+</ul>
+<p><span class="merged" id="index.3lWm5V"  title="原文: Generally, the two formats have similar functionality, though the desktop application offers certain conveniences that are not possible when using a browser.">2つの形式は概して同様の機能を持ちますが、デスクトップ・アプリケーションではブラウザの使用時に不可能な特定の利便性が提供されます。</span></p>
+<p><span class="merged" id="index.2wtLRU.spl1" title="原文 : If your environment has restrictions on installing applications, consider enabling Hosted WebLogic Remote Console.">ご使用の環境にアプリケーションのインストールに関する制限がある場合は、Hosted WebLogic Remote Consoleを有効にすることを検討してください。</span> <span class="merged" id="index.2wtLRU.spl2" title="原文 : See Deploy Hosted WebLogic Remote Console."><a href="index.html#GUID-9974090F-7983-4641-9121-36A29B6F6735">「ホストされたWebLogic Remote Consoleのデプロイ」</a>を参照してください。</span> </p>
+<h2 id="GUID-FFC1F9AC-7CE7-4BC1-9D3D-BD59CC228C6B"><span class="merged" id="index.3WpmXq"  title="原文:: System Requirements">システム要件</span></h2>
+<p><span class="merged" id="index.3uWo0f" title="原文 : Review the system requirements needed to run WebLogic Remote Console.">WebLogic Remote Consoleの実行に必要なシステム要件を確認します。</span></p>
+<p><span class="merged" id="index.3juumM" title="原文 : WebLogic Remote Console is compatible with WebLogic Server 12.2.1.4.0 and later.">WebLogic Remote Consoleは、WebLogic Server 12.2.1.4.0以降と互換性があります。</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.4VBaIv.spl1" title="原文 : Hosted WebLogic Remote Console is only supported on Administration Servers running WebLogic Server 14.1.2.0.0 or later, and is subject to the same system requirements as its associated WebLogic Server release.">ホストされるWebLogic Remote Consoleは、WebLogic Server 14.1.2.0.0以降を実行している管理サーバーでのみサポートされ、関連するWebLogic Serverリリースと同じシステム要件の対象となります。</span> <span class="merged" id="index.4VBaIv.spl2" title="原文 : To see the applicable certification matrix for your release of WebLogic Server, refer to Oracle Fusion Middleware Supported System Configurations.">WebLogic Serverのリリースに適用可能な動作保証マトリックスを確認するには、<a href="https://www.oracle.com/middleware/technologies/fusion-certification.html">「Oracle Fusionミドルウェアでサポートされているシステム構成」</a>を参照してください。</span> 
+
+</div>
+<p><span class="merged" id="index.3GZ9Vf" title="原文 : Desktop WebLogic Remote Console is supported on the following platforms.">デスクトップWebLogic Remote Consoleは、次のプラットフォームでサポートされています。</span></p>
+<table id="GUID-FFC1F9AC-7CE7-4BC1-9D3D-BD59CC228C6B__TABLE_B5D_JSX_HZB">
+                        <caption>
+                           <span class="merged" id="index.3TxrkG.spl1" title="原文 :  Table 1. "><span><span>表1.</span></span> <span class="merged" id="index.3TxrkG.spl2"  title="原文:: Requirements. ">要件 </span></span> <span class="merged" id="index.3TxrkG.spl3" title="原文 : For the best experience, make sure your environment meets the following requirements."><span>最適なエクスペリエンスを得るには、環境が次の要件を満たしていることを確認してください。</span></span> 
+                        </caption>
+                        <thead>
+                           <tr>
+                              <th><span class="merged" id="index.3WA1YD"  title="原文:: Platform">プラットフォーム</span></th>
+                              <th><span class="merged" id="index.44Gd2O"  title="原文:: Minimum Requirement">最低要件</span></th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td><span class="merged" id="index.1XA8Il"  title="原文:: Linux">Linux</span></td>
+                              <td>
+                                 <p><span class="merged" id="index.1afpDN" title="原文 : 64 bit only.">64 bitのみ。</span></p>
+                                 <ul id="GUID-FFC1F9AC-7CE7-4BC1-9D3D-BD59CC228C6B__UL_QFM_4SX_HZB">
+                                    <li><span class="merged" id="index.3b6Ts0" title="原文 : Debian 11 and later">Debian 11以降</span></li>
+                                    <li><span class="merged" id="index.Ywt4X" title="原文 : Fedora 40 and later">Fedora 40以降</span><ul id="GUID-FFC1F9AC-7CE7-4BC1-9D3D-BD59CC228C6B__UL_GM1_VSX_HZB">
+                                          <li><span class="merged" id="index.3HeNg1" title="原文 : Oracle Linux 7 and later">Oracle Linux 7以降</span></li>
+                                       </ul>
+                                    </li>
+                                    <li><span class="merged" id="index.lLHC9" title="原文 : Ubuntu 16.04 and later">Ubuntu 16.04以降</span></li>
+                                 </ul>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td><span class="merged" id="index.4IrOo6"  title="原文: macOS">macOS</span></td>
+                              <td>
+                                 <p><span class="merged" id="index.1dtxQl" title="原文 : 13 (Ventura) or later">13 (Ventura)以降</span></p>
+                                 <p>
+                                    <span class="merged" id="index.3JnFpK" title="原文 : Note: Intel machines must be 64 bit."><strong>ノート</strong>: Intelマシンは64ビットである必要があります。</span></p>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td><span class="merged" id="index.oMLod"  title="原文:: Windows">Windows</span></td>
+                              <td>
+                                 <p><span class="merged" id="index.1afpDN.1" title="原文 : 64 bit only.">64 bitのみ。</span></p>
+                                 <p><span class="merged" id="index.3wRLbe" title="原文 : Windows 10 and later.">Windows 10以降。</span></p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+<p><span class="merged" id="index.G6HDy.spl1" title="原文 : We recommend setting the viewport of WebLogic Remote Console to 1300 px or wider.">WebLogic Remote Consoleのビューポートを1300 px以上に設定することをお勧めします。</span> <span class="merged" id="index.G6HDy.spl2" title="原文 : On narrower viewports, UI elements may overlap or disappear.">狭いビューポートでは、UI要素が重複したり消えたりすることがあります。</span> </p>
+<h2 id="GUID-F178ACDD-4929-4918-8126-274997E5312E"><span class="merged" id="index.328bi8" title="原文 : Install Desktop WebLogic Remote Console">デスクトップのインストールWebLogic Remote Console</span></h2>
+<p><span class="merged" id="index.eG9K9" title="原文 : Desktop WebLogic Remote Console is a version of WebLogic Remote Console that is based on the Electron framework and installed as a desktop application.">デスクトップWebLogic Remote Consoleは、Electronフレームワークに基づいてデスクトップ・アプリケーションとしてインストールされるWebLogic Remote Consoleのバージョンです。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.EzVJ.spl1" title="原文 : Download the latest version of WebLogic Remote Console from the WebLogic Remote Console GitHub Repository releases page."><a href="https://github.com/oracle/weblogic-remote-console-releases">「WebLogic Remote Console GitHubリポジトリ」</a>リリース・ページから最新バージョンのWebLogic Remote Consoleをダウンロードします。</span> <span class="merged" id="index.EzVJ.spl2" title="原文 : Choose the appropriate installer for your operating system.">オペレーティング・システムに適したインストーラを選択します。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.3vqhZB" title="原文 : Follow the typical process for installing applications on your operating system.">オペレーティング・システムにアプリケーションをインストールするための一般的なプロセスに従います。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3zsJAj" title="原文 : Launch WebLogic Remote Console.">WebLogic Remote Consoleを起動します。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.4JM5F4.spl1" title="原文 : If you are using WebLogic Server 14.1.1.0 or earlier, you can enhance the functionality for managing Administration Servers by installing the WebLogic Remote Console extension.">WebLogic Server 14.1.1.0以前を使用している場合は、WebLogic Remote Console拡張機能をインストールして管理サーバーを管理するための機能を拡張できます。</span> <span class="merged" id="index.4JM5F4.spl2" title="原文 : See Install the WebLogic Remote Console Extension."><a href="index.html#GUID-40440E0F-0310-4830-9B4B-00FC9ABBB591">「WebLogic Remote Console拡張機能のインストール」</a>を参照してください。</span> <span class="merged" id="index.4JM5F4.spl3" title="原文 : The extension comes pre-installed in WebLogic Server 14.1.2.0 and later.">拡張機能は、WebLogic Server 14.1.2.0以降にあらかじめインストールされています。</span> </p>
+<h2 id="GUID-9974090F-7983-4641-9121-36A29B6F6735"><span class="merged" id="index.1YgAq8" title="原文 : Deploy Hosted WebLogic Remote Console">ホストされたWebLogic Remote Consoleのデプロイ</span></h2>
+<p><span class="merged" id="index.4HsmLg" title="原文 : Hosted WebLogic Remote Console is a version of WebLogic Remote Console that is hosted on the Administration Server of the domain and accessed through a browser.">ホストされるWebLogic Remote Consoleは、ドメインの管理サーバーでホストされ、ブラウザを介してアクセスされるWebLogic Remote Consoleのバージョンです。</span></p>
+<p><span class="merged" id="index.3hk4aP" title="原文 : Hosted WebLogic Remote Console is useful for situations where it is not feasible to install external applications in your environment.">ホストされたWebLogic Remote Consoleは、環境に外部アプリケーションをインストールできない状況で役立ちます。</span>
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.1"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.1NvR0s" title="原文 : Deploying Hosted WebLogic Remote Console is only supported on Administration Servers running WebLogic Server 14.1.2.0.0 or later.">ホストされたWebLogic Remote Consoleのデプロイは、WebLogic Server 14.1.2.0.0以降を実行している管理サーバーでのみサポートされます。</span>
+
+</div></p>
+<ol>
+<li>
+<p><span class="merged" id="index.49klnx"  title="原文: Start the Administration Server.">管理サーバーを起動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.5ZyFs" title="原文 : Deploy the Hosted WebLogic Remote Console application using the WebLogic Scripting Tool (WLST).">WebLogic Scripting Tool (WLST)を使用して、ホストされたWebLogic Remote Consoleアプリケーションをデプロイします。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.4IFpJI" title="原文 : Open a command line terminal and go to ORACLE_HOME/oracle_common/common/bin.">コマンドライン端末を開き、<code><em>ORACLE_HOME</em>/oracle_common/common/bin</code>に進みます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.37QFBH" title="原文 : Invoke WLST with the following options:">次のオプションを使用してWLSTを起動します:</span></p>
+<p><span class="merged" id="index.47GyY3" title="原文 : For Unix operating systems, enter:">Unixオペレーティング・システムの場合は、次のように入力します:</span></p>
+<pre tabindex="0"><code>wlst.sh *WL_HOME*/server/bin/remote_console_deployment.py t3://*hostname*:*port* *username* &lt; *password.txt*
+</code></pre><p><span class="merged" id="index.C9vAw" title="原文 : For Windows operating systems, enter:">Windowsオペレーティング・システムの場合は、次のように入力します:</span></p>
+<pre tabindex="0"><code>wlst.cmd *WL_HOME*serverbinremote_console_deployment.py t3://*hostname*:*port* *username* &lt; *password.txt*
+</code></pre><p><span class="merged" id="index.2YxSiV"  title="原文:: Where:">説明:</span></p>
+<ul>
+<li><span class="merged" id="index.4WMuYT" title="原文 : WL_HOME is the top-level installation directory for WebLogic Server."><code><em>WL_HOME</em></code>は、WebLogic Serverの最上位のインストール・ディレクトリです。</span></li>
+<li><span class="merged" id="index.1j4Jkk" title="原文 : hostname is the host name of the Administration Server."><code><em>hostname</em></code>は、管理サーバーのホスト名です。</span></li>
+<li><span class="merged" id="index.22KbZv" title="原文 : port is the port number of the Administration Server."><code><em>port</em></code>は、管理サーバーのポート番号です。</span></li>
+<li><span class="merged" id="index.4V9PVk" title="原文 : username is a user account capable of deploying applications."><code><em>username</em></code>は、アプリケーションをデプロイできるユーザー・アカウントです。</span></li>
+<li><span class="merged" id="index.4KsBoa.spl1" title="原文 : password.txt is the path to a file containing the password for the specified user account."><code><em>password.txt</em></code>は、指定したユーザー・アカウントのパスワードを含むファイルへのパスです。</span> <span class="merged" id="index.4KsBoa.spl2" title="原文 : Eamples:">サンプル:</span> </li>
+</ul>
+<p><span class="merged" id="index.1QyWAW"  title="原文: On Unix operating systems:">UNIXオペレーティング・システムでは、次のようにします。</span></p>
+<pre tabindex="0"><code>wlst.sh /Users/smithdoe/Oracle/Middleware/Oracle_Home/wlserver/server/bin/remote_console_deployment.py t3://localhost:7001 admin &lt; /Users/smithdoe/password.txt
+</code></pre><p><span class="merged" id="index.2Kn6FT"  title="原文: On Windows operating systems:">Windowsオペレーティング・システムの場合:</span></p>
+<pre tabindex="0"><code>wlst.cmd C:OracleMiddlewareOracle_Homewlserverserverbinremote_console_deployment.py t3://localhost:7001 admin &lt; C:Userssmithdoepassword.txt
+</code></pre></li>
+</ol>
+</li>
+</ol>
+<p><span class="merged" id="index.4MSTqm" title="原文 : Hosted WebLogic Remote Console is now deployed and will remain active as long as the weblogic-remote-console-app application is deployed and the Administration Server is running.">ホストされたWebLogic Remote Consoleがデプロイされ、<code>weblogic-remote-console-app</code>アプリケーションがデプロイされて管理サーバーが実行されているかぎり、アクティブのままになります。</span></p>
+<p><span class="merged" id="index.3ZNJiC" title="原文 : Do not stop or delete the Hosted WebLogic Remote Console application, weblogic-remote-console-app, if you want to continue to use Hosted WebLogic Remote Console.">ホストされたWebLogic Remote Consoleを引き続き使用する場合は、ホストされたWebLogic Remote Consoleアプリケーション<code>weblogic-remote-console-app</code>を停止または削除しないでください。</span></p>
+<p><span class="merged" id="index.2hlH6q" title="原文 : To use Hosted WebLogic Remote Console to manage the running Administration Server, see Start Hosted WebLogic Remote Console.">ホストWebLogic Remote Consoleを使用して実行中の管理サーバーを管理するには、<a href="index.html#GUID-3F16AD12-C29D-49F1-8FA3-DAECD71D516D">「ホストされたWebLogic Remote Consoleの起動」</a>を参照してください。</span></p>
+<h2 id="GUID-3F16AD12-C29D-49F1-8FA3-DAECD71D516D"><span class="merged" id="index.4Lwe4F" title="原文 : Start Hosted WebLogic Remote Console">ホストされたWebLogic Remote Consoleの起動</span></h2>
+<p><span class="merged" id="index.29zERl" title="原文 : Hosted WebLogic Remote Console is a version of WebLogic Remote Console that is accessible using a browser.">ホストされるWebLogic Remote Consoleは、ブラウザを使用してアクセスできるWebLogic Remote Consoleのバージョンです。</span></p>
+<p><span class="merged" id="index.4EOlbv.spl1" title="原文 : Before you can start Hosted WebLogic Remote Console, you must have deployed it.">ホストWebLogic Remote Consoleを起動する前に、デプロイしておく必要があります。</span> <span class="merged" id="index.4EOlbv.spl2" title="原文 : See Deploy Hosted WebLogic Remote Console."><a href="index.html#GUID-9974090F-7983-4641-9121-36A29B6F6735">「ホストされたWebLogic Remote Consoleのデプロイ」</a>を参照してください。</span> </p>
+<ol>
+<li>
+<p><span class="merged" id="index.49klnx.1"  title="原文: Start the Administration Server.">管理サーバーを起動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2Eb8j2" title="原文 : Open a browser and enter http://hostname:port/rconsole (or for HTTPS, https://hostname:port/rconsole).">ブラウザを開き、<code>http://<em>hostname</em>:<em>port</em>/rconsole</code> (またはHTTPSの場合は<code>https://<em>hostname</em>:<em>port</em>/rconsole</code>)と入力します。</span></p>
+<p><span class="merged" id="index.3UJ3Ue" title="原文 : Where hostname and port match the values you set when you deployed Hosted WebLogic Remote Console.">ここで、<code><em>hostname</em></code>および<code><em>port</em></code>は、ホストWebLogic Remote Consoleをデプロイしたときに設定した値と一致します。</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.2"  title="原文:: Note">ノート</span></h4>
+
+    <p><span class="merged" id="index.oYymK" title="原文 : If your Administration Server is behind a firewall or load balancer, or otherwise externally unavailable, you must manually expose the rconsole/ endpoint to make it accessible, similar to exposing console/ for the WebLogic Server Administration Console.">管理サーバーがファイアウォールまたはロード・バランサの背後にある場合、または外部で使用できない場合は、WebLogic Server管理コンソールの<code>console/</em></code>の公開と同様に、<code>rconsole/<em></code>エンドポイントを手動で公開してアクセスできるようにする必要があります。</span></p>
+<p><span class="merged" id="index.3eMOLG" title="原文 : This is in addition to exposing the management/* endpoint which is required for general domain configuration.">これは、一般的なドメイン構成に必要な<code>management/*</code>エンドポイントを公開することに加えて行います。</span></p>
+
+
+</div>
+</li>
+<li>
+<p><span class="merged" id="index.31rEtQ" title="原文 : Log in to Hosted WebLogic Remote Console.">Hosted WebLogic Remote Consoleにログインします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.23xqb7" title="原文 : In the Providers drawer, select This Server."><strong>「プロバイダ」</strong>ドロワーで、<strong>「このサーバー」</strong>を選択します。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.2FZ2P8" title="原文 : Hosted WebLogic Remote Console is active as long as the weblogic-remote-console-app application is deployed and the Administration Server is running.">ホストされるWebLogic Remote Consoleは、<code>weblogic-remote-console-app</code>アプリケーションがデプロイされ、管理サーバーが実行されているかぎりアクティブです。</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.3"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.2JNbES.spl1" title="原文 : You can use Hosted WebLogic Remote Console to connect to and manage other providers beyond the Administration Server it is hosted on.">ホストされているWebLogic Remote Consoleを使用して、ホストされている管理サーバー以外のプロバイダに接続および管理できます。</span> <span class="merged" id="index.2JNbES.spl2" title="原文 : See Connect to a Provider."><a href="../index.html#GUID-98F273C5-CC1E-4272-B560-604CA23A739A">「プロバイダへの接続」</a>を参照してください。</span> 
+
+</div>
+<h2 id="GUID-40440E0F-0310-4830-9B4B-00FC9ABBB591"><span class="merged" id="index.1dcGgb" title="原文 : Install the WebLogic Remote Console Extension">WebLogic Remote Console拡張機能のインストール</span></h2>
+<p><span class="merged" id="index.4Za42L" title="原文 : The WebLogic Remote Console extension enhances the management capabilities of WebLogic Remote Console for Administration Server connections.">WebLogic Remote Console拡張により、管理サーバー接続用のWebLogic Remote Consoleの管理機能が強化されます。</span></p>
+<p><span class="merged" id="index.lluJC" title="原文 : For an overview of the functionality provided by the WebLogic Remote Console extension, see Features of the WebLogic Remote Console Extension.">WebLogic Remote Console拡張機能で提供される機能の概要は、<a href="index.html#GUID-6357222A-F7D4-46FC-BC87-22D6D1A6568A">「WebLogic Remote Console拡張機能の機能」</a>を参照してください。</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.4"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.3ZpUX7.spl1" title="原文 : You only need to perform this procedure if you are running WebLogic Server 14.1.1.0.0 or earlier.">このプロシージャを実行する必要があるのは、WebLogic Server 14.1.1.0.0以前を実行している場合のみです。</span> <span class="merged" id="index.3ZpUX7.spl2" title="原文 : As of WebLogic Server 14.1.2.0.0, the WebLogic Remote Console extension is automatically installed in your domain and updated with each Patch Set Update (PSU).">WebLogic Server 14.1.2.0.0の時点で、WebLogic Remote Console拡張機能はドメインに自動的にインストールされ、各パッチ・セット更新(PSU)で更新されます。</span> 
+
+</div>
+<ol>
+<li>
+<p><span class="merged" id="index.220edz" title="原文 : Under DOMAIN_HOME/, create a folder and name it management-services-ext."><code><em>DOMAIN_HOME</em>/</code>で、フォルダを作成し、<code>management-services-ext</code>という名前を付けます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2CQKec" title="原文 : Download the latest WebLogic Remote Console extension, console-rest-ext-2.4.16.war, from the WebLogic Remote Console GitHub Repository releases page."><a href="https://github.com/oracle/weblogic-remote-console-releases">「WebLogic Remote Console GitHubリポジトリ」</a>リリース・ページから、最新のWebLogic Remote Console拡張機能<code>console-rest-ext-2.4.16.war</code>をダウンロードします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2cfzmb" title="原文 : Save the extension under management-services-ext.">拡張子を<code>management-services-ext</code>の下に保存します。</span></p>
+<p><span class="merged" id="index.439ntE" title="原文 : You do not need to deploy console-rest-ext-2.4.16.war as an application in your domain."><code>console-rest-ext-2.4.16.war</code>をアプリケーションとしてドメインにデプロイする必要はありません。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.s9O31"  title="原文: Restart the Administration Server.">管理サーバーを再起動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1HKi8h" title="原文 : In WebLogic Remote Console, disconnect and then reconnect to the Administration Server.">WebLogic Remote Consoleで、切断してから管理サーバーに再接続します。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.1FCwPj.spl1" title="原文 : The WebLogic Remote Console extension is updated with WebLogic Remote Console.">WebLogic Remote Console拡張子は、WebLogic Remote Consoleで更新されます。</span> <span class="merged" id="index.1FCwPj.spl2" title="原文 : Whenever you update WebLogic Remote Console, make sure you also update the extension to match.">WebLogic Remote Consoleを更新するときは、必ず拡張子も一致するように更新してください。</span> </p>
+<p><span class="merged" id="index.1zLnKI.spl1" title="原文 : If you need to update the WebLogic Remote Console extension separately from the console, follow the instructions outlined in step 2 of Upgrade Desktop WebLogic Remote Console.">コンソールとは別にWebLogic Remote Console拡張機能を更新する必要がある場合は、<a href="index.html#GUID-281298E0-AEE6-4DEC-ADF1-949780E75D76">「デスクトップのアップグレードWebLogic Remote Console」</a>のステップ<a href="index.html#STEP_H13_HCK_DCC">2</a>で概説されている手順に従います。</span> <span class="merged" id="index.1zLnKI.spl2" title="原文 : Note that if you manually install the WebLogic Remote Console extension in domains running WebLogic Server 14.1.2.0.0 or later, under DOMAIN_HOME/, it will supersede the version of the extension that is automatically installed and updated.">WebLogic Server 14.1.2.0.0以降を実行しているドメインにWebLogic Remote Console拡張機能を手動でインストールすると、<code><em>DOMAIN_HOME</em>/</code>の下では、自動的にインストールおよび更新される拡張のバージョンよりも優先されます。</span> </p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.5"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.3TpVUW.spl1" title="原文 : With the release of WebLogic Remote Console 2.4.11, the versioning scheme of the WebLogic Remote Console extension was updated to match that of WebLogic Remote Console.">WebLogic Remote Console 2.4.11のリリースでは、WebLogic Remote Console <em>extension</em>のバージョニング・スキームがWebLogic Remote Consoleのものと一致するように更新されました。</span> <span class="merged" id="index.3TpVUW.spl2" title="原文 : There are no versions between console-rest-ext-9.0.war (released with WebLogic Remote Console 2.4.10) and console-rest-ext-2.4.11.war (released with WebLogic Remote Console 2.4.11)."><code>console-rest-ext-9.0.war</code> (WebLogic Remote Console 2.4.10でリリース)と<code>console-rest-ext-2.4.11.war</code> (WebLogic Remote Console 2.4.11でリリース)の間にバージョンはありません。</span> 
+
+</div>
+<h3 id="GUID-6357222A-F7D4-46FC-BC87-22D6D1A6568A"><span class="merged" id="index.2HkmkA" title="原文 : Features of the WebLogic Remote Console Extension">WebLogic Remote Console拡張機能の機能</span></h3>
+<p><span class="merged" id="index.1I9Fpk" title="原文 : The WebLogic Remote Console extension adds many features to WebLogic Remote Console that are useful for the administration of WebLogic Server domains.">WebLogic Remote Console拡張機能は、WebLogic Serverドメインの管理に役立つ多くの機能をWebLogic Remote Consoleに追加します。</span></p>
+<p><span class="merged" id="index.1sGhZv" title="原文 : When the WebLogic Remote Console extension is installed, it grants the following capabilities to WebLogic Remote Console:">WebLogic Remote Console拡張機能がインストールされると、次の機能がWebLogic Remote Consoleに付与されます:</span></p>
+<ul>
+<li>
+<p><span class="merged" id="index.4ZvheW.spl1" title="原文 : View pending changes - Identify any changes that are saved to the domain but not yet committed."><strong>「保留中の変更の表示」</strong> - ドメインに保存されているが、まだコミットされていない変更を識別します。</span> <span class="merged" id="index.4ZvheW.spl2" title="原文 : Pending changes are listed in the Shopping Cart.">保留中の変更がショッピング・カートにリストされます。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.3YXiDw" title="原文 : Access the Security Data Tree perspective - Edit security data that is stored in the embedded LDAP server, including, but not limited to, managing:"><strong>「セキュリティ・データ・ツリー・パースペクティブへのアクセス」</strong> - 組込みLDAPサーバーに格納されているセキュリティ・データを編集します。これには、次のものが含まれますが、これに限定されません:</span></p>
+<ul>
+<li>
+<p><span class="merged" id="index.13QIxO"  title="原文:: Users and Groups">ユーザーとグループ</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.YSw40"  title="原文:: Roles and Policies">ロールとポリシー</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.13Nx0g"  title="原文:: Credential Mappings">資格証明マッピング</span></p>
+</li>
+</ul>
+<p><span class="merged" id="index.3oQZuK" title="原文 : You can also view (but not edit) the users and groups for any authentication provider that supports it.">また、それをサポートする認証プロバイダのユーザーおよびグループを表示(編集はできません)することもできます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.wUp4p" title="原文 : Create and edit application deployment plans - Use deployment plans to extend or override an application’s deployment descriptors."><strong>「アプリケーション・デプロイメント・プランの作成と編集」</strong> - デプロイメント・プランを使用して、アプリケーションのデプロイメント記述子を拡張またはオーバーライドします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2cqz2n" title="原文 : Manage JMS messages - Import, export, or delete messages."><strong>「JMSメッセージの管理」</strong> - メッセージをインポート、エクスポートまたは削除します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1CBXcy" title="原文 : Manage JTA transactions - Import, export, or delete transactions."><strong>「JTAトランザクションの管理」</strong> - トランザクションをインポート、エクスポートまたは削除します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.28Wpr2" title="原文 : Test data source connections - Verify that the domain can successfully connect to the configured database."><strong>「データ・ソース接続のテスト」</strong> - ドメインが構成済みデータベースに正常に接続できることを確認します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1YjT6F" title="原文 : View objects in JNDI structure - Examine objects such as Java EE services and components such as RMI, JMS, EJBs, and JDBC data sources."><strong>「JNDI構造内のオブジェクトの表示」</strong> - Java EEサービスなどのオブジェクト、およびRMI、JMS、EJB、JDBCデータ・ソースなどのコンポーネントを確認します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3ge6Zk" title="原文 : Upload applications or database client data for redeployment - Update and redeploy applications or database client data with new versions that were not already deployed to the Administration Server."><strong>「再デプロイメント用のアプリケーションまたはデータベース・クライアント・データのアップロード」</strong> - アプリケーションまたはデータベース・クライアント・データを、管理サーバーにまだデプロイされていない新しいバージョンで更新および再デプロイします。</span></p>
+<p><span class="merged" id="index.dCJiw" title="原文 : The redeployment of applications or database client data that are already on the server is supported without the extension.">すでにサーバー上にあるアプリケーションまたはデータベース・クライアント・データの再デプロイメントは、拡張なしでサポートされます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4CzhIs" title="原文 : Analyze server connection issues - Test connections between the Administration Server and Managed Servers or clusters."><strong>「サーバー接続の問題を分析」</strong> - 管理サーバーと管理対象サーバーまたはクラスタ間の接続をテストします。</span></p>
+</li>
+</ul>
+<p><span class="merged" id="index.29GmAE" title="原文 : For installation instructions, see Install the WebLogic Remote Console Extension.">インストール手順については、<a href="index.html#GUID-40440E0F-0310-4830-9B4B-00FC9ABBB591">「WebLogic Remote Console拡張機能のインストール」</a>を参照してください。</span></p>
+<h2 id="GUID-82C1C605-D42E-45EA-AC16-5BA3D5853C96"><span class="merged" id="index.4W7q60"  title="原文:: Provider Types">プロバイダ・タイプ</span></h2>
+<p><span class="merged" id="index.1ewx1" title="原文 : Use WebLogic Remote Console to connect to the following provider types, each of which offers a different approach for managing your WebLogic Server domains.">WebLogic Remote Consoleを使用して、次のプロバイダ・タイプに接続します。各プロバイダ・タイプは、WebLogic Serverドメインを管理するための異なるアプローチを提供します。</span></p>
+<table id="GUID-82C1C605-D42E-45EA-AC16-5BA3D5853C96__TABLE_I4W_4ZY_RZB">
+                     <span class="merged" id="index.3MU0BT" title="原文 : The provider types available in WebLogic Remote Console "><span><span id="GUID-82C1C605-D42E-45EA-AC16-5BA3D5853C96__WRC">WebLogic Remote Console</span>で使用可能なプロバイダ・タイプ</span></span>
+                     <thead>
+                        <tr>
+                           <th><span class="merged" id="index.1yHHYo"  title="原文:: Provider">プロバイダ</span></th>
+                           <th><span class="merged" id="index.4JM9z7"  title="原文:: Description">説明</span></th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.48PKwl"  title="原文:: Administration Server"><a href="../administration-server#GUID-BC6883D0-1917-4130-B79B-02727F1242D6">管理サーバー</a></span>
+                           </td>
+                           <td><span class="merged" id="index.1h8ixq" title="原文 : Connect to a running WebLogic Server domain through its Administration Server.">管理サーバーを介して実行中のWebLogic Serverドメインに接続します。</span></td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.4DROMu" title="原文 : WDT Model Files"><a href="../weblogic-deploy-tooling/wdt-model-files#GUID-2AEF7470-25FA-4A9D-85FB-16F8F5415C35">WDTモデル・ファイル</a></span>
+                           </td>
+                           <td><span class="merged" id="index.1EHzHu" title="原文 : Edit WebLogic Deploy Tooling (WDT) metadata models of WebLogic Server domains.">WebLogic ServerドメインのWebLogic Deploy Tooling (WDT)メタデータ・モデルを編集します。</span></td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.1FTGa" title="原文 : WDT Composite Models"><a href="../weblogic-deploy-tooling/wdt-composites#GUID-904FB61C-F32C-4D33-8698-59346E279140">WDTコンポジット・モデル</a></span>
+                           </td>
+                           <td><span class="merged" id="index.43XeVh" title="原文 : Combine and compare settings across multiple WDT model files.">複数のWDTモデル・ファイル間で設定を組み合せて比較します。</span>   </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.3wxApu" title="原文 : Property Lists"><a href="../weblogic-deploy-tooling/property-lists#GUID-62721515-29E5-4DC4-BBD8-E2D1C8A7529D">プロパティ・リスト</a></span>
+                           </td>
+                           <td><span class="merged" id="index.Q80jp" title="原文 : Edit the key-value pairs that enable the use of variables in WDT model files.">WDTモデル・ファイルで変数を使用できるようにするキーと値のペアを編集します。</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+<h2 id="GUID-98F273C5-CC1E-4272-B560-604CA23A739A"><span class="merged" id="index.1jRwjU" title="原文 : Connect to a Provider">プロバイダへの接続</span></h2>
+<p><span class="merged" id="index.1xb7Ph" title="原文 : You can connect WebLogic Remote Console to a WebLogic Administration Server, WDT model file, or another provider.">WebLogic Remote Consoleは、WebLogic管理サーバー、WDTモデル・ファイルまたは別のプロバイダに接続できます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.3eqsJc" title="原文 : Open the Providers drawer and click More ︙."><strong>「プロバイダ」</strong>ドロワーを開き、<strong>「その他」</strong>をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.P6NiM" title="原文 : Choose a provider type from the list:">リストからプロバイダ・タイプを選択します:</span></p>
+<ul>
+<li><span class="merged" id="index.3NjHOb"  title="原文:: Add Admin Server Connection Provider">管理サーバー接続プロバイダの追加</span></li>
+<li><span class="merged" id="index.1CKVFL"  title="原文:: Add WDT Model File Provider">WDTモデル・ファイル・プロバイダの追加</span></li>
+<li><span class="merged" id="index.15QQMR"  title="原文:: Add WDT Composite Model File Provider">WDTコンポジット・モデル・ファイル・プロバイダの追加</span></li>
+<li><span class="merged" id="index.3g9sUd"  title="原文:: Add Property List Provider">プロパティ・リスト・プロバイダの追加</span></li>
+<li><span class="merged" id="index.2pI6ez" title="原文 : Create Provider for new WDT Model File">新規WDTモデル・ファイルのプロバイダの作成</span></li>
+<li><span class="merged" id="index.17t2Iu" title="原文 : Create Provider for New Property List For information on the different providers, see Provider Types.">新規プロパティ・リストのプロバイダの作成様々なプロバイダの詳細は、<a href="index.html#GUID-82C1C605-D42E-45EA-AC16-5BA3D5853C96">「プロバイダ・タイプ」</a>を参照してください。</span></li>
+</ul>
+</li>
+<li>
+<p><span class="merged" id="index.2VXOOd" title="原文 : Fill in any required connection details for the selected provider.">選択したプロバイダに必要な接続の詳細を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.lRfyU" title="原文 : Click OK to establish the connection."><strong>OK</strong>をクリックして接続を確立します。</span></p>
+<p><span class="merged" id="index.46cygt" title="原文 : The Administration Server must be running for the connection to succeed.">接続が成功するには、管理サーバーが実行されている必要があります。</span></p>
+</li>
+</ol>
+<h2 id="GUID-281298E0-AEE6-4DEC-ADF1-949780E75D76"><span class="merged" id="index.2lokea" title="原文 : Upgrade Desktop WebLogic Remote Console">デスクトップのアップグレードWebLogic Remote Console</span></h2>
+<p><span class="merged" id="index.GcDPP" title="原文 : Upgrade to the latest version of Desktop WebLogic Remote Console and take advantage of the latest features in both the console and WebLogic Server.">デスクトップWebLogic Remote Consoleの最新バージョンにアップグレードし、コンソールとWebLogic Serverの両方で最新機能を利用します。</span></p>
+<p><span class="merged" id="index.4T78pI" title="原文 : If a newer version of Desktop WebLogic Remote Console is available, an alert will appear in the menu bar.">新しいバージョンのデスクトップWebLogic Remote Consoleが使用可能な場合は、メニュー・バーに警告が表示されます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.49D3t9" title="原文 : In Desktop WebLogic Remote Console, open Updates Available, then Download and install.">デスクトップWebLogic Remote Consoleで、<strong>「更新可能」</strong>、<strong>「ダウンロードとインストール」</strong>の順に開きます。</span></p>
+<p><span class="merged" id="index.4E2dFA.spl1" title="原文 : Desktop WebLogic Remote Console update runs in the background so you can continue working in WebLogic Remote Console with no interruptions.">デスクトップのWebLogic Remote Console更新はバックグラウンドで実行されるため、中断なしでWebLogic Remote Consoleで作業を続行できます。</span> <span class="merged" id="index.4E2dFA.spl2" title="原文 : The next time the console is launched, the updates will apply.">次回コンソールを起動すると、更新が適用されます。</span> </p>
+<p><span class="merged" id="index.MBTFU" title="原文 : You can also download the update from the WebLogic Remote Console GitHub Repository releases page and apply the update manually."><a href="https://github.com/oracle/weblogic-remote-console-releases">「WebLogic Remote Console GitHubリポジトリ」</a>リリース・ページから更新をダウンロードし、手動で更新を適用することもできます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.FrFXW" title="原文 : For WebLogic Server 14.1.1.0.0 and earlier: Update the WebLogic Remote Console extension."><em>WebLogic Server 14.1.1.0.0以前の場合:</em> WebLogic Remote Console <em>extension</em>を更新します。</span></p>
+<p><span class="merged" id="index.2MTUpK" title="原文 : In WebLogic Server 14.1.2.0.0 and later, the WebLogic Remote Console extension is included with the initial installation and is updated by subsequent Patch Set Updates (PSU) and should not be updated manually.">WebLogic Server 14.1.2.0.0以降では、WebLogic Remote Console拡張機能は初期インストールに含まれており、後続のPatch Set Updates (PSU)によって更新されるため、手動で更新しないでください。</span></p>
+<p><span class="merged" id="index.4bDi1.spl1" title="原文 : For the best experience, you should keep the versions of WebLogic Remote Console and its extension in sync with each other.">最適なエクスペリエンスを得るには、WebLogic Remote Consoleのバージョンとその拡張機能の同期を保つ必要があります。</span> <span class="merged" id="index.4bDi1.spl2" title="原文 : That is, when you are running WebLogic Remote Console 2.4.16, you should have console-rest-ext-2.4.16.war installed.">つまり、WebLogic Remote Console 2.4.16を実行している場合は、<code>console-rest-ext-2.4.16.war</code>がインストールされている必要があります。</span> </p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.6"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.BrXf7.spl1" title="原文 : With the release of WebLogic Remote Console 2.4.11, the versioning scheme of the extension was updated to match WebLogic Remote Console.">WebLogic Remote Console 2.4.11のリリースで、拡張のバージョニング・スキームがWebLogic Remote Consoleと一致するように更新されました。</span> <span class="merged" id="index.BrXf7.spl2" title="原文 : Due to this change, the extension version jumps from console-rest-ext-9.0.war to console-rest-ext-2.4.11.war.">この変更により、拡張バージョンは<code>console-rest-ext-9.0.war</code>から<code>console-rest-ext-2.4.11.war</code>にジャンプします。</span> 
+
+</div>
+<ol>
+<li>
+<p><span class="merged" id="index.3cQGmk.spl1" title="原文 : While connected to the domain, open the Providers drawer and beside the provider connection, click the Get Info icon to see the Console Extension Version.">ドメインに接続しているときに、<strong>「プロバイダ」</strong>ドロワーを開き、プロバイダ接続の横にある<strong>「情報の取得」</strong>アイコンをクリックして、<strong>「コンソール拡張バージョン」</strong>を表示します。</span> <span class="merged" id="index.3cQGmk.spl2" title="原文 : If it matches WebLogic Remote Console version, you can skip the rest of the steps.">WebLogic Remote Consoleバージョンと一致する場合は、残りのステップをスキップできます。</span> <span class="merged" id="index.3cQGmk.spl3"  title="原文:: Otherwise, continue.">それ以外の場合は、処理を続行します。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.3RNoYP" title="原文 : Go to DOMAIN_HOME/management-services-ext and delete the existing WebLogic Remote Console extension."><code><em>DOMAIN_HOME</em>/management-services-ext</code>に移動し、既存のWebLogic Remote Console拡張機能を削除します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3HOPfD.spl1" title="原文 : Download the WebLogic Remote Console extension that matches your WebLogic Remote Console from the WebLogic Remote Console GitHub Repository."><a href="https://github.com/oracle/weblogic-remote-console-releases">「WebLogic Remote Console GitHubリポジトリ」</a>から、WebLogic Remote Consoleと一致するWebLogic Remote Console拡張子をダウンロードします。</span> <span class="merged" id="index.3HOPfD.spl2" title="原文 : It will be within the matching WebLogic Remote Console release section.">これは、一致するWebLogic Remote Consoleリリース・セクション内にあります。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.3RGCPd" title="原文 : Save the extension to DOMAIN_HOME/management-services-ext.">拡張子を<code><em>DOMAIN_HOME</em>/management-services-ext</code>に保存します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.s9O31.1"  title="原文: Restart the Administration Server.">管理サーバーを再起動します。</span></p>
+</li>
+</ol>
+</li>
+</ol>
+
+  <div class="section-index">
+    
+    
+    <hr class="panel-line">
+        <div class="entry">
+                <h5>
+                    <span class="merged" id="index.3cYM5H"  title="原文:: Get to Know the Console"><a href="get-know-console/index.html">コンソールの理解</a></span>
+                </h5>
+                <p></p>
+            </div>
+        <div class="entry">
+                <h5>
+                    <span class="merged" id="index.3Eitrc" title="原文 : Contribute to WebLogic Remote Console"><a href="contribute-wrc-repository/index.html">WebLogic Remote Consoleへの貢献</a></span>
+                </h5>
+                <p></p>
+            </div>
+        <div class="entry">
+                <h5>
+                    <span class="merged" id="index.1ZokZ7"  title="原文:: Support Information"><a href="support-information/index.html">サポート情報</a></span>
+                </h5>
+                <p></p>
+            </div>
+        </div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="merged" id="index.VxO9l" title="原文 : © 2020-2025 Oracle | UPL 1.0All Rights Reserved"><span class="td-footer__copyright">© 2020-2025 <span class="td-footer__authors">Oracle | <a href="https://github.com/oracle/weblogic-remote-console/blob/main/LICENSE.txt">UPL 1.0</a></span></span> <span class="td-footer__all_rights_reserved">All Rights Reserved<</span></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="../js/main.min.90902a026ed2aee7ed45d85797f4c790b240ba148ac6f8a6f194cb1981ffecf5.js" integrity="sha256-kJAqAm7SruftRdhXl/THkLJAuhSKxvim8ZTLGYH/7PU=" crossorigin="anonymous"></script>
+<script defer src="../js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='../js/tabpane-persist.js'></script>
+
+  </body>
+</html>

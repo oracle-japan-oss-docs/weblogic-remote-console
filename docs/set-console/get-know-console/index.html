@@ -1,0 +1,590 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="ja" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="application/rss&#43;xml" href="index.xml">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../favicons/android-192x192.png" sizes="192x192">
+
+<title>コンソールを知る | WebLogic Remote Console</title>
+<meta content="WebLogic Remote Consoleは、ドメインまたはモデル・テンプレートのどちらを実行しているかに関係なく、統合インタフェースからWebLogic Serverドメインを管理するためのポータルです。 WebLogic Remote Consoleを初めて起動すると、「起動タスク」ダイアログ・ボックスが開き、管理サーバーやWDTモデル・ファイルなどの新しいプロバイダに接続するためのオプションが表示されます。 WebLogic Remote Consoleは接続の詳細を記憶するため、後続の訪問時に最後のプロジェクトで開き、中断した場所から続行できます。 " name="description">
+<meta property="og:url" content="https://oracle.github.io/weblogic-remote-console/set-console/get-know-console/">
+  <meta property="og:site_name" content="WebLogic Remote Console">
+  <meta content="コンソールの理解" property="og:title">
+  <meta content="WebLogic Remote Consoleは、ドメインまたはモデル・テンプレートのどちらを実行しているかに関係なく、統合インタフェースからWebLogic Serverドメインを管理するためのポータルです。 WebLogic Remote Consoleを初めて起動すると、「起動タスク」ダイアログ・ボックスが開き、管理サーバーやWDTモデル・ファイルなどの新しいプロバイダに接続するためのオプションが表示されます。 WebLogic Remote Consoleは接続の詳細を記憶するため、後続の訪問時に最後のプロジェクトで開き、中断した場所から続行できます。 " property="og:description">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Get to Know the Console">
+  <meta itemprop="description" content="WebLogic Remote Console is your portal to managing WebLogic Server domains from a unified interface, whether they are running domains or model templates.
+When you launch WebLogic Remote Console for the first time, it opens a Startup Tasks dialog box with options to connect to a new provider, such as an Administration Server or WDT model file. WebLogic Remote Console remembers your connection details so on subsequent visits, it will open on your last project, letting you continue where you left off.">
+  <meta itemprop="wordCount" content="1647">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Get to Know the Console">
+  <meta name="twitter:description" content="WebLogic Remote Console is your portal to managing WebLogic Server domains from a unified interface, whether they are running domains or model templates.
+When you launch WebLogic Remote Console for the first time, it opens a Startup Tasks dialog box with options to connect to a new provider, such as an Administration Server or WDT model file. WebLogic Remote Console remembers your connection details so on subsequent visits, it will open on your last project, letting you continue where you left off.">
+<link rel="preload" href="../../scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" as="style" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
+<link href="../../scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" rel="stylesheet" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  <meta HTTP-EQUIV="Content-Type" Content="text/html; charset=utf-8"></head>
+  <style type="text/css"> <!-- .merged:hover {text-decoration: underline;} --> </style>
+<body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <span class="merged" id="index.4HI2lZ"  title="原文:: WebLogic Remote Console"><a class="navbar-brand" href="../../index.html"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">WebLogic Remote Console</span></a></span>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <span class="merged" id="index.4BXA3a"  title="原文:: Documentation"><a class="nav-link" href="../../overview"><span>ドキュメント</span></a></span>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <span class="merged" id="index.1rBGLa" title="原文 : Releases"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="index.html#" role="button">リリース</a></span>
+  <ul class="dropdown-menu">
+    <li><span class="merged" id="index.3qEipK" title="原文 : Latest (v2.4.16)"><a class="dropdown-item" href="../../overview">最新(v2.4.16)</a></span></li>
+    </ul>
+</div></li>
+      <li class="td-light-dark-menu nav-item dropdown">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="circle-half" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+  </symbol>
+  <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </symbol>
+  <symbol id="sun-fill" viewBox="0 0 16 16">
+    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </symbol>
+</svg>
+
+<button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <span class="merged" id="index.2jII9A" title="原文 :  Light "><svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>ライト<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <span class="merged" id="index.2I3lw8" title="原文 :  Dark "><svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>ダーク<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <span class="merged" id="index.2ddEmA" title="原文 :  Auto "><svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>自動<svg class="bi ms-auto d-none"><use href="#check2"></use></svg></span>
+    </button>
+  </li>
+</ul>
+
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site ¦"
+    aria-label="Search this site ¦"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/weblogic-remote-console/offline-search-index.435a82cb353472bb29e0cc0f9a02ede0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site ¦"
+    aria-label="Search this site ¦"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/weblogic-remote-console/offline-search-index.435a82cb353472bb29e0cc0f9a02ede0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="td-sidebar-nav collapse td-sidebar-nav--search-disabled foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-weblogic-remote-consoleoverview-li">
+  <span class="merged" id="index.3zbEcv" title="原文 : About WebLogic Remote Console"><a class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" href="../../overview/index.html" id="m-weblogic-remote-consoleoverview"><span class="">WebLogic Remote Consoleについて</span></a></span>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-weblogic-remote-consoleset-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-console-check" checked/>
+  <label for="m-weblogic-remote-consoleset-console-check"><span class="merged" id="index.3M0dxn"  title="原文:: Get Started"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../index.html" id="m-weblogic-remote-consoleset-console"><span class="">開始</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-weblogic-remote-consoleset-consoleget-know-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consoleget-know-console-check" checked/>
+  <label for="m-weblogic-remote-consoleset-consoleget-know-console-check"><span class="merged" id="index.2zbtfC"  title="原文:: Get to Know the Console"><a class="align-left ps-0  active td-sidebar-link td-sidebar-link__section" href="index.html" id="m-weblogic-remote-consoleset-consoleget-know-console"><span class="td-sidebar-nav-active-item">コンソールの理解</span></a></span></label>
+  
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-check"/>
+  <label for="m-weblogic-remote-consoleset-consoleget-know-consolebean-map-check"><span class="merged" id="index.2Z1dd8" title="原文 : A Map of the Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="bean-map/index.html" id="m-weblogic-remote-consoleset-consoleget-know-consolebean-map"><span class="">コンソールのマップ</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-check"/>
+  <label for="m-weblogic-remote-consoleset-consolecontribute-wrc-repository-check"><span class="merged" id="index.L0Hk8" title="原文 : Contribute to WebLogic Remote Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../contribute-wrc-repository/index.html" id="m-weblogic-remote-consoleset-consolecontribute-wrc-repository"><span class="">WebLogic Remote Consoleに貢献</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleset-consolesupport-information-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleset-consolesupport-information-check"/>
+  <label for="m-weblogic-remote-consoleset-consolesupport-information-check"><span class="merged" id="index.3Zt59s"  title="原文:: Support Information"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../support-information/index.html" id="m-weblogic-remote-consoleset-consolesupport-information"><span class="">サポート情報</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleadministration-server-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-server-check"/>
+  <label for="m-weblogic-remote-consoleadministration-server-check"><span class="merged" id="index.Spfgp"  title="原文:: Administration Server"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/index.html" id="m-weblogic-remote-consoleadministration-server"><span class="">管理サーバー</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverdomain-configuration-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverdomain-configuration-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverdomain-configuration-check"><span class="merged" id="index.1N5nug"  title="原文:: Domain Configuration"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/domain-configuration/index.html" id="m-weblogic-remote-consoleadministration-serverdomain-configuration"><span class="">ドメインの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serversecuring-domains-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serversecuring-domains-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serversecuring-domains-check"><span class="merged" id="index.2NTM7Q" title="原文 : Securing Domains"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/securing-domains/index.html" id="m-weblogic-remote-consoleadministration-serversecuring-domains"><span class="">ドメインの保護</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverdeploying-applications-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverdeploying-applications-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverdeploying-applications-check"><span class="merged" id="index.4SHSFL"  title="原文:: Deploying Applications"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/deploying-applications/index.html" id="m-weblogic-remote-consoleadministration-serverdeploying-applications"><span class="">アプリケーションのデプロイ</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-servermonitoring-domains-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-servermonitoring-domains-check"/>
+  <label for="m-weblogic-remote-consoleadministration-servermonitoring-domains-check"><span class="merged" id="index.3eDzbe" title="原文 : Monitoring Domains"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/monitoring-domains/index.html" id="m-weblogic-remote-consoleadministration-servermonitoring-domains"><span class="">ドメインのモニタリング</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverconfiguring-services-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverconfiguring-services-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverconfiguring-services-check"><span class="merged" id="index.3yEJPu"  title="原文:: Configuring Services"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/configuring-services/index.html" id="m-weblogic-remote-consoleadministration-serverconfiguring-services"><span class="">サービスの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverconfiguring-coherence-check"><span class="merged" id="index.3mwRCk"  title="原文:: Configuring Coherence"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/configuring-coherence/index.html" id="m-weblogic-remote-consoleadministration-serverconfiguring-coherence"><span class="">Coherenceの構成</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverscheduling-work-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverscheduling-work-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverscheduling-work-check"><span class="merged" id="index.4gOYwY" title="原文 : Scheduling Work"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/scheduling-work/index.html" id="m-weblogic-remote-consoleadministration-serverscheduling-work"><span class="">作業のスケジューリング</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleadministration-serverinteroperability-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleadministration-serverinteroperability-check"/>
+  <label for="m-weblogic-remote-consoleadministration-serverinteroperability-check"><span class="merged" id="index.1HvO0a" title="原文 : Interoperating with Oracle Tuxedo"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../administration-server/interoperability/index.html" id="m-weblogic-remote-consoleadministration-serverinteroperability"><span class="">Oracle Tuxedoとの相互運用</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-weblogic-remote-consoleweblogic-deploy-tooling-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-tooling-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-tooling-check"><span class="merged" id="index.cdq9l"  title="原文:: WebLogic Deploy Tooling"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/index.html" id="m-weblogic-remote-consoleweblogic-deploy-tooling"><span class="">WebLogic Deploy Tooling</span></a></span></label>
+  
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files-check"><span class="merged" id="index.3yTvIZ" title="原文 : WDT Model Files"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/wdt-model-files/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-model-files"><span class="">WDTモデル・ファイル</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites-check"><span class="merged" id="index.3aBgeR" title="原文 : WDT Composite Models"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/wdt-composites/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingwdt-composites"><span class="">WDTコンポジット・モデル</span></a></span></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-li">
+  <input type="checkbox" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-check"/>
+  <label for="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists-check"><span class="merged" id="index.3CFtu4" title="原文 : Property Lists"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../weblogic-deploy-tooling/property-lists/index.html" id="m-weblogic-remote-consoleweblogic-deploy-toolingproperty-lists"><span class="">プロパティ・リスト</span></a></span></label>
+  
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-li">
+  <input type="checkbox" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-check"/>
+  <label for="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console-check"><span class="merged" id="index.2p4mmh" title="原文 : Troubleshoot Issues with WebLogic Remote Console"><a class="align-left ps-0  td-sidebar-link td-sidebar-link__section" href="../../troubleshoot-weblogic-remote-console/index.html" id="m-weblogic-remote-consoletroubleshoot-weblogic-remote-console"><span class="">WebLogic Remote Consoleに関する問題のトラブルシューティング</span></a></span></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><span class="merged" id="index.2ntmP" title="原文 : Key Elements of the Interface"><a href="index.html#key-elements-of-the-interface">インタフェースの主要要素</a></span></li>
+    <li><span class="merged" id="index.h5MZj"  title="原文:: Tools"><a href="index.html#tools">ツール</a></span></li>
+    <li><span class="merged" id="index.Ba0je" title="原文 : Explore your Domain"><a href="index.html#explore-your-domain">ドメインの確認</a></span></li>
+    <li><span class="merged" id="index.EwzIc" title="原文 : Change Indicators"><a href="index.html#change-indicators">変更インジケータ</a></span></li>
+    <li><span class="merged" id="index.3Xa6PM" title="原文 : Change Console Preferences"><a href="index.html#GUID-709F9244-296B-443C-827F-AC8B26513FAC">コンソール・プリファレンスの変更</a></span></li>
+    <li><span class="merged" id="index.1z8Qye" title="原文 : Customize a Table"><a href="index.html#GUID-FF37D291-F8C5-4EFB-8A18-DADF035348C9">表のカスタマイズ</a></span></li>
+    <li><span class="merged" id="index.1p0CCx"  title="原文:: Projects"><a href="index.html#GUID-A6323CCF-02F4-4E77-BDF2-A2DB1623A598">プロジェクト</a></span>
+      <ul>
+        <li><span class="merged" id="index.47TSVA"  title="原文:: Create a Project"><a href="index.html#GUID-744E69CA-2A29-42E4-BD29-9F43516DF1F9">プロジェクトの作成</a></span></li>
+        <li><span class="merged" id="index.1IM6dU" title="原文 : Export a Project"><a href="index.html#GUID-AD97818F-0740-4E24-8673-9FFF4E32596E">プロジェクトのエクスポート</a></span></li>
+        <li><span class="merged" id="index.27qag0"  title="原文:: Import a Project"><a href="index.html#GUID-F0A7A1C6-87F1-458B-9D31-5FF65E20023D">プロジェクトのインポート</a></span></li>
+      </ul>
+    </li>
+    <li><span class="merged" id="index.hMBgE" title="原文 : Enable Keyboard Navigation on macOS"><a href="index.html#GUID-5C611ED8-29EF-4B21-B181-557C7D192C96">macOSでのキーボード・ナビゲーションの有効化</a></span></li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+            <div style="width:100%"> <div title="免責事項: ここに記載されているドキュメントは、お客様の利便性のために翻訳ソフトウエアにより機械的に翻訳(機械翻訳)したものです。オリジナルの英語版もあわせてご確認ください。" style="width:150px;padding-left:5px;padding-right:5px;border:#ff0000 solid 1px;border-color: gray;font-size: small;color:gray;margin: 0 auto 0 auto;text-align:center"><a href="https://docs.oracle.com/cd/E85181_01/mt_disclaimer.html">機械翻訳について</a></div> </div>
+<nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <span class="merged" id="index.2dQIDB" title="原文 : About WebLogic Remote Console"><a href="../../overview/index.html">WebLogic Remote Consoleについて</a></span></li>
+  <li class="breadcrumb-item">
+    <span class="merged" id="index.17PwoB"  title="原文:: Get Started"><a href="../index.html">開始</a></span></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <span class="merged" id="index.1kQROV"  title="原文:: Get to Know the Console">コンソールの理解</span></li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1><span class="merged" id="index.1kQROV.1"  title="原文:: Get to Know the Console">コンソールの理解</span></h1>
+  
+	<header class="article-meta">
+		
+</header>
+	<p><span class="merged" id="index.4by94E" title="原文 : WebLogic Remote Console is your portal to managing WebLogic Server domains from a unified interface, whether they are running domains or model templates.">WebLogic Remote Consoleは、ドメインまたはモデル・テンプレートのどちらを実行しているかに関係なく、統合インタフェースからWebLogic Serverドメインを管理するためのポータルです。</span></p>
+<p><span class="merged" id="index.3t6cdr.spl1" title="原文 : When you launch WebLogic Remote Console for the first time, it opens a Startup Tasks dialog box with options to connect to a new provider, such as an Administration Server or WDT model file.">WebLogic Remote Consoleを初めて起動すると、<strong>「起動タスク」</strong>ダイアログ・ボックスが開き、管理サーバーやWDTモデル・ファイルなどの新しいプロバイダに接続するためのオプションが表示されます。</span> <span class="merged" id="index.3t6cdr.spl2" title="原文 : WebLogic Remote Console remembers your connection details so on subsequent visits, it will open on your last project, letting you continue where you left off.">WebLogic Remote Consoleは接続の詳細を記憶するため、後続の訪問時に最後のプロジェクトで開き、中断した場所から続行できます。</span> </p>
+<p><span class="merged" id="index.2jG26F" title="原文 : The structure of WebLogic Remote Console remains similar across provider types, with variances as appropriate for the provider type.">WebLogic Remote Consoleの構造は、プロバイダ・タイプ間で類似しており、プロバイダ・タイプに適切な差異があります。</span></p>
+<h2 id="key-elements-of-the-interface"><span class="merged" id="index.3wpAal" title="原文 : Key Elements of the Interface">インタフェースの主要要素</span></h2>
+<p><span class="merged" id="index.16n0kK" title="原文 : Open the Providers drawer to see and manage your saved provider connections."><img alt="プロバイダ・ドロワー" src="../../images/ui-icons/project-management-blk_24x24.png"><strong>「プロバイダ」</strong>ドロワーを開き、保存したプロバイダ接続を表示および管理します。</span></p>
+<p><span class="merged" id="index.59tqn.spl1" title="原文 : Browse the Navigation Tree to see the structure of the provider as a node tree."><strong>「ナビゲーション・ツリー」</strong>を参照して、プロバイダの構造をノード・ツリーとして確認します。</span> <span class="merged" id="index.59tqn.spl2" title="原文 : In providers based on domains, such as Administration Servers or WDT model files, the node tree builds upon the MBean structure that defines a WebLogic Server domain.">管理サーバーやWDTモデル・ファイルなどのドメインに基づくプロバイダでは、ノード・ツリーはWebLogic Serverドメインを定義するMBean構造に基づいて構築されます。</span> <span class="merged" id="index.59tqn.spl3" title="原文 : Beside the Navigation Tree is the NavStrip.">ナビゲーション・ツリーの横に<strong>NavStrip</strong>があります。</span> <span class="merged" id="index.59tqn.spl4" title="原文 : On providers with multiple perspectives, you can also use the icons in the NavStrip to move between perspectives.">複数のパースペクティブを持つプロバイダでは、NavStripのアイコンを使用してパースペクティブ間を移動することもできます。</span> </p>
+<p><span class="merged" id="index.21Aqef.spl1" title="原文 : Click above the NavStrip to hide the Navigation Tree when you want a bigger editing area.">NavStripの上にある<img alt="ナビゲーション・ツリーの表示の切替え" src="../../images/ui-icons/navigation-icon-toggle-blk_24x24.png">をクリックして、より大きな編集領域が必要なときにナビゲーション・ツリーを非表示にします。</span> <span class="merged" id="index.21Aqef.spl2" title="原文 : Click it again to bring the Navigation Tree back.">もう一度クリックすると、ナビゲーション・ツリーに戻ります。</span> </p>
+<p><span class="merged" id="index.qezRb.spl1" title="原文 : The Content Pane is the main editing area for managing your domains or property lists."><strong>「コンテンツ・ペイン」</strong>は、ドメインまたはプロパティ・リストを管理するための主要な編集領域です。</span> <span class="merged" id="index.qezRb.spl2" title="原文 : As you move through the nodes of the Navigation Tree, the Content Pane updates to match your new position.">ナビゲーション・ツリーのノードを移動すると、新しい位置と一致するようにコンテンツ・ペインが更新されます。</span> </p>
+<h2 id="tools"><span class="merged" id="index.n5UKx"  title="原文:: Tools">ツール</span></h2>
+<p><span class="merged" id="index.3BFLDr.spl1" title="原文 : Tools are a set of quick actions that you can use to navigate or manipulate the interface.">ツールは、インタフェースのナビゲートまたは操作に使用できる一連のクイック・アクションです。</span> <span class="merged" id="index.3BFLDr.spl2" title="原文 : Icons for these actions are scattered across the top of WebLogic Remote Console.">これらのアクションのアイコンは、WebLogic Remote Consoleの上部に散在します。</span> </p>
+<p><span class="merged" id="index.r40j0.spl1" title="原文 : Tool icons only appear on pages where they are applicable.">ツール・アイコンは、該当するページにのみ表示されます。</span> <span class="merged" id="index.r40j0.spl2" title="原文 : For example, the Shopping Cart, used to indicate pending changes to an active domain, only appears in Administration Server providers.">たとえば、アクティブなドメインに対する保留中の変更を示すために使用されるショッピング・カートは、管理サーバー・プロバイダにのみ表示されます。</span> </p>
+<table id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__TABLE_GQ3_FQF_NZB">
+                     <caption>
+                        <span class="merged" id="index.4d2RIJ.spl1" title="原文 :  Table 1. "><span><span>表1.</span></span> <span class="merged" id="index.4d2RIJ.spl2" title="原文 : Tools. ">ツール。 </span></span> <span class="merged" id="index.4d2RIJ.spl3" title="原文 : Tool icons that may appear along the top of the Content Pane."><span>コンテンツ・ペインの上部に表示されるツール・アイコン。</span></span> 
+                     </caption>
+                     <thead>
+                        <tr>
+                           <th><span class="merged" id="index.4EwvyN" title="原文 : Tool Icon">ツール・アイコン</span></th>
+                           <th><span class="merged" id="index.4JM9z7"  title="原文:: Description">説明</span></th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.9u4CM"  title="原文::  Home"><img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_NGZ_4MY_MDC" src="../../images/ui-icons/home-icon-blk_24x24.png" /> ホーム</span></td>
+                           <td><span class="merged" id="index.3yGC6U" title="原文 : Sends you to the Home Page of the provider.">プロバイダのホーム・ページに移動します。</span></td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.3n0Vv7"  title="原文::  Shopping Cart"><img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_GFR_D2Z_MDC" src="../../images/ui-icons/shopping-cart-icon_24x24.png" /> ショッピング・カート</span> </td>
+                           <td><span class="merged" id="index.1ZPWU2" title="原文 : Indicates if there are pending changes ready to be committed to a WebLogic Server domain.">WebLogic Serverドメインにコミット可能な保留中の変更があるかどうかを示します。</span><p><span class="merged" id="index.2EQa3f" title="原文 : When the Shopping Cart is full, you can click it to see the pending changes and then commit or discard them."><span>「ショッピング・カート」</span>がいっぱいになると、それをクリックして保留中の変更を表示し、コミットまたは破棄できます。</span></p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.1KwH2F" title="原文 :  Visibility of History"><img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_J45_P2Z_MDC" src="../../images/ui-icons/beanpath-history-icon-blk_24x24.png" />履歴の表示</span></td>
+                           <td><span class="merged" id="index.3kJO7P.spl1" title="原文 : Triggers a record of the pages you visit.">訪問したページのレコードをトリガーします。</span> <span class="merged" id="index.3kJO7P.spl2" title="原文 : When active, a drop-down list appears where you can see, and return to, your previous pages.">アクティブの場合、ドロップダウン・リストが表示され、前のページを表示したり、前のページに戻ることができます。</span> <span class="merged" id="index.3kJO7P.spl3" title="原文 : History is limited to the current perspective.">履歴は現在のパースペクティブに限られています。</span>  <p><span class="merged" id="index.DkxJc" title="原文 : Click More ︙, then Clear History Entries to delete your navigation history."><span>「その他」</span>をクリックし、<span>「履歴エントリの消去」</span>をクリックしてナビゲーション履歴を削除します。</span></p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_ACC_NHF_B2C"
+                                   src="../../images/ui-icons/project-management-blk_24x24.png"/>
+                           </td>
+                           <td><span class="merged" id="index.2YChB1" title="原文 : Opens the Providers drawer where you can manage your provider connections.">プロバイダ接続を管理できる<span>「プロバイダ」</span>ドロワーを開きます。</span></td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.37X5h0" title="原文 : / Browse Back and Forward"><img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_DJS_JYX_12C" src="../../images/ui-icons/pages-history-back-blk_24x24.png" />/<img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_CDN_LYX_12C" src="../../images/ui-icons/pages-history-next-blk_24x24.png" />前後の参照</span></td>
+                           <td><span class="merged" id="index.7rxp2" title="原文 : Browses backward or forward through your previously visited pages in WebLogic Remote Console."><span id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__WRC">WebLogic Remote Console</span>で以前にアクセスしたページを前後にブラウズします。</span></td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.28Nl9y"  title="原文::  Pages History"><img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_AZP_5ZX_12C" src="../../images/ui-icons/pages-history-icon-blk_24x24.png" /> ページ履歴</span></td>
+                           <td><span class="merged" id="index.1r0ivg" title="原文 : Opens the Pages History dialog box, which lists the pages that you have previously visited in WebLogic Remote Console."><span>「ページ履歴」</span>ダイアログ・ボックスを開きます。このダイアログ・ボックスには、<span id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__WRC">WebLogic Remote Console</span>で以前にアクセスしたページがリストされます。</span></td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.2hmhGf"  title="原文::  Landing Page"><img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_U5V_TDZ_MDC" src="../../images/ui-icons/landing-page-icon-blk_24x24.png" /> ランディング・ページ</span></td>
+                           <td><span class="merged" id="index.28S0bU" title="原文 : Sends you to the Landing Page of the current perspective.">現在のパースペクティブのランディング・ページに移動します。</span></td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.4f3ObY"  title="原文::  Help"><img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_SJV_VDZ_MDC" src="../../images/ui-icons/toggle-help-icon-blk_16x16.png" /> ヘルプ</span></td>
+                           <td><span class="merged" id="index.lMeKD" title="原文 : Shows reference information about the attributes present on the current page.">現在のページに存在する属性に関する参照情報を表示します。</span></td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.11j9z2"  title="原文::  Reload"><img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_NWY_ZDZ_MDC" src="../../images/ui-icons/sync-icon-blk_24x24.png" /> リロード</span></td>
+                           <td><span class="merged" id="index.4TdYkh" title="原文 : Refreshes any forms or tables on the current page with the latest available data.">現在のページのフォームまたは表を最新の使用可能なデータでリフレッシュします。</span><p><span class="merged" id="index.3Q3o5O" title="原文 : When Auto Reload Interval is enabled, this icon will bounce continuously."><span>「自動リロード間隔」</span>が有効な場合、このアイコンは継続的にバウンスします。</span></p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.1FxBVN" title="原文 :  Auto Reload Interval"><img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_R5R_B2Z_MDC" src="../../images/ui-icons/sync-interval-icon-blk_24x24.png" />自動リロード間隔</span></td>
+                           <td><span class="merged" id="index.m0pq7.spl1" title="原文 : Sets a time interval (in seconds) for how often WebLogic Remote Console should reload a page to refresh its information."><span id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__WRC">WebLogic Remote Console</span>がページをリロードして情報をリフレッシュする間隔を秒単位で設定します。</span> <span class="merged" id="index.m0pq7.spl2" title="原文 : If you select another tab or move to another page, automatic reload stops.">別のタブを選択するか、別のページに移動すると、自動再読み込みは停止します。</span> <p><span class="merged" id="index.3Vq4Gt" title="原文 : To stop auto reload, click the bouncing Reload icon or click Auto Reload Interval and set the interval to 0.">自動リロードを停止するには、バウンスしている<span>「リロード」</span>アイコンをクリックするか、<span>「自動リロード間隔」</span>をクリックして、間隔を<code>0</code>に設定します。</span></p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span class="merged" id="index.40wEYd" title="原文 :  Refresh Page Values"><img id="GUID-6DDEDC3B-00F5-4075-8849-66D3707C2C16__IMAGE_ZNL_M2Z_MDC" src="../../images/ui-icons/action-reset-icon-blk_24x24.png" />ページ値のリフレッシュ</span></td>
+                           <td><span class="merged" id="index.DgUQX" title="原文 : Updates the Content Pane with the latest values.">コンテンツ・ペインを最新の値で更新します。</span> </td>
+                        </tr>
+                     </tbody>
+                  </table>
+<h2 id="explore-your-domain"><span class="merged" id="index.3IyHDE" title="原文 : Explore your Domain">ドメインの確認</span></h2>
+<p><span class="merged" id="index.1Lp6JY" title="原文 : WebLogic Server domains can be complex structures, so WebLogic Remote Console provides multiple methods to locate your objective.">WebLogic Serverドメインは複雑な構造になる可能性があるため、WebLogic Remote Consoleには目的を特定するための複数のメソッドが用意されています。</span></p>
+<p><span class="merged" id="index.AUJLN" title="原文 : Navigation Tree: Expand the nodes of the Navigation Tree to browse its children and gain a high level understanding of the hierarchical relationship of a WebLogic Server domain."><strong>ナビゲーション・ツリー</strong>: ナビゲーション・ツリーのノードを展開してその子を参照し、WebLogic Serverドメインの階層関係を詳細に理解します。</span></p>
+<p><span class="merged" id="index.228rtH.spl1" title="原文 : Breadcrumbs: The Content Pane provides a breadcrumb menu to orient you as you descend further into a node branch."><strong>ブレッドクラム</strong>: コンテンツ・ペインには、ノード・ブランチにさらに進むときに方向を付けるブレッドクラム・メニューが用意されています。</span> <span class="merged" id="index.228rtH.spl2" title="原文 : You can also click on a node’s page title in the Breadcrumb menu to find links to related nodes that take you directly to the related content.">「ブレッドクラム」メニューでノードのページ・タイトルをクリックして、関連コンテンツに直接移動する関連ノードへのリンクを検索することもできます。</span> </p>
+<p><span class="merged" id="index.2r53UC.spl1" title="原文 : Search: Use the search bar to find any MBeans in the domain that match your query."><strong>検索</strong>: 検索バーを使用して、問合せに一致するドメイン内のMBeansを検索します。</span> <span class="merged" id="index.2r53UC.spl2" title="原文 : Searches are restricted to within the current provider and perspective.">検索は、現在のプロバイダおよびパースペクティブ内に制限されます。</span> <span class="merged" id="index.2r53UC.spl3" title="原文 : Previous search queries can be found as the last node in the Navigation Tree, nested under the Recent Searches node.">前の検索問合せは、ナビゲーション・ツリーの最後のノードとして、<strong>「最近の検索」</strong>ノードの下にネストされています。</span> </p>
+<p><span class="merged" id="index.2dPYcm.spl1" title="原文 : Dashboards: If you find yourself regularly reviewing specific data within your domain, you may want to make use of Dashboards, which let you curate complex search filters and compare disparate information about your domain."><strong>ダッシュボード</strong>: ドメイン内の特定のデータを定期的に確認している場合は、ダッシュボードを使用して複雑な検索フィルタをキュレーションし、ドメインに関する様々な情報を比較できます。</span> <span class="merged" id="index.2dPYcm.spl2" title="原文 : For more information, see Dashboards.">詳細については、<a href="../../administration-server/monitoring-domains/index.html#GUID-1C12C76D-2820-4AD8-9556-46AC52C617AD">「ダッシュボード」</a>を参照してください。</span> </p>
+<h2 id="change-indicators"><span class="merged" id="index.2f82ki" title="原文 : Change Indicators">変更インジケータ</span></h2>
+<p><span class="merged" id="index.3I5cdz" title="原文 : When you modify an MBean attribute, WebLogic Remote Console adds a black outline to the attribute’s field to indicate that it is no longer set to the default value.">MBean属性を変更すると、WebLogic Remote Consoleによって属性のフィールドに黒いアウトラインが追加され、デフォルト値が設定されなくなったことが示されます。</span></p>
+<p><span class="merged" id="index.1cYbKF.spl1" title="原文 : To return an MBean attribute to its default setting, right-click inside the attribute’s field and click Restore to default.">MBean属性をデフォルト設定に戻すには、属性のフィールド内で右クリックし、<strong>「デフォルトに戻す」</strong>をクリックします。</span> <span class="merged" id="index.1cYbKF.spl2" title="原文 : Save and commit the change.">変更を保存してコミットします。</span> </p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.2pBujw.spl1" title="原文 : The domain configuration file, config.xml, only describes MBean attributes if they are set to non-default values.">ドメイン構成ファイル<code>config.xml</code>は、MBean属性がデフォルト以外の値に設定されている場合のみ記述します。</span> <span class="merged" id="index.2pBujw.spl2" title="原文 : After you use Restore to default, the (now unnecessary) attribute will be removed from the file.">「デフォルトに戻す」を使用すると、(不要になった)属性がファイルから削除されます。</span> 
+
+</div>
+<h2 id="GUID-709F9244-296B-443C-827F-AC8B26513FAC"><span class="merged" id="index.1eR1QN" title="原文 : Change Console Preferences">コンソール・プリファレンスの変更</span></h2>
+<p><span class="merged" id="index.gPlkD" title="原文 : You can customize Desktop WebLogic Remote Console to suit your needs.">ニーズに合わせてデスクトップWebLogic Remote Consoleをカスタマイズできます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.ih9wa.spl1" title="原文 : Go to File, then Preferences."><strong>「ファイル」</strong>、<strong>「プリファレンス」</strong>の順に移動します。</span> <span class="merged" id="index.ih9wa.spl2" title="原文 : (On macOS, go to WebLogic Remote Console, then Application Preferences ).">(macOSでは、<strong>WebLogic Remote Console</strong>、<strong>「アプリケーション・プリファレンス」</strong>の順に移動します)。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.3hcaTJ" title="原文 : Choose a section tab and make your changes as needed.">セクション・タブを選択し、必要に応じて変更します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3hwnam" title="原文 : Close the Preferences dialog box to apply your changes."><strong>「プリファレンス」</strong>ダイアログ・ボックスを閉じて、変更を適用します。</span></p>
+</li>
+</ol>
+<h2 id="GUID-FF37D291-F8C5-4EFB-8A18-DADF035348C9"><span class="merged" id="index.4Eax25" title="原文 : Customize a Table">表のカスタマイズ</span></h2>
+<p><span class="merged" id="index.eIRxL" title="原文 : You can choose which columns are visible in a table, hiding irrelevant data so you can focus on the important details.">表に表示する列を選択し、無関係なデータを非表示にして、重要な詳細にフォーカスできます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.4U3i9L.spl1" title="原文 : Find a table that you want to customize.">カスタマイズする表を見つけます。</span> <span class="merged" id="index.4U3i9L.spl2" title="原文 : For example, in the Edit Tree, go to Environment, then Servers.">たとえば、<strong>「編集ツリー」</strong>で、<strong>「環境」</strong>、<strong>「サーバー」</strong>の順に移動します。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.27tVUL" title="原文 : Click Customize Table to display the list of Available Columns."><strong>「表のカスタマイズ」</strong>をクリックして、使用可能な列のリストを表示します。</span></p>
+<p><span class="merged" id="index.3eBCoX" title="原文 : The available column options differ by table as not all columns (that is, properties) are applicable to all tables.">使用可能な列オプションは、すべての列(プロパティ)がすべての表に適用できるわけではないため、表によって異なります。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.s7pGR.spl1" title="原文 : Use the arrows to move your wanted columns from Available Columns to Selected Columns.">矢印を使用して、目的の列を<strong>「使用可能な列」</strong>から<strong>「選択した列」</strong>に移動します。</span> <span class="merged" id="index.s7pGR.spl2" title="原文 : Move any unwanted columns back to Available Columns.">不要な列をすべて<strong>「使用可能な列」</strong>に戻します。</span> <span class="merged" id="index.s7pGR.spl3" title="原文 : Move the columns to Selected Columns in the order that you want them to appear in the table.">列を表に表示する順序で<strong>「選択した列」</strong>に移動します。</span> <span class="merged" id="index.s7pGR.spl4" title="原文 : There must be at least one column under Selected Columns."><strong>「選択した列」</strong>の下に少なくとも1つの列が必要です。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.24Rrtf"  title="原文: Click Apply to save your changes.">変更内容を保存するには<strong>「適用」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.2JN6jR.spl1" title="原文 : Changes to table columns will persist indefinitely and apply to that specific table across all applicable providers.">表列の変更は無期限に保持され、適用可能なすべてのプロバイダでその特定の表に適用されます。</span> <span class="merged" id="index.2JN6jR.spl2" title="原文 : If you change the table columns for Server Templates in wdt-model_1, then those changes will also affect the Server Templates table in wdt-model_2 and admin-server_1 (Edit Tree).">wdt-model_1の「サーバー・テンプレート」の表列を変更すると、それらの変更はwdt-model_2およびadmin-server_1 (ツリーの編集)の「サーバー・テンプレート」表にも影響します。</span> </p>
+<p><span class="merged" id="index.2k5Wd8" title="原文 : To return a table to its default set of columns, open Customize Table and click Reset.">表をデフォルトの列セットに戻すには、<strong>「表のカスタマイズ」</strong>を開き、<strong>「リセット」</strong>をクリックします。</span></p>
+<h2 id="GUID-A6323CCF-02F4-4E77-BDF2-A2DB1623A598"><span class="merged" id="index.32MS1q"  title="原文:: Projects">プロジェクト</span></h2>
+<p><span class="merged" id="index.1pSSLn" title="原文 : Use projects to organize providers in a way that makes sense for your workflow.">プロジェクトを使用して、ワークフローに適した方法でプロバイダを編成します。</span></p>
+<p><span class="merged" id="index.37sqkf.spl1" title="原文 : You can add as many providers to a project as you want.">任意の数のプロバイダをプロジェクトに追加できます。</span> <span class="merged" id="index.37sqkf.spl2" title="原文 : You can even add the same provider to multiple projects.">同じプロバイダを複数のプロジェクトに追加することもできます。</span> </p>
+<p><span class="merged" id="index.1mH8S3" title="原文 : For simplicity, we recommend that if you use property lists with your WDT model files, then you should keep the property list provider in the same project as the WDT model file.">わかりやすくするために、プロパティ・リストをWDTモデル・ファイルとともに使用する場合は、プロパティ・リスト・プロバイダをWDTモデル・ファイルと同じプロジェクトに保持することをお薦めします。</span></p>
+<h3 id="GUID-744E69CA-2A29-42E4-BD29-9F43516DF1F9"><span class="merged" id="index.RcFRT"  title="原文:: Create a Project">プロジェクトの作成</span></h3>
+<p><span class="merged" id="index.2Veew8" title="原文 : To arrange providers into a collection:">コレクションにプロバイダを配置するには:</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.3Eispy" title="原文 : Open File, then New Project."><strong>「ファイル」</strong>、<strong>「新規プロジェクト」</strong>の順に開きます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.25jHmU"  title="原文: Enter a name for the new project.">新規プロジェクトの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4Y3dFw.spl1" title="原文 : Open the Providers drawer and beside the project’s name, click More ︙."><strong>「プロバイダ」</strong>ドロワーを開き、プロジェクトの名前の横にある<strong>「その他」</strong>をクリックします。</span> <span class="merged" id="index.4Y3dFw.spl2" title="原文 : Select one of the following options to add a provider:">プロバイダを追加するには、次のいずれかのオプションを選択します:</span> </p>
+<ul>
+<li><span class="merged" id="index.3NjHOb"  title="原文:: Add Admin Server Connection Provider">管理サーバー接続プロバイダの追加</span></li>
+<li><span class="merged" id="index.1CKVFL"  title="原文:: Add WDT Model File Provider">WDTモデル・ファイル・プロバイダの追加</span></li>
+<li><span class="merged" id="index.15QQMR"  title="原文:: Add WDT Composite Model File Provider">WDTコンポジット・モデル・ファイル・プロバイダの追加</span></li>
+<li><span class="merged" id="index.3g9sUd"  title="原文:: Add Property List Provider">プロパティ・リスト・プロバイダの追加</span></li>
+<li><span class="merged" id="index.3e6guj"  title="原文:: Create Provider for New WDT Model File">新規WDTモデル・ファイルのプロバイダの作成</span></li>
+<li><span class="merged" id="index.32Ggx0" title="原文 : Create Provider for New Property List For more information on the different provider types, see Provider Types">新規プロパティ・リストのプロバイダの作成様々なプロバイダ・タイプの詳細は、<a href="../index.html#GUID-82C1C605-D42E-45EA-AC16-5BA3D5853C96">「プロバイダ・タイプ」</a>を参照してください</span></li>
+</ul>
+</li>
+<li>
+<p><span class="merged" id="index.EsiEo" title="原文 : Fill in any required information.">必要な情報を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2jB6G0" title="原文 : Click OK to add the provider to your project."><strong>OK</strong>をクリックして、プロジェクトにプロバイダを追加します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4OjYzI" title="原文 : Add more providers to the project.">プロジェクトにプロバイダを追加します。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.suDC.spl1" title="原文 : You can add or remove providers from the project at any point.">プロバイダは、いつでもプロジェクトに追加または削除できます。</span> <span class="merged" id="index.suDC.spl2" title="原文 : To switch to another project, open File, then Switch to project and choose the project that you want to switch to.">別のプロジェクトに切り替えるには、<strong>「ファイル」</strong>、<strong>「プロジェクトに切替え」</strong>の順に開き、切り替えるプロジェクトを選択します。</span> </p>
+<p><span class="merged" id="index.3iDGHP" title="原文 : Deleting a project will not affect the providers within the project.">プロジェクトを削除しても、プロジェクト内のプロバイダには影響しません。</span></p>
+<h3 id="GUID-AD97818F-0740-4E24-8673-9FFF4E32596E"><span class="merged" id="index.3IvtSl" title="原文 : Export a Project">プロジェクトのエクスポート</span></h3>
+<p><span class="merged" id="index.1OQ2k1" title="原文 : If you use WebLogic Remote Console on multiple computers, exporting a project is a convenient way to share a project across multiple computers.">WebLogic Remote Consoleを複数のコンピュータで使用する場合、プロジェクトのエクスポートは、複数のコンピュータ間でプロジェクトを共有する便利な方法です。</span></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading"><span class="merged" id="index.22fJPu.1"  title="原文:: Note">ノート</span></h4>
+
+    <span class="merged" id="index.23J7rE" title="原文 : If the project contains a WDT model file, make sure the location of the WDT model file is accessible to all the computers where this project will be imported to.">プロジェクトにWDTモデル・ファイルが含まれている場合は、このプロジェクトがインポートされるすべてのコンピュータからWDTモデル・ファイルのロケーションにアクセスできることを確認してください。</span>
+
+</div>
+<ol>
+<li>
+<p><span class="merged" id="index.2TlOr1" title="原文 : In the Providers drawer, click More ︙ and select Export Providers as Project.">「プロバイダ」ドロワーで、<strong>「その他」</strong>をクリックし、<strong>「プロバイダをプロジェクトとしてエクスポート」</strong>を選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3yKE8n.spl1" title="原文 : Enter a name for the exported project.">エクスポートしたプロジェクトの名前を入力します。</span> <span class="merged" id="index.3yKE8n.spl2" title="原文 : When imported into another WebLogic Remote Console, this will be the name of the project.">別のWebLogic Remote Consoleにインポートした場合、これはプロジェクトの名前になります。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.26Ue8b" title="原文 : Enter a name for the file of the exported project.">エクスポートしたプロジェクトのファイルの名前を入力します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.40S0B7" title="原文 : Click OK and choose a file location to save the exported project file."><strong>OK</strong>をクリックし、エクスポートしたプロジェクト・ファイルを保存するファイルのロケーションを選択します。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.478KLS" title="原文 : WebLogic Remote Console creates a JSON file with the project details that you can import into other instances of WebLogic Remote Console.">WebLogic Remote Consoleは、WebLogic Remote Consoleの他のインスタンスにインポートできるプロジェクト詳細を含むJSONファイルを作成します。</span></p>
+<h3 id="GUID-F0A7A1C6-87F1-458B-9D31-5FF65E20023D"><span class="merged" id="index.1qMdBH"  title="原文:: Import a Project">プロジェクトのインポート</span></h3>
+<p><span class="merged" id="index.oaDo9" title="原文 : You can import the project details of an existing project to rapidly ramp up productivity in a new installation of WebLogic Remote Console.">既存のプロジェクトのプロジェクト詳細をインポートして、WebLogic Remote Consoleの新しいインストールで生産性を迅速に向上させることができます。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.2TcgeU.spl1" title="原文 : Export a project and save the file to the computer where you want to import it.">プロジェクトをエクスポートし、ファイルをインポートするコンピュータに保存します。</span> <span class="merged" id="index.2TcgeU.spl2" title="原文 : See Export a Project."><a href="index.html#GUID-AD97818F-0740-4E24-8673-9FFF4E32596E">「プロジェクトのエクスポート」</a>を参照してください。</span> </p>
+</li>
+<li>
+<p><span class="merged" id="index.kS2yJ" title="原文 : On the computer where you want to import the file, start WebLogic Remote Console.">ファイルをインポートするコンピュータで、WebLogic Remote Consoleを起動します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1TIJsL" title="原文 : In the Providers drawer, click More ︙ and select Import Project.">「プロバイダ」ドロワーで、<strong>「その他」</strong>をクリックし、<strong>「プロジェクトのインポート」</strong>を選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.1RTFiW" title="原文 : Click Upload File and browse to the exported project file."><strong>「ファイルのアップロード」</strong>をクリックし、エクスポートされたプロジェクト・ファイルを参照します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.DQO88"  title="原文:: Click Import."><strong>「インポート」</strong>をクリックします。</span></p>
+</li>
+</ol>
+<p><span class="merged" id="index.34iR5s" title="原文 : The imported project automatically becomes the current project loaded in WebLogic Remote Console.">インポートされたプロジェクトは、自動的にWebLogic Remote Consoleにロードされた現在のプロジェクトになります。</span></p>
+<h2 id="GUID-5C611ED8-29EF-4B21-B181-557C7D192C96"><span class="merged" id="index.12iQmY" title="原文 : Enable Keyboard Navigation on macOS">macOSでのキーボード・ナビゲーションの有効化</span></h2>
+<p><span class="merged" id="index.37OX2J" title="原文 : On devices running macOS, you must specifically enable keyboard navigation before you can use the Tab key (or Shift + Tab keys) to navigate between the controls in WebLogic Remote Console.">macOSを実行しているデバイスでは、Tabキー(またはShiftキーを押しながらTabキー)を使用してWebLogic Remote Consoleのコントロール間を移動する前に、特にキーボード・ナビゲーションを有効にする必要があります。</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.3EZOi9" title="原文 : On your device running macOS, open the Apple main menu and select System Settings.">macOSを実行しているデバイスで、Appleのメイン・メニューを開き、<strong>「システム設定」</strong>を選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.4J73rF" title="原文 : Click the Keyboard item in the sidebar.">サイドバーの<strong>「キーボード」</strong>項目をクリックします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.2UgoHL" title="原文 : Turn on the Keyboard Navigation option."><strong>「キーボード・ナビゲーション」</strong>オプションをオンにします。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.3gr9nd" title="原文 : If you plan to use the Safari browser with Hosted WebLogic Remote Console, then do the following:">ホストされたWebLogic Remote ConsoleでSafariブラウザを使用する場合は、次を実行します:</span></p>
+<ol>
+<li>
+<p><span class="merged" id="index.37kwGG" title="原文 : Open the Safari browser and open its main menu.">Safariブラウザを開き、メイン・メニューを開きます。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.47uFo7"  title="原文:: Select Settings."><strong>「設定」</strong>を選択します。</span></p>
+</li>
+<li>
+<p><span class="merged" id="index.vIaF3" title="原文 : On the Advanced tab, turn on the Press Tab to highlight each item on a webpage option."><strong>「拡張」</strong>タブで、<strong>「Tabを押してwebページ上の各項目を強調表示」</strong>オプションをオンにします。</span></p>
+</li>
+</ol>
+</li>
+</ol>
+
+  <div class="section-index">
+    
+    
+    <hr class="panel-line">
+        <div class="entry">
+                <h5>
+                    <span class="merged" id="index.1mOTbG" title="原文 : A Map of the Console"><a href="bean-map/index.html">コンソールのマップ</a></span>
+                </h5>
+                <p></p>
+            </div>
+        </div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="merged" id="index.VxO9l" title="原文 : © 2020-2025 Oracle | UPL 1.0All Rights Reserved"><span class="td-footer__copyright">© 2020-2025 <span class="td-footer__authors">Oracle | <a href="https://github.com/oracle/weblogic-remote-console/blob/main/LICENSE.txt">UPL 1.0</a></span></span> <span class="td-footer__all_rights_reserved">All Rights Reserved<</span></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="../../js/main.min.90902a026ed2aee7ed45d85797f4c790b240ba148ac6f8a6f194cb1981ffecf5.js" integrity="sha256-kJAqAm7SruftRdhXl/THkLJAuhSKxvim8ZTLGYH/7PU=" crossorigin="anonymous"></script>
+<script defer src="../../js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='../../js/tabpane-persist.js'></script>
+
+  </body>
+</html>
